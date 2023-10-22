@@ -18,14 +18,21 @@ namespace DeCryptoWPF
         {
             account = new Account();
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
-            InitializeComponent();
-            code= joinToGameClient.CreateRoom();
-            Label_GameRoom_Code.Content = code;
+            InitializeComponent();            
         }
-        public void ConfigurateWindow(Account account)
+        public void ConfigurateWindow(Account account, int code)
         {
+            if (code >1)
+            {
+                this.code = code;
+            }
+            else
+            {
+               this.code = joinToGameClient.CreateRoom();
+            }
+            Label_GameRoom_Code.Content = this.code;
             this.account = account;
-            joinToGameClient.JoinToRoom(code, account.nickname);
+            joinToGameClient.JoinToRoom(this.code, account.nickname);
         }
 
         private void Button_GameRoom_TeamRead_Click(object sender, RoutedEventArgs e)

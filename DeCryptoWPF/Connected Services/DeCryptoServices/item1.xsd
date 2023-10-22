@@ -94,6 +94,20 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="AllreadyExistRoom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllreadyExistRoomResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AllreadyExistRoomResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RecivePlayers">
     <xs:complexType>
       <xs:sequence>

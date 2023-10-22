@@ -390,6 +390,12 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveRoom", ReplyAction="http://tempuri.org/IJoinToGame/LeaveRoomResponse")]
         System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom", ReplyAction="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse")]
+        bool AllreadyExistRoom(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom", ReplyAction="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse")]
+        System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -449,6 +455,14 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code) {
             return base.Channel.LeaveRoomAsync(nickname, code);
+        }
+        
+        public bool AllreadyExistRoom(int code) {
+            return base.Channel.AllreadyExistRoom(code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code) {
+            return base.Channel.AllreadyExistRoomAsync(code);
         }
     }
 }

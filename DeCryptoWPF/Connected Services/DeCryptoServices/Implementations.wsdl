@@ -134,6 +134,12 @@
   <wsdl:message name="IJoinToGame_LeaveRoom_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeaveRoomResponse" />
   </wsdl:message>
+  <wsdl:message name="IJoinToGame_AllreadyExistRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllreadyExistRoom" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_AllreadyExistRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllreadyExistRoomResponse" />
+  </wsdl:message>
   <wsdl:message name="IJoinToGame_RecivePlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecivePlayers" />
   </wsdl:message>
@@ -171,6 +177,10 @@
     <wsdl:operation name="LeaveRoom">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/LeaveRoom" message="tns:IJoinToGame_LeaveRoom_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/LeaveRoomResponse" message="tns:IJoinToGame_LeaveRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllreadyExistRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom" message="tns:IJoinToGame_AllreadyExistRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse" message="tns:IJoinToGame_AllreadyExistRoom_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayers" message="tns:IJoinToGame_RecivePlayers_OutputCallbackMessage" />
@@ -241,6 +251,15 @@
     </wsdl:operation>
     <wsdl:operation name="LeaveRoom">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/LeaveRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllreadyExistRoom">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/AllreadyExistRoom" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
