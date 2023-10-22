@@ -47,10 +47,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="VerifyEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q4:Account" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VerifyEmailResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RegisterPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="user" nillable="true" type="q4:User" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="user" nillable="true" type="q5:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -86,8 +100,8 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q5:BlueTeam" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q6:RedTeam" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q6:BlueTeam" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q7:RedTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -113,7 +127,7 @@
   <xs:element name="joinToBlueTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q7:BlueTeam" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q8:BlueTeam" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -121,7 +135,7 @@
   <xs:element name="joinToRedTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q8:RedTeam" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q9:RedTeam" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -129,7 +143,7 @@
   <xs:element name="RecivePlayers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerList" nillable="true" type="q9:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerList" nillable="true" type="q10:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +155,7 @@
   <xs:element name="ReciveBlueTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q10:BlueTeam" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q11:BlueTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -153,7 +167,7 @@
   <xs:element name="ReciveRedTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q11:RedTeam" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q12:RedTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

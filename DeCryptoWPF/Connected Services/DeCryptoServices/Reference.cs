@@ -390,6 +390,12 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/SendToken", ReplyAction="http://tempuri.org/IAccountServices/SendTokenResponse")]
         System.Threading.Tasks.Task<bool> SendTokenAsync(string email, string title, string message, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/VerifyEmail", ReplyAction="http://tempuri.org/IAccountServices/VerifyEmailResponse")]
+        bool VerifyEmail(DeCryptoWPF.DeCryptoServices.Account account);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/VerifyEmail", ReplyAction="http://tempuri.org/IAccountServices/VerifyEmailResponse")]
+        System.Threading.Tasks.Task<bool> VerifyEmailAsync(DeCryptoWPF.DeCryptoServices.Account account);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -441,6 +447,14 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task<bool> SendTokenAsync(string email, string title, string message, int code) {
             return base.Channel.SendTokenAsync(email, title, message, code);
+        }
+        
+        public bool VerifyEmail(DeCryptoWPF.DeCryptoServices.Account account) {
+            return base.Channel.VerifyEmail(account);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VerifyEmailAsync(DeCryptoWPF.DeCryptoServices.Account account) {
+            return base.Channel.VerifyEmailAsync(account);
         }
     }
     

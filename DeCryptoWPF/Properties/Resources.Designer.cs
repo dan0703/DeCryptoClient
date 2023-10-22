@@ -79,6 +79,15 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Aceptar.
+        /// </summary>
+        public static string Button_ConfirmationButton_Accept {
+            get {
+                return ResourceManager.GetString("Button_ConfirmationButton_Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
         public static string Button_ConfirmationButtons_Cancel {
@@ -201,6 +210,15 @@ namespace DeCryptoWPF.Properties {
         public static string Button_SignIn_EnterAsGuess {
             get {
                 return ResourceManager.GetString("Button_SignIn_EnterAsGuess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enviar de nuevo.
+        /// </summary>
+        public static string Button_VerifyEmail_SendAgain {
+            get {
+                return ResourceManager.GetString("Button_VerifyEmail_SendAgain", resourceCulture);
             }
         }
         
@@ -651,6 +669,24 @@ namespace DeCryptoWPF.Properties {
         public static string Label_Success_StartingConfigurationSaved {
             get {
                 return ResourceManager.GetString("Label_Success_StartingConfigurationSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Por favor, ingréselo:.
+        /// </summary>
+        public static string Label_VerifyEmail_EnterToken {
+            get {
+                return ResourceManager.GetString("Label_VerifyEmail_EnterToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hemos enviado un código a tu correo electrónico..
+        /// </summary>
+        public static string Label_VerifyEmail_SendToken {
+            get {
+                return ResourceManager.GetString("Label_VerifyEmail_SendToken", resourceCulture);
             }
         }
     }

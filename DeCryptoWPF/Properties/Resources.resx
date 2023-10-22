@@ -135,6 +135,9 @@
   <data name="Button_ConfirmationButtons_Send" xml:space="preserve">
     <value>Enviar</value>
   </data>
+  <data name="Button_ConfirmationButton_Accept" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
   <data name="Button_Friends_AddFriend" xml:space="preserve">
     <value>Agregar amigos</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Button_SignIn_EnterAsGuess" xml:space="preserve">
     <value>Entrar como invitado</value>
+  </data>
+  <data name="Button_VerifyEmail_SendAgain" xml:space="preserve">
+    <value>Enviar de nuevo</value>
   </data>
   <data name="ComboBoxItem_GameRoom_Configuration" xml:space="preserve">
     <value>Configuración</value>
@@ -314,5 +320,11 @@
   </data>
   <data name="Label_Success_StartingConfigurationSaved" xml:space="preserve">
     <value>Configuración de partida guardada con éxito</value>
+  </data>
+  <data name="Label_VerifyEmail_EnterToken" xml:space="preserve">
+    <value>Por favor, ingréselo:</value>
+  </data>
+  <data name="Label_VerifyEmail_SendToken" xml:space="preserve">
+    <value>Hemos enviado un código a tu correo electrónico.</value>
   </data>
 </root>
