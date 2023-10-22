@@ -52,44 +52,65 @@ namespace DeCryptoWPF
 
         private void Button_GameRoom_TeamRead_Click(object sender, RoutedEventArgs e)
         {
-            if(TextBlock_GameRoom_Player1.Text == "Player1")
+            if((TextBlock_GameRoom_Player1.Text !="Player1") && (TextBlock_GameRoom_Player2.Text != "Player2"))
             {
-                this.redTeam.nicknamePlayer1 = account.nickname;
-                this.redTeam.nicknamePlayer2 = TextBlock_GameRoom_Player2.Text;
-                joinToGameClient.joinToRedTeam(this.redTeam, code);
-
-            }
-            else if (TextBlock_GameRoom_Player2.Text == "Player2")
-            {
-                this.redTeam.nicknamePlayer1 = TextBlock_GameRoom_Player1.Text;
-                this.redTeam.nicknamePlayer2 = account.nickname;
-                joinToGameClient.joinToRedTeam(this.redTeam, code);
-
+                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");                
             }
             else
             {
-                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");
+                if (TextBlock_GameRoom_Player3.Text == account.nickname)
+                {
+                    this.blueTeam.nicknamePlayer1 = "Player3";
+                    joinToGameClient.joinToBlueTeam(blueTeam, code);
+                }
+                else if (TextBlock_GameRoom_Player4.Text == account.nickname)
+                {
+                    this.blueTeam.nicknamePlayer2 = "Player4";
+                    joinToGameClient.joinToBlueTeam(blueTeam, code);
+                }
+                if (TextBlock_GameRoom_Player1.Text == "Player1")
+                {
+                    this.redTeam.nicknamePlayer1 = account.nickname;
+                    this.redTeam.nicknamePlayer2 = TextBlock_GameRoom_Player2.Text;
+                }
+                else if (TextBlock_GameRoom_Player2.Text == "Player2")
+                {
+                    this.redTeam.nicknamePlayer1 = TextBlock_GameRoom_Player1.Text;
+                    this.redTeam.nicknamePlayer2 = account.nickname;
+                }
+                joinToGameClient.joinToRedTeam(this.redTeam, code);
             }
         }
 
         private void Button_GameRoom_TeamBlue_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBlock_GameRoom_Player3.Text == "Player3")
-            {
-                this.blueTeam.nicknamePlayer1 = account.nickname;
-                this.blueTeam.nicknamePlayer2 = TextBlock_GameRoom_Player4.Text;
+             if((TextBlock_GameRoom_Player3.Text != "Player3") && (TextBlock_GameRoom_Player4.Text != "Player4"))
+             {
+                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");                
+             }
+             else
+             {
+                if (TextBlock_GameRoom_Player1.Text == account.nickname)
+                {
+                    redTeam.nicknamePlayer1 = "Player1";
+                    joinToGameClient.joinToRedTeam(redTeam, code);
+                }
+                else if (TextBlock_GameRoom_Player2.Text == account.nickname)
+                {
+                    redTeam.nicknamePlayer2 = "Player2";
+                    joinToGameClient.joinToRedTeam(redTeam, code);
+                }
+                if (TextBlock_GameRoom_Player3.Text == "Player3")
+                {
+                    this.blueTeam.nicknamePlayer1 = account.nickname;
+                    this.blueTeam.nicknamePlayer2 = TextBlock_GameRoom_Player4.Text;
+                }
+                else if (TextBlock_GameRoom_Player4.Text == "Player4")
+                {
+                    this.blueTeam.nicknamePlayer1 = TextBlock_GameRoom_Player3.Text;
+                    this.blueTeam.nicknamePlayer2 = account.nickname;
+                }
                 joinToGameClient.joinToBlueTeam(this.blueTeam, code);
-
-            }
-            else if (TextBlock_GameRoom_Player4.Text == "Player4")
-            {
-                this.blueTeam.nicknamePlayer1 = TextBlock_GameRoom_Player3.Text;
-                this.blueTeam.nicknamePlayer2 = account.nickname;
-                joinToGameClient.joinToBlueTeam(this.blueTeam, code);
-            }
-            else
-            {
-                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");
             }
         }
 
@@ -141,12 +162,14 @@ namespace DeCryptoWPF
 
         public void ReciveBlueTeam(BlueTeam blueTeam)
         {
+            this.blueTeam = blueTeam;
             TextBlock_GameRoom_Player3.Text = blueTeam.nicknamePlayer1;
             TextBlock_GameRoom_Player4.Text = blueTeam.nicknamePlayer2;
         }
 
         public void ReciveRedTeam(RedTeam redTeam)
         {
+            this.redTeam = redTeam;
             TextBlock_GameRoom_Player1.Text = redTeam.nicknamePlayer1;
             TextBlock_GameRoom_Player2.Text = redTeam.nicknamePlayer2;
         }

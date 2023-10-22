@@ -51,7 +51,7 @@ namespace DeCryptoWPF
                     {
 
                         MenuGame menuGameWidow = new MenuGame();
-                        menuGameWidow.configurateWindow(newAccount);
+                        menuGameWidow.ConfigurateWindow(newAccount);
                         Close();
                         menuGameWidow.ShowDialog();
                     }

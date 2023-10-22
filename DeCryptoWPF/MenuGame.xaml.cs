@@ -25,7 +25,7 @@ namespace DeCryptoWPF
             InitializeComponent();
         }
         private Account account;
-        public void configurateWindow(Account account)
+        public void ConfigurateWindow(Account account)
         {
             this.account = account;
         }

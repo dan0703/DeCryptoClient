@@ -45,7 +45,7 @@ namespace DeCryptoWPF
         private void Button_Confirmations_Cancel_Click(object sender, RoutedEventArgs e)
         {
             MenuGame menuGameWindow = new MenuGame();
-            menuGameWindow.configurateWindow(account);
+            menuGameWindow.ConfigurateWindow(account);
             Close();
             menuGameWindow.ShowDialog();
         }
