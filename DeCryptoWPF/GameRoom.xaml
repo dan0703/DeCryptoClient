@@ -1,0 +1,65 @@
+﻿<Window x:Class="DeCryptoWPF.GameRoom"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:p="clr-namespace:DeCryptoWPF.Properties"
+      xmlns:local="clr-namespace:DeCryptoWPF"
+      mc:Ignorable="d"
+      WindowState="Maximized"
+      Title="GameRoom" Height="1080" Width="1920">
+    
+    <Viewbox Stretch="Fill" StretchDirection="Both">
+        <Grid Width="1920" Height="1080" Background="Black">
+
+            <TextBlock x:Name="TextBlock_GameRoom_Code" HorizontalAlignment="Left" Margin="950,88,0,0" TextWrapping="Wrap" Text="Code" FontSize="60" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" Height="96" Width="264"/>
+            <Rectangle Fill="#2d2d2d" Stroke="Black" Margin="1022,336,390,391"/>
+
+            <TextBlock x:Name="TextBlock_GameRoom_Player3" HorizontalAlignment="Left" Margin="1081,419,0,0" TextWrapping="Wrap" Text="Player3" FontSize="35" Foreground="DeepSkyBlue" FontWeight="DemiBold" VerticalAlignment="Top" Height="62" Width="267"/>
+            <TextBlock x:Name="TextBlock_GameRoom_Player4" HorizontalAlignment="Left" Margin="1081,540,0,0" TextWrapping="Wrap" Text="Player4" FontSize="35" Foreground="DeepSkyBlue" FontWeight="DemiBold" VerticalAlignment="Top" Height="62" Width="267"/>
+            <Rectangle Fill="#2d2d2d" Stroke="Black" Margin="374,336,1038,391"/>
+            <TextBlock x:Name="TextBlock_GameRoom_Player1" HorizontalAlignment="Left" Margin="439,419,0,0" TextWrapping="Wrap" Text="Player1" FontSize="35" Foreground="Crimson" FontWeight="DemiBold" VerticalAlignment="Top" Height="62" Width="264"/>
+            <TextBlock x:Name="TextBlock_GameRoom_Player2" HorizontalAlignment="Left" Margin="439,540,0,0" TextWrapping="Wrap" Text="Player2"  FontSize="35" Foreground="Crimson" FontWeight="DemiBold" VerticalAlignment="Top" Height="62" Width="264"/>
+            <Label x:Name="Label_GameRoom_Code" Content="{x:Static p:Resources.Label_GameRoom_Code}" HorizontalAlignment="Left" Margin="694,83,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Foreground="White"/>
+            <Label x:Name="Label_GameRoom_SelectTeam" Content="{x:Static p:Resources.Label_GameRoom_SelectTeam}" HorizontalAlignment="Left" Margin="733,213,0,0" VerticalAlignment="Top" FontSize="43" FontWeight="Bold" Foreground="White"/>
+            <Button x:Name="Button_GameRoom_TeamBlue" Content="{x:Static p:Resources.Button_GameRoom_TeamBlue}" HorizontalAlignment="Left" Margin="1022,757,0,0" VerticalAlignment="Top" Height="76" Width="508" Foreground="White" Background="DeepSkyBlue" FontSize="24" FontWeight="Bold" Click="Button_GameRoom_TeamBlue_Click"/>
+            <Button x:Name="Button_GameRoom_TeamRead" Content="{x:Static p:Resources.Button_GameRoom_TeamRed}" HorizontalAlignment="Left" Margin="374,757,0,0" VerticalAlignment="Top" Height="76" Width="508" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_GameRoom_TeamRead_Click"/>
+            <Button x:Name="Button_GameRoom_StartGame" Content="{x:Static p:Resources.Button_GameRoom_StartGame}" HorizontalAlignment="Left" Margin="374,904,0,0" VerticalAlignment="Top" Height="76" Width="1156" Foreground="White" Background="#33cc00" FontSize="24" FontWeight="Bold" Click="Button_GameRoom_StartGame_Click"/>
+            <Image x:Name="Button_GameRoom_SendCode" HorizontalAlignment="Left" Margin="1174,88,0,0" VerticalAlignment="Top" Width="80" Height="80" MouseLeftButtonDown="Button_GameRoom_SendCode_Click" Source="/Resources/buttonSendCode.png" >
+            </Image>
+
+            <Image x:Name="Button_GameRoom_Chat" HorizontalAlignment="Left" Margin="1755,84,0,0" VerticalAlignment="Top" Width="80" Height="80" MouseLeftButtonDown="Button_GameRoom_Chat_Click" ToolTip="Chat" Cursor="Hand" Source="/Resources/buttonChat.png">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/Resources/buttonChat.png"/>
+                </Image.OpacityMask>
+            </Image>
+
+            <StackPanel  Margin="1353,247,0,0">
+                <Expander x:Name="Expander_GameRoom_Chat"  IsExpanded="False" Foreground="White" FontSize="20" RenderTransformOrigin="0.0,0.5" ExpandDirection="Left" FlowDirection="LeftToRight" Height="831" FontWeight="Bold" Background="{x:Null}" Width="588">
+                    <Expander.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="-0.251"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="-0.059"/>
+                        </TransformGroup>
+                    </Expander.RenderTransform>
+                    <StackPanel Margin="0,3,0,1"  Background="White">
+                        <Image x:Name="Image_GameRoom_CloseChat" Margin= "525,5,0,0 " Height="30" Width="30" Source="/Resources/buttonClose.png" ToolTip="Cerrar Chat" MouseLeftButtonDown="Image_GameRoom_CloseChat_MouseLeftButtonDown">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</Window>

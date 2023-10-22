@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_AccountInformation_ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Button_CodeWindow_Join" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="Button_ConfirmationButtons_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Button_ConfirmationButtons_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Button_ConfirmationButtons_SaveClues" xml:space="preserve">
+    <value>Save clues</value>
+  </data>
+  <data name="Button_ConfirmationButtons_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Button_Friends_AddFriend" xml:space="preserve">
+    <value>Add friend</value>
+  </data>
+  <data name="Button_friends_Invite" xml:space="preserve">
+    <value>Invite</value>
+  </data>
+  <data name="Button_GameRoom_StartGame" xml:space="preserve">
+    <value>Start game</value>
+  </data>
+  <data name="Button_GameRoom_TeamBlue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="Button_GameRoom_TeamRed" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Button_InGame_GiveClue" xml:space="preserve">
+    <value>Give clues</value>
+  </data>
+  <data name="Button_MenuGame_FindGame" xml:space="preserve">
+    <value>Search game</value>
+  </data>
+  <data name="Button_MenuGame_NewGame" xml:space="preserve">
+    <value>New game</value>
+  </data>
+  <data name="Button_SignIn_Enter" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Button_SignIn_EnterAsGuess" xml:space="preserve">
+    <value>Enter as guess</value>
+  </data>
+  <data name="ComboBoxItem_GameRoom_Configuration" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="ComboBoxItem_GameRoom_InviteFriend" xml:space="preserve">
+    <value>Invite friend</value>
+  </data>
+  <data name="ComboBoxItem_GameRoom_ViewProfile" xml:space="preserve">
+    <value>View profile</value>
+  </data>
+  <data name="ComboBoxItem_GameSettings_AcceptTie" xml:space="preserve">
+    <value>Accept tie</value>
+  </data>
+  <data name="ComboBoxItem_GameSettings_ExtraRound" xml:space="preserve">
+    <value>Extra round</value>
+  </data>
+  <data name="ComboBoxItem_MainWindow_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="ComboBoxItem_MainWindow_Spanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="ComboBoxItem_ManageMenu_Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="ComboBoxItem_ManageMenu_FriendList" xml:space="preserve">
+    <value>Friends list</value>
+  </data>
+  <data name="ComboBox_ManageMenu_Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Label_AccountInformation_AccountInformation" xml:space="preserve">
+    <value>Account information</value>
+  </data>
+  <data name="Label_AccountInformation_Email" xml:space="preserve">
+    <value>Email or user</value>
+  </data>
+  <data name="Label_AccountInformation_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Label_AccountInformation_User" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Label_CodeWindow_EnterCode" xml:space="preserve">
+    <value>Enter a code</value>
+  </data>
+  <data name="Label_Confirmation_ReportPlayerConfirmation" xml:space="preserve">
+    <value>Are you sure you want to report to?</value>
+  </data>
+  <data name="Label_Error_GameNotFound" xml:space="preserve">
+    <value>Game not found</value>
+  </data>
+  <data name="Label_Friends_BlockedFriends" xml:space="preserve">
+    <value>Blocked friends</value>
+  </data>
+  <data name="Label_Friends_EnterNickname" xml:space="preserve">
+    <value>Enter Nickname</value>
+  </data>
+  <data name="Label_Friends_Friends" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="Label_Friends_NicknameNotFound" xml:space="preserve">
+    <value>Nickname not found</value>
+  </data>
+  <data name="Label_Friends_Request" xml:space="preserve">
+    <value>Requests</value>
+  </data>
+  <data name="Label_GameRoom_Code" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="Label_GameRoom_Players" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="Label_GameRoom_SelectTeam" xml:space="preserve">
+    <value>Select a team</value>
+  </data>
+  <data name="Label_GameSettings_InCaseTie" xml:space="preserve">
+    <value>In case of a tie</value>
+  </data>
+  <data name="Label_GameSettings_Rounds" xml:space="preserve">
+    <value>Number of rounds</value>
+  </data>
+  <data name="Label_GameSettings_StartingConfiguration" xml:space="preserve">
+    <value>setting</value>
+  </data>
+  <data name="Label_InGame_BlueTeam" xml:space="preserve">
+    <value>Blue team</value>
+  </data>
+  <data name="Label_InGame_Comunications" xml:space="preserve">
+    <value>Comunications</value>
+  </data>
+  <data name="Label_InGame_GiveClueFor" xml:space="preserve">
+    <value>Give a clue for</value>
+  </data>
+  <data name="Label_InGame_Interceptions" xml:space="preserve">
+    <value>Interceptions</value>
+  </data>
+  <data name="Label_InGame_RedTeam" xml:space="preserve">
+    <value>Red team</value>
+  </data>
+  <data name="Label_InGame_RoundNumber" xml:space="preserve">
+    <value>Round</value>
+  </data>
+  <data name="Label_InGame_selectWordNumber" xml:space="preserve">
+    <value>Select the word number that matches</value>
+  </data>
+  <data name="Label_MainWindow_EmailUser" xml:space="preserve">
+    <value>Email or user</value>
+  </data>
+  <data name="Label_MainWindow_Greeting" xml:space="preserve">
+    <value>Hi again!</value>
+  </data>
+  <data name="Label_Register_AlreadyAccount" xml:space="preserve">
+    <value>Already have an account?</value>
+  </data>
+  <data name="Label_Register_Birthday" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="Label_Register_ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="Label_Register_CreateAccount" xml:space="preserve">
+    <value>Create an account</value>
+  </data>
+  <data name="Label_Register_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Label_ReportPlayer_ReportPlayer" xml:space="preserve">
+    <value>Report player</value>
+  </data>
+  <data name="Label_ReportPlayer_SelectPlayer" xml:space="preserve">
+    <value>Select player</value>
+  </data>
+  <data name="Label_SignIn_ForgotPassword" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="Label_SignIn_NeedAccount" xml:space="preserve">
+    <value>Do you need a account?</value>
+  </data>
+  <data name="Label_SignIn_Register" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="Label_Success_FriendAdded" xml:space="preserve">
+    <value>Friend added</value>
+  </data>
+  <data name="Label_Success_PasswordSaved" xml:space="preserve">
+    <value>Password saved successfully</value>
+  </data>
+  <data name="Label_Success_StartingConfigurationSaved" xml:space="preserve">
+    <value>Successfully saved game settings</value>
+  </data>
+</root>

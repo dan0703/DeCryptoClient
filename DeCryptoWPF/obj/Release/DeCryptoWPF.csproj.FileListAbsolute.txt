@@ -1,0 +1,10 @@
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\DeCryptoWPF.csproj.AssemblyReference.cache
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\GameMenu.g.cs
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\Login.g.cs
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\MainWindow.g.cs
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\RegisterUser.g.cs
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\Room.g.cs
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\App.g.cs
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\DeCryptoWPF_MarkupCompile.cache
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\DeCryptoWPF_MarkupCompile.lref
+C:\Users\Sujey\source\repos\DeCrypto\DeCrypto\DeCryptoWPF\obj\Release\EnterCode.g.cs

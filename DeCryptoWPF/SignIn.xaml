@@ -1,0 +1,46 @@
+﻿<Window x:Class="DeCryptoWPF.SignIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeCrypto"
+        xmlns:p="clr-namespace:DeCryptoWPF.Properties"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="SignIn" Height="1080" Width="1920">
+    <Viewbox Stretch="Fill" StretchDirection="Both">
+        <Grid Width="1920" Height="1080" Background="Black">
+            <Label Content="Label" FontSize="36" Grid.ColumnSpan="2"/>
+
+            <Border BorderThickness="5" Grid.ColumnSpan="2">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="DeepSkyBlue" Offset="0"/>
+                        <GradientStop Color="Crimson" Offset="0.75"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+            </Border>
+
+            <PasswordBox x:Name="PasswordBox_SignIn_Password" Margin="189,502,1280,540" FontSize="18"/>
+            <TextBox x:Name="TextBox_SignIn_Password" Margin="189,502,1280,540" FontSize="18" Visibility="Collapsed" TextChanged="TextBox_SignIn_Password_TextChanged" />
+            
+            <Label x:Name="Label_SignIn_DeCrypto" Content="DeCrypto" HorizontalAlignment="Left" Margin="1016,416,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="150" FontWeight="Bold"/>
+            <Label x:Name="Label_SignIn_HelloAgain" Content="{x:Static p:Resources.Label_Register_CreateAccount}" HorizontalAlignment="Left" Margin="249,238,0,0" VerticalAlignment="Top" FontSize="43" FontWeight="Bold" Foreground="White"/>
+            <Label x:Name="Label_SignIn_Email" Content="{x:Static p:Resources.Label_MainWindow_EmailUser}" HorizontalAlignment="Left" Margin="189,358,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28"/>
+            <Label x:Name="Label_SignIn_Password" Content="{x:Static p:Resources.Label_AccountInformation_Password}" HorizontalAlignment="Left" Margin="189,448,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="28"/>
+            <Label x:Name="Label_SignIn_ForgotPassword" Content="{x:Static p:Resources.Label_SignIn_ForgotPassword}" HorizontalAlignment="Left" Margin="189,561,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="18"/>
+            <Label x:Name="Label_SignIn_NeedAnAccount" Content="{x:Static p:Resources.Label_SignIn_NeedAccount}" HorizontalAlignment="Left" Margin="189,741,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="18"/>
+            <Label x:Name="Label_SignIn_SignUp" Content="{x:Static p:Resources.Label_SignIn_Register}" HorizontalAlignment="Left" Margin="396,741,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="Bold" MouseDown="Label_SignIn_SignUp_MouseDown"/>
+            <TextBox x:Name="TextBox_SignIn_Email" HorizontalAlignment="Left" Margin="189,410,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="451" Height="38" FontSize="18" TextChanged="TextBox_SignIn_Email_TextChanged"/>
+
+            <Button x:Name="Button_SignIn_SignIn" Content="{x:Static p:Resources.Button_SignIn_Enter}" HorizontalAlignment="Left" Margin="189,627,0,0" VerticalAlignment="Top" Height="38" Width="451" Foreground="White" Background="#FF2966FB" FontSize="18" FontWeight="Bold" Click="Button_SignIn_SignIn_Click"/>
+            <Button x:Name="Button_SignIn_SignInAsGuest" Content="{x:Static p:Resources.Button_SignIn_EnterAsGuess}" HorizontalAlignment="Left" Margin="189,688,0,0" VerticalAlignment="Top" Height="38" Width="451" Foreground="White" Background="#FF2966FB" FontSize="22" FontWeight="Bold" Click="Button_SignIn_SignInAsGuest_Click"/>
+
+            <ComboBox x:Name="ComboBox_SigIn_Language" HorizontalAlignment="Left" Margin="1640,73,0,0" VerticalAlignment="Top" Width="215" Height="48" Grid.ColumnSpan="2" FontSize="20">
+                <ComboBoxItem Content="{x:Static p:Resources.ComboBoxItem_MainWindow_Spanish}"/>
+                <ComboBoxItem Content="{x:Static p:Resources.ComboBoxItem_MainWindow_English}"/>
+            </ComboBox>
+            <Button x:Name="Button_SignIn_PasswordVisible" Content="Ver" HorizontalAlignment="Left" Margin="672,502,0,0" VerticalAlignment="Top" Height="39" Width="40" Click="Button_Click" Background="White" />
+        </Grid>
+    </Viewbox>
+</Window>

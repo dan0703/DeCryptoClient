@@ -1,0 +1,60 @@
+﻿<Window x:Class="DeCryptoWPF.AccountInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeCryptoWPF"
+        xmlns:p="clr-namespace:DeCryptoWPF.Properties"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="AccountInformation" Height="450" Width="800">
+
+    <Viewbox Stretch="Fill" StretchDirection="Both">
+        <Grid Width="1000" Height="600" Background="Black">
+            <Label x:Name="Label_AccountInformation_AccountInformation" Content="{x:Static p:Resources.Label_AccountInformation_AccountInformation}" HorizontalAlignment="Left" Margin="244,82,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="42" FontWeight="Bold"/>
+            <Label x:Name="Label_AccouuntInformation_Email" Content="{x:Static p:Resources.Label_AccountInformation_Email}" HorizontalAlignment="Left" Margin="419,191,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="30" FontWeight="Bold"/>
+            <Label x:Name="Label_AccouuntInformation_User" Content="{x:Static p:Resources.Label_AccountInformation_User}" HorizontalAlignment="Left" Margin="419,320,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="30" FontWeight="Bold"/>
+            <Button x:Name="Button_AccountInformation_ChangePassword" Content="{x:Static p:Resources.Button_AccountInformation_ChangePassword}" HorizontalAlignment="Left" Margin="325,476,0,0" VerticalAlignment="Top" Height="56" Width="375" Foreground="Black" Background="DimGray" FontSize="22" FontWeight="Bold" Click="Button_AccountInformation_ChangePassword_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Image x:Name="Button_AccountInformation_Close" HorizontalAlignment="Left" Margin="906,26,0,0" VerticalAlignment="Top" Width="69" Height="69" RenderTransformOrigin="0.547,0.906" MouseLeftButtonDown="Button_AccountInformation_Close_Click" Source="/Resources/buttonClose.png" >
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Image x:Name="Button_AcountInformation_Edit" HorizontalAlignment="Left" Margin="325,362,0,0" VerticalAlignment="Top" Width="69" Height="69" RenderTransformOrigin="0.547,0.906" MouseLeftButtonDown="Button_AcountInformationEdit_Click" Source="/Resources/buttonEdit.png">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Image x:Name="Image_AccountInformation_User" HorizontalAlignment="Left" Height="223" Margin="153,194,0,0" VerticalAlignment="Top" Width="206" Source="\Resources\imageUser.png"/>
+            <Label x:Name="Label_AccountInformation_Nickname" Content="Label" HorizontalAlignment="Left" Margin="430,381,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold"/>
+            <Label x:Name="Label_AccountInformation_Email" Content="Label" HorizontalAlignment="Left" Margin="430,255,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold"/>
+
+        </Grid>
+    </Viewbox>
+</Window>
