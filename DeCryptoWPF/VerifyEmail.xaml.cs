@@ -42,7 +42,7 @@ namespace DeCryptoWPF
                 {
                     MessageBox.Show("Email verificado correctamente");
                     MenuGame menuGame = new MenuGame();
-                    menuGame.configurateWindow(account);
+                    menuGame.ConfigurateWindow(account);
                     Close();
                     menuGame.ShowDialog();
                 }
