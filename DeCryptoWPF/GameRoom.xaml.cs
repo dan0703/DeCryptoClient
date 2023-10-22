@@ -72,7 +72,6 @@ namespace DeCryptoWPF
 
         public void RecivePlayers(Dictionary<string, byte[]> profiles)
         {
-            MessageBox.Show("Hola");
             foreach (var profile in profiles)
             {
                 MessageBox.Show(profile.Key);
