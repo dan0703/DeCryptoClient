@@ -8,7 +8,7 @@
       mc:Ignorable="d"
       WindowState="Maximized"
       Title="GameRoom" Height="1080" Width="1920">
-    
+
     <Viewbox Stretch="Fill" StretchDirection="Both">
         <Grid Width="1920" Height="1080" Background="Black">
 
@@ -60,6 +60,9 @@
                     </StackPanel>
                 </Expander>
             </StackPanel>
+
+            <StackPanel x:Name="StackPanel_GameRoom_PlayerList" Margin="25,340,1570,393" />
+            <Label Content="JUGADORES: " HorizontalAlignment="Left" Margin="0,247,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="36" Width="374" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
     </Viewbox>
 </Window>

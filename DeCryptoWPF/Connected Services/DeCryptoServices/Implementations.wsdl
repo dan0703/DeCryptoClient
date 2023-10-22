@@ -140,11 +140,29 @@
   <wsdl:message name="IJoinToGame_AllreadyExistRoom_OutputMessage">
     <wsdl:part name="parameters" element="tns:AllreadyExistRoomResponse" />
   </wsdl:message>
+  <wsdl:message name="IJoinToGame_joinToBlueTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:joinToBlueTeam" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_joinToRedTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:joinToRedTeam" />
+  </wsdl:message>
   <wsdl:message name="IJoinToGame_RecivePlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecivePlayers" />
   </wsdl:message>
   <wsdl:message name="IJoinToGame_RecivePlayers_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecivePlayersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_ReciveBlueTeam_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveBlueTeam" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_ReciveBlueTeam_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveBlueTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_ReciveRedTeam_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveRedTeam" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_ReciveRedTeam_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveRedTeamResponse" />
   </wsdl:message>
   <wsdl:portType name="IAccountServices">
     <wsdl:operation name="RegisterAccount">
@@ -182,9 +200,23 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom" message="tns:IJoinToGame_AllreadyExistRoom_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse" message="tns:IJoinToGame_AllreadyExistRoom_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="joinToBlueTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/joinToBlueTeam" message="tns:IJoinToGame_joinToBlueTeam_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="joinToRedTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/joinToRedTeam" message="tns:IJoinToGame_joinToRedTeam_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayers" message="tns:IJoinToGame_RecivePlayers_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayersResponse" message="tns:IJoinToGame_RecivePlayers_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveBlueTeam">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveBlueTeam" message="tns:IJoinToGame_ReciveBlueTeam_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveBlueTeamResponse" message="tns:IJoinToGame_ReciveBlueTeam_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveRedTeam">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeam" message="tns:IJoinToGame_ReciveRedTeam_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeamResponse" message="tns:IJoinToGame_ReciveRedTeam_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAccountServices" type="tns:IAccountServices">
@@ -267,8 +299,38 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="joinToBlueTeam">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/joinToBlueTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="joinToRedTeam">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/joinToRedTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/RecivePlayers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveBlueTeam">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/ReciveBlueTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveRedTeam">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/ReciveRedTeam" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

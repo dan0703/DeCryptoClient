@@ -44,17 +44,30 @@ namespace DeCryptoWPF
 
         private void Button_Confirmations_Cancel_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        public void RecivePlayers(Dictionary<string, byte[]> profiles)
-        {
-            throw new System.NotImplementedException();
+            MenuGame menuGameWindow = new MenuGame();
+            menuGameWindow.configurateWindow(account);
+            Close();
+            menuGameWindow.ShowDialog();
         }
 
         internal void ConfigurateWindow(Account account)
         {
             this.account = account;
+        }
+
+        public void RecivePlayers(string[] playerList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReciveBlueTeam(BlueTeam blueTeam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReciveRedTeam(RedTeam redTeam)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -21,4 +21,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="BlueTeam">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nicknamePlayer1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nicknamePlayer2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BlueTeam" nillable="true" type="tns:BlueTeam" />
+  <xs:complexType name="RedTeam">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nicknamePlayer1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nicknamePlayer2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RedTeam" nillable="true" type="tns:RedTeam" />
 </xs:schema>

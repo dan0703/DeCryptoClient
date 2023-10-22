@@ -247,6 +247,128 @@ namespace DeCryptoWPF.DeCryptoServices {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BlueTeam", Namespace="http://schemas.datacontract.org/2004/07/Domain.data")]
+    [System.SerializableAttribute()]
+    public partial class BlueTeam : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nicknamePlayer1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nicknamePlayer2Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nicknamePlayer1 {
+            get {
+                return this.nicknamePlayer1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nicknamePlayer1Field, value) != true)) {
+                    this.nicknamePlayer1Field = value;
+                    this.RaisePropertyChanged("nicknamePlayer1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nicknamePlayer2 {
+            get {
+                return this.nicknamePlayer2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nicknamePlayer2Field, value) != true)) {
+                    this.nicknamePlayer2Field = value;
+                    this.RaisePropertyChanged("nicknamePlayer2");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RedTeam", Namespace="http://schemas.datacontract.org/2004/07/Domain.data")]
+    [System.SerializableAttribute()]
+    public partial class RedTeam : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nicknamePlayer1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nicknamePlayer2Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nicknamePlayer1 {
+            get {
+                return this.nicknamePlayer1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nicknamePlayer1Field, value) != true)) {
+                    this.nicknamePlayer1Field = value;
+                    this.RaisePropertyChanged("nicknamePlayer1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nicknamePlayer2 {
+            get {
+                return this.nicknamePlayer2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nicknamePlayer2Field, value) != true)) {
+                    this.nicknamePlayer2Field = value;
+                    this.RaisePropertyChanged("nicknamePlayer2");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DeCryptoServices.IAccountServices")]
     public interface IAccountServices {
@@ -386,23 +508,41 @@ namespace DeCryptoWPF.DeCryptoServices {
         System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveRoom", ReplyAction="http://tempuri.org/IJoinToGame/LeaveRoomResponse")]
-        void LeaveRoom(string nickname, int code);
+        void LeaveRoom(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveRoom", ReplyAction="http://tempuri.org/IJoinToGame/LeaveRoomResponse")]
-        System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code);
+        System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom", ReplyAction="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse")]
         bool AllreadyExistRoom(int code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom", ReplyAction="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse")]
         System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToBlueTeam")]
+        void joinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToBlueTeam")]
+        System.Threading.Tasks.Task joinToBlueTeamAsync(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToRedTeam")]
+        void joinToRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToRedTeam")]
+        System.Threading.Tasks.Task joinToRedTeamAsync(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IJoinToGameCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/RecivePlayers", ReplyAction="http://tempuri.org/IJoinToGame/RecivePlayersResponse")]
-        void RecivePlayers(System.Collections.Generic.Dictionary<string, byte[]> profiles);
+        void RecivePlayers(string[] playerList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/ReciveBlueTeam", ReplyAction="http://tempuri.org/IJoinToGame/ReciveBlueTeamResponse")]
+        void ReciveBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/ReciveRedTeam", ReplyAction="http://tempuri.org/IJoinToGame/ReciveRedTeamResponse")]
+        void ReciveRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -449,12 +589,12 @@ namespace DeCryptoWPF.DeCryptoServices {
             return base.Channel.JoinToRoomAsync(code, nickname);
         }
         
-        public void LeaveRoom(string nickname, int code) {
-            base.Channel.LeaveRoom(nickname, code);
+        public void LeaveRoom(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam) {
+            base.Channel.LeaveRoom(nickname, code, blueTeam, redTeam);
         }
         
-        public System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code) {
-            return base.Channel.LeaveRoomAsync(nickname, code);
+        public System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam) {
+            return base.Channel.LeaveRoomAsync(nickname, code, blueTeam, redTeam);
         }
         
         public bool AllreadyExistRoom(int code) {
@@ -463,6 +603,22 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code) {
             return base.Channel.AllreadyExistRoomAsync(code);
+        }
+        
+        public void joinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code) {
+            base.Channel.joinToBlueTeam(blueTeam, code);
+        }
+        
+        public System.Threading.Tasks.Task joinToBlueTeamAsync(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code) {
+            return base.Channel.joinToBlueTeamAsync(blueTeam, code);
+        }
+        
+        public void joinToRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code) {
+            base.Channel.joinToRedTeam(redTeam, code);
+        }
+        
+        public System.Threading.Tasks.Task joinToRedTeamAsync(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code) {
+            return base.Channel.joinToRedTeamAsync(redTeam, code);
         }
     }
 }
