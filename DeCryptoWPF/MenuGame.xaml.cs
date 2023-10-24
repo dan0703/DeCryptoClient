@@ -12,27 +12,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ServiceModel;
 
 namespace DeCryptoWPF
 {
     /// <summary>
     /// Lógica de interacción para MenuGame.xaml
     /// </summary>
-    public partial class MenuGame : Window
+    public partial class MenuGame : Window, IJoinToGameCallback
     {
+        private JoinToGameClient joinToGameClient;
+        private Account account;
+
+
         public MenuGame()
         {
             InitializeComponent();
+            joinToGameClient = new JoinToGameClient(new InstanceContext(this));
         }
-        private Account account;
         public void ConfigurateWindow(Account account)
         {
             this.account = account;
+            joinToGameClient.JoinToGame(account.nickname);
+
         }
 
         private void Button_MenuGame_NewGame_Click(object sender, RoutedEventArgs e)
         {
             GameRoom gameRoomWindow= new GameRoom();
+            joinToGameClient.LeaveGame(account.nickname);
             gameRoomWindow.ConfigurateWindow(account, 0);
             Close();
             gameRoomWindow.ShowDialog();
@@ -42,6 +50,7 @@ namespace DeCryptoWPF
         {
             CodeWindow codeWindow= new CodeWindow();
             codeWindow.ConfigurateWindow(this.account);
+            joinToGameClient.LeaveGame(account.nickname);
             Close();
             codeWindow.ShowDialog();
         }
@@ -63,6 +72,21 @@ namespace DeCryptoWPF
         private void Button_MenuGame_FriendList_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void ReciveBlueTeam(BlueTeam blueTeam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReciveRedTeam(RedTeam redTeam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RecivePlayers(Dictionary<string, byte[]> profiles)
+        {
+            throw new NotImplementedException();
         }
     }
 }

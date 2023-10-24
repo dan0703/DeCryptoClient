@@ -261,6 +261,8 @@
   <ItemGroup>
     <Resource Include="Resources\buttonEdit.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\defaultProfilePicture.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

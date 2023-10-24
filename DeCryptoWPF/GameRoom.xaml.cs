@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.ComponentModel;
 using System;
-
+using System.Windows.Media.Imaging;
 namespace DeCryptoWPF
 {
     /// <summary>
@@ -20,6 +20,8 @@ namespace DeCryptoWPF
         private Account account;
         private BlueTeam blueTeam;
         private RedTeam redTeam;
+        private readonly Image[] images;
+        private readonly BitmapImage ImageDefault = new BitmapImage(new Uri("/Resources/imageUUser", UriKind.Relative));
         public GameRoom()
         {
             account = new Account();
@@ -27,6 +29,7 @@ namespace DeCryptoWPF
             redTeam = new RedTeam();
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
             InitializeComponent();
+            images = new Image[] { Image_GameRoom_Player1, Image_GameRoom_Player2, Image_GameRoom_Player3, Image_GameRoom_Player4 };
             Closing += GameRoom_Closing;
         }
 
@@ -43,11 +46,12 @@ namespace DeCryptoWPF
             }
             else
             {
-               this.code = joinToGameClient.CreateRoom();
+                this.code = joinToGameClient.CreateRoom();
             }
             Label_GameRoom_Code.Content = this.code;
             this.account = account;
-            joinToGameClient.JoinToRoom(this.code, account.nickname);
+            joinToGameClient.JoinToRoom(this.code, account.nickname, new byte[1]);
+            joinToGameClient.JoinToGame(account.nickname);
         }
 
         private void Button_GameRoom_TeamRead_Click(object sender, RoutedEventArgs e)
@@ -61,12 +65,12 @@ namespace DeCryptoWPF
                 if (TextBlock_GameRoom_Player3.Text == account.nickname)
                 {
                     this.blueTeam.nicknamePlayer1 = "Player3";
-                    joinToGameClient.joinToBlueTeam(blueTeam, code);
+                    joinToGameClient.JoinToBlueTeam(blueTeam, code);
                 }
                 else if (TextBlock_GameRoom_Player4.Text == account.nickname)
                 {
                     this.blueTeam.nicknamePlayer2 = "Player4";
-                    joinToGameClient.joinToBlueTeam(blueTeam, code);
+                    joinToGameClient.JoinToBlueTeam(blueTeam, code);
                 }
                 if (TextBlock_GameRoom_Player1.Text == "Player1")
                 {
@@ -78,7 +82,9 @@ namespace DeCryptoWPF
                     this.redTeam.nicknamePlayer1 = TextBlock_GameRoom_Player1.Text;
                     this.redTeam.nicknamePlayer2 = account.nickname;
                 }
-                joinToGameClient.joinToRedTeam(this.redTeam, code);
+                joinToGameClient.JoinToRedTeam(this.redTeam, code);
+                Button_GameRoom_TeamRead.IsEnabled = false;
+                Button_GameRoom_TeamBlue.IsEnabled = true;
             }
         }
 
@@ -93,12 +99,12 @@ namespace DeCryptoWPF
                 if (TextBlock_GameRoom_Player1.Text == account.nickname)
                 {
                     redTeam.nicknamePlayer1 = "Player1";
-                    joinToGameClient.joinToRedTeam(redTeam, code);
+                    joinToGameClient.JoinToRedTeam(redTeam, code);
                 }
                 else if (TextBlock_GameRoom_Player2.Text == account.nickname)
                 {
                     redTeam.nicknamePlayer2 = "Player2";
-                    joinToGameClient.joinToRedTeam(redTeam, code);
+                    joinToGameClient.JoinToRedTeam(redTeam, code);
                 }
                 if (TextBlock_GameRoom_Player3.Text == "Player3")
                 {
@@ -110,7 +116,9 @@ namespace DeCryptoWPF
                     this.blueTeam.nicknamePlayer1 = TextBlock_GameRoom_Player3.Text;
                     this.blueTeam.nicknamePlayer2 = account.nickname;
                 }
-                joinToGameClient.joinToBlueTeam(this.blueTeam, code);
+                joinToGameClient.JoinToBlueTeam(this.blueTeam, code);
+                Button_GameRoom_TeamBlue.IsEnabled = false;
+                Button_GameRoom_TeamRead.IsEnabled = true;
             }
         }
 
@@ -146,20 +154,6 @@ namespace DeCryptoWPF
             }
         }
 
-        public void RecivePlayers(string[] playerList)
-        {
-            StackPanel_GameRoom_PlayerList.Children.Clear();
-            foreach (var profile in playerList)
-            {
-                Label Label_Player = new Label();
-                Label_Player.Content = profile;
-                Label_Player.Margin = new Thickness(0, 0, 0, 50);
-                Label_Player.Foreground = Brushes.White;
-                Label_Player.FontSize = 30;
-                StackPanel_GameRoom_PlayerList.Children.Add(Label_Player);
-            }
-        }
-
         public void ReciveBlueTeam(BlueTeam blueTeam)
         {
             this.blueTeam = blueTeam;
@@ -172,6 +166,20 @@ namespace DeCryptoWPF
             this.redTeam = redTeam;
             TextBlock_GameRoom_Player1.Text = redTeam.nicknamePlayer1;
             TextBlock_GameRoom_Player2.Text = redTeam.nicknamePlayer2;
+        }
+
+        public void RecivePlayers(Dictionary<string, byte[]> profiles)
+        {
+            StackPanel_GameRoom_PlayerList.Children.Clear();
+            foreach (var profile in profiles)
+            {
+                Label Label_Player = new Label();
+                Label_Player.Content = profile.Key;
+                Label_Player.Margin = new Thickness(0, 0, 0, 50);
+                Label_Player.Foreground = Brushes.White;
+                Label_Player.FontSize = 30;
+                StackPanel_GameRoom_PlayerList.Children.Add(Label_Player);
+            }
         }
     }
 }

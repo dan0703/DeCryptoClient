@@ -146,11 +146,23 @@
   <wsdl:message name="IJoinToGame_AllreadyExistRoom_OutputMessage">
     <wsdl:part name="parameters" element="tns:AllreadyExistRoomResponse" />
   </wsdl:message>
-  <wsdl:message name="IJoinToGame_joinToBlueTeam_InputMessage">
-    <wsdl:part name="parameters" element="tns:joinToBlueTeam" />
+  <wsdl:message name="IJoinToGame_JoinToBlueTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToBlueTeam" />
   </wsdl:message>
-  <wsdl:message name="IJoinToGame_joinToRedTeam_InputMessage">
-    <wsdl:part name="parameters" element="tns:joinToRedTeam" />
+  <wsdl:message name="IJoinToGame_JoinToRedTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToRedTeam" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_JoinToGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToGame" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_JoinToGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_LeaveGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveGame" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_LeaveGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveGameResponse" />
   </wsdl:message>
   <wsdl:message name="IJoinToGame_RecivePlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecivePlayers" />
@@ -210,11 +222,19 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom" message="tns:IJoinToGame_AllreadyExistRoom_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse" message="tns:IJoinToGame_AllreadyExistRoom_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="joinToBlueTeam">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/joinToBlueTeam" message="tns:IJoinToGame_joinToBlueTeam_InputMessage" />
+    <wsdl:operation name="JoinToBlueTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/JoinToBlueTeam" message="tns:IJoinToGame_JoinToBlueTeam_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="joinToRedTeam">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/joinToRedTeam" message="tns:IJoinToGame_joinToRedTeam_InputMessage" />
+    <wsdl:operation name="JoinToRedTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/JoinToRedTeam" message="tns:IJoinToGame_JoinToRedTeam_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinToGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/JoinToGame" message="tns:IJoinToGame_JoinToGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/JoinToGameResponse" message="tns:IJoinToGame_JoinToGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/LeaveGame" message="tns:IJoinToGame_LeaveGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/LeaveGameResponse" message="tns:IJoinToGame_LeaveGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayers" message="tns:IJoinToGame_RecivePlayers_OutputCallbackMessage" />
@@ -318,17 +338,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="joinToBlueTeam">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/joinToBlueTeam" style="document" />
+    <wsdl:operation name="JoinToBlueTeam">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/JoinToBlueTeam" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="joinToRedTeam">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/joinToRedTeam" style="document" />
+    <wsdl:operation name="JoinToRedTeam">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/JoinToRedTeam" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="JoinToGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/JoinToGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/LeaveGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/RecivePlayers" style="document" />
@@ -364,7 +402,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/AccountService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -373,7 +411,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/PlayerService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -382,7 +420,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JoinToGameService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

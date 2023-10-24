@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DeCryptoWPF;
+using System.ServiceModel;
 using DeCryptoWPF.DeCryptoServices;
 using DeCryptoWPF.Logic;
 
@@ -49,7 +50,6 @@ namespace DeCryptoWPF
                     var newAccount = accountServicesClient.Login(account);
                     if (newAccount != null)
                     {
-
                         MenuGame menuGameWidow = new MenuGame();
                         menuGameWidow.ConfigurateWindow(newAccount);
                         Close();

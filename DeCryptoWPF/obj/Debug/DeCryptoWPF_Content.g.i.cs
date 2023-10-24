@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/style.css")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/perfil%20-%20copia.png")]
 
 

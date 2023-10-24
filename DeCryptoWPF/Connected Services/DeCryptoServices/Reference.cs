@@ -516,10 +516,10 @@ namespace DeCryptoWPF.DeCryptoServices {
         System.Threading.Tasks.Task<int> CreateRoomAsync();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToRoom")]
-        void JoinToRoom(int code, string nickname);
+        void JoinToRoom(int code, string nickname, byte[] profilePicture);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToRoom")]
-        System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname);
+        System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname, byte[] profilePicture);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveRoom", ReplyAction="http://tempuri.org/IJoinToGame/LeaveRoomResponse")]
         void LeaveRoom(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
@@ -533,24 +533,36 @@ namespace DeCryptoWPF.DeCryptoServices {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom", ReplyAction="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse")]
         System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToBlueTeam")]
-        void joinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToBlueTeam")]
+        void JoinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToBlueTeam")]
-        System.Threading.Tasks.Task joinToBlueTeamAsync(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToBlueTeam")]
+        System.Threading.Tasks.Task JoinToBlueTeamAsync(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToRedTeam")]
-        void joinToRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToRedTeam")]
+        void JoinToRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/joinToRedTeam")]
-        System.Threading.Tasks.Task joinToRedTeamAsync(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToRedTeam")]
+        System.Threading.Tasks.Task JoinToRedTeamAsync(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/JoinToGame", ReplyAction="http://tempuri.org/IJoinToGame/JoinToGameResponse")]
+        void JoinToGame(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/JoinToGame", ReplyAction="http://tempuri.org/IJoinToGame/JoinToGameResponse")]
+        System.Threading.Tasks.Task JoinToGameAsync(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveGame", ReplyAction="http://tempuri.org/IJoinToGame/LeaveGameResponse")]
+        void LeaveGame(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveGame", ReplyAction="http://tempuri.org/IJoinToGame/LeaveGameResponse")]
+        System.Threading.Tasks.Task LeaveGameAsync(string nickname);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IJoinToGameCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/RecivePlayers", ReplyAction="http://tempuri.org/IJoinToGame/RecivePlayersResponse")]
-        void RecivePlayers(string[] playerList);
+        void RecivePlayers(System.Collections.Generic.Dictionary<string, byte[]> profiles);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/ReciveBlueTeam", ReplyAction="http://tempuri.org/IJoinToGame/ReciveBlueTeamResponse")]
         void ReciveBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam);
@@ -595,12 +607,12 @@ namespace DeCryptoWPF.DeCryptoServices {
             return base.Channel.CreateRoomAsync();
         }
         
-        public void JoinToRoom(int code, string nickname) {
-            base.Channel.JoinToRoom(code, nickname);
+        public void JoinToRoom(int code, string nickname, byte[] profilePicture) {
+            base.Channel.JoinToRoom(code, nickname, profilePicture);
         }
         
-        public System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname) {
-            return base.Channel.JoinToRoomAsync(code, nickname);
+        public System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname, byte[] profilePicture) {
+            return base.Channel.JoinToRoomAsync(code, nickname, profilePicture);
         }
         
         public void LeaveRoom(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam) {
@@ -619,20 +631,36 @@ namespace DeCryptoWPF.DeCryptoServices {
             return base.Channel.AllreadyExistRoomAsync(code);
         }
         
-        public void joinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code) {
-            base.Channel.joinToBlueTeam(blueTeam, code);
+        public void JoinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code) {
+            base.Channel.JoinToBlueTeam(blueTeam, code);
         }
         
-        public System.Threading.Tasks.Task joinToBlueTeamAsync(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code) {
-            return base.Channel.joinToBlueTeamAsync(blueTeam, code);
+        public System.Threading.Tasks.Task JoinToBlueTeamAsync(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code) {
+            return base.Channel.JoinToBlueTeamAsync(blueTeam, code);
         }
         
-        public void joinToRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code) {
-            base.Channel.joinToRedTeam(redTeam, code);
+        public void JoinToRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code) {
+            base.Channel.JoinToRedTeam(redTeam, code);
         }
         
-        public System.Threading.Tasks.Task joinToRedTeamAsync(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code) {
-            return base.Channel.joinToRedTeamAsync(redTeam, code);
+        public System.Threading.Tasks.Task JoinToRedTeamAsync(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code) {
+            return base.Channel.JoinToRedTeamAsync(redTeam, code);
+        }
+        
+        public void JoinToGame(string nickname) {
+            base.Channel.JoinToGame(nickname);
+        }
+        
+        public System.Threading.Tasks.Task JoinToGameAsync(string nickname) {
+            return base.Channel.JoinToGameAsync(nickname);
+        }
+        
+        public void LeaveGame(string nickname) {
+            base.Channel.LeaveGame(nickname);
+        }
+        
+        public System.Threading.Tasks.Task LeaveGameAsync(string nickname) {
+            return base.Channel.LeaveGameAsync(nickname);
         }
     }
 }

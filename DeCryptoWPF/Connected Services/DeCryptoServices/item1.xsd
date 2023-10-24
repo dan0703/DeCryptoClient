@@ -92,6 +92,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="code" type="xs:int" />
         <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="profilePicture" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -124,7 +125,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="joinToBlueTeam">
+  <xs:element name="JoinToBlueTeam">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q8:BlueTeam" />
@@ -132,7 +133,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="joinToRedTeam">
+  <xs:element name="JoinToRedTeam">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q9:RedTeam" />
@@ -140,10 +141,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="JoinToGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinToGameResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveGameResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RecivePlayers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerList" nillable="true" type="q10:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="profiles" nillable="true" type="q10:ArrayOfKeyValueOfstringbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

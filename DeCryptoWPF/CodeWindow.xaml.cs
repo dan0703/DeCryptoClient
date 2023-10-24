@@ -46,6 +46,7 @@ namespace DeCryptoWPF
         {
             MenuGame menuGameWindow = new MenuGame();
             menuGameWindow.ConfigurateWindow(account);
+            joinToGameClient.LeaveGame(account.nickname);
             Close();
             menuGameWindow.ShowDialog();
         }
@@ -55,17 +56,17 @@ namespace DeCryptoWPF
             this.account = account;
         }
 
-        public void RecivePlayers(string[] playerList)
-        {
-            throw new NotImplementedException();
-        }
-
         public void ReciveBlueTeam(BlueTeam blueTeam)
         {
             throw new NotImplementedException();
         }
 
         public void ReciveRedTeam(RedTeam redTeam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RecivePlayers(Dictionary<string, byte[]> profiles)
         {
             throw new NotImplementedException();
         }

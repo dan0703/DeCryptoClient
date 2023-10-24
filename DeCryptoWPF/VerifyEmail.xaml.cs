@@ -84,5 +84,4 @@ namespace DeCryptoWPF
                 "verificar tu cuenta", code);
         }
     }
-
 }
