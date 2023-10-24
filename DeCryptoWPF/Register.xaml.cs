@@ -113,6 +113,31 @@ namespace DeCryptoWPF
             return isValidData;
         }
 
+        private bool isEmpty()
+        {
+            bool isEmpty = false;
+
+            if ((string.IsNullOrEmpty(TextBox_Register_Name.Text)) || (string.IsNullOrEmpty(TextBox_Register_Email.Text))
+                || (string.IsNullOrEmpty(PasswordBox_Register_Password.Password)) || (string.IsNullOrEmpty(TextBox_Register_User.Text))
+                || (string.IsNullOrEmpty(TextBox_Register_Email.Text)) || DatePicker_Register_Birthday == null)
+            {
+                MessageBox.Show("Por favor, llene todos los campos", "Campos vacíos", MessageBoxButton.OK, MessageBoxImage.Error);
+                isEmpty = true;
+            }
+            return isEmpty;
+        }
+
+        private bool isSamePassword()
+        {
+            bool isSamePassword = false;
+
+            if (((PasswordBox_Register_Password.Password != PasswordBox_Register_ConfirmPassword.Password)))
+            {
+                MessageBox.Show("Las contraseñas no son iguales. Por favor, inténtelo de nuevo", "Contraseñas no iguales", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return isSamePassword;
+        }
+
         static bool IsValidEmail(string email)
         {
             bool isValidEmail = false;

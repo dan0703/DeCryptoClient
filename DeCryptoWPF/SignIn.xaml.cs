@@ -15,6 +15,7 @@ using DeCryptoWPF;
 using System.ServiceModel;
 using DeCryptoWPF.DeCryptoServices;
 using DeCryptoWPF.Logic;
+using System.ServiceModel.Channels;
 
 namespace DeCryptoWPF
 {
@@ -37,7 +38,7 @@ namespace DeCryptoWPF
 
         private void Button_SignIn_SignIn_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidateData())
+            if (IsEmpty())
             {
                 string passwordHashed = Complements.EncryptPassword(PasswordBox_SignIn_Password.Password);
                 Account account = new Account()
@@ -59,29 +60,33 @@ namespace DeCryptoWPF
                     {
                         MessageBox.Show("Credenciales incorrectas", "Login", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                }catch (Exception ex)
+                } catch (Exception ex)
                 {
-                    MessageBox.Show("El servicio no se encuentra disponible, por favor intentelo mas tarde"); 
+                    MessageBox.Show("El servicio no se encuentra disponible, por favor intentelo mas tarde");
                 }
-                
+
             }
         }
 
-        private bool ValidateData()
+        private bool IsEmpty()
         {
-            bool isValid = true;
-            if (PasswordBox_SignIn_Password == null)
+            bool isEmpty = false;
+            if (string.IsNullOrEmpty(TextBox_SignIn_Email.Text) && (string.IsNullOrEmpty(PasswordBox_SignIn_Password.Password)))
             {
-                MessageBox.Show("Por favor, ingrese una contraseña", "Campo vacio", MessageBoxButton.OK, MessageBoxImage.Error);
-                isValid = false;
-
+                MessageBox.Show("Por favor, ingresa un correo y una contraseña", "Campos vacíos", MessageBoxButton.OK, MessageBoxImage.Error);
+                isEmpty = true;
             }
-            else if (TextBox_SignIn_Email.Text == null)
+            else if (string.IsNullOrEmpty(TextBox_SignIn_Email.Text))
             {
-                MessageBox.Show("Por favor, ingresa tu correo electronico", "Campo vacio", MessageBoxButton.OK, MessageBoxImage.Error);
-                isValid = false;
+                MessageBox.Show("Por favor, ingresa un correo", "Campo vacío", MessageBoxButton.OK, MessageBoxImage.Error);
+                isEmpty = true;
             }
-            return isValid;
+            else if (string.IsNullOrEmpty(PasswordBox_SignIn_Password.Password))
+            {
+                MessageBox.Show("Por favor, ingresa un una contraseña", "Campo vacío", MessageBoxButton.OK, MessageBoxImage.Error);
+                isEmpty = true;
+            }
+            return isEmpty;
         }
 
         private void Button_SignIn_SignInAsGuest_Click(object sender, RoutedEventArgs e)
