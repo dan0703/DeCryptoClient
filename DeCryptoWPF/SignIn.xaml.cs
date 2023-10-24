@@ -38,7 +38,7 @@ namespace DeCryptoWPF
 
         private void Button_SignIn_SignIn_Click(object sender, RoutedEventArgs e)
         {
-            if (IsEmpty())
+            if (!IsEmpty())
             {
                 string passwordHashed = Complements.EncryptPassword(PasswordBox_SignIn_Password.Password);
                 Account account = new Account()
@@ -71,17 +71,17 @@ namespace DeCryptoWPF
         private bool IsEmpty()
         {
             bool isEmpty = false;
-            if (string.IsNullOrEmpty(TextBox_SignIn_Email.Text) && (string.IsNullOrEmpty(PasswordBox_SignIn_Password.Password)))
+            if ((TextBox_SignIn_Email.Text == "") && (PasswordBox_SignIn_Password.Password == ""))
             {
                 MessageBox.Show("Por favor, ingresa un correo y una contraseña", "Campos vacíos", MessageBoxButton.OK, MessageBoxImage.Error);
                 isEmpty = true;
             }
-            else if (string.IsNullOrEmpty(TextBox_SignIn_Email.Text))
+            else if ((TextBox_SignIn_Email.Text == ""))
             {
                 MessageBox.Show("Por favor, ingresa un correo", "Campo vacío", MessageBoxButton.OK, MessageBoxImage.Error);
                 isEmpty = true;
             }
-            else if (string.IsNullOrEmpty(PasswordBox_SignIn_Password.Password))
+            else if ((PasswordBox_SignIn_Password.Password == ""))
             {
                 MessageBox.Show("Por favor, ingresa un una contraseña", "Campo vacío", MessageBoxButton.OK, MessageBoxImage.Error);
                 isEmpty = true;

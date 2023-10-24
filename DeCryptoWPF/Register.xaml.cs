@@ -70,72 +70,79 @@ namespace DeCryptoWPF
                 birthDay = DatePicker_Register_Birthday.Text,
                 accountNickname = TextBox_Register_User.Text,
             };
-            if (ValidateData())
-            {
-                if (accountServicesClient.RegisterAccount(account)&& playerServicesClient.RegisterPlayer(user))
-                {
-                    MessageBox.Show("Registro exitoso");
-                    OpenSignIn();
-                }
-                else
-                {
-                    MessageBox.Show("Error, intentalo mas tarde");
-                }
-            }
-        }
 
-        private bool ValidateData()
-        {
-            bool isValidData = false;
-            if (IsValidEmail(TextBox_Register_Email.Text))
+            if (!IsEmpty())
             {
-                if (TextBox_Register_User.Text != "")
+                string validationErrors = ValidateData();
+                if (string.IsNullOrEmpty(validationErrors))
                 {
-                    if (PasswordBox_Register_Password.Password != "")
+                    if (accountServicesClient.RegisterAccount(account) && playerServicesClient.RegisterPlayer(user))
                     {
-                        isValidData = true;
+                        MessageBox.Show("Registro exitoso");
+                        OpenSignIn();
                     }
                     else
                     {
-                        MessageBox.Show("La contraseña debe contener al menos 8 caracteres, por favor ingrese otro nickname");
+                        MessageBox.Show("Error, intentalo mas tarde");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El nickname contiene caracteres extraños, por favor ingrese otro nickname");
+                    MessageBox.Show(validationErrors, "Error en datos", MessageBoxButton.OK);
                 }
             }
-            else
-            {
-                MessageBox.Show("La direccion de correo no es válida, por favor ingrese otra");
-            }
 
-            return isValidData;
+            
         }
 
-        private bool isEmpty()
+        private string ValidateData()
+        {
+            StringBuilder validationErrors = new StringBuilder();
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(TextBox_Register_Name.Text, "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]*$"))
+            {
+                validationErrors.AppendLine("El nombre contiene caracteres no permitidos.");
+            }
+
+            if (!IsValidEmail(TextBox_Register_Email.Text))
+            {
+                validationErrors.AppendLine("La dirección de correo electrónico es inválida.");
+            }
+
+            if (DatePicker_Register_Birthday.SelectedDate == null || DatePicker_Register_Birthday.SelectedDate.Value >= DateTime.Now)
+            {
+                validationErrors.AppendLine("La fecha de nacimiento es incorrecta.");
+            }
+
+            if (PasswordBox_Register_Password.Password != PasswordBox_Register_ConfirmPassword.Password)
+            {
+                validationErrors.AppendLine("Las contraseñas no coinciden.");
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(TextBox_Register_User.Text, "^[A-Za-zÀ-ÖØ-öø-ÿ]{1,20}$"))
+            {
+                validationErrors.AppendLine("El nombre de usuario contiene caracteres no permitidos.");
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_Register_Password.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
+            {
+                validationErrors.AppendLine("La contraseña debe contener al menos 8 caracteres.");
+            }
+
+            return validationErrors.ToString();
+        }
+
+        private bool IsEmpty()
         {
             bool isEmpty = false;
 
-            if ((string.IsNullOrEmpty(TextBox_Register_Name.Text)) || (string.IsNullOrEmpty(TextBox_Register_Email.Text))
-                || (string.IsNullOrEmpty(PasswordBox_Register_Password.Password)) || (string.IsNullOrEmpty(TextBox_Register_User.Text))
-                || (string.IsNullOrEmpty(TextBox_Register_Email.Text)) || DatePicker_Register_Birthday == null)
+            if ((TextBox_Register_Name.Text == "") || (TextBox_Register_Email.Text == "") || (PasswordBox_Register_Password.Password == "") ||
+                (TextBox_Register_User.Text == "") || (TextBox_Register_Email.Text == "") || (DatePicker_Register_Birthday == null))
             {
                 MessageBox.Show("Por favor, llene todos los campos", "Campos vacíos", MessageBoxButton.OK, MessageBoxImage.Error);
                 isEmpty = true;
             }
             return isEmpty;
-        }
-
-        private bool isSamePassword()
-        {
-            bool isSamePassword = false;
-
-            if (((PasswordBox_Register_Password.Password != PasswordBox_Register_ConfirmPassword.Password)))
-            {
-                MessageBox.Show("Las contraseñas no son iguales. Por favor, inténtelo de nuevo", "Contraseñas no iguales", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            return isSamePassword;
         }
 
         static bool IsValidEmail(string email)
@@ -145,7 +152,6 @@ namespace DeCryptoWPF
             {
                 var mailAdress = new MailAddress(email);
                 isValidEmail = true;
-
             }
             catch (FormatException ex)
             {
