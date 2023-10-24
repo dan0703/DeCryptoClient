@@ -516,10 +516,10 @@ namespace DeCryptoWPF.DeCryptoServices {
         System.Threading.Tasks.Task<int> CreateRoomAsync();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToRoom")]
-        void JoinToRoom(int code, string nickname, byte[] profilePicture);
+        void JoinToRoom(int code, string nickname);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToRoom")]
-        System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname, byte[] profilePicture);
+        System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveRoom", ReplyAction="http://tempuri.org/IJoinToGame/LeaveRoomResponse")]
         void LeaveRoom(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
@@ -546,10 +546,10 @@ namespace DeCryptoWPF.DeCryptoServices {
         System.Threading.Tasks.Task JoinToRedTeamAsync(DeCryptoWPF.DeCryptoServices.RedTeam redTeam, int code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/JoinToGame", ReplyAction="http://tempuri.org/IJoinToGame/JoinToGameResponse")]
-        void JoinToGame(string nickname);
+        void JoinToGame(string nickname, byte[] profilePicture);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/JoinToGame", ReplyAction="http://tempuri.org/IJoinToGame/JoinToGameResponse")]
-        System.Threading.Tasks.Task JoinToGameAsync(string nickname);
+        System.Threading.Tasks.Task JoinToGameAsync(string nickname, byte[] profilePicture);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveGame", ReplyAction="http://tempuri.org/IJoinToGame/LeaveGameResponse")]
         void LeaveGame(string nickname);
@@ -607,12 +607,12 @@ namespace DeCryptoWPF.DeCryptoServices {
             return base.Channel.CreateRoomAsync();
         }
         
-        public void JoinToRoom(int code, string nickname, byte[] profilePicture) {
-            base.Channel.JoinToRoom(code, nickname, profilePicture);
+        public void JoinToRoom(int code, string nickname) {
+            base.Channel.JoinToRoom(code, nickname);
         }
         
-        public System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname, byte[] profilePicture) {
-            return base.Channel.JoinToRoomAsync(code, nickname, profilePicture);
+        public System.Threading.Tasks.Task JoinToRoomAsync(int code, string nickname) {
+            return base.Channel.JoinToRoomAsync(code, nickname);
         }
         
         public void LeaveRoom(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam) {
@@ -647,12 +647,12 @@ namespace DeCryptoWPF.DeCryptoServices {
             return base.Channel.JoinToRedTeamAsync(redTeam, code);
         }
         
-        public void JoinToGame(string nickname) {
-            base.Channel.JoinToGame(nickname);
+        public void JoinToGame(string nickname, byte[] profilePicture) {
+            base.Channel.JoinToGame(nickname, profilePicture);
         }
         
-        public System.Threading.Tasks.Task JoinToGameAsync(string nickname) {
-            return base.Channel.JoinToGameAsync(nickname);
+        public System.Threading.Tasks.Task JoinToGameAsync(string nickname, byte[] profilePicture) {
+            return base.Channel.JoinToGameAsync(nickname, profilePicture);
         }
         
         public void LeaveGame(string nickname) {

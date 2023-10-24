@@ -33,7 +33,7 @@ namespace DeCryptoWPF
         public void ConfigurateWindow(Account account)
         {
             this.account = account;
-            joinToGameClient.JoinToGame(account.nickname);
+            joinToGameClient.JoinToGame(account.nickname, null);
 
         }
 

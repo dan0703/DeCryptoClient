@@ -8,6 +8,9 @@ using System.Windows.Media;
 using System.ComponentModel;
 using System;
 using System.Windows.Media.Imaging;
+using System.IO;
+using System.Reflection;
+
 namespace DeCryptoWPF
 {
     /// <summary>
@@ -21,7 +24,8 @@ namespace DeCryptoWPF
         private BlueTeam blueTeam;
         private RedTeam redTeam;
         private readonly Image[] images;
-        private readonly BitmapImage ImageDefault = new BitmapImage(new Uri("/Resources/imageUUser", UriKind.Relative));
+        private Image imageDefault = new Image();
+
         public GameRoom()
         {
             account = new Account();
@@ -36,10 +40,12 @@ namespace DeCryptoWPF
         private void GameRoom_Closing(object sender, CancelEventArgs e)
         {
             joinToGameClient.LeaveRoom(account.nickname, code, blueTeam, redTeam);
+            joinToGameClient.LeaveGame(account.nickname);
         }
 
         public void ConfigurateWindow(Account account, int code)
         {
+
             if (code >1)
             {
                 this.code = code;
@@ -50,8 +56,48 @@ namespace DeCryptoWPF
             }
             Label_GameRoom_Code.Content = this.code;
             this.account = account;
-            joinToGameClient.JoinToRoom(this.code, account.nickname, new byte[1]);
-            joinToGameClient.JoinToGame(account.nickname);
+            ConfiurateProfilePicture();
+            joinToGameClient.JoinToGame(account.nickname, ImageToByte(imageDefault));
+            joinToGameClient.JoinToRoom(this.code, account.nickname);
+        }
+
+        private void ConfiurateProfilePicture()
+        {
+            try
+            {
+                this.imageDefault.Source = new BitmapImage(new Uri(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../../Resources/defaultProfilePicture.png"));
+
+            }
+            catch(FileNotFoundException)
+            {
+                //logger
+            }
+        }
+
+        private byte[] ImageToByte(Image image)
+        {
+            byte[] newByteImage = null;
+            if (image != null)
+            {
+                BitmapSource bitmapSource = (BitmapSource)image.Source;
+                if (bitmapSource != null)
+                {
+                    Console.WriteLine("bitmapSource no es nulo");
+                    BitmapEncoder encoder = new PngBitmapEncoder();
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+                        encoder.Save(stream);
+                        newByteImage = stream.ToArray();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("bitmapSource es nulo");
+                    MessageBox.Show("nulooo");
+                }
+            }
+            return newByteImage;
         }
 
         private void Button_GameRoom_TeamRead_Click(object sender, RoutedEventArgs e)
@@ -173,13 +219,60 @@ namespace DeCryptoWPF
             StackPanel_GameRoom_PlayerList.Children.Clear();
             foreach (var profile in profiles)
             {
+                Grid playerGrid = new Grid();
+
                 Label Label_Player = new Label();
                 Label_Player.Content = profile.Key;
-                Label_Player.Margin = new Thickness(0, 0, 0, 50);
                 Label_Player.Foreground = Brushes.White;
                 Label_Player.FontSize = 30;
-                StackPanel_GameRoom_PlayerList.Children.Add(Label_Player);
+
+                Image playerImage = BytesToImage(profile.Value);
+
+                ColumnDefinition column1 = new ColumnDefinition();
+                ColumnDefinition column2 = new ColumnDefinition();
+                column1.Width = new GridLength(1, GridUnitType.Auto);
+                column2.Width = new GridLength(1, GridUnitType.Star);
+
+                playerGrid.ColumnDefinitions.Add(column1);
+                playerGrid.ColumnDefinitions.Add(column2);
+
+                playerImage.Width = 60;
+                playerImage.Height = 60;
+
+                Grid.SetColumn(Label_Player, 0);
+                Grid.SetColumn(playerImage, 1);
+
+                playerGrid.Children.Add(Label_Player);
+                playerGrid.Children.Add(playerImage);
+
+                StackPanel_GameRoom_PlayerList.Children.Add(playerGrid);
             }
         }
+
+
+        public Image BytesToImage(byte[] byteArray)
+        {
+            if (byteArray == null || byteArray.Length == 0)
+            {
+                return null;
+            }
+
+            BitmapImage bitmapImage = new BitmapImage();
+            using (MemoryStream stream = new MemoryStream(byteArray))
+            {
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = stream;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                bitmapImage.DecodePixelWidth = 60;
+                bitmapImage.EndInit();
+            }
+
+            Image image = new Image();
+            image.Source = bitmapImage;
+
+            return image;
+        }
+
     }
 }
