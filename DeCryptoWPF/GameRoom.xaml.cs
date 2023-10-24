@@ -230,7 +230,7 @@ namespace DeCryptoWPF
 
                 ColumnDefinition column1 = new ColumnDefinition();
                 ColumnDefinition column2 = new ColumnDefinition();
-                column1.Width = new GridLength(1, GridUnitType.Auto);
+                column1.Width = new GridLength(200, GridUnitType.Pixel);
                 column2.Width = new GridLength(1, GridUnitType.Star);
 
                 playerGrid.ColumnDefinitions.Add(column1);
@@ -273,6 +273,5 @@ namespace DeCryptoWPF
 
             return image;
         }
-
     }
 }
