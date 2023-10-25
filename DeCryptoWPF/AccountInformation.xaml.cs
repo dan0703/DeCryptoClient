@@ -1,7 +1,10 @@
 ﻿using DeCryptoWPF.DeCryptoServices;
+using DeCryptoWPF.Logic;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,7 +14,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DeCryptoWPF
 {
@@ -29,15 +31,19 @@ namespace DeCryptoWPF
         public void ConfigurateWindow(Account account)
         {
             this.account = account;
-            configurateData();
+            ConfigurateData();
         }
 
-        private void configurateData()
+        private void ConfigurateData()
         {
             Label_AccountInformation_Email.Content = this.account.email;
             Label_AccountInformation_Nickname.Content = this.account.nickname;
+            var profilePicturePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/" + account.nickname + ".png";
+            if(File.Exists(profilePicturePath))
+            {
+                Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
+            }
         }
-
 
         private void Button_AccountInformation_ChangePassword_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +58,23 @@ namespace DeCryptoWPF
         private void Button_AcountInformationEdit_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Image_AccountInformation_ProfilePicture_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            string playerProfilePath = Complements.UploadImage();
+            if (!string.IsNullOrEmpty(playerProfilePath))
+            {
+                Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(playerProfilePath));
+                if(Complements.SaveImage(account.nickname, playerProfilePath))
+                {
+                    MessageBox.Show("La imagen de perfil ha sido guardada con exito.", "Account Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error al guarda la imagen, intetelo de nuevo");
+                }
+            }            
         }
     }
 }

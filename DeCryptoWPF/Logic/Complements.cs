@@ -33,42 +33,44 @@ namespace DeCryptoWPF.Logic
             var openFileDialog = new OpenFileDialog
             {
                 Title = "Selecciona la imagen de perfil que desees cargar",
-                Filter = "Archivos de imágenes ( *.jpg)| *.jpg"
+                Filter = "Archivos de imágenes ( *.png)| *.png"
             };
             openFileDialog.ShowDialog();
             return openFileDialog.FileName;
         }
-        public static bool SaveImage(string username, Image profilePicture)
+        public static bool SaveImage(string nickname, string sourceProfilePicturePath)
         {
-
-            var profilePicturePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/" + username + ".jpg";
+            var profilePicturePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/" + nickname + ".png";
 
             if (!Directory.Exists(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/"))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/");
             }
-            //File.Delete(profilePicturePath);
             try
             {
-                using (var fileStream = new FileStream(profilePicturePath, FileMode.Create))
+                try
                 {
-                    var jpegBitmapEncoder = new JpegBitmapEncoder();
-                    jpegBitmapEncoder.Frames.Add(BitmapFrame.Create((BitmapSource)profilePicture.Source));
-                    jpegBitmapEncoder.Save(fileStream);
+                    File.Copy(sourceProfilePicturePath, profilePicturePath, true);
+                    Console.WriteLine("Archivo PNG copiado exitosamente.");
                     return true;
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine("Error al copiar el archivo PNG: " + ex.Message);
+                    return false;
                 }
             }
             catch (UnauthorizedAccessException)
             {
                 FileAttributes attr = (new FileInfo(profilePicturePath)).Attributes;
-                Console.Write("UnAuthorizedAccessException: Unable to access file. ");
+                Console.Write("UnauthorizedAccessException: Unable to access file. ");
                 if ((attr & FileAttributes.ReadOnly) > 0)
                 {
                     Console.Write("The file is read-only.");
-
                 }
                 return false;
             }
         }
+
     }
 }

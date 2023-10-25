@@ -24,7 +24,8 @@ namespace DeCryptoWPF
         private BlueTeam blueTeam;
         private RedTeam redTeam;
         private readonly Image[] images;
-        private Image imageDefault = new Image();
+        private Image profileImage = new Image();
+        private string profileImagePath = string.Empty;
 
         public GameRoom()
         {
@@ -39,8 +40,9 @@ namespace DeCryptoWPF
 
         private void GameRoom_Closing(object sender, CancelEventArgs e)
         {
-            joinToGameClient.LeaveRoom(account.nickname, code, blueTeam, redTeam);
             joinToGameClient.LeaveGame(account.nickname);
+            joinToGameClient.LeaveRoom(account.nickname, code, blueTeam, redTeam);
+            joinToGameClient.Close();
         }
 
         public void ConfigurateWindow(Account account, int code)
@@ -57,47 +59,46 @@ namespace DeCryptoWPF
             Label_GameRoom_Code.Content = this.code;
             this.account = account;
             ConfiurateProfilePicture();
-            joinToGameClient.JoinToGame(account.nickname, ImageToByte(imageDefault));
+            byte[] profileImageArrayBytes = ImageToByte(profileImagePath);
+            joinToGameClient.JoinToGame(account.nickname, profileImageArrayBytes);
             joinToGameClient.JoinToRoom(this.code, account.nickname);
         }
 
         private void ConfiurateProfilePicture()
         {
-            try
+            this.profileImagePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/" + account.nickname + ".png";
+            if (!File.Exists(profileImagePath))
             {
-                this.imageDefault.Source = new BitmapImage(new Uri(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../../Resources/defaultProfilePicture.png"));
-
-            }
-            catch(FileNotFoundException)
-            {
-                //logger
+                this.profileImagePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../../Resources/defaultProfilePicture.png";
             }
         }
 
-        private byte[] ImageToByte(Image image)
+        public byte[] ImageToByte(string imagePath)
         {
-            byte[] newByteImage = null;
-            if (image != null)
+            try
             {
-                BitmapSource bitmapSource = (BitmapSource)image.Source;
-                if (bitmapSource != null)
+                if (File.Exists(imagePath))
                 {
-                    Console.WriteLine("bitmapSource no es nulo");
-                    BitmapEncoder encoder = new PngBitmapEncoder();
-                    using (MemoryStream stream = new MemoryStream())
+                    MessageBox.Show("existe");
+                    using (FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
                     {
-                        encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-                        encoder.Save(stream);
-                        newByteImage = stream.ToArray();
+                        using (BinaryReader reader = new BinaryReader(fileStream))
+                        {
+                            return reader.ReadBytes((int)fileStream.Length);
+                        }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("bitmapSource es nulo");
-                    MessageBox.Show("nulooo");
+                    Console.WriteLine("La imagen no existe en la ubicación especificada.");
+                    return null;
                 }
             }
-            return newByteImage;
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al convertir la imagen a bytes: " + ex.Message);
+                return null;
+            }
         }
 
         private void Button_GameRoom_TeamRead_Click(object sender, RoutedEventArgs e)
@@ -254,6 +255,7 @@ namespace DeCryptoWPF
         {
             if (byteArray == null || byteArray.Length == 0)
             {
+                MessageBox.Show("imagen nula");
                 return null;
             }
 
@@ -265,6 +267,7 @@ namespace DeCryptoWPF
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
                 bitmapImage.DecodePixelWidth = 60;
+                bitmapImage.DecodePixelHeight = 60;
                 bitmapImage.EndInit();
             }
 
