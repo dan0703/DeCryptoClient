@@ -35,4 +35,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RedTeam" nillable="true" type="tns:RedTeam" />
+  <xs:complexType name="ChatMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChatMessage" nillable="true" type="tns:ChatMessage" />
+  <xs:complexType name="ArrayOfChatMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChatMessage" nillable="true" type="tns:ChatMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChatMessage" nillable="true" type="tns:ArrayOfChatMessage" />
 </xs:schema>

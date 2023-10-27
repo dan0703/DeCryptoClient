@@ -264,8 +264,9 @@
   <ItemGroup>
     <Resource Include="Resources\defaultProfilePicture.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\Images\" />
+    <Resource Include="Resources\Images\buttonSendMessage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

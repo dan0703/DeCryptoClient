@@ -74,9 +74,28 @@
                             <TranslateTransform Y="-0.059"/>
                         </TransformGroup>
                     </Expander.RenderTransform>
-                    <StackPanel Margin="0,3,0,1"  Background="White">
+                    <StackPanel Margin="0,3,0,1"  x:Name ="StackPanel_GameRoom_Chat" Background="White">
                         <Image x:Name="Image_GameRoom_CloseChat" Margin= "525,5,0,0 " Height="30" Width="30" Source="/Resources/buttonClose.png" ToolTip="Cerrar Chat" MouseLeftButtonDown="Image_GameRoom_CloseChat_MouseLeftButtonDown" Style="{StaticResource MouseOverHand}">
                         </Image>
+                        <Image x:Name="Image_GameRoom_SendMessage" Margin= "525,745,0,0 " Height="30" Width="30" Source="/Resources/Images/buttonSendMessage.png" ToolTip="Enviar" MouseLeftButtonDown="Image_GameRoom_SendMessage_MouseLeftButtonDown" Style="{StaticResource MouseOverHand}">
+                        </Image>
+
+                        <TextBox x:Name="TextBox_GameRoom_WriteMessage" HorizontalAlignment="Left" Margin="34,-30,0,0" TextWrapping="Wrap" Width="476">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="TextBox">
+                                                <Border BorderBrush="#2966fb" BorderThickness="2" Background="Transparent" CornerRadius="10">
+                                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+
                     </StackPanel>
                 </Expander>
             </StackPanel>

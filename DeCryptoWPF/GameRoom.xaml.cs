@@ -189,6 +189,11 @@ namespace DeCryptoWPF
             CloseOpenChat();
         }
 
+        private void Image_GameRoom_SendMessage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
         private void CloseOpenChat()
         {
             if (Expander_GameRoom_Chat.IsExpanded)

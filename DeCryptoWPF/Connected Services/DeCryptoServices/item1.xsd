@@ -165,6 +165,20 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="IsFullRoom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFullRoomResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsFullRoomResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RecivePlayers">
     <xs:complexType>
       <xs:sequence>
@@ -197,6 +211,52 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="ReciveRedTeamResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="chatMessage" nillable="true" type="q13:ChatMessage" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMessageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinChat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveChat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveChatResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveChatMessages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="messages" nillable="true" type="q14:ArrayOfChatMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveChatMessagesResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

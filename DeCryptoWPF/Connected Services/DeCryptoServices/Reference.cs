@@ -369,6 +369,83 @@ namespace DeCryptoWPF.DeCryptoServices {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ChatMessage", Namespace="http://schemas.datacontract.org/2004/07/Domain.data")]
+    [System.SerializableAttribute()]
+    public partial class ChatMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string messageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nicknameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string timeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string message {
+            get {
+                return this.messageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.messageField, value) != true)) {
+                    this.messageField = value;
+                    this.RaisePropertyChanged("message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nickname {
+            get {
+                return this.nicknameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nicknameField, value) != true)) {
+                    this.nicknameField = value;
+                    this.RaisePropertyChanged("nickname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string time {
+            get {
+                return this.timeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.timeField, value) != true)) {
+                    this.timeField = value;
+                    this.RaisePropertyChanged("time");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DeCryptoServices.IAccountServices")]
     public interface IAccountServices {
@@ -556,6 +633,12 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveGame", ReplyAction="http://tempuri.org/IJoinToGame/LeaveGameResponse")]
         System.Threading.Tasks.Task LeaveGameAsync(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/IsFullRoom", ReplyAction="http://tempuri.org/IJoinToGame/IsFullRoomResponse")]
+        bool IsFullRoom(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/IsFullRoom", ReplyAction="http://tempuri.org/IJoinToGame/IsFullRoomResponse")]
+        System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -661,6 +744,97 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task LeaveGameAsync(string nickname) {
             return base.Channel.LeaveGameAsync(nickname);
+        }
+        
+        public bool IsFullRoom(int code) {
+            return base.Channel.IsFullRoom(code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code) {
+            return base.Channel.IsFullRoomAsync(code);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DeCryptoServices.IChatMessage", CallbackContract=typeof(DeCryptoWPF.DeCryptoServices.IChatMessageCallback))]
+    public interface IChatMessage {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatMessage/SendMessage", ReplyAction="http://tempuri.org/IChatMessage/SendMessageResponse")]
+        void SendMessage(DeCryptoWPF.DeCryptoServices.ChatMessage chatMessage, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatMessage/SendMessage", ReplyAction="http://tempuri.org/IChatMessage/SendMessageResponse")]
+        System.Threading.Tasks.Task SendMessageAsync(DeCryptoWPF.DeCryptoServices.ChatMessage chatMessage, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatMessage/JoinChat")]
+        void JoinChat(string nickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatMessage/JoinChat")]
+        System.Threading.Tasks.Task JoinChatAsync(string nickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatMessage/LeaveChat", ReplyAction="http://tempuri.org/IChatMessage/LeaveChatResponse")]
+        void LeaveChat(string nickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatMessage/LeaveChat", ReplyAction="http://tempuri.org/IChatMessage/LeaveChatResponse")]
+        System.Threading.Tasks.Task LeaveChatAsync(string nickname, int code);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatMessageCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatMessage/ReceiveChatMessages", ReplyAction="http://tempuri.org/IChatMessage/ReceiveChatMessagesResponse")]
+        void ReceiveChatMessages(DeCryptoWPF.DeCryptoServices.ChatMessage[] messages);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatMessageChannel : DeCryptoWPF.DeCryptoServices.IChatMessage, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ChatMessageClient : System.ServiceModel.DuplexClientBase<DeCryptoWPF.DeCryptoServices.IChatMessage>, DeCryptoWPF.DeCryptoServices.IChatMessage {
+        
+        public ChatMessageClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public ChatMessageClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public ChatMessageClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatMessageClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatMessageClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void SendMessage(DeCryptoWPF.DeCryptoServices.ChatMessage chatMessage, int code) {
+            base.Channel.SendMessage(chatMessage, code);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(DeCryptoWPF.DeCryptoServices.ChatMessage chatMessage, int code) {
+            return base.Channel.SendMessageAsync(chatMessage, code);
+        }
+        
+        public void JoinChat(string nickname, int code) {
+            base.Channel.JoinChat(nickname, code);
+        }
+        
+        public System.Threading.Tasks.Task JoinChatAsync(string nickname, int code) {
+            return base.Channel.JoinChatAsync(nickname, code);
+        }
+        
+        public void LeaveChat(string nickname, int code) {
+            base.Channel.LeaveChat(nickname, code);
+        }
+        
+        public System.Threading.Tasks.Task LeaveChatAsync(string nickname, int code) {
+            return base.Channel.LeaveChatAsync(nickname, code);
         }
     }
 }

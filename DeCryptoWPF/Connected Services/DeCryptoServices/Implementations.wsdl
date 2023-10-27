@@ -87,6 +87,35 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatMessage_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -164,6 +193,12 @@
   <wsdl:message name="IJoinToGame_LeaveGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IJoinToGame_IsFullRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFullRoom" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_IsFullRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFullRoomResponse" />
+  </wsdl:message>
   <wsdl:message name="IJoinToGame_RecivePlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecivePlayers" />
   </wsdl:message>
@@ -181,6 +216,27 @@
   </wsdl:message>
   <wsdl:message name="IJoinToGame_ReciveRedTeam_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveRedTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatMessage_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="IChatMessage_SendMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatMessage_JoinChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatMessage_LeaveChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatMessage_LeaveChat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveChatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatMessage_ReceiveChatMessages_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveChatMessages" />
+  </wsdl:message>
+  <wsdl:message name="IChatMessage_ReceiveChatMessages_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveChatMessagesResponse" />
   </wsdl:message>
   <wsdl:portType name="IAccountServices">
     <wsdl:operation name="RegisterAccount">
@@ -236,6 +292,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/LeaveGame" message="tns:IJoinToGame_LeaveGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/LeaveGameResponse" message="tns:IJoinToGame_LeaveGame_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="IsFullRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoom" message="tns:IJoinToGame_IsFullRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoomResponse" message="tns:IJoinToGame_IsFullRoom_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayers" message="tns:IJoinToGame_RecivePlayers_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayersResponse" message="tns:IJoinToGame_RecivePlayers_InputCallbackMessage" />
@@ -247,6 +307,23 @@
     <wsdl:operation name="ReciveRedTeam">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeam" message="tns:IJoinToGame_ReciveRedTeam_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeamResponse" message="tns:IJoinToGame_ReciveRedTeam_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatMessage">
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatMessage/SendMessage" message="tns:IChatMessage_SendMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatMessage/SendMessageResponse" message="tns:IChatMessage_SendMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatMessage/JoinChat" message="tns:IChatMessage_JoinChat_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatMessage/LeaveChat" message="tns:IChatMessage_LeaveChat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatMessage/LeaveChatResponse" message="tns:IChatMessage_LeaveChat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveChatMessages">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatMessage/ReceiveChatMessages" message="tns:IChatMessage_ReceiveChatMessages_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatMessage/ReceiveChatMessagesResponse" message="tns:IChatMessage_ReceiveChatMessages_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAccountServices" type="tns:IAccountServices">
@@ -368,6 +445,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="IsFullRoom">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/IsFullRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/RecivePlayers" style="document" />
       <wsdl:input>
@@ -396,13 +482,50 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatMessage" type="tns:IChatMessage">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatMessage_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/IChatMessage/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatMessage/JoinChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatMessage/LeaveChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveChatMessages">
+      <soap12:operation soapAction="http://tempuri.org/IChatMessage/ReceiveChatMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="Implementations">
     <wsdl:port name="NetTcpBinding_IAccountServices" binding="tns:NetTcpBinding_IAccountServices">
       <soap12:address location="net.tcp://localhost:8081/AccountService" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/AccountService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP_DAN\danse</Upn>
+          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -411,7 +534,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/PlayerService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP_DAN\danse</Upn>
+          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -420,7 +543,16 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JoinToGameService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP_DAN\danse</Upn>
+          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChatMessage" binding="tns:NetTcpBinding_IChatMessage">
+      <soap12:address location="net.tcp://localhost:8081/ChatMessageService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/ChatMessageService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
