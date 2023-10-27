@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="KtVt88t2z2iFDBxvOdemwSaU1Ml2SPSfdOv39b0DVec=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="r26+tWsjp7oXF6BaG6q9tjsNWfN9nwx7d6ZqPqPcTiI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IAccountServices">
       <properties>
@@ -355,10 +355,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IChatMessage1">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IChatMessage">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IChatMessage1</serializedValue>
+          <serializedValue>NetTcpBinding_IChatMessage</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -730,7 +730,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IChatMessage1" contract="DeCryptoServices.IChatMessage" bindingType="netTcpBinding" address="net.tcp://localhost:8081/ChatMessageService" bindingConfiguration="NetTcpBinding_IChatMessage1">
+    <endpoint name="NetTcpBinding_IChatMessage" contract="DeCryptoServices.IChatMessage" bindingType="netTcpBinding" address="net.tcp://localhost:8081/ChatMessageService" bindingConfiguration="NetTcpBinding_IChatMessage">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/ChatMessageService</serializedValue>
@@ -742,7 +742,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IChatMessage1</serializedValue>
+          <serializedValue>NetTcpBinding_IChatMessage</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>DeCryptoServices.IChatMessage</serializedValue>
@@ -805,7 +805,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IChatMessage1</serializedValue>
+          <serializedValue>NetTcpBinding_IChatMessage</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

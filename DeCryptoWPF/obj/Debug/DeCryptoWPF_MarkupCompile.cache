@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Sujey\Source\Repos\DeCryptoClient\DeCryptoWPF\obj\Debug\
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\
 DeCryptoWPF
 none
 false
 DEBUG;TRACE
-C:\Users\Sujey\Source\Repos\DeCryptoClient\DeCryptoWPF\App.xaml
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\App.xaml
 8-61182847
 
-19882489095
-18-1357344335
+18-1330389583
+18-734377935
 AccountInformation.xaml;CodeWindow.xaml;GameRoom.xaml;GameSettings.xaml;MenuGame.xaml;Register.xaml;SignIn.xaml;VerifyEmail.xaml;
 
-True
+False
 
