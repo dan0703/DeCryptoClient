@@ -31,14 +31,21 @@ namespace DeCryptoWPF
             int code = int.Parse(TextBox_CodeWindow_Code.Text);
             if (joinToGameClient.AllreadyExistRoom(code))
             {
-                GameRoom gameRoomWindow = new GameRoom();
-                gameRoomWindow.ConfigurateWindow(account, code);
-                Close();
-                gameRoomWindow.ShowDialog();
+                if (joinToGameClient.IsFullRoom(code))
+                {
+                    MessageBox.Show("La sala se encientra llena. Intenta con otra");
+                }
+                else
+                {
+                    GameRoom gameRoomWindow = new GameRoom();
+                    gameRoomWindow.ConfigurateWindow(account, code);
+                    Close();
+                    gameRoomWindow.ShowDialog();
+                }
             }
             else
             {
-                MessageBox.Show("No existe ninguna partida que coincida con el codigo ingresado \n Por favor, intenta con otro","Room",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("No existe ninguna partida que coincida con el codigo ingresado \n Por favor, intenta con otro", "Room", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
