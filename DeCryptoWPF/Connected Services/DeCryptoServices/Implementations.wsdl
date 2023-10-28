@@ -220,9 +220,6 @@
   <wsdl:message name="IChatMessage_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
-  <wsdl:message name="IChatMessage_SendMessage_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
-  </wsdl:message>
   <wsdl:message name="IChatMessage_JoinChat_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinChat" />
   </wsdl:message>
@@ -312,7 +309,6 @@
   <wsdl:portType name="IChatMessage">
     <wsdl:operation name="SendMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatMessage/SendMessage" message="tns:IChatMessage_SendMessage_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChatMessage/SendMessageResponse" message="tns:IChatMessage_SendMessage_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="JoinChat">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatMessage/JoinChat" message="tns:IChatMessage_JoinChat_InputMessage" />
@@ -490,9 +486,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="JoinChat">
       <soap12:operation soapAction="http://tempuri.org/IChatMessage/JoinChat" style="document" />
@@ -525,7 +518,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/AccountService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -534,7 +527,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/PlayerService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -543,7 +536,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JoinToGameService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -552,7 +545,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatMessageService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

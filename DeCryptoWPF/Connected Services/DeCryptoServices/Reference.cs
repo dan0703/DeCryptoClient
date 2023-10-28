@@ -759,10 +759,10 @@ namespace DeCryptoWPF.DeCryptoServices {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DeCryptoServices.IChatMessage", CallbackContract=typeof(DeCryptoWPF.DeCryptoServices.IChatMessageCallback))]
     public interface IChatMessage {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatMessage/SendMessage", ReplyAction="http://tempuri.org/IChatMessage/SendMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatMessage/SendMessage")]
         void SendMessage(DeCryptoWPF.DeCryptoServices.ChatMessage chatMessage, int code);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatMessage/SendMessage", ReplyAction="http://tempuri.org/IChatMessage/SendMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatMessage/SendMessage")]
         System.Threading.Tasks.Task SendMessageAsync(DeCryptoWPF.DeCryptoServices.ChatMessage chatMessage, int code);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatMessage/JoinChat")]

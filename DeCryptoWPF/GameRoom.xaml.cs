@@ -197,8 +197,7 @@ namespace DeCryptoWPF
         }
 
         private void Image_GameRoom_SendMessage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            
+        {            
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.nickname = account.nickname;
             chatMessage.message = TextBox_GameRoom_WriteMessage.Text;
@@ -297,29 +296,26 @@ namespace DeCryptoWPF
 
         public void ReceiveChatMessages(ChatMessage[] messages)
         {
-            MessageBox.Show("hola");
-            foreach (var message in messages) {
+            StackPanel_GameRoom_ChatMessages.Children.Clear();
+            foreach (var message in messages) 
+            {
                 Label Label_Player = new Label();
                 Label_Player.Content = message.nickname;
-                Label_Player.Foreground = Brushes.Aqua;
-                Label_Player.FontSize = 20;
-
-                StackPanel_GameRoom_Chat.Children.Add(Label_Player);
+                Label_Player.Foreground = Brushes.Orange;
+                Label_Player.FontSize = 15;
+                StackPanel_GameRoom_ChatMessages.Children.Add(Label_Player);
 
                 Label Label_Message = new Label();
                 Label_Message.Content = message.message;
                 Label_Message.Foreground = Brushes.Black;
-                Label_Message.FontSize = 30;
-
-                StackPanel_GameRoom_Chat.Children.Add(Label_Message);
+                Label_Message.FontSize = 25;
+                StackPanel_GameRoom_ChatMessages.Children.Add(Label_Message);
 
                 Label Label_Time = new Label();
                 Label_Time.Content = message.time;
-                Label_Time.Foreground = Brushes.Gray;
-                Label_Time.FontSize = 15;
-
-                StackPanel_GameRoom_Chat.Children.Add(Label_Time);
-                MessageBox.Show("se ejecutó esto");
+                Label_Time.Foreground = Brushes.DarkGray;
+                Label_Time.FontSize = 10;
+                StackPanel_GameRoom_ChatMessages.Children.Add(Label_Time);
             }
         }
     }
