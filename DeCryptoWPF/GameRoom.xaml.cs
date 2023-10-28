@@ -86,7 +86,6 @@ namespace DeCryptoWPF
             {
                 if (File.Exists(imagePath))
                 {
-                    MessageBox.Show("existe");
                     using (FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
                     {
                         using (BinaryReader reader = new BinaryReader(fileStream))
@@ -198,12 +197,19 @@ namespace DeCryptoWPF
 
         private void Image_GameRoom_SendMessage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {            
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.nickname = account.nickname;
-            chatMessage.message = TextBox_GameRoom_WriteMessage.Text;
-            chatMessage.time = DateTime.Now.ToString("HH:mm");
-            chatMessageClient.SendMessage(chatMessage, this.code);
-            TextBox_GameRoom_WriteMessage.Text = "";
+            if (TextBox_GameRoom_WriteMessage.Text != "")
+            {
+                ChatMessage chatMessage = new ChatMessage();
+                chatMessage.nickname = account.nickname;
+                chatMessage.message = TextBox_GameRoom_WriteMessage.Text;
+                chatMessage.time = DateTime.Now.ToString("HH:mm");
+                chatMessageClient.SendMessage(chatMessage, this.code);
+                TextBox_GameRoom_WriteMessage.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Por favor, escribe un mensaje");
+            }
         }
 
         private void CloseOpenChat()
@@ -296,26 +302,26 @@ namespace DeCryptoWPF
 
         public void ReceiveChatMessages(ChatMessage[] messages)
         {
-            StackPanel_GameRoom_ChatMessages.Children.Clear();
+            ListBox_GameRoom_ChatMessages.Items.Clear();
             foreach (var message in messages) 
             {
                 Label Label_Player = new Label();
                 Label_Player.Content = message.nickname;
                 Label_Player.Foreground = Brushes.Orange;
                 Label_Player.FontSize = 15;
-                StackPanel_GameRoom_ChatMessages.Children.Add(Label_Player);
+                ListBox_GameRoom_ChatMessages.Items.Add(Label_Player);
 
                 Label Label_Message = new Label();
                 Label_Message.Content = message.message;
                 Label_Message.Foreground = Brushes.Black;
                 Label_Message.FontSize = 25;
-                StackPanel_GameRoom_ChatMessages.Children.Add(Label_Message);
+                ListBox_GameRoom_ChatMessages.Items.Add(Label_Message);
 
                 Label Label_Time = new Label();
                 Label_Time.Content = message.time;
-                Label_Time.Foreground = Brushes.DarkGray;
+                Label_Time.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#292B30"));
                 Label_Time.FontSize = 10;
-                StackPanel_GameRoom_ChatMessages.Children.Add(Label_Time);
+                ListBox_GameRoom_ChatMessages.Items.Add(Label_Time);
             }
         }
     }
