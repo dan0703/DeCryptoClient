@@ -10,6 +10,7 @@ using System;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Reflection;
+using System.Linq;
 
 namespace DeCryptoWPF
 {
@@ -38,7 +39,6 @@ namespace DeCryptoWPF
             InitializeComponent();
             images = new Image[] { Image_GameRoom_Player1, Image_GameRoom_Player2, Image_GameRoom_Player3, Image_GameRoom_Player4 };
             Closing += GameRoom_Closing;
-            chatMessageClient.JoinChat(account.nickname, code);
         }
 
         private void GameRoom_Closing(object sender, CancelEventArgs e)
@@ -47,6 +47,7 @@ namespace DeCryptoWPF
             joinToGameClient.LeaveRoom(account.nickname, code, blueTeam, redTeam);
             joinToGameClient.Close();
             chatMessageClient.LeaveChat(account.nickname, code);
+
         }
 
         public void ConfigurateWindow(Account account, int code)
@@ -66,6 +67,8 @@ namespace DeCryptoWPF
             byte[] profileImageArrayBytes = ImageToByte(profileImagePath);
             joinToGameClient.JoinToGame(account.nickname, profileImageArrayBytes);
             joinToGameClient.JoinToRoom(this.code, account.nickname);
+            chatMessageClient.JoinChat(account.nickname, code);
+
         }
 
         private void ConfiurateProfilePicture()
@@ -199,7 +202,7 @@ namespace DeCryptoWPF
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.nickname = account.nickname;
             chatMessage.message = TextBox_GameRoom_WriteMessage.Text;
-            chatMessage.time = DateTime.Now.ToString("HH:mm:ss");
+            chatMessage.time = DateTime.Now.ToString("HH:mm");
             chatMessageClient.SendMessage(chatMessage, this.code);
             TextBox_GameRoom_WriteMessage.Text = "";
         }
@@ -311,11 +314,12 @@ namespace DeCryptoWPF
                 StackPanel_GameRoom_Chat.Children.Add(Label_Message);
 
                 Label Label_Time = new Label();
-                Label_Time.Content = message.message;
+                Label_Time.Content = message.time;
                 Label_Time.Foreground = Brushes.Gray;
                 Label_Time.FontSize = 15;
 
                 StackPanel_GameRoom_Chat.Children.Add(Label_Time);
+                MessageBox.Show("se ejecutó esto");
             }
         }
     }
