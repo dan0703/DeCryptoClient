@@ -40,30 +40,28 @@ namespace DeCryptoWPF.Logic
         }
         public static bool SaveImage(string nickname, string sourceProfilePicturePath)
         {
-            var profilePicturePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/" + nickname + ".png";
+            var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Images", nickname + ".png");
 
-            if (!Directory.Exists(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/"))
+            if (!Directory.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Images")))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/");
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Images"));
             }
+
             try
             {
-                try
+                using (var fileStream = new FileStream(profilePicturePath, FileMode.Create))
                 {
-                    File.Copy(sourceProfilePicturePath, profilePicturePath, true);
-                    Console.WriteLine("Archivo PNG copiado exitosamente.");
+                    var bitmapDecoder = BitmapDecoder.Create(new Uri(sourceProfilePicturePath), BitmapCreateOptions.None, BitmapCacheOption.Default);
+                    var pngBitmapEncoder = new PngBitmapEncoder();
+                    pngBitmapEncoder.Frames.Add(bitmapDecoder.Frames[0]);
+                    pngBitmapEncoder.Save(fileStream);
                     return true;
-                }
-                catch (IOException ex)
-                {
-                    Console.WriteLine("Error al copiar el archivo PNG: " + ex.Message);
-                    return false;
                 }
             }
             catch (UnauthorizedAccessException)
             {
                 FileAttributes attr = (new FileInfo(profilePicturePath)).Attributes;
-                Console.Write("UnauthorizedAccessException: Unable to access file. ");
+                Console.Write("UnAuthorizedAccessException: Unable to access file. ");
                 if ((attr & FileAttributes.ReadOnly) > 0)
                 {
                     Console.Write("The file is read-only.");
@@ -71,6 +69,7 @@ namespace DeCryptoWPF.Logic
                 return false;
             }
         }
+
 
     }
 }
