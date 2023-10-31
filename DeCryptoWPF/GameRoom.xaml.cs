@@ -73,7 +73,7 @@ namespace DeCryptoWPF
 
         private void ConfiurateProfilePicture()
         {
-            this.profileImagePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/" + account.nickname + ".png";
+            this.profileImagePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../../Images/" + account.nickname + ".png";
             if (!File.Exists(profileImagePath))
             {
                 this.profileImagePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../../Resources/defaultProfilePicture.png";

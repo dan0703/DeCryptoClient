@@ -40,11 +40,11 @@ namespace DeCryptoWPF.Logic
         }
         public static bool SaveImage(string nickname, string sourceProfilePicturePath)
         {
-            var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Images", nickname + ".png");
+            var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", nickname + ".png");
 
-            if (!Directory.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Images")))
+            if (!Directory.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/")))
             {
-                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Images"));
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/"));
             }
 
             try

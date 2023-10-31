@@ -38,7 +38,7 @@ namespace DeCryptoWPF
         {
             Label_AccountInformation_Email.Content = this.account.email;
             Label_AccountInformation_Nickname.Content = this.account.nickname;
-            var profilePicturePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "../../Images/" + account.nickname + ".png";
+            var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", account.nickname + ".png");
             if(File.Exists(profilePicturePath))
             {
                 Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
@@ -62,6 +62,7 @@ namespace DeCryptoWPF
 
         private void Image_AccountInformation_ProfilePicture_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Image_AccountInformation_ProfilePicture.Source = null;
             string playerProfilePath = Complements.UploadImage();
             if (!string.IsNullOrEmpty(playerProfilePath))
             {
