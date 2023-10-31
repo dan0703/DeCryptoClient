@@ -39,9 +39,12 @@
                 </Image.Style>
             </Image>
 
+            <Image x:Name="Image_AccountInformation_ProfilePicture" MouseLeftButtonDown="Image_AccountInformation_ProfilePicture_MouseLeftButtonDown" HorizontalAlignment="Left" Height="223" Margin="153,194,0,0" VerticalAlignment="Top" Width="206" Source="\Resources\imageUser.png"/>
+            <Label x:Name="Label_AccountInformation_Nickname" Content="Label" HorizontalAlignment="Left" Margin="430,381,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold"/>
+            <Label x:Name="Label_AccountInformation_Email" Content="Label" HorizontalAlignment="Left" Margin="430,255,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold"/>
             <Image x:Name="Button_AcountInformation_Edit" HorizontalAlignment="Left" Margin="325,362,0,0" VerticalAlignment="Top" Width="69" Height="69" RenderTransformOrigin="0.547,0.906" MouseLeftButtonDown="Button_AcountInformationEdit_Click" Source="/Resources/buttonEdit.png">
                 <Image.Style>
-                    <Style TargetType="Image">
+                    <Style TargetType="{x:Type Image}">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Cursor" Value="Hand"/>
@@ -50,10 +53,6 @@
                     </Style>
                 </Image.Style>
             </Image>
-
-            <Image x:Name="Image_AccountInformation_ProfilePicture" MouseLeftButtonDown="Image_AccountInformation_ProfilePicture_MouseLeftButtonDown" HorizontalAlignment="Left" Height="223" Margin="153,194,0,0" VerticalAlignment="Top" Width="206" Source="\Resources\imageUser.png"/>
-            <Label x:Name="Label_AccountInformation_Nickname" Content="Label" HorizontalAlignment="Left" Margin="430,381,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold"/>
-            <Label x:Name="Label_AccountInformation_Email" Content="Label" HorizontalAlignment="Left" Margin="430,255,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold"/>
 
         </Grid>
     </Viewbox>

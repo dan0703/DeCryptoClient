@@ -278,7 +278,6 @@ namespace DeCryptoWPF
         {
             if (byteArray == null || byteArray.Length == 0)
             {
-                MessageBox.Show("imagen nula");
                 return null;
             }
 
