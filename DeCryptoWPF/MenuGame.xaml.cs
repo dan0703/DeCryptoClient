@@ -34,7 +34,6 @@ namespace DeCryptoWPF
         {
             this.account = account;
             joinToGameClient.JoinToGame(account.nickname, null);
-
         }
 
         private void Button_MenuGame_NewGame_Click(object sender, RoutedEventArgs e)

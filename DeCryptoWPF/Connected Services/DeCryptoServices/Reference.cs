@@ -473,6 +473,18 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/VerifyEmail", ReplyAction="http://tempuri.org/IAccountServices/VerifyEmailResponse")]
         System.Threading.Tasks.Task<bool> VerifyEmailAsync(DeCryptoWPF.DeCryptoServices.Account account);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/ChangePassword", ReplyAction="http://tempuri.org/IAccountServices/ChangePasswordResponse")]
+        bool ChangePassword(DeCryptoWPF.DeCryptoServices.Account account, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/ChangePassword", ReplyAction="http://tempuri.org/IAccountServices/ChangePasswordResponse")]
+        System.Threading.Tasks.Task<bool> ChangePasswordAsync(DeCryptoWPF.DeCryptoServices.Account account, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/CurrentPassword", ReplyAction="http://tempuri.org/IAccountServices/CurrentPasswordResponse")]
+        bool CurrentPassword(DeCryptoWPF.DeCryptoServices.Account account, string currentPasswor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/CurrentPassword", ReplyAction="http://tempuri.org/IAccountServices/CurrentPasswordResponse")]
+        System.Threading.Tasks.Task<bool> CurrentPasswordAsync(DeCryptoWPF.DeCryptoServices.Account account, string currentPasswor);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -532,6 +544,22 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task<bool> VerifyEmailAsync(DeCryptoWPF.DeCryptoServices.Account account) {
             return base.Channel.VerifyEmailAsync(account);
+        }
+        
+        public bool ChangePassword(DeCryptoWPF.DeCryptoServices.Account account, string newPassword) {
+            return base.Channel.ChangePassword(account, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangePasswordAsync(DeCryptoWPF.DeCryptoServices.Account account, string newPassword) {
+            return base.Channel.ChangePasswordAsync(account, newPassword);
+        }
+        
+        public bool CurrentPassword(DeCryptoWPF.DeCryptoServices.Account account, string currentPasswor) {
+            return base.Channel.CurrentPassword(account, currentPasswor);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CurrentPasswordAsync(DeCryptoWPF.DeCryptoServices.Account account, string currentPasswor) {
+            return base.Channel.CurrentPasswordAsync(account, currentPasswor);
         }
     }
     

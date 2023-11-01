@@ -84,6 +84,9 @@
     <Compile Include="AccountInformation.xaml.cs">
       <DependentUpon>AccountInformation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CodeWindow.xaml.cs">
       <DependentUpon>CodeWindow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <DependentUpon>VerifyEmail.xaml</DependentUpon>
     </Compile>
     <Page Include="AccountInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangePassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

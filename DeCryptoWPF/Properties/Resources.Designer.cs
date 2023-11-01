@@ -349,11 +349,47 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Actual contraseña.
+        /// </summary>
+        public static string Label_ChangePassword_CurrentPassword {
+            get {
+                return ResourceManager.GetString("Label_ChangePassword_CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nueva contraseña.
+        /// </summary>
+        public static string Label_ChangePassword_NewPassword {
+            get {
+                return ResourceManager.GetString("Label_ChangePassword_NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirma nueva contraseña.
+        /// </summary>
+        public static string Label_ChangePassword_NewPasswordConfirmation {
+            get {
+                return ResourceManager.GetString("Label_ChangePassword_NewPasswordConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ingresa un código.
         /// </summary>
         public static string Label_CodeWindow_EnterCode {
             get {
                 return ResourceManager.GetString("Label_CodeWindow_EnterCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Unirme.
+        /// </summary>
+        public static string Label_CodeWindow_Join {
+            get {
+                return ResourceManager.GetString("Label_CodeWindow_Join", resourceCulture);
             }
         }
         

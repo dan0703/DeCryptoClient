@@ -327,4 +327,16 @@
   <data name="Label_VerifyEmail_SendToken" xml:space="preserve">
     <value>Hemos enviado un código a tu correo electrónico.</value>
   </data>
+  <data name="Label_CodeWindow_Join" xml:space="preserve">
+    <value>Unirme</value>
+  </data>
+  <data name="Label_ChangePassword_CurrentPassword" xml:space="preserve">
+    <value>Actual contraseña</value>
+  </data>
+  <data name="Label_ChangePassword_NewPassword" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="Label_ChangePassword_NewPasswordConfirmation" xml:space="preserve">
+    <value>Confirma nueva contraseña</value>
+  </data>
 </root>

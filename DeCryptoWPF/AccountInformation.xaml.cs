@@ -47,7 +47,10 @@ namespace DeCryptoWPF
 
         private void Button_AccountInformation_ChangePassword_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangePassword changePassword = new ChangePassword();
+            changePassword.ConfigurateWindow(this.account);
+            Close();
+            changePassword.ShowDialog();
         }
 
         private void Button_AccountInformation_Close_Click(object sender, RoutedEventArgs e)
