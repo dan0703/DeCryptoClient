@@ -160,6 +160,12 @@
   <wsdl:message name="IAccountServices_CurrentPassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:CurrentPasswordResponse" />
   </wsdl:message>
+  <wsdl:message name="IAccountServices_ExistAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistAccount" />
+  </wsdl:message>
+  <wsdl:message name="IAccountServices_ExistAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistAccountResponse" />
+  </wsdl:message>
   <wsdl:message name="IPlayerServices_RegisterPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterPlayer" />
   </wsdl:message>
@@ -271,6 +277,10 @@
     <wsdl:operation name="CurrentPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/CurrentPassword" message="tns:IAccountServices_CurrentPassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccountServices/CurrentPasswordResponse" message="tns:IAccountServices_CurrentPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/ExistAccount" message="tns:IAccountServices_ExistAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccountServices/ExistAccountResponse" message="tns:IAccountServices_ExistAccount_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPlayerServices">
@@ -392,6 +402,15 @@
     </wsdl:operation>
     <wsdl:operation name="CurrentPassword">
       <soap12:operation soapAction="http://tempuri.org/IAccountServices/CurrentPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistAccount">
+      <soap12:operation soapAction="http://tempuri.org/IAccountServices/ExistAccount" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

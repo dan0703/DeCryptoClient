@@ -150,9 +150,11 @@ C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF.csp
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\AccountInformation.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\ChangePassword.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\CodeWindow.g.cs
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\EmailWindow.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\GameRoom.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\GameSettings.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\MenuGame.g.cs
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\RecoverPassword.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\Register.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\SignIn.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\VerifyEmail.g.cs
@@ -162,9 +164,11 @@ C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF_Mar
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\AccountInformation.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\ChangePassword.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\CodeWindow.baml
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\EmailWindow.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\GameRoom.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\GameSettings.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\MenuGame.baml
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\RecoverPassword.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\Register.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\SignIn.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\VerifyEmail.baml

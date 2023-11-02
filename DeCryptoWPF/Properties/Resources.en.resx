@@ -339,4 +339,13 @@
   <data name="Label_ChangePassword_NewPasswordConfirmation" xml:space="preserve">
     <value>Confirm new password</value>
   </data>
+  <data name="Label_RecoverPassword_EnterCode" xml:space="preserve">
+    <value>Enter the code verification</value>
+  </data>
+  <data name="Label_RecoverPassword_RecoverPassword" xml:space="preserve">
+    <value>Recover password</value>
+  </data>
+  <data name="Label_RecoverPassword_EnterEmail" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
 </root>

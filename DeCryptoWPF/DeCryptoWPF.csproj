@@ -97,6 +97,9 @@
     </Compile>
     <Compile Include="Domain\Account.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="EmailWindow.xaml.cs">
+      <DependentUpon>EmailWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameRoom.xaml.cs">
       <DependentUpon>GameRoom.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.es-MX.resx</DependentUpon>
     </Compile>
+    <Compile Include="RecoverPassword.xaml.cs">
+      <DependentUpon>RecoverPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -143,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EmailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GameRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +166,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MenuGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecoverPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
