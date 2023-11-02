@@ -592,6 +592,33 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Ingresa el código de verificación.
+        /// </summary>
+        public static string Label_RecoverPassword_EnterCode {
+            get {
+                return ResourceManager.GetString("Label_RecoverPassword_EnterCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ingresa tu correo electrónico.
+        /// </summary>
+        public static string Label_RecoverPassword_EnterEmail {
+            get {
+                return ResourceManager.GetString("Label_RecoverPassword_EnterEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recuperar contraseña.
+        /// </summary>
+        public static string Label_RecoverPassword_RecoverPassword {
+            get {
+                return ResourceManager.GetString("Label_RecoverPassword_RecoverPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ¿Ya tienes una cuenta?.
         /// </summary>
         public static string Label_Register_AlreadyAccount {

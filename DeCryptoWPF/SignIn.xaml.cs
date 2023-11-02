@@ -101,6 +101,15 @@ namespace DeCryptoWPF
             registerWindow.ShowDialog();
         }
 
+        private void Label_SignIn_ForgotPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var  emailWindow= new EmailWindow();
+            this.Effect = new System.Windows.Media.Effects.BlurEffect();
+            emailWindow.ShowDialog();
+            this.Effect = null;
+        }
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(TextBox_SignIn_Password.Visibility == Visibility.Collapsed)
@@ -108,8 +117,6 @@ namespace DeCryptoWPF
                 TextBox_SignIn_Password.Visibility = Visibility.Visible;
                 TextBox_SignIn_Password.Text = PasswordBox_SignIn_Password.Password;
                 PasswordBox_SignIn_Password.Visibility = Visibility.Hidden;
-
-
             }
             else
             {

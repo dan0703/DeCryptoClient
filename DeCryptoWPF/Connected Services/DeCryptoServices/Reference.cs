@@ -485,6 +485,12 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/CurrentPassword", ReplyAction="http://tempuri.org/IAccountServices/CurrentPasswordResponse")]
         System.Threading.Tasks.Task<bool> CurrentPasswordAsync(DeCryptoWPF.DeCryptoServices.Account account, string currentPasswor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/ExistAccount", ReplyAction="http://tempuri.org/IAccountServices/ExistAccountResponse")]
+        bool ExistAccount(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/ExistAccount", ReplyAction="http://tempuri.org/IAccountServices/ExistAccountResponse")]
+        System.Threading.Tasks.Task<bool> ExistAccountAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -560,6 +566,14 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task<bool> CurrentPasswordAsync(DeCryptoWPF.DeCryptoServices.Account account, string currentPasswor) {
             return base.Channel.CurrentPasswordAsync(account, currentPasswor);
+        }
+        
+        public bool ExistAccount(string email) {
+            return base.Channel.ExistAccount(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExistAccountAsync(string email) {
+            return base.Channel.ExistAccountAsync(email);
         }
     }
     
