@@ -46,7 +46,6 @@ namespace DeCryptoWPF.Logic
             {
                 Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/"));
             }
-
             try
             {
                 using (var fileStream = new FileStream(profilePicturePath, FileMode.Create))
@@ -54,9 +53,9 @@ namespace DeCryptoWPF.Logic
                     var bitmapDecoder = BitmapDecoder.Create(new Uri(sourceProfilePicturePath), BitmapCreateOptions.None, BitmapCacheOption.Default);
                     var pngBitmapEncoder = new PngBitmapEncoder();
                     pngBitmapEncoder.Frames.Add(bitmapDecoder.Frames[0]);
-                    pngBitmapEncoder.Save(fileStream);
-                    return true;
+                    pngBitmapEncoder.Save(fileStream);  
                 }
+                return true;
             }
             catch (UnauthorizedAccessException)
             {
@@ -68,8 +67,7 @@ namespace DeCryptoWPF.Logic
                 }
                 return false;
             }
+
         }
-
-
     }
 }

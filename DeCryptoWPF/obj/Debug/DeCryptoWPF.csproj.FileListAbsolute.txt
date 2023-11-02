@@ -179,3 +179,5 @@ C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\es-MX\DeCryptoW
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF.csproj.CopyComplete
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF.exe
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF.pdb
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\ChangePassword.g.cs
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\ChangePassword.baml

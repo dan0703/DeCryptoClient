@@ -2,6 +2,7 @@
 using DeCryptoWPF.Logic;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -22,26 +23,49 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class AccountInformation : Window
     {
+        string profilePicturePathCopy = string.Empty;
         public AccountInformation()
         {
             InitializeComponent();
+            Closing += GameRoom_Closing;            
         }
+
+        private void GameRoom_Closing(object sender, CancelEventArgs e)
+        {
+            Image_AccountInformation_ProfilePicture = null;
+        }
+
         private Account account;
 
         public void ConfigurateWindow(Account account)
         {
-            this.account = account;
-            ConfigurateData();
+            this.account = account;            
+            ConfigurateData();            
         }
 
         private void ConfigurateData()
         {
+            profilePicturePathCopy = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", account.nickname + "_Copy" + ".png");            
             Label_AccountInformation_Email.Content = this.account.email;
             Label_AccountInformation_Nickname.Content = this.account.nickname;
+            CopyProfilePicture();
+        }
+        private void CopyProfilePicture()
+        {
+
             var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", account.nickname + ".png");
-            if(File.Exists(profilePicturePath))
+            if (File.Exists(profilePicturePath))
             {
-                Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
+                try
+                {
+                    File.Copy(profilePicturePath, profilePicturePathCopy, true);
+                    Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePathCopy));
+                }
+                catch (Exception)
+                {
+                    Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
+                    
+                }
             }
         }
 
@@ -65,20 +89,26 @@ namespace DeCryptoWPF
 
         private void Image_AccountInformation_ProfilePicture_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Image_AccountInformation_ProfilePicture.Source = null;
             string playerProfilePath = Complements.UploadImage();
             if (!string.IsNullOrEmpty(playerProfilePath))
             {
-                Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(playerProfilePath));
-                if(Complements.SaveImage(account.nickname, playerProfilePath))
+
+                if (Complements.SaveImage(account.nickname, playerProfilePath))
                 {
-                    MessageBox.Show("La imagen de perfil ha sido guardada con exito.", "Account Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("La imagen de perfil ha sido guardada con exito \n La aplicación será reiniciada", "Account Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    Application.Current.Shutdown();
+                    RestartApplication();
                 }
                 else
                 {
                     MessageBox.Show("Ha ocurrido un error al guarda la imagen, intetelo de nuevo");
                 }
             }            
+        }
+        private void RestartApplication()
+        {
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
     }
 }
