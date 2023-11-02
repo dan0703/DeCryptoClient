@@ -70,7 +70,8 @@ namespace DeCryptoWPF
 
         private void Button_MenuGame_FriendList_Click(object sender, RoutedEventArgs e)
         {
-
+            Expander_MenuGame_Configurations.IsExpanded = false;
+            StackPanel_MenuGame_FriendList.Visibility = Visibility.Visible;
         }
 
         public void ReciveBlueTeam(BlueTeam blueTeam)
@@ -86,6 +87,12 @@ namespace DeCryptoWPF
         public void RecivePlayers(Dictionary<string, byte[]> profiles)
         {
             throw new NotImplementedException();
+        }
+
+        private void Image_MenuGame_CloseFriendList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Expander_MenuGame_Configurations.IsExpanded = false;
+            StackPanel_MenuGame_FriendList.Visibility= Visibility.Hidden;
         }
     }
 }
