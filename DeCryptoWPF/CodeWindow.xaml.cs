@@ -77,5 +77,10 @@ namespace DeCryptoWPF
         {
             throw new NotImplementedException();
         }
+
+        public void ReciveFriendRequest(string senderNickname)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

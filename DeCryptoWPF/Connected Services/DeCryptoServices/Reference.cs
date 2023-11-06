@@ -586,6 +586,18 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerServices/RegisterPlayer", ReplyAction="http://tempuri.org/IPlayerServices/RegisterPlayerResponse")]
         System.Threading.Tasks.Task<bool> RegisterPlayerAsync(DeCryptoWPF.DeCryptoServices.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerServices/GetSimilarsNickNames", ReplyAction="http://tempuri.org/IPlayerServices/GetSimilarsNickNamesResponse")]
+        string[] GetSimilarsNickNames(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerServices/GetSimilarsNickNames", ReplyAction="http://tempuri.org/IPlayerServices/GetSimilarsNickNamesResponse")]
+        System.Threading.Tasks.Task<string[]> GetSimilarsNickNamesAsync(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerServices/ExistNickname", ReplyAction="http://tempuri.org/IPlayerServices/ExistNicknameResponse")]
+        bool ExistNickname(string nickName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerServices/ExistNickname", ReplyAction="http://tempuri.org/IPlayerServices/ExistNicknameResponse")]
+        System.Threading.Tasks.Task<bool> ExistNicknameAsync(string nickName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -621,6 +633,22 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task<bool> RegisterPlayerAsync(DeCryptoWPF.DeCryptoServices.User user) {
             return base.Channel.RegisterPlayerAsync(user);
+        }
+        
+        public string[] GetSimilarsNickNames(string nickname) {
+            return base.Channel.GetSimilarsNickNames(nickname);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetSimilarsNickNamesAsync(string nickname) {
+            return base.Channel.GetSimilarsNickNamesAsync(nickname);
+        }
+        
+        public bool ExistNickname(string nickName) {
+            return base.Channel.ExistNickname(nickName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExistNicknameAsync(string nickName) {
+            return base.Channel.ExistNicknameAsync(nickName);
         }
     }
     
@@ -681,6 +709,24 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/IsFullRoom", ReplyAction="http://tempuri.org/IJoinToGame/IsFullRoomResponse")]
         System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/SendFriendRequest")]
+        void SendFriendRequest(string senderNickname, string recipientNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/SendFriendRequest")]
+        System.Threading.Tasks.Task SendFriendRequestAsync(string senderNickname, string recipientNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/GetFriendList", ReplyAction="http://tempuri.org/IJoinToGame/GetFriendListResponse")]
+        System.Collections.Generic.Dictionary<string, byte[]> GetFriendList(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/GetFriendList", ReplyAction="http://tempuri.org/IJoinToGame/GetFriendListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, byte[]>> GetFriendListAsync(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest", ReplyAction="http://tempuri.org/IJoinToGame/AcceptFriendRequestResponse")]
+        bool AcceptFriendRequest(string senderNickname, string recipientNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest", ReplyAction="http://tempuri.org/IJoinToGame/AcceptFriendRequestResponse")]
+        System.Threading.Tasks.Task<bool> AcceptFriendRequestAsync(string senderNickname, string recipientNickname);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -694,6 +740,9 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/ReciveRedTeam", ReplyAction="http://tempuri.org/IJoinToGame/ReciveRedTeamResponse")]
         void ReciveRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/ReciveFriendRequest", ReplyAction="http://tempuri.org/IJoinToGame/ReciveFriendRequestResponse")]
+        void ReciveFriendRequest(string senderNickname);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -794,6 +843,30 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code) {
             return base.Channel.IsFullRoomAsync(code);
+        }
+        
+        public void SendFriendRequest(string senderNickname, string recipientNickname) {
+            base.Channel.SendFriendRequest(senderNickname, recipientNickname);
+        }
+        
+        public System.Threading.Tasks.Task SendFriendRequestAsync(string senderNickname, string recipientNickname) {
+            return base.Channel.SendFriendRequestAsync(senderNickname, recipientNickname);
+        }
+        
+        public System.Collections.Generic.Dictionary<string, byte[]> GetFriendList(string nickname) {
+            return base.Channel.GetFriendList(nickname);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, byte[]>> GetFriendListAsync(string nickname) {
+            return base.Channel.GetFriendListAsync(nickname);
+        }
+        
+        public bool AcceptFriendRequest(string senderNickname, string recipientNickname) {
+            return base.Channel.AcceptFriendRequest(senderNickname, recipientNickname);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AcceptFriendRequestAsync(string senderNickname, string recipientNickname) {
+            return base.Channel.AcceptFriendRequestAsync(senderNickname, recipientNickname);
         }
     }
     

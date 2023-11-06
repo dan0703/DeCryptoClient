@@ -323,5 +323,10 @@ namespace DeCryptoWPF
                 ListBox_GameRoom_ChatMessages.Items.Add(Label_Time);
             }
         }
+
+        public void ReciveFriendRequest(string senderNickname)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

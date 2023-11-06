@@ -94,5 +94,26 @@ namespace DeCryptoWPF
             Expander_MenuGame_Configurations.IsExpanded = false;
             StackPanel_MenuGame_FriendList.Visibility= Visibility.Hidden;
         }
+
+        private void Button_MenuGame_AddFriend_Click(object sender, RoutedEventArgs e)
+        {
+            SendFriendRequest sendFriendRequest = new SendFriendRequest ();
+            sendFriendRequest.ConfigurateWindow(account);
+            this.Effect = new System.Windows.Media.Effects.BlurEffect();
+            sendFriendRequest.ShowDialog();
+            this.Effect = null;
+        }
+
+        public void ReciveFriendRequest(string senderNickname)
+        {
+            MessageBoxResult result = MessageBox.Show(senderNickname + " Te ha enviado una solicitud de amistad \n ¿Deseas aceptarla?", "FriendRequest", MessageBoxButton.YesNoCancel);
+            if (result == MessageBoxResult.Yes)
+            {
+                if (!joinToGameClient.AcceptFriendRequest(senderNickname, account.nickname))
+                {
+                    MessageBox.Show("Ha ocurrido un error, vuelve a intentarlo");
+                }
+            }
+        }
     }
 }

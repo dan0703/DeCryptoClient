@@ -38,11 +38,43 @@
                 <ComboBoxItem Content="{x:Static p:Resources.ComboBoxItem_MainWindow_Spanish}"/>
                 <ComboBoxItem Content="{x:Static p:Resources.ComboBoxItem_MainWindow_English}"/>
             </ComboBox>
-            <Expander HorizontalAlignment="Left" Name="Expander_MenuGame_Configurations" Height="124" Header="Menu"  Margin="39,50,0,0" VerticalAlignment="Top" Width="221" ExpandDirection="Down" FlowDirection="LeftToRight" Foreground="#FFFBF2F2" FontWeight="Bold" FontSize="24">
+
+            <StackPanel x:Name="StackPanel_MenuGame_FriendList" Margin="20,160,1407,30" Background="#4A5061" Visibility="Visible" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="Image_MenuGame_CloseFriendList" Source="/Resources/buttonClose.png" Height="40" Width="40" Margin="450,0,0,15" MouseLeftButtonDown="Image_MenuGame_CloseFriendList_MouseLeftButtonDown"/>
+                    <Label x:Name="Label_MenuGame_FriendList" Content="Lista de Amigos" FontSize="40" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="79,-1,81,1" />
+                </Grid>
+                <TabControl Height="740" Background="Transparent" BorderBrush="{x:Null}">
+                    <TabItem Header="Friend List" Background="{x:Null}" BorderBrush="Black" FontSize="20" FontWeight="Bold">
+                        <Grid Background="Transparent" Margin="0,0,0,0">
+                            <ListBox x:Name="ListBox_MenuGame_FriendList"
+                             Background="Transparent"
+                             Margin="0,0,0,0"                             
+                             ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="Black"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Friend Request" BorderBrush="Black" Background="{x:Null}" FontSize="20" FontWeight="Bold">
+                        <Grid Background="Transparent" Margin="0,0,0,0">
+                            <ListBox x:Name="ListBox_MenuGame_FriendRequests"
+                             Background="Transparent"
+                             Margin="0,0,0,0"                             
+                             ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="Black"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                <Rectangle Height="4" Stroke="White" Width="450" Fill="White" Margin="0,5,0,0"/>
+                <Button Content="Agregar Amigo" Name="Button_MenuGame_AddFriend" Margin="160,20,160,0" Background="#33CC00" Foreground="White" FontFamily="Arial Rounded MT Bold" BorderBrush="{x:Null}" FontSize="20" FontWeight="Bold" Height="35" Click="Button_MenuGame_AddFriend_Click"/>
+
+            </StackPanel>
+            <Expander HorizontalAlignment="Left" x:Name="Expander_MenuGame_Configurations" Height="124" Header="Menu"  Margin="39,50,0,0" VerticalAlignment="Top" Width="221" ExpandDirection="Down" FlowDirection="LeftToRight" Foreground="#FFFBF2F2" FontWeight="Bold" FontSize="24">
                 <Grid>
                     <Button x:Name="Button_MenuGame_AccountConfiguration" Content="Cuenta" ToolTip="Ir a configuracion de Cuenta" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="218" Height="34" FontWeight="Bold" Background="White" BorderBrush="Black" Click="Button_MenuGame_AccountConfiguration_Click" FontSize="22">
                         <Button.Style>
-                            <Style TargetType="Button">
+                            <Style TargetType="{x:Type Button}">
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Cursor" Value="Hand"/>
@@ -53,7 +85,7 @@
                     </Button>
                     <Button x:Name="Button_MenuGame_FriendList" Content="Lista de Amigos" ToolTip="Ver lista de Amigos" HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" Width="218" Height="38" FontWeight="Bold" BorderBrush="Black" Background="White" Click="Button_MenuGame_FriendList_Click" FontSize="22">
                         <Button.Style>
-                            <Style TargetType="Button">
+                            <Style TargetType="{x:Type Button}">
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Cursor" Value="Hand"/>
@@ -64,22 +96,6 @@
                     </Button>
                 </Grid>
             </Expander>
-
-            <StackPanel x:Name="StackPanel_MenuGame_FriendList" Margin="20,160,1407,30" Background="#4A5061" Visibility="Hidden" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-
-                    <Image x:Name="Image_MenuGame_CloseFriendList" Source="/Resources/buttonClose.png" Height="40" Width="40" Margin="450,0,0,15" MouseLeftButtonDown="Image_MenuGame_CloseFriendList_MouseLeftButtonDown"/>
-                    <Label x:Name="Label_MenuGame_FriendList" Content="Lista de Amigos" FontSize="40" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="79,4,81,-4" />
-                </Grid>
-                <ListBox x:Name="ListBox_MenuGame_FriendList"
-                     Background="Transparent"
-                     Margin="0,10,0,0"
-                     Height="820"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
-            </StackPanel>
 
         </Grid>
     </Viewbox>

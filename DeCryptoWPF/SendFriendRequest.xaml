@@ -1,0 +1,20 @@
+﻿<Window x:Class="DeCryptoWPF.SendFriendRequest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeCryptoWPF"
+        xmlns:p="clr-namespace:DeCryptoWPF.Properties"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="SendFriendRequest" Height="450" Width="800">
+    <Viewbox Stretch="Fill" StretchDirection="Both">
+        <Grid Width="1000" Height="600" Background="Black">
+            <Label x:Name="Label_AccountInformation_AccountInformation" Content="Ingresa el NickName" HorizontalAlignment="Left" Margin="303,75,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="42" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+            <Button x:Name="Button_SendFriendRequest_SendRequest" Content="Send" HorizontalAlignment="Left" Margin="750,469,0,0" VerticalAlignment="Top" Background="#FF33CC00" BorderBrush="{x:Null}" FontSize="36" FontFamily="Arial Rounded MT Bold" Foreground="White" Height="76" Width="164" Click="Button_SendFriendRequest_SendRequest_Click"/>
+            <Button x:Name="Button_SendFriendRequest_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="90,469,0,0" VerticalAlignment="Top" Background="#FFFF6666" BorderBrush="{x:Null}" FontSize="36" FontFamily="Arial Rounded MT Bold" Foreground="White" Height="76" Width="164" Click="Button_SendFriendRequest_Cancel_Click"/>
+            <TextBox x:Name="TextBox_SendFriendRequest_NickName" HorizontalAlignment="Left" Margin="172,0,0,0" VerticalAlignment="Center" Width="640" Height="106" FontSize="72" TextAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+    </Viewbox>
+</Window>

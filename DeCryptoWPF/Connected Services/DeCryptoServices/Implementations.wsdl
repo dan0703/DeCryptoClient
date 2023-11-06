@@ -172,6 +172,18 @@
   <wsdl:message name="IPlayerServices_RegisterPlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterPlayerResponse" />
   </wsdl:message>
+  <wsdl:message name="IPlayerServices_GetSimilarsNickNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSimilarsNickNames" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerServices_GetSimilarsNickNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSimilarsNickNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerServices_ExistNickname_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistNickname" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerServices_ExistNickname_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistNicknameResponse" />
+  </wsdl:message>
   <wsdl:message name="IJoinToGame_CreateRoom_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateRoom" />
   </wsdl:message>
@@ -217,6 +229,21 @@
   <wsdl:message name="IJoinToGame_IsFullRoom_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsFullRoomResponse" />
   </wsdl:message>
+  <wsdl:message name="IJoinToGame_SendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_GetFriendList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendList" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_GetFriendList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_AcceptFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_AcceptFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequestResponse" />
+  </wsdl:message>
   <wsdl:message name="IJoinToGame_RecivePlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecivePlayers" />
   </wsdl:message>
@@ -234,6 +261,12 @@
   </wsdl:message>
   <wsdl:message name="IJoinToGame_ReciveRedTeam_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveRedTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_ReciveFriendRequest_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_ReciveFriendRequest_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveFriendRequestResponse" />
   </wsdl:message>
   <wsdl:message name="IChatMessage_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
@@ -288,6 +321,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerServices/RegisterPlayer" message="tns:IPlayerServices_RegisterPlayer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerServices/RegisterPlayerResponse" message="tns:IPlayerServices_RegisterPlayer_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetSimilarsNickNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerServices/GetSimilarsNickNames" message="tns:IPlayerServices_GetSimilarsNickNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerServices/GetSimilarsNickNamesResponse" message="tns:IPlayerServices_GetSimilarsNickNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistNickname">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerServices/ExistNickname" message="tns:IPlayerServices_ExistNickname_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerServices/ExistNicknameResponse" message="tns:IPlayerServices_ExistNickname_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IJoinToGame">
     <wsdl:operation name="CreateRoom">
@@ -323,6 +364,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoom" message="tns:IJoinToGame_IsFullRoom_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoomResponse" message="tns:IJoinToGame_IsFullRoom_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/SendFriendRequest" message="tns:IJoinToGame_SendFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/GetFriendList" message="tns:IJoinToGame_GetFriendList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/GetFriendListResponse" message="tns:IJoinToGame_GetFriendList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest" message="tns:IJoinToGame_AcceptFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/AcceptFriendRequestResponse" message="tns:IJoinToGame_AcceptFriendRequest_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayers" message="tns:IJoinToGame_RecivePlayers_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayersResponse" message="tns:IJoinToGame_RecivePlayers_InputCallbackMessage" />
@@ -334,6 +386,10 @@
     <wsdl:operation name="ReciveRedTeam">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeam" message="tns:IJoinToGame_ReciveRedTeam_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeamResponse" message="tns:IJoinToGame_ReciveRedTeam_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveFriendRequest">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveFriendRequest" message="tns:IJoinToGame_ReciveFriendRequest_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveFriendRequestResponse" message="tns:IJoinToGame_ReciveFriendRequest_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatMessage">
@@ -431,6 +487,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSimilarsNickNames">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerServices/GetSimilarsNickNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistNickname">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerServices/ExistNickname" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IJoinToGame" type="tns:IJoinToGame">
     <wsp:PolicyReference URI="#NetTcpBinding_IJoinToGame_policy" />
@@ -507,6 +581,30 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/SendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendList">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/GetFriendList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/AcceptFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/RecivePlayers" style="document" />
       <wsdl:input>
@@ -527,6 +625,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReciveRedTeam">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/ReciveRedTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/ReciveFriendRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -575,7 +682,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/AccountService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -584,7 +691,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/PlayerService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -593,7 +700,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JoinToGameService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -602,7 +709,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatMessageService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-MLLF0SKS\Sujey</Upn>
+          <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
