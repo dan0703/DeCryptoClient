@@ -43,7 +43,14 @@ namespace DeCryptoWPF
             {
                 if (playerServicesClient.ExistNickname(TextBox_SendFriendRequest_NickName.Text))
                 {
-                    joinToGameClient.SendFriendRequest(account.nickname, TextBox_SendFriendRequest_NickName.Text);
+                    if(TextBox_SendFriendRequest_NickName.Text != account.nickname)
+                    {
+                        joinToGameClient.SendFriendRequest(account.nickname, TextBox_SendFriendRequest_NickName.Text);
+                    }
+                    else
+                    {
+                        
+                    }
                 }
                 else
                 {

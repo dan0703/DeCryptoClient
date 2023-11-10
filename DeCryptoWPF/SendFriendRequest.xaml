@@ -15,6 +15,7 @@
             <Button x:Name="Button_SendFriendRequest_SendRequest" Content="Send" HorizontalAlignment="Left" Margin="750,469,0,0" VerticalAlignment="Top" Background="#FF33CC00" BorderBrush="{x:Null}" FontSize="36" FontFamily="Arial Rounded MT Bold" Foreground="White" Height="76" Width="164" Click="Button_SendFriendRequest_SendRequest_Click"/>
             <Button x:Name="Button_SendFriendRequest_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="90,469,0,0" VerticalAlignment="Top" Background="#FFFF6666" BorderBrush="{x:Null}" FontSize="36" FontFamily="Arial Rounded MT Bold" Foreground="White" Height="76" Width="164" Click="Button_SendFriendRequest_Cancel_Click"/>
             <TextBox x:Name="TextBox_SendFriendRequest_NickName" HorizontalAlignment="Left" Margin="172,0,0,0" VerticalAlignment="Center" Width="640" Height="106" FontSize="72" TextAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Label_SendFriendRequest_ErrorMessage" Content="" HorizontalAlignment="Left" Margin="216,378,0,0" VerticalAlignment="Top" Width="547" FontSize="22" Foreground="#FFDE1010" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" HorizontalContentAlignment="Center"/>
         </Grid>
     </Viewbox>
 </Window>
