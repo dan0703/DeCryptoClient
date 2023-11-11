@@ -1,0 +1,22 @@
+﻿<Window x:Class="DeCryptoWPF.ReportPlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeCryptoWPF"
+        xmlns:p ="clr-namespace:DeCryptoWPF.Properties"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="ReportPlayer" Height="350" Width="500">
+    <Viewbox Stretch="Fill" StretchDirection="Both">
+        <Grid Width="500" Height="350" Background="Black">
+            <Label x:Name="Label_ReporPlayer_ReporPlayer" Content="{x:Static p:Resources.Label_ReportPlayer_ReportPlayer}" HorizontalAlignment="Left" Margin="90,53,0,0" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Foreground="White" Width="310"/>
+            <Label x:Name="Label_ReporPlayer_SelectPlayer" Content="{x:Static p:Resources.Label_ReportPlayer_SelectPlayer}" HorizontalAlignment="Left" Margin="115,115,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" Foreground="White" Width="260"/>
+            <ComboBox x:Name="ComboBox_ReporPlayer_SelectPlayer" HorizontalAlignment="Left" Margin="95,175,0,0" VerticalAlignment="Top" Width="300" Height="37"/>
+            <Button x:Name="Button_ConfirmationButtons_Save" Content="{x:Static p:Resources.Button_ConfirmationButtons_Save}" HorizontalAlignment="Left" Margin="95,244,0,0" VerticalAlignment="Top" Height="46" Width="135" Foreground="White" Background="#FF2966FB" FontSize="22" Click="Button_Confirmations_Save_Click" FontWeight="Bold" RenderTransformOrigin="0.283,0.504"/>
+            <Button x:Name="Button_ConfirmationButtons_Cancel" Content="{x:Static p:Resources.Button_ConfirmationButtons_Cancel}" HorizontalAlignment="Left" Margin="265,244,0,0" VerticalAlignment="Top" Height="46" Width="130" Foreground="Black" Background="DimGray" FontSize="22" Click="Button_Confirmations_Cancel_Click" FontWeight="Bold" RenderTransformOrigin="0.283,0.504"/>
+        </Grid>
+    </Viewbox>
+
+</Window>

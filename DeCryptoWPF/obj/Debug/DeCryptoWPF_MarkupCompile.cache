@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\App.xaml
-13-497117987
+14-609575188
 
-231194394761
+24-486928754
 18-734377935
-AccountInformation.xaml;ChangePassword.xaml;CodeWindow.xaml;EmailWindow.xaml;GameRoom.xaml;GameSettings.xaml;InGame.xaml;MenuGame.xaml;RecoverPassword.xaml;Register.xaml;SendFriendRequest.xaml;SignIn.xaml;VerifyEmail.xaml;
+AccountInformation.xaml;ChangePassword.xaml;CodeWindow.xaml;EmailWindow.xaml;GameRoom.xaml;GameSettings.xaml;InGame.xaml;MenuGame.xaml;RecoverPassword.xaml;Register.xaml;ReportPlayer.xaml;SendFriendRequest.xaml;SignIn.xaml;VerifyEmail.xaml;
 
 False
 

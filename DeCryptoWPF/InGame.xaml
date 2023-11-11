@@ -9,11 +9,23 @@
         WindowState="Maximized"
         Title="InGame" Height="1080" Width="1920">
 
+    <Window.Resources>
+        <Style x:Key="MouseOverHand" TargetType="Image">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <Viewbox Stretch="Fill" StretchDirection="Both">
         <Grid Width="1920" Height="1080" Background="Black">
-            
-            <ScrollViewer>
-                <StackPanel x:Name="StackPanel_InGame_GameBoard" Height="1080">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="StackPanel_InGame_GameBoard" Height="1200">
+                    <Image x:Name="Image_InGame_ReportPlayer" Margin= "1700,56, -10,-100 " Height="70" Width="111" Source="/Resources/buttonReportPlayer.png" ToolTip="Reportar jugador" MouseLeftButtonDown="Image_InGame_ReportPlayer_MouseLeftButtonDown" Style="{StaticResource MouseOverHand}">
+                    </Image>
+
                     <Label x:Name="Label_InGame_Round" Content="Round #" HorizontalAlignment="Left" Margin="789,87,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Foreground="White"/>
                     <TextBlock x:Name="TextBlock_InGame_NumberRound" HorizontalAlignment="Left" Margin="1035,-90,0,0" TextWrapping="Wrap" Text="0" FontSize="60" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" Height="72" Width="90"/>
                     <Label x:Name="Label_InGame_RedTeam" Content="{x:Static p:Resources.Label_InGame_RedTeam}" HorizontalAlignment="Left" Margin="429,19,0,0" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Foreground="Crimson"/>
@@ -65,30 +77,31 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="Label_InGame_GiveClueForWord1" Content="{x:Static p:Resources.Label_InGame_GiveClueFor}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Center" Margin="80,21,381,335" />
-                            <Label x:Name="Label_InGame_GiveClueForWord2" Content="{x:Static p:Resources.Label_InGame_GiveClueFor}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Center" Margin="80,113,381,242" />
-                            <Label x:Name="Label_InGame_GiveClueForWord3" Content="{x:Static p:Resources.Label_InGame_GiveClueFor}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Center" Margin="80,201,381,155" />
+                            <Label x:Name="Label_InGame_GiveClueForWord1" Content="{x:Static p:Resources.Label_InGame_GiveClueFor}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Left" Margin="65,21,1486,335" />
+                            <Label x:Name="Label_InGame_GiveClueForWord2" Content="{x:Static p:Resources.Label_InGame_GiveClueFor}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Left" Margin="58,113,1486,242" RenderTransformOrigin="0.381,0.451" />
+                            <Label x:Name="Label_InGame_GiveClueForWord3" Content="{x:Static p:Resources.Label_InGame_GiveClueFor}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Left" Margin="63,201,1486,160" />
 
-                            <TextBox x:Name="TextBox_InGame_ClueForWord1" TextWrapping="Wrap" Margin="990,21,-1088,335" TextChanged="TextBox_InGame_ClueForWord1_TextChanged"/>
-                            <TextBox x:Name="TextBox_InGame_ClueForWord2" TextWrapping="Wrap" Margin="990,204,-1088,155"/>
-                            <TextBox x:Name="TextBox_InGame_ClueForWord3" TextWrapping="Wrap" Margin="990,113,-1088,242"/>
+                            <TextBox x:Name="TextBox_InGame_ClueForWord1" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,21,0,335" Width="856" FontSize="35"/>
+                            <TextBox x:Name="TextBox_InGame_ClueForWord2" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,204,0,155" Width="856" FontSize="35"/>
+                            <TextBox x:Name="TextBox_InGame_ClueForWord3" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,113,0,242" Width="856" FontSize="35"/>
 
-                            <TextBlock x:Name="TextBlock_InGame_Word1" Margin="400,26,-58,0" TextWrapping="Wrap" Text="Word1" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
-                            <TextBlock x:Name="TextBlock_InGame_Word2" Margin="400,119,-58,0" TextWrapping="Wrap" Text="Word2" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
-                            <TextBlock x:Name="TextBlock_InGame_Word3" Margin="400,206,-58,0" TextWrapping="Wrap" Text="Word3" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
+                            <TextBlock x:Name="TextBlock_InGame_Word1" Margin="382,29,0,0" TextWrapping="Wrap" Text="Word1" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
+                            <TextBlock x:Name="TextBlock_InGame_Word2" Margin="382,118,0,0" TextWrapping="Wrap" Text="Word2" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
+                            <TextBlock x:Name="TextBlock_InGame_Word3" Margin="382,206,0,0" TextWrapping="Wrap" Text="Word3" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
 
-                            <Button x:Name="Button_InGame_SaveClues" Content="{x:Static p:Resources.Button_ConfirmationButtons_SaveClues}" Margin="1608,297,-1088,0" VerticalAlignment="Top" Height="76" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_SaveClues_Click"/>
+                            <Button x:Name="Button_InGame_SaveClues" Content="{x:Static p:Resources.Button_ConfirmationButtons_SaveClues}" Margin="1565,296,6,0" VerticalAlignment="Top" Height="76" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_SaveClues_Click"/>
                         </Grid>
                     </StackPanel>
 
                     <StackPanel x:Name="StackPanel_InGame_DecryptClues" Margin="0,-649,0,0" Height="388" Visibility="Collapsed">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="Label_InGame_SelectWordForClue1" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Center" Margin="80,26,990,330" />
-                            <Label x:Name="Label_InGame_SelectWordForClue2" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Center" Margin="80,113,990,242" />
-                            <Label x:Name="Label_InGame_SelectWordForClue3" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Center" Margin="80,201,990,155" />
+
+                            <Label x:Name="Label_InGame_SelectWordForClue1" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" Margin="62,26,0,330" />
+                            <Label x:Name="Label_InGame_SelectWordForClue2" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" Margin="62,114,0,241" />
+                            <Label x:Name="Label_InGame_SelectWordForClue3" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" Margin="62,201,0,156" />
 
                             <ComboBox x:Name="ComboBox_InGame_Clue1" HorizontalAlignment="Left" Margin="1365,35,0,0" VerticalAlignment="Top" Width="480" Height="48" FontSize="20">
                                 <ComboBoxItem Content="1"/>
@@ -110,15 +123,12 @@
                                 <ComboBoxItem Content="3"/>
                                 <ComboBoxItem Content="4"/>
                             </ComboBox>
-
-                            <TextBlock x:Name="TextBlock_InGame_SelectWord1" Margin="920,31,813,0" TextWrapping="Wrap" Text="Clue1" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
-                            <TextBlock x:Name="TextBlock_InGame_SelectWord2" Margin="920,118,839,0" TextWrapping="Wrap" Text="Clue2" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
-                            <TextBlock x:Name="TextBlock_InGame_SelectWord3" Margin="920,206,848,0" TextWrapping="Wrap" Text="Clue3" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
-
-                            <Button x:Name="Button_InGame_Save" Content="{x:Static p:Resources.Button_ConfirmationButtons_Save}" Margin="1608,297,43,0" VerticalAlignment="Top" Height="76" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_Save_Click"/>
+                            <TextBlock x:Name="TextBlock_InGame_SelectWord1" Margin="920,31,0,0" TextWrapping="Wrap" Text="Clue1" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40"/>
+                            <TextBlock x:Name="TextBlock_InGame_SelectWord2" Margin="920,118,0,0" TextWrapping="Wrap" Text="Clue2" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40" />
+                            <TextBlock x:Name="TextBlock_InGame_SelectWord3" Margin="920,206,0,0" TextWrapping="Wrap" Text="Clue3" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40"/>
+                            <Button x:Name="Button_InGame_Save" Content="{x:Static p:Resources.Button_ConfirmationButtons_Save}" Margin="1651,291,0,0" VerticalAlignment="Top" Height="76" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_Save_Click"/>
                         </Grid>
                     </StackPanel>
-
                 </StackPanel>
             </ScrollViewer>
         </Grid>

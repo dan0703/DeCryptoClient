@@ -24,11 +24,6 @@ namespace DeCryptoWPF
             InitializeComponent();
         }
 
-        private void TextBox_InGame_ClueForWord1_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Button_InGame_GiveClues_Click(object sender, RoutedEventArgs e)
         {
             if (StackPanel_InGame_GiveClues.Visibility == Visibility.Collapsed) {
@@ -53,6 +48,14 @@ namespace DeCryptoWPF
             {
                 StackPanel_InGame_DecryptClues.Visibility= Visibility.Visible;
             }
+        }
+
+        private void Image_InGame_ReportPlayer_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ReportPlayer reportPlayer = new ReportPlayer();
+            this.Effect = new System.Windows.Media.Effects.BlurEffect();
+            reportPlayer.ShowDialog();
+            this.Effect = null;
         }
     }
 }
