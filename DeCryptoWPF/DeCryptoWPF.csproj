@@ -106,6 +106,9 @@
     <Compile Include="GameSettings.xaml.cs">
       <DependentUpon>GameSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InGame.xaml.cs">
+      <DependentUpon>InGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Logic\Complements.cs" />
     <Compile Include="MenuGame.xaml.cs">
       <DependentUpon>MenuGame.xaml</DependentUpon>
@@ -168,6 +171,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="InGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MenuGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

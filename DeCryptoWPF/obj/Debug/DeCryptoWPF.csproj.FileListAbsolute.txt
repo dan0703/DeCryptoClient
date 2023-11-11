@@ -191,3 +191,7 @@ C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\EmailWindow.baml
 C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\RecoverPassword.baml
 C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\SendFriendRequest.g.cs
 C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\SendFriendRequest.baml
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\InGame.g.cs
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\SendFriendRequest.g.cs
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\InGame.baml
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\SendFriendRequest.baml
