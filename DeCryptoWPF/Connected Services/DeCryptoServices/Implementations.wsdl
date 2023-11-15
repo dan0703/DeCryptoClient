@@ -241,8 +241,8 @@
   <wsdl:message name="IJoinToGame_AcceptFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
   </wsdl:message>
-  <wsdl:message name="IJoinToGame_AcceptFriendRequest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AcceptFriendRequestResponse" />
+  <wsdl:message name="IJoinToGame_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
   </wsdl:message>
   <wsdl:message name="IJoinToGame_RecivePlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecivePlayers" />
@@ -267,6 +267,18 @@
   </wsdl:message>
   <wsdl:message name="IJoinToGame_ReciveFriendRequest_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_SetFriendList_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetFriendList" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_SetFriendList_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetFriendListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_GoToGameWindow_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GoToGameWindow" />
+  </wsdl:message>
+  <wsdl:message name="IJoinToGame_GoToGameWindow_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GoToGameWindowResponse" />
   </wsdl:message>
   <wsdl:message name="IChatMessage_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
@@ -373,7 +385,9 @@
     </wsdl:operation>
     <wsdl:operation name="AcceptFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest" message="tns:IJoinToGame_AcceptFriendRequest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/AcceptFriendRequestResponse" message="tns:IJoinToGame_AcceptFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/StartGame" message="tns:IJoinToGame_StartGame_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/RecivePlayers" message="tns:IJoinToGame_RecivePlayers_OutputCallbackMessage" />
@@ -390,6 +404,14 @@
     <wsdl:operation name="ReciveFriendRequest">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveFriendRequest" message="tns:IJoinToGame_ReciveFriendRequest_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveFriendRequestResponse" message="tns:IJoinToGame_ReciveFriendRequest_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetFriendList">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/SetFriendList" message="tns:IJoinToGame_SetFriendList_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/SetFriendListResponse" message="tns:IJoinToGame_SetFriendList_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoToGameWindow">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/GoToGameWindow" message="tns:IJoinToGame_GoToGameWindow_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/GoToGameWindowResponse" message="tns:IJoinToGame_GoToGameWindow_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatMessage">
@@ -601,9 +623,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/StartGame" style="document" />
+      <wsdl:input>
         <soap12:body use="literal" />
-      </wsdl:output>
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="RecivePlayers">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/RecivePlayers" style="document" />
@@ -634,6 +659,24 @@
     </wsdl:operation>
     <wsdl:operation name="ReciveFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/ReciveFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFriendList">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/SetFriendList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoToGameWindow">
+      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/GoToGameWindow" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

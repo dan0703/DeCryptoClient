@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DeCryptoWPF
 {
@@ -19,8 +20,8 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class GameRoom : Window, IJoinToGameCallback, IChatMessageCallback
     {
-        private readonly JoinToGameClient joinToGameClient;
-        private readonly ChatMessageClient chatMessageClient;
+        public readonly JoinToGameClient joinToGameClient;
+        public readonly ChatMessageClient chatMessageClient;
         private int code;
         private Account account;
         private BlueTeam blueTeam;
@@ -38,21 +39,32 @@ namespace DeCryptoWPF
             chatMessageClient = new ChatMessageClient(new InstanceContext(this));
             InitializeComponent();
             images = new Image[] { Image_GameRoom_Player1, Image_GameRoom_Player2, Image_GameRoom_Player3, Image_GameRoom_Player4 };
-            Closing += GameRoom_Closing;
+            Closing += GameRoom_ClosingAsync;
         }
 
-        private void GameRoom_Closing(object sender, CancelEventArgs e)
-        {
-            joinToGameClient.LeaveGame(account.nickname);
-            joinToGameClient.LeaveRoom(account.nickname, code, blueTeam, redTeam);
-            joinToGameClient.Close();
-            chatMessageClient.LeaveChat(account.nickname, code);
+        private bool isNavegatingToGame = false;
 
+        private  void GameRoom_ClosingAsync(object sender, CancelEventArgs e)
+        {            
+            if (!isNavegatingToGame)
+            {
+                joinToGameClient.LeaveGame(account.nickname);
+                joinToGameClient.LeaveRoom(account.nickname, code, blueTeam, redTeam);                
+                chatMessageClient.LeaveChat(account.nickname, code);                
+            }            
+        }
+
+        public void GoToGameWindow()
+        {
+            isNavegatingToGame = true;
+            InGame inGameWindow = new InGame();
+            inGameWindow.ConfigurateWindow(this, account, code);
+            Close();
+            inGameWindow.Show();                       
         }
 
         public void ConfigurateWindow(Account account, int code)
         {
-
             if (code >1)
             {
                 this.code = code;
@@ -176,8 +188,8 @@ namespace DeCryptoWPF
         }
 
         private void Button_GameRoom_StartGame_Click(object sender, RoutedEventArgs e)
-        {
-
+        {            
+            joinToGameClient.StartGame(code);
         }
 
         private void Button_GameRoom_SendCode_Click(object sender, RoutedEventArgs e)
@@ -325,6 +337,16 @@ namespace DeCryptoWPF
         }
 
         public void ReciveFriendRequest(string senderNickname)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReciveFriendRequest(string senderNickname, string[] friendRequestList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetFriendList(string[] friendList)
         {
             throw new NotImplementedException();
         }

@@ -281,10 +281,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AcceptFriendRequestResponse">
+  <xs:element name="StartGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AcceptFriendRequestResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -328,6 +328,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendRequestList" nillable="true" type="q17:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -336,10 +337,32 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="SetFriendList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendList" nillable="true" type="q18:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetFriendListResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoToGameWindow">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoToGameWindowResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SendMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="chatMessage" nillable="true" type="q17:ChatMessage" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="chatMessage" nillable="true" type="q19:ChatMessage" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -368,7 +391,7 @@
   <xs:element name="ReceiveChatMessages">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="messages" nillable="true" type="q18:ArrayOfChatMessage" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="messages" nillable="true" type="q20:ArrayOfChatMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -86,14 +86,29 @@ namespace DeCryptoWPF
 
         public void ReciveFriendRequest(string senderNickname)
         {
-            MessageBoxResult result = MessageBox.Show(senderNickname + " Te ha enviado una solicitud de amistad \n ¿Deseas aceptarla?", "FriendRequest", MessageBoxButton.YesNoCancel);
+            /*MessageBoxResult result = MessageBox.Show(senderNickname + " Te ha enviado una solicitud de amistad \n ¿Deseas aceptarla?", "FriendRequest", MessageBoxButton.YesNoCancel);
             if (result == MessageBoxResult.Yes)
             {
                 if(!joinToGameClient.AcceptFriendRequest(senderNickname, account.nickname))
                 {
                     MessageBox.Show("Ha ocurrido un error, vuelve a intentarlo");
                 }
-            }
+            }*/
+        }
+
+        public void ReciveFriendRequest(string senderNickname, string[] friendRequestList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetFriendList(string[] friendList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GoToGameWindow()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -722,11 +722,17 @@ namespace DeCryptoWPF.DeCryptoServices {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/GetFriendList", ReplyAction="http://tempuri.org/IJoinToGame/GetFriendListResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, byte[]>> GetFriendListAsync(string nickname);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest", ReplyAction="http://tempuri.org/IJoinToGame/AcceptFriendRequestResponse")]
-        bool AcceptFriendRequest(string senderNickname, string recipientNickname);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest")]
+        void AcceptFriendRequest(string senderNickname, string recipientNickname);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest", ReplyAction="http://tempuri.org/IJoinToGame/AcceptFriendRequestResponse")]
-        System.Threading.Tasks.Task<bool> AcceptFriendRequestAsync(string senderNickname, string recipientNickname);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest")]
+        System.Threading.Tasks.Task AcceptFriendRequestAsync(string senderNickname, string recipientNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/StartGame")]
+        void StartGame(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(int code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -742,7 +748,13 @@ namespace DeCryptoWPF.DeCryptoServices {
         void ReciveRedTeam(DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/ReciveFriendRequest", ReplyAction="http://tempuri.org/IJoinToGame/ReciveFriendRequestResponse")]
-        void ReciveFriendRequest(string senderNickname);
+        void ReciveFriendRequest(string senderNickname, string[] friendRequestList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/SetFriendList", ReplyAction="http://tempuri.org/IJoinToGame/SetFriendListResponse")]
+        void SetFriendList(string[] friendList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/GoToGameWindow", ReplyAction="http://tempuri.org/IJoinToGame/GoToGameWindowResponse")]
+        void GoToGameWindow();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -861,12 +873,20 @@ namespace DeCryptoWPF.DeCryptoServices {
             return base.Channel.GetFriendListAsync(nickname);
         }
         
-        public bool AcceptFriendRequest(string senderNickname, string recipientNickname) {
-            return base.Channel.AcceptFriendRequest(senderNickname, recipientNickname);
+        public void AcceptFriendRequest(string senderNickname, string recipientNickname) {
+            base.Channel.AcceptFriendRequest(senderNickname, recipientNickname);
         }
         
-        public System.Threading.Tasks.Task<bool> AcceptFriendRequestAsync(string senderNickname, string recipientNickname) {
+        public System.Threading.Tasks.Task AcceptFriendRequestAsync(string senderNickname, string recipientNickname) {
             return base.Channel.AcceptFriendRequestAsync(senderNickname, recipientNickname);
+        }
+        
+        public void StartGame(int code) {
+            base.Channel.StartGame(code);
+        }
+        
+        public System.Threading.Tasks.Task StartGameAsync(int code) {
+            return base.Channel.StartGameAsync(code);
         }
     }
     

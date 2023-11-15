@@ -197,3 +197,7 @@ C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\InGame.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\SendFriendRequest.baml
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\ReportPlayer.g.cs
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\ReportPlayer.baml
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\InGame.g.cs
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\ReportPlayer.g.cs
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\InGame.baml
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\ReportPlayer.baml

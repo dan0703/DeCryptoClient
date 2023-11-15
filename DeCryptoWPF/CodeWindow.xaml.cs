@@ -82,5 +82,20 @@ namespace DeCryptoWPF
         {
             throw new NotImplementedException();
         }
+
+        public void ReciveFriendRequest(string senderNickname, string[] friendRequestList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetFriendList(string[] friendList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GoToGameWindow()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

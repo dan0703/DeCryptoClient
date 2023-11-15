@@ -39,7 +39,7 @@
                 <ComboBoxItem Content="{x:Static p:Resources.ComboBoxItem_MainWindow_English}"/>
             </ComboBox>
 
-            <StackPanel x:Name="StackPanel_MenuGame_FriendList" Margin="20,160,1407,30" Background="#4A5061" Visibility="Visible" >
+            <StackPanel x:Name="StackPanel_MenuGame_FriendList" Margin="20,160,1407,30" Background="#4A5061" Visibility="Hidden" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
