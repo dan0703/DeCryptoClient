@@ -1,8 +1,10 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,9 +17,17 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class App : Application
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(App));
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            log4net.Config.XmlConfigurator.Configure();
+            log.Info("        =============  Started Logging  =============        ");
+            base.OnStartup(e);
+        }
+
         App()
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es-MX");
         }
 
     }

@@ -196,6 +196,15 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Reportar.
+        /// </summary>
+        public static string Button_ReportPlayer_Report {
+            get {
+                return ResourceManager.GetString("Button_ReportPlayer_Report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Entrar.
         /// </summary>
         public static string Button_SignIn_Enter {

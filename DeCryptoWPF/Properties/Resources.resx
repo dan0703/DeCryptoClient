@@ -348,4 +348,7 @@
   <data name="Label_RecoverPassword_EnterEmail" xml:space="preserve">
     <value>Ingresa tu correo electrónico</value>
   </data>
+  <data name="Button_ReportPlayer_Report" xml:space="preserve">
+    <value>Reportar</value>
+  </data>
 </root>

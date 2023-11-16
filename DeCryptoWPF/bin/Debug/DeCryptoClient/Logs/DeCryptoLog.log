@@ -1,0 +1,27 @@
+2023-11-15 21:06:56,057 [1] INFO DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-11-15 21:07:07,628 [1] ERROR DeCryptoWPF.SignIn - System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://localhost:8081/AccountService. The connection attempt lasted for a time span of 00:00:04.0915516. TCP error code 10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081.  ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   at System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   at System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   at System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   at DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) in C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:line 532
+   at DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) in C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\SignIn.xaml.cs:line 55

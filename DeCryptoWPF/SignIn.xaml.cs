@@ -16,6 +16,7 @@ using System.ServiceModel;
 using DeCryptoWPF.DeCryptoServices;
 using DeCryptoWPF.Logic;
 using System.ServiceModel.Channels;
+using log4net;
 
 namespace DeCryptoWPF
 {
@@ -25,8 +26,11 @@ namespace DeCryptoWPF
     public partial class SignIn : Window
     {
         AccountServicesClient accountServicesClient;
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
         public SignIn()
         {
+            log4net.Config.XmlConfigurator.Configure();
             InitializeComponent();
             accountServicesClient = new AccountServicesClient();
         }
@@ -62,6 +66,7 @@ namespace DeCryptoWPF
                     }
                 } catch (Exception ex)
                 {
+                    log.Error(ex);
                     MessageBox.Show("El servicio no se encuentra disponible, por favor intentelo mas tarde");
                 }
 
