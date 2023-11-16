@@ -1,5 +1,6 @@
 ﻿using DeCryptoWPF.DeCryptoServices;
 using DeCryptoWPF.Logic;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class AccountInformation : Window
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         string profilePicturePathCopy = string.Empty;
         public AccountInformation()
         {
@@ -61,10 +64,20 @@ namespace DeCryptoWPF
                     File.Copy(profilePicturePath, profilePicturePathCopy, true);
                     Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePathCopy));
                 }
-                catch (Exception)
+                catch (IOException ioException)
                 {
+                    log.Error(ioException);
                     Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
-                    
+                }
+                catch (UnauthorizedAccessException unauthorizedAccessException)
+                {
+                    log.Error(unauthorizedAccessException);
+                    Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
+                }
+                catch (Exception exception)
+                {
+                    log.Error(exception);
+                    Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
                 }
             }
         }

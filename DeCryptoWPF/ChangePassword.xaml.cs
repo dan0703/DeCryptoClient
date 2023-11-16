@@ -1,5 +1,6 @@
 ﻿using DeCryptoWPF.DeCryptoServices;
 using DeCryptoWPF.Logic;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class ChangePassword : Window
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AccountServicesClient accountServicesClient;
         private Account account;
         public ChangePassword()
@@ -57,8 +59,9 @@ namespace DeCryptoWPF
                         {
                             MessageBox.Show("Error, inténtelo de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                    } catch (Exception ex)
+                    } catch (Exception exception)
                     {
+                        log.Error(exception);
                         MessageBox.Show("El servicio no se encuentra disponible");
                     }
                 }

@@ -1,6 +1,7 @@
 ﻿using DeCrypto.Domain;
 using DeCryptoWPF.DeCryptoServices;
 using DeCryptoWPF.Logic;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class RecoverPassword : Window
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         AccountServicesClient accountServicesClient;
         DeCryptoServices.Account account;
         int code = 0;
@@ -37,7 +39,6 @@ namespace DeCryptoWPF
             this.account = account;
             this.code = code;
         }
-
         private void TextBox_RecoverPassword_EnterCode_TextChanged(object sender, TextChangedEventArgs e)
         {
             
@@ -69,8 +70,9 @@ namespace DeCryptoWPF
                             MessageBox.Show("Error, inténtelo de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception exception)
                     {
+                        log.Error(exception);
                         MessageBox.Show("El servicio no se encuentra disponible");
                     }
                 }
@@ -104,8 +106,9 @@ namespace DeCryptoWPF
             var lowerBound = 1000;
             var upperBound = 9999;
             code = random.Next(lowerBound, upperBound);
-            accountServicesClient.SendToken(account.email, "Código de verificación", "Por favor, ingresa este código para" +
-                "verificar tu cuenta", code);
+            MessageBox.Show(code.ToString());
+            //accountServicesClient.SendToken(account.email, "Código de verificación", "Por favor, ingresa este código para" +
+             //   "verificar tu cuenta", code);
         }
 
         private string ValidateData()
