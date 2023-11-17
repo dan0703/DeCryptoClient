@@ -1,7 +1,9 @@
 ﻿using DeCryptoWPF.DeCryptoServices;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +22,10 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class EmailWindow : Window
     {
-        AccountServicesClient accountServicesClient;
-        Account account;
-        int code = 0;
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private AccountServicesClient accountServicesClient;
+        private Account account;
+        private int code = 0;
 
         public EmailWindow()
         {
@@ -34,24 +37,42 @@ namespace DeCryptoWPF
         {
             if (TextBox_EmailWindow_Email.Text != "")
             {
-                if (accountServicesClient.ExistAccount(TextBox_EmailWindow_Email.Text))
+                try
                 {
-                    account = new Account()
+                    if (accountServicesClient.ExistAccount(TextBox_EmailWindow_Email.Text))
                     {
-                        email = TextBox_EmailWindow_Email.Text
-                    };
+                        account = new Account()
+                        {
+                            email = TextBox_EmailWindow_Email.Text
+                        };
 
-                    SendCode();
-                    MessageBox.Show("Se ha enviado un código a tu correo electrónico");
+                        SendCode();
+                        MessageBox.Show("Se ha enviado un código a tu correo electrónico");
 
-                    RecoverPassword recoverPassword = new RecoverPassword();
-                    recoverPassword.ConfigurateWindow(this.account, code);
-                    Close();
-                    recoverPassword.ShowDialog();
+                        RecoverPassword recoverPassword = new RecoverPassword();
+                        recoverPassword.ConfigurateWindow(this.account, code);
+                        Close();
+                        recoverPassword.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El correo no corresponde a alguna cuenta registrada");
+                    }
                 }
-                else
+                catch (CommunicationException ex)
                 {
-                    MessageBox.Show("El correo no corresponde a alguna cuenta registrada");
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
+                catch (TimeoutException ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
             }
             else
@@ -63,11 +84,6 @@ namespace DeCryptoWPF
         private void Button_Confirmations_Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void TextBox_EmailWindow_Email_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void SendCode()

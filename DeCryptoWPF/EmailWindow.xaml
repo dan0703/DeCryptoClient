@@ -14,7 +14,7 @@
         <Grid Width="500" Height="350" Background="Black">
             <Label x:Name="Label_RecoverPassword_RecoverPassword" Content="{x:Static p:Resources.Label_RecoverPassword_RecoverPassword}" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold"/>
             <Label x:Name="Label_RecoverPassword_EnterCode" Content="{x:Static p:Resources.Label_RecoverPassword_EnterEmail}" HorizontalAlignment="Left" Margin="78,121,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
-            <TextBox x:Name="TextBox_EmailWindow_Email" Margin="78,165,78,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Height="45" TextChanged="TextBox_EmailWindow_Email_TextChanged"/>
+            <TextBox x:Name="TextBox_EmailWindow_Email" Margin="78,165,78,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Height="45"/>
 
             <Button x:Name="Button_ConfirmationButtons_Accept" Content="{x:Static p:Resources.Button_ConfirmationButton_Accept}" HorizontalAlignment="Left" Margin="78,244,0,0" VerticalAlignment="Top" Height="46" Width="152" Foreground="White" Background="#FF2966FB" FontSize="22" Click="Button_Confirmations_Accept_Click" FontWeight="Bold" RenderTransformOrigin="0.283,0.504"/>
             <Button x:Name="Button_ConfirmationButtons_Cancel" Content="{x:Static p:Resources.Button_ConfirmationButtons_Cancel}" HorizontalAlignment="Left" Margin="270,244,0,0" VerticalAlignment="Top" Height="46" Width="152" Foreground="Black" Background="DimGray" FontSize="22" Click="Button_Confirmations_Cancel_Click" FontWeight="Bold" RenderTransformOrigin="0.283,0.504"/>

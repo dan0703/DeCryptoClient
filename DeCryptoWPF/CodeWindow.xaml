@@ -14,7 +14,7 @@
             <Label x:Name="Label_CodeWindow_EnterCode" Content="{x:Static p:Resources.Label_CodeWindow_EnterCode}" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="42" FontWeight="Bold"/>
             <Button x:Name="Button_CodeWindow_Join" Content="{x:Static p:Resources.Button_CodeWindow_Join}" HorizontalAlignment="Left" Margin="275,393,0,0" VerticalAlignment="Top" Height="69" Width="188" Foreground="White" Background="#FF2966FB" FontSize="30" FontWeight="Bold" Click="Button_CodeWindow_Join_Click"/>
             <Button x:Name="Button_Confirmations_Cancel" Content="{x:Static p:Resources.Button_ConfirmationButtons_Cancel}" HorizontalAlignment="Left" Margin="538,393,0,0" VerticalAlignment="Top" Height="69" Width="188" Foreground="Black" Background="DimGray" FontSize="30" FontWeight="Bold" Click="Button_Confirmations_Cancel_Click"/>
-            <TextBox x:Name="TextBox_CodeWindow_Code" HorizontalAlignment="Center" Margin="0,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Height="96" FontSize="50" TextChanged="TextBox_CodeWindow_Code_TextChanged"/>
+            <TextBox x:Name="TextBox_CodeWindow_Code" HorizontalAlignment="Center" Margin="0,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Height="96" FontSize="50"/>
         </Grid>
     </Viewbox>
 </Window>

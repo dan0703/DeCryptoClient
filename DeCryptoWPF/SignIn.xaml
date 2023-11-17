@@ -22,7 +22,7 @@
             </Border>
 
             <PasswordBox x:Name="PasswordBox_SignIn_Password" Margin="189,502,1280,540" FontSize="18"/>
-            <TextBox x:Name="TextBox_SignIn_Password" Margin="189,502,1280,540" FontSize="18" Visibility="Collapsed" TextChanged="TextBox_SignIn_Password_TextChanged" />
+            <TextBox x:Name="TextBox_SignIn_Password" Margin="189,502,1280,540" FontSize="18" Visibility="Collapsed" TextChanged="TextBox_SignIn_Password_TextChanged"/>
             
             <Label x:Name="Label_SignIn_DeCrypto" Content="DeCrypto" HorizontalAlignment="Left" Margin="1016,416,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="150" FontWeight="Bold"/>
             <Label x:Name="Label_SignIn_HelloAgain" Content="{x:Static p:Resources.Label_Register_CreateAccount}" HorizontalAlignment="Left" Margin="249,238,0,0" VerticalAlignment="Top" FontSize="43" FontWeight="Bold" Foreground="White"/>
@@ -31,7 +31,7 @@
             <Label x:Name="Label_SignIn_ForgotPassword" Content="{x:Static p:Resources.Label_SignIn_ForgotPassword}" HorizontalAlignment="Left" Margin="189,561,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="18" MouseDown="Label_SignIn_ForgotPassword_MouseDown"/>
             <Label x:Name="Label_SignIn_NeedAnAccount" Content="{x:Static p:Resources.Label_SignIn_NeedAccount}" HorizontalAlignment="Left" Margin="189,741,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="18"/>
             <Label x:Name="Label_SignIn_SignUp" Content="{x:Static p:Resources.Label_SignIn_Register}" HorizontalAlignment="Left" Margin="396,741,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="Bold" MouseDown="Label_SignIn_SignUp_MouseDown"/>
-            <TextBox x:Name="TextBox_SignIn_Email" HorizontalAlignment="Left" Margin="189,410,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="451" Height="38" FontSize="18" TextChanged="TextBox_SignIn_Email_TextChanged"/>
+            <TextBox x:Name="TextBox_SignIn_Email" HorizontalAlignment="Left" Margin="189,410,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="451" Height="38" FontSize="18"/>
 
             <Button x:Name="Button_SignIn_SignIn" Content="{x:Static p:Resources.Button_SignIn_Enter}" HorizontalAlignment="Left" Margin="189,627,0,0" VerticalAlignment="Top" Height="38" Width="451" Foreground="White" Background="#FF2966FB" FontSize="18" FontWeight="Bold" Click="Button_SignIn_SignIn_Click"/>
             <Button x:Name="Button_SignIn_SignInAsGuest" Content="{x:Static p:Resources.Button_SignIn_EnterAsGuess}" HorizontalAlignment="Left" Margin="189,688,0,0" VerticalAlignment="Top" Height="38" Width="451" Foreground="White" Background="#FF2966FB" FontSize="22" FontWeight="Bold" Click="Button_SignIn_SignInAsGuest_Click"/>

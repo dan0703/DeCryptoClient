@@ -5,6 +5,7 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,8 +25,8 @@ namespace DeCryptoWPF
     public partial class RecoverPassword : Window
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        AccountServicesClient accountServicesClient;
-        DeCryptoServices.Account account;
+        private AccountServicesClient accountServicesClient;
+        private DeCryptoServices.Account account;
         int code = 0;
 
         public RecoverPassword()
@@ -39,10 +40,6 @@ namespace DeCryptoWPF
             this.account = account;
             this.code = code;
         }
-        private void TextBox_RecoverPassword_EnterCode_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
 
         private void Button_RecoverPassword_SendAgain_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +49,7 @@ namespace DeCryptoWPF
 
         private void Button_Confirmations_Save_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsEmpty())
+            if (!IsTextBoxEmpty())
             {
                 string validationErrors = ValidateData();
                 if (string.IsNullOrEmpty(validationErrors))
@@ -70,9 +67,19 @@ namespace DeCryptoWPF
                             MessageBox.Show("Error, inténtelo de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
-                    catch (Exception exception)
+                    catch (CommunicationException ex)
                     {
-                        log.Error(exception);
+                        log.Error(ex);
+                        MessageBox.Show("El servicio no se encuentra disponible");
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        log.Error(ex);
+                        MessageBox.Show("El servicio no se encuentra disponible");
+                    } 
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
                         MessageBox.Show("El servicio no se encuentra disponible");
                     }
                 }
@@ -88,7 +95,7 @@ namespace DeCryptoWPF
             Close();
         }
 
-        private bool IsEmpty()
+        private bool IsTextBoxEmpty()
         {
             bool isEmpty = false;
             if ((PasswordBox_ChangePassword_NewPassword.Password == "") || (TextBox_RecoverPassword_EnterCode.Text == "") ||
@@ -106,9 +113,8 @@ namespace DeCryptoWPF
             var lowerBound = 1000;
             var upperBound = 9999;
             code = random.Next(lowerBound, upperBound);
-            MessageBox.Show(code.ToString());
-            //accountServicesClient.SendToken(account.email, "Código de verificación", "Por favor, ingresa este código para" +
-             //   "verificar tu cuenta", code);
+            accountServicesClient.SendToken(account.email, "Código de verificación", "Por favor, ingresa este código para" +
+                "verificar tu cuenta", code);
         }
 
         private string ValidateData()

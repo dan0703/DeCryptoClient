@@ -25,7 +25,7 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class SignIn : Window
     {
-        AccountServicesClient accountServicesClient;
+        private AccountServicesClient accountServicesClient;
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         public SignIn()
@@ -35,14 +35,9 @@ namespace DeCryptoWPF
             accountServicesClient = new AccountServicesClient();
         }
 
-        private void TextBox_SignIn_Email_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Button_SignIn_SignIn_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsEmpty())
+            if (!IsTextBoxEmpty())
             {
                 string passwordHashed = Complements.EncryptPassword(PasswordBox_SignIn_Password.Password);
                 Account account = new Account()
@@ -64,16 +59,26 @@ namespace DeCryptoWPF
                     {
                         MessageBox.Show("Credenciales incorrectas", "Login", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                } catch (Exception ex)
+                }
+                catch (CommunicationException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible, por favor intentelo mas tarde");
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
-
+                catch (TimeoutException ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
             }
         }
 
-        private bool IsEmpty()
+        private bool IsTextBoxEmpty()
         {
             bool isEmpty = false;
             if ((TextBox_SignIn_Email.Text == "") && (PasswordBox_SignIn_Password.Password == ""))
@@ -113,7 +118,6 @@ namespace DeCryptoWPF
             emailWindow.ShowDialog();
             this.Effect = null;
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

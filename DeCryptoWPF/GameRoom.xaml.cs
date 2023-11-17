@@ -12,6 +12,7 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 using System.Threading.Tasks;
+using log4net;
 
 namespace DeCryptoWPF
 {
@@ -20,14 +21,13 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class GameRoom : Window, IJoinToGameCallback, IChatMessageCallback
     {
-        public readonly JoinToGameClient joinToGameClient;
-        public readonly ChatMessageClient chatMessageClient;
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly JoinToGameClient joinToGameClient;
+        private readonly ChatMessageClient chatMessageClient;
         private int code;
         private Account account;
         private BlueTeam blueTeam;
         private RedTeam redTeam;
-        private readonly Image[] images;
-        private Image profileImage = new Image();
         private string profileImagePath = string.Empty;
 
         public GameRoom()
@@ -38,15 +38,14 @@ namespace DeCryptoWPF
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
             chatMessageClient = new ChatMessageClient(new InstanceContext(this));
             InitializeComponent();
-            images = new Image[] { Image_GameRoom_Player1, Image_GameRoom_Player2, Image_GameRoom_Player3, Image_GameRoom_Player4 };
             Closing += GameRoom_ClosingAsync;
         }
 
-        private bool isNavegatingToGame = false;
+        private bool isNavegatingToGameBoardWindow = false;
 
         private  void GameRoom_ClosingAsync(object sender, CancelEventArgs e)
         {            
-            if (!isNavegatingToGame)
+            if (!isNavegatingToGameBoardWindow)
             {
                 joinToGameClient.LeaveGame(account.nickname);
                 joinToGameClient.LeaveRoom(account.nickname, code, blueTeam, redTeam);                
@@ -56,7 +55,7 @@ namespace DeCryptoWPF
 
         public void GoToGameWindow()
         {
-            isNavegatingToGame = true;
+            isNavegatingToGameBoardWindow = true;
             InGame inGameWindow = new InGame();
             inGameWindow.ConfigurateWindow(this, account, code);
             Close();
@@ -65,22 +64,39 @@ namespace DeCryptoWPF
 
         public void ConfigurateWindow(Account account, int code)
         {
-            if (code >1)
+            try
             {
-                this.code = code;
+                if (code > 1)
+                {
+                    this.code = code;
+                }
+                else
+                {
+                    this.code = joinToGameClient.CreateRoom();
+                }
+                Label_GameRoom_Code.Content = this.code;
+                this.account = account;
+                ConfiurateProfilePicture();
+                byte[] profileImageArrayBytes = ImageToByte(profileImagePath);
+                joinToGameClient.JoinToGame(account.nickname, profileImageArrayBytes);
+                joinToGameClient.JoinToRoom(this.code, account.nickname);
+                chatMessageClient.JoinChat(account.nickname, code);
             }
-            else
+            catch (CommunicationException ex)
             {
-                this.code = joinToGameClient.CreateRoom();
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
             }
-            Label_GameRoom_Code.Content = this.code;
-            this.account = account;
-            ConfiurateProfilePicture();
-            byte[] profileImageArrayBytes = ImageToByte(profileImagePath);
-            joinToGameClient.JoinToGame(account.nickname, profileImageArrayBytes);
-            joinToGameClient.JoinToRoom(this.code, account.nickname);
-            chatMessageClient.JoinChat(account.nickname, code);
-
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
         }
 
         private void ConfiurateProfilePicture()
@@ -94,6 +110,7 @@ namespace DeCryptoWPF
 
         public byte[] ImageToByte(string imagePath)
         {
+            byte[] image = null;
             try
             {
                 if (File.Exists(imagePath))
@@ -102,54 +119,83 @@ namespace DeCryptoWPF
                     {
                         using (BinaryReader reader = new BinaryReader(fileStream))
                         {
-                            return reader.ReadBytes((int)fileStream.Length);
+                            image = reader.ReadBytes((int)fileStream.Length);
                         }
                     }
                 }
                 else
                 {
                     Console.WriteLine("La imagen no existe en la ubicación especificada.");
-                    return null;
                 }
+            }
+            catch (FileNotFoundException ex)
+            {
+                log.Error(ex);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                log.Error(ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error(ex);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al convertir la imagen a bytes: " + ex.Message);
-                return null;
+                log.Error(ex);
             }
+            return image;
         }
 
         private void Button_GameRoom_TeamRead_Click(object sender, RoutedEventArgs e)
         {
-            if((TextBlock_GameRoom_Player1.Text !="Player1") && (TextBlock_GameRoom_Player2.Text != "Player2"))
+            if ((TextBlock_GameRoom_Player1.Text != "Player1") && (TextBlock_GameRoom_Player2.Text != "Player2"))
             {
-                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");                
+                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");
             }
             else
             {
-                if (TextBlock_GameRoom_Player3.Text == account.nickname)
+                try
                 {
-                    this.blueTeam.nicknamePlayer1 = "Player3";
-                    joinToGameClient.JoinToBlueTeam(blueTeam, code);
+                    if (TextBlock_GameRoom_Player3.Text == account.nickname)
+                    {
+                        this.blueTeam.nicknamePlayer1 = "Player3";
+                        joinToGameClient.JoinToBlueTeam(blueTeam, code);
+                    }
+                    else if (TextBlock_GameRoom_Player4.Text == account.nickname)
+                    {
+                        this.blueTeam.nicknamePlayer2 = "Player4";
+                        joinToGameClient.JoinToBlueTeam(blueTeam, code);
+                    }
+                    if (TextBlock_GameRoom_Player1.Text == "Player1")
+                    {
+                        this.redTeam.nicknamePlayer1 = account.nickname;
+                        this.redTeam.nicknamePlayer2 = TextBlock_GameRoom_Player2.Text;
+                    }
+                    else if (TextBlock_GameRoom_Player2.Text == "Player2")
+                    {
+                        this.redTeam.nicknamePlayer1 = TextBlock_GameRoom_Player1.Text;
+                        this.redTeam.nicknamePlayer2 = account.nickname;
+                    }
+                    joinToGameClient.JoinToRedTeam(this.redTeam, code);
+                    Button_GameRoom_TeamRead.IsEnabled = false;
+                    Button_GameRoom_TeamBlue.IsEnabled = true;
                 }
-                else if (TextBlock_GameRoom_Player4.Text == account.nickname)
+                catch (CommunicationException ex)
                 {
-                    this.blueTeam.nicknamePlayer2 = "Player4";
-                    joinToGameClient.JoinToBlueTeam(blueTeam, code);
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
-                if (TextBlock_GameRoom_Player1.Text == "Player1")
+                catch (TimeoutException ex)
                 {
-                    this.redTeam.nicknamePlayer1 = account.nickname;
-                    this.redTeam.nicknamePlayer2 = TextBlock_GameRoom_Player2.Text;
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
-                else if (TextBlock_GameRoom_Player2.Text == "Player2")
+                catch (Exception ex)
                 {
-                    this.redTeam.nicknamePlayer1 = TextBlock_GameRoom_Player1.Text;
-                    this.redTeam.nicknamePlayer2 = account.nickname;
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
-                joinToGameClient.JoinToRedTeam(this.redTeam, code);
-                Button_GameRoom_TeamRead.IsEnabled = false;
-                Button_GameRoom_TeamBlue.IsEnabled = true;
             }
         }
 
@@ -161,29 +207,47 @@ namespace DeCryptoWPF
              }
              else
              {
-                if (TextBlock_GameRoom_Player1.Text == account.nickname)
+                try
                 {
-                    redTeam.nicknamePlayer1 = "Player1";
-                    joinToGameClient.JoinToRedTeam(redTeam, code);
+                    if (TextBlock_GameRoom_Player1.Text == account.nickname)
+                    {
+                        redTeam.nicknamePlayer1 = "Player1";
+                        joinToGameClient.JoinToRedTeam(redTeam, code);
+                    }
+                    else if (TextBlock_GameRoom_Player2.Text == account.nickname)
+                    {
+                        redTeam.nicknamePlayer2 = "Player2";
+                        joinToGameClient.JoinToRedTeam(redTeam, code);
+                    }
+                    if (TextBlock_GameRoom_Player3.Text == "Player3")
+                    {
+                        this.blueTeam.nicknamePlayer1 = account.nickname;
+                        this.blueTeam.nicknamePlayer2 = TextBlock_GameRoom_Player4.Text;
+                    }
+                    else if (TextBlock_GameRoom_Player4.Text == "Player4")
+                    {
+                        this.blueTeam.nicknamePlayer1 = TextBlock_GameRoom_Player3.Text;
+                        this.blueTeam.nicknamePlayer2 = account.nickname;
+                    }
+                    joinToGameClient.JoinToBlueTeam(this.blueTeam, code);
+                    Button_GameRoom_TeamBlue.IsEnabled = false;
+                    Button_GameRoom_TeamRead.IsEnabled = true;
                 }
-                else if (TextBlock_GameRoom_Player2.Text == account.nickname)
+                catch (CommunicationException ex)
                 {
-                    redTeam.nicknamePlayer2 = "Player2";
-                    joinToGameClient.JoinToRedTeam(redTeam, code);
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
-                if (TextBlock_GameRoom_Player3.Text == "Player3")
+                catch (TimeoutException ex)
                 {
-                    this.blueTeam.nicknamePlayer1 = account.nickname;
-                    this.blueTeam.nicknamePlayer2 = TextBlock_GameRoom_Player4.Text;
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
-                else if (TextBlock_GameRoom_Player4.Text == "Player4")
+                catch (Exception ex)
                 {
-                    this.blueTeam.nicknamePlayer1 = TextBlock_GameRoom_Player3.Text;
-                    this.blueTeam.nicknamePlayer2 = account.nickname;
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
-                joinToGameClient.JoinToBlueTeam(this.blueTeam, code);
-                Button_GameRoom_TeamBlue.IsEnabled = false;
-                Button_GameRoom_TeamRead.IsEnabled = true;
             }
         }
 
@@ -211,12 +275,30 @@ namespace DeCryptoWPF
         {            
             if (TextBox_GameRoom_WriteMessage.Text != "")
             {
-                ChatMessage chatMessage = new ChatMessage();
-                chatMessage.nickname = account.nickname;
-                chatMessage.message = TextBox_GameRoom_WriteMessage.Text;
-                chatMessage.time = DateTime.Now.ToString("HH:mm");
-                chatMessageClient.SendMessage(chatMessage, this.code);
-                TextBox_GameRoom_WriteMessage.Text = "";
+                try
+                {
+                    ChatMessage chatMessage = new ChatMessage();
+                    chatMessage.nickname = account.nickname;
+                    chatMessage.message = TextBox_GameRoom_WriteMessage.Text;
+                    chatMessage.time = DateTime.Now.ToString("HH:mm");
+                    chatMessageClient.SendMessage(chatMessage, this.code);
+                    TextBox_GameRoom_WriteMessage.Text = "";
+                }
+                catch (CommunicationException ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
+                catch (TimeoutException ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
             }
             else
             {

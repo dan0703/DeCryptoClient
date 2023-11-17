@@ -4,6 +4,7 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -59,9 +60,20 @@ namespace DeCryptoWPF
                         {
                             MessageBox.Show("Error, inténtelo de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                    } catch (Exception exception)
+                    }
+                    catch (CommunicationException ex)
                     {
-                        log.Error(exception);
+                        log.Error(ex);
+                        MessageBox.Show("El servicio no se encuentra disponible");
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        log.Error(ex);
+                        MessageBox.Show("El servicio no se encuentra disponible");
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
                         MessageBox.Show("El servicio no se encuentra disponible");
                     }
                 }
@@ -75,10 +87,28 @@ namespace DeCryptoWPF
         private string ValidateData()
         {
             StringBuilder validationErrors = new StringBuilder();
-
-            if (!accountServicesClient.CurrentPassword(this.account, Complements.EncryptPassword(PasswordBox_ChangePassword_CurrentPassword.Password)))
+            
+            try
             {
-                validationErrors.AppendLine("La contraseña ingresada no corresponde con la contraseña actual");
+                if (!accountServicesClient.CurrentPassword(this.account, Complements.EncryptPassword(PasswordBox_ChangePassword_CurrentPassword.Password)))
+                {
+                    validationErrors.AppendLine("La contraseña ingresada no corresponde con la contraseña actual");
+                }
+            }
+            catch (CommunicationException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
             }
 
             if (PasswordBox_ChangePassword_NewPassword.Password != PasswordBox_ChangePassword_NewPasswordConfirmation.Password)

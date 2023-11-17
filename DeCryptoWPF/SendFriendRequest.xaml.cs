@@ -1,4 +1,5 @@
 ﻿using DeCryptoWPF.DeCryptoServices;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class SendFriendRequest : Window, IJoinToGameCallback
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private Account account;
         private JoinToGameClient joinToGameClient;
         private PlayerServicesClient playerServicesClient;
@@ -58,9 +60,20 @@ namespace DeCryptoWPF
                 }
 
             }
-            catch(Exception )
+            catch (CommunicationException ex)
             {
-                MessageBox.Show("El servicion no se encuentra disponible, intentelo mas tarde");
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
             }
         }
 

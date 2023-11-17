@@ -16,5 +16,5 @@ C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\App.xaml
 21-1247822725
 AccountInformation.xaml;ChangePassword.xaml;CodeWindow.xaml;EmailWindow.xaml;GameRoom.xaml;GameSettings.xaml;InGame.xaml;MenuGame.xaml;RecoverPassword.xaml;Register.xaml;ReportPlayer.xaml;SendFriendRequest.xaml;SignIn.xaml;VerifyEmail.xaml;
 
-False
+True
 

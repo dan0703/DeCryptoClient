@@ -1,4 +1,5 @@
 ﻿using DeCryptoWPF.DeCryptoServices;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class InGame : Window, IJoinToGameCallback
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public readonly JoinToGameClient joinToGameClient;
         public readonly ChatMessageClient chatMessageClient;
         public GameRoom gameRoomWindow;

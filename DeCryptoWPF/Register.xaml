@@ -19,9 +19,9 @@
                 </Border.BorderBrush>
             </Border>
 
-            <TextBox x:Name="TextBox_Register_Name" HorizontalAlignment="Left" Margin="416,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="46" FontSize="24" Background="White" TextChanged="TextBox_Register_Name_TextChanged"/>
-            <TextBox x:Name="TextBox_Register_User" HorizontalAlignment="Left" Margin="416,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="46" FontSize="24" TextChanged="TextBox_Register_User_TextChanged"/>
-            <TextBox x:Name="TextBox_Register_Email" HorizontalAlignment="Left" Margin="1000,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="46" FontSize="24" Background="White" TextChanged="TextBox_Register_Email_TextChanged"/>
+            <TextBox x:Name="TextBox_Register_Name" HorizontalAlignment="Left" Margin="416,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="46" FontSize="24" Background="White" />
+            <TextBox x:Name="TextBox_Register_User" HorizontalAlignment="Left" Margin="416,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="46" FontSize="24" />
+            <TextBox x:Name="TextBox_Register_Email" HorizontalAlignment="Left" Margin="1000,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="46" FontSize="24" Background="White" />
             <PasswordBox x:Name="PasswordBox_Register_Password" HorizontalAlignment="Left" Margin="1000,494,0,0" VerticalAlignment="Top" Width="504" Height="46" FontSize="24"/>
             <PasswordBox x:Name="PasswordBox_Register_ConfirmPassword" HorizontalAlignment="Left" Margin="1000,621,0,413" Width="504" Height="46" FontSize="24"/>
 

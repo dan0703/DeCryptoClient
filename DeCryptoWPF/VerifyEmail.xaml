@@ -19,7 +19,7 @@
             <Button x:Name="Button_VerifyEmail_SendAgain" Content="{x:Static p:Resources.Button_VerifyEmail_SendAgain}" HorizontalAlignment="Left" Margin="275,393,0,0" VerticalAlignment="Top" Height="69" Width="244"  Foreground="Black" Background="DimGray" FontSize="30" FontWeight="Bold" Click="Button_VerifyEmail_SendAgain_Click"/>
             <Button x:Name="Button_ConfirmationButton_Accept" Content="{x:Static p:Resources.Button_ConfirmationButton_Accept}" HorizontalAlignment="Left" Margin="550,393,0,0" VerticalAlignment="Top" Height="69" Width="176" Foreground="White" Background="#FF2966FB" FontSize="30" FontWeight="Bold" Click="Button_ConfirmationButton_Accept_Click"/>
 
-            <TextBox x:Name="TextBox_CodeWindow_Code" HorizontalAlignment="Center" Margin="0,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Height="96" FontSize="100" TextChanged="TextBox_CodeWindow_Code_TextChanged"/>
+            <TextBox x:Name="TextBox_CodeWindow_Code" HorizontalAlignment="Center" Margin="0,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Height="96" FontSize="100"/>
 
             <Image x:Name="Button_VerifyEmail_Close" HorizontalAlignment="Left" Margin="906,26,0,0" VerticalAlignment="Top" Width="69" Height="69" RenderTransformOrigin="0.547,0.906" MouseLeftButtonDown="Button_VerifyEmail_Close_Click" Source="/Resources/buttonClose.png" >
                 <Image.Style>

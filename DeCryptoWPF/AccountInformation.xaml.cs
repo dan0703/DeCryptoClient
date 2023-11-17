@@ -25,8 +25,8 @@ namespace DeCryptoWPF
     public partial class AccountInformation : Window
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private string profilePicturePathCopy = string.Empty;
 
-        string profilePicturePathCopy = string.Empty;
         public AccountInformation()
         {
             InitializeComponent();
@@ -64,19 +64,19 @@ namespace DeCryptoWPF
                     File.Copy(profilePicturePath, profilePicturePathCopy, true);
                     Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePathCopy));
                 }
-                catch (IOException ioException)
+                catch (IOException ex)
                 {
-                    log.Error(ioException);
+                    log.Error(ex);
                     Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
                 }
-                catch (UnauthorizedAccessException unauthorizedAccessException)
+                catch (UnauthorizedAccessException ex)
                 {
-                    log.Error(unauthorizedAccessException);
+                    log.Error(ex);
                     Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
-                    log.Error(exception);
+                    log.Error(ex);
                     Image_AccountInformation_ProfilePicture.Source = new BitmapImage(new Uri(profilePicturePath));
                 }
             }
@@ -97,11 +97,6 @@ namespace DeCryptoWPF
 
         private void Button_AcountInformationEdit_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Image_AccountInformation_ProfilePicture_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
             string playerProfilePath = Complements.UploadImage();
             if (!string.IsNullOrEmpty(playerProfilePath))
             {
@@ -116,8 +111,9 @@ namespace DeCryptoWPF
                 {
                     MessageBox.Show("Ha ocurrido un error al guarda la imagen, intetelo de nuevo");
                 }
-            }            
+            }
         }
+
         private void RestartApplication()
         {
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);

@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using DeCryptoWPF;
 using DeCryptoWPF.Logic;
 using System.Net.Mail;
+using log4net;
+using System.ServiceModel;
 
 namespace DeCryptoWPF
 {
@@ -23,32 +25,18 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class Register : Window
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AccountServicesClient accountServicesClient;
         private readonly PlayerServicesClient playerServicesClient;
+
         public Register()
         {
             InitializeComponent();
             accountServicesClient = new AccountServicesClient();
             playerServicesClient = new PlayerServicesClient();
-
         }
 
         private void ComboBox_Register_Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_Register_Name_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_Register_Email_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_Register_User_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -76,23 +64,39 @@ namespace DeCryptoWPF
                 string validationErrors = ValidateData();
                 if (string.IsNullOrEmpty(validationErrors))
                 {
-                    if (accountServicesClient.RegisterAccount(account) && playerServicesClient.RegisterPlayer(user))
+                    try
                     {
-                        MessageBox.Show("Registro exitoso");
-                        OpenSignIn();
+                        if (accountServicesClient.RegisterAccount(account) && playerServicesClient.RegisterPlayer(user))
+                        {
+                            MessageBox.Show("Registro exitoso");
+                            OpenSignInWindow();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error, intentalo mas tarde");
+                        }
                     }
-                    else
+                    catch (CommunicationException ex)
                     {
-                        MessageBox.Show("Error, intentalo mas tarde");
+                        log.Error(ex);
+                        MessageBox.Show("El servicio no se encuentra disponible");
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        log.Error(ex);
+                        MessageBox.Show("El servicio no se encuentra disponible");
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
+                        MessageBox.Show("El servicio no se encuentra disponible");
                     }
                 }
                 else
                 {
                     MessageBox.Show(validationErrors, "Error en datos", MessageBoxButton.OK);
                 }
-            }
-
-            
+            } 
         }
 
         private string ValidateData()
@@ -127,8 +131,11 @@ namespace DeCryptoWPF
             if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_Register_Password.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
             {
                 validationErrors.AppendLine("La contraseña debe contener al menos 8 caracteres.");
+                validationErrors.AppendLine("Debe contener al menos una letra minúscula.");
+                validationErrors.AppendLine("Debe contener al menos una letra mayúscula.");
+                validationErrors.AppendLine("Debe contener al menos un número.");
+                validationErrors.AppendLine("Debe contener al menos un carácter especial.");
             }
-
             return validationErrors.ToString();
         }
 
@@ -153,18 +160,19 @@ namespace DeCryptoWPF
                 var mailAdress = new MailAddress(email);
                 isValidEmail = true;
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
-                isValidEmail = true;
+                isValidEmail = false;
             }
             return isValidEmail;
         }
 
         private void Label_Register_AlreadyAccount_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            OpenSignIn();
+            OpenSignInWindow();
         }
-        private void OpenSignIn()
+
+        private void OpenSignInWindow()
         {
             var signInWindow = new SignIn();
             Close();

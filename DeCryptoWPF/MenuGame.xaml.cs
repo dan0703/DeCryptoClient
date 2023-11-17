@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ServiceModel;
+using log4net;
 
 namespace DeCryptoWPF
 {
@@ -21,9 +22,9 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class MenuGame : Window, IJoinToGameCallback
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private JoinToGameClient joinToGameClient;
         private Account account;
-
 
         public MenuGame()
         {
@@ -32,26 +33,80 @@ namespace DeCryptoWPF
         }
         public void ConfigurateWindow(Account account)
         {
-            this.account = account;
-            joinToGameClient.JoinToGame(account.nickname, null);
+            try
+            {
+                this.account = account;
+                joinToGameClient.JoinToGame(account.nickname, null);
+            }
+            catch (CommunicationException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
         }
 
         private void Button_MenuGame_NewGame_Click(object sender, RoutedEventArgs e)
         {
-            GameRoom gameRoomWindow= new GameRoom();
-            joinToGameClient.LeaveGame(account.nickname);
-            gameRoomWindow.ConfigurateWindow(account, 0);
-            Close();
-            gameRoomWindow.ShowDialog();
+            try
+            {
+                GameRoom gameRoomWindow = new GameRoom();
+                joinToGameClient.LeaveGame(account.nickname);
+                gameRoomWindow.ConfigurateWindow(account, 0);
+                Close();
+                gameRoomWindow.ShowDialog();
+            }
+            catch (CommunicationException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
         }
 
         private void Button_MenuGame_FindGame_Click(object sender, RoutedEventArgs e)
         {
-            CodeWindow codeWindow= new CodeWindow();
-            codeWindow.ConfigurateWindow(this.account);
-            joinToGameClient.LeaveGame(account.nickname);
-            Close();
-            codeWindow.ShowDialog();
+            try
+            {
+                CodeWindow codeWindow = new CodeWindow();
+                codeWindow.ConfigurateWindow(this.account);
+                joinToGameClient.LeaveGame(account.nickname);
+                Close();
+                codeWindow.ShowDialog();
+            }
+            catch (CommunicationException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
         }
 
         private void ComboBox_MenuGame_Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,7 +116,7 @@ namespace DeCryptoWPF
 
         private void Button_MenuGame_AccountConfiguration_Click(object sender, RoutedEventArgs e)
         {
-            AccountInformation accountInformation= new AccountInformation();
+            AccountInformation accountInformation = new AccountInformation();
             accountInformation.ConfigurateWindow(account);
             this.Effect = new System.Windows.Media.Effects.BlurEffect();
             accountInformation.ShowDialog();

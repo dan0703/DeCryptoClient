@@ -3,6 +3,7 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,9 +22,11 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class VerifyEmail : Window
     {
-        AccountServicesClient accountServicesClient;
-        Account account;
-        int code = 0;
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private AccountServicesClient accountServicesClient;
+        private Account account;
+        private int code = 0;
+
         public VerifyEmail()
         {
             InitializeComponent();
@@ -39,17 +42,35 @@ namespace DeCryptoWPF
             else
             {
                 account.emailVerify = true;
-                if (accountServicesClient.VerifyEmail(account))
+                try
                 {
-                    MessageBox.Show("Email verificado correctamente");
-                    MenuGame menuGame = new MenuGame();
-                    menuGame.ConfigurateWindow(account);
-                    Close();
-                    menuGame.ShowDialog();
+                    if (accountServicesClient.VerifyEmail(account))
+                    {
+                        MessageBox.Show("Email verificado correctamente");
+                        MenuGame menuGame = new MenuGame();
+                        menuGame.ConfigurateWindow(account);
+                        Close();
+                        menuGame.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error verificando su Email. Inténtelo más tarde");
+                    }
                 }
-                else
+                catch (CommunicationException ex)
                 {
-                    MessageBox.Show("Ha ocurrido un error verificando su Email. Inténtelo más tarde");
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
+                catch (TimeoutException ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    MessageBox.Show("El servicio no se encuentra disponible");
                 }
             }
         }
@@ -57,11 +78,6 @@ namespace DeCryptoWPF
         private void Button_VerifyEmail_SendAgain_Click(object sender, RoutedEventArgs e)
         {
             SendCode();
-        }
-
-        private void TextBox_CodeWindow_Code_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void Button_VerifyEmail_Close_Click(object sender, RoutedEventArgs e)

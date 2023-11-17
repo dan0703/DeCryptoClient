@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System;
+using log4net;
 
 namespace DeCryptoWPF
 {
@@ -12,8 +13,10 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class CodeWindow : Window, IJoinToGameCallback
     {
-        JoinToGameClient joinToGameClient;
-        Account account;
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private JoinToGameClient joinToGameClient;
+        private Account account;
+
         public CodeWindow()
         {
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
@@ -21,41 +24,71 @@ namespace DeCryptoWPF
             InitializeComponent();
         }
 
-        private void TextBox_CodeWindow_Code_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Button_CodeWindow_Join_Click(object sender, RoutedEventArgs e)
         {
             int code = int.Parse(TextBox_CodeWindow_Code.Text);
-            if (joinToGameClient.AllreadyExistRoom(code))
+            try
             {
-                if (joinToGameClient.IsFullRoom(code))
+                if (joinToGameClient.AllreadyExistRoom(code))
                 {
-                    MessageBox.Show("La sala se encientra llena. Intenta con otra");
+                    if (joinToGameClient.IsFullRoom(code))
+                    {
+                        MessageBox.Show("La sala se encientra llena. Intenta con otra");
+                    }
+                    else
+                    {
+                        GameRoom gameRoomWindow = new GameRoom();
+                        gameRoomWindow.ConfigurateWindow(account, code);
+                        Close();
+                        gameRoomWindow.ShowDialog();
+                    }
                 }
                 else
                 {
-                    GameRoom gameRoomWindow = new GameRoom();
-                    gameRoomWindow.ConfigurateWindow(account, code);
-                    Close();
-                    gameRoomWindow.ShowDialog();
+                    MessageBox.Show("No existe ninguna partida que coincida con el codigo ingresado \n Por favor, intenta con otro", "Room", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
+            catch (CommunicationException ex)
             {
-                MessageBox.Show("No existe ninguna partida que coincida con el codigo ingresado \n Por favor, intenta con otro", "Room", MessageBoxButton.OK, MessageBoxImage.Error);
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
             }
         }
 
         private void Button_Confirmations_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            MenuGame menuGameWindow = new MenuGame();
-            menuGameWindow.ConfigurateWindow(account);
-            joinToGameClient.LeaveGame(account.nickname);
-            Close();
-            menuGameWindow.ShowDialog();
+            try { 
+                MenuGame menuGameWindow = new MenuGame();
+                menuGameWindow.ConfigurateWindow(account);
+                joinToGameClient.LeaveGame(account.nickname);
+                Close();
+                menuGameWindow.ShowDialog();
+            }
+            catch (CommunicationException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (TimeoutException ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                MessageBox.Show("El servicio no se encuentra disponible");
+            }
         }
 
         internal void ConfigurateWindow(Account account)
