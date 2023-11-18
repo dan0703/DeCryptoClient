@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ServiceModel;
 using log4net;
+using DeCrypto.Domain;
 
 namespace DeCryptoWPF
 {
@@ -171,7 +172,7 @@ namespace DeCryptoWPF
             }*/
         }
 
-        public void ReciveFriendRequest(string senderNickname, string[] friendRequestList)
+        public void ReciveFriendRequest(DeCryptoServices.Account senderAccount, string[] friendRequestList)
         {
             throw new NotImplementedException();
         }

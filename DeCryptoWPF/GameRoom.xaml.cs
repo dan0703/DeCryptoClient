@@ -368,7 +368,7 @@ namespace DeCryptoWPF
         }
 
 
-        public Image BytesToImage(byte[] byteArray)
+        private Image BytesToImage(byte[] byteArray)
         {
             if (byteArray == null || byteArray.Length == 0)
             {

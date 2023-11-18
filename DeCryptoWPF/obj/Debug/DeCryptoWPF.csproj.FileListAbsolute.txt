@@ -205,3 +205,7 @@ C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\es-MX\DeCryptoW
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF.csproj.CopyComplete
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF.exe
 C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\DeCryptoWPF.pdb
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\bin\Debug\log4net.config
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\bin\Debug\log4net.dll
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\bin\Debug\log4net.xml
+C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\DeCryptoWPF_Content.g.cs
