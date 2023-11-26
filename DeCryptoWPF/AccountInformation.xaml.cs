@@ -103,13 +103,13 @@ namespace DeCryptoWPF
 
                 if (Complements.SaveImage(account.nickname, playerProfilePath))
                 {
-                    MessageBox.Show("La imagen de perfil ha sido guardada con exito \n La aplicación será reiniciada", "Account Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show(Properties.Resources.MessageBox_AccountInformation_ChangeProfilePictureSucess, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     Application.Current.Shutdown();
                     RestartApplication();
                 }
                 else
                 {
-                    MessageBox.Show("Ha ocurrido un error al guarda la imagen, intetelo de nuevo");
+                    MessageBox.Show(Properties.Resources.MessageBox_AccountInformation_ChangeProfilePictureFail, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

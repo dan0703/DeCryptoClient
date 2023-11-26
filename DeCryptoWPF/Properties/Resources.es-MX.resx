@@ -351,4 +351,58 @@
   <data name="Button_ReportPlayer_Report" xml:space="preserve">
     <value>Reportar</value>
   </data>
+  <data name="MessageBox_AccountInformation_ChangeProfilePictureSucess" xml:space="preserve">
+    <value>La imagen de perfil ha sido guardada con exito. La aplicación será reiniciada"</value>
+  </data>
+  <data name="MessageBox_AccountInformation_ChangeProfilePictureFail" xml:space="preserve">
+    <value>Ha ocurrido un error al guardar la imagen, intetelo de nuevo</value>
+  </data>
+  <data name="MessageBox_Success_InformationSaved" xml:space="preserve">
+    <value>La información se ha actualziado correctamente</value>
+  </data>
+  <data name="MessageBox_Error_ErrorService" xml:space="preserve">
+    <value>Error, inténtelo de nuevo</value>
+  </data>
+  <data name="MessageBox_Error_ServiceException" xml:space="preserve">
+    <value>El servicio no se encuentra disponible</value>
+  </data>
+  <data name="MessageBox_Error_EmptyFields" xml:space="preserve">
+    <value>Por favor, llene todos los campos</value>
+  </data>
+  <data name="Label_ErrorPassword_PasswordLong" xml:space="preserve">
+    <value>La contraseña debe contener al menos 8 caracteres</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneLowecase" xml:space="preserve">
+    <value>Debe contener al menos una letra minúscula</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneUppercase" xml:space="preserve">
+    <value>Debe contener al menos una letra mayúscula</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneNumber" xml:space="preserve">
+    <value>Debe contener al menos un número</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneSpecialCharacter" xml:space="preserve">
+    <value>Debe contener al menos un carácter especial</value>
+  </data>
+  <data name="Label_ErrorPassword_IncorrectPassword" xml:space="preserve">
+    <value>La contraseña ingresada es incorrecta</value>
+  </data>
+  <data name="MessageBox_MenuGame_RoomIsFull" xml:space="preserve">
+    <value>La sala se encientra llena. Intenta con otra</value>
+  </data>
+  <data name="MessageBox_MenuGame_RoomNotFound" xml:space="preserve">
+    <value>No existe ninguna partida que coincida con el codigo ingresado. Por favor, intenta con otro</value>
+  </data>
+  <data name="MessageBox_Success_CodeSent" xml:space="preserve">
+    <value>Se ha enviado un código a tu correo electrónico</value>
+  </data>
+  <data name="Label_Email_TittleEmail" xml:space="preserve">
+    <value>Código de verificación</value>
+  </data>
+  <data name="Label_Email_EmailBody" xml:space="preserve">
+    <value>Por favor, ingresa este código para verificar tu cuenta</value>
+  </data>
+  <data name="MessageBox_Error_EmailNotFound" xml:space="preserve">
+    <value>El correo no corresponde a alguna cuenta registrada</value>
+  </data>
 </root>

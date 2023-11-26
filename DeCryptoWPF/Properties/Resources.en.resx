@@ -351,4 +351,58 @@
   <data name="Button_ReportPlayer_Report" xml:space="preserve">
     <value>Report</value>
   </data>
+  <data name="MessageBox_AccountInformation_ChangeProfilePictureSucess" xml:space="preserve">
+    <value>Profile picture has been saved successfully. The application will be restarted</value>
+  </data>
+  <data name="MessageBox_AccountInformation_ChangeProfilePictureFail" xml:space="preserve">
+    <value>The image could not be saved. Please try again</value>
+  </data>
+  <data name="MessageBox_Success_InformationSaved" xml:space="preserve">
+    <value>Information updated successfully</value>
+  </data>
+  <data name="MessageBox_Error_ErrorService" xml:space="preserve">
+    <value>Error, please try again</value>
+  </data>
+  <data name="MessageBox_Error_ServiceException" xml:space="preserve">
+    <value>The service is not available</value>
+  </data>
+  <data name="MessageBox_Error_EmptyFields" xml:space="preserve">
+    <value>Please fill out all the fields</value>
+  </data>
+  <data name="Label_ErrorPassword_PasswordLong" xml:space="preserve">
+    <value>The password must be at least 8 characters long</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneLowecase" xml:space="preserve">
+    <value>It must contain at least one lowercase letter</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneUppercase" xml:space="preserve">
+    <value>It must contain at least one uppercase letter</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneNumber" xml:space="preserve">
+    <value>It must contain at least one number</value>
+  </data>
+  <data name="Label_ErrorPassword_NeedOneSpecialCharacter" xml:space="preserve">
+    <value>It must contain at least one special character</value>
+  </data>
+  <data name="Label_ErrorPassword_IncorrectPassword" xml:space="preserve">
+    <value>The entered password is incorrec</value>
+  </data>
+  <data name="MessageBox_MenuGame_RoomIsFull" xml:space="preserve">
+    <value>The room is full. Please try another one</value>
+  </data>
+  <data name="MessageBox_MenuGame_RoomNotFound" xml:space="preserve">
+    <value>There is no game matching the entered code. Please try another one</value>
+  </data>
+  <data name="MessageBox_Success_CodeSent" xml:space="preserve">
+    <value>A code has been sent to your email</value>
+  </data>
+  <data name="Label_Email_TittleEmail" xml:space="preserve">
+    <value>Verification code</value>
+  </data>
+  <data name="Label_Email_EmailBody" xml:space="preserve">
+    <value>Please enter this code to verify your account</value>
+  </data>
+  <data name="MessageBox_Error_EmailNotFound" xml:space="preserve">
+    <value>The email does not correspond to any registered account</value>
+  </data>
 </root>

@@ -47,7 +47,7 @@ namespace DeCryptoWPF
                         };
 
                         SendCode();
-                        MessageBox.Show("Se ha enviado un código a tu correo electrónico");
+                        MessageBox.Show(Properties.Resources.MessageBox_Success_CodeSent);
 
                         RecoverPassword recoverPassword = new RecoverPassword();
                         recoverPassword.ConfigurateWindow(this.account, code);
@@ -56,28 +56,28 @@ namespace DeCryptoWPF
                     }
                     else
                     {
-                        MessageBox.Show("El correo no corresponde a alguna cuenta registrada");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_EmailNotFound, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 catch (CommunicationException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (TimeoutException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (Exception ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese su correo electrónico");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_EmptyFields, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -92,8 +92,7 @@ namespace DeCryptoWPF
             var lowerBound = 1000;
             var upperBound = 9999;
             code = random.Next(lowerBound, upperBound);
-            accountServicesClient.SendToken(account.email, "Código de verificación", "Por favor, ingresa este código para" +
-                "verificar tu cuenta", code);
+            accountServicesClient.SendToken(account.email, Properties.Resources.Label_Email_TittleEmail, Properties.Resources.Label_Email_EmailBody, code);
         }
     }
 }

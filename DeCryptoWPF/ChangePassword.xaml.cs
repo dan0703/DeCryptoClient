@@ -50,7 +50,7 @@ namespace DeCryptoWPF
                     {
                         if (accountServicesClient.ChangePassword(this.account, newPasswordEncrypted))
                         {
-                            MessageBox.Show("Se ha actualizado correctamente la contraseña");
+                            MessageBox.Show(Properties.Resources.MessageBox_Success_InformationSaved, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Information);
                             AccountInformation accountInformation = new AccountInformation();
                             accountInformation.ConfigurateWindow(account);
                             Close();
@@ -58,28 +58,28 @@ namespace DeCryptoWPF
                         }
                         else
                         {
-                            MessageBox.Show("Error, inténtelo de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     catch (CommunicationException ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     catch (TimeoutException ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     catch (Exception ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(validationErrors, "Error en datos", MessageBoxButton.OK);
+                    MessageBox.Show(validationErrors, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -92,37 +92,37 @@ namespace DeCryptoWPF
             {
                 if (!accountServicesClient.CurrentPassword(this.account, Complements.EncryptPassword(PasswordBox_ChangePassword_CurrentPassword.Password)))
                 {
-                    validationErrors.AppendLine("La contraseña ingresada no corresponde con la contraseña actual");
+                    validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_IncorrectPassword);
                 }
             }
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             if (PasswordBox_ChangePassword_NewPassword.Password != PasswordBox_ChangePassword_NewPasswordConfirmation.Password)
             {
-                validationErrors.AppendLine("Las contraseñas no coinciden");
-            }    
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_IncorrectPassword);
+            }
             if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_ChangePassword_NewPassword.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
             {
 
-                validationErrors.AppendLine("La contraseña debe contener al menos 8 caracteres.");
-                validationErrors.AppendLine("Debe contener al menos una letra minúscula.");
-                validationErrors.AppendLine("Debe contener al menos una letra mayúscula.");
-                validationErrors.AppendLine("Debe contener al menos un número.");
-                validationErrors.AppendLine("Debe contener al menos un carácter especial.");
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_PasswordLong);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneLowecase);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneUppercase);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneNumber);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneSpecialCharacter);
             }
             return validationErrors.ToString();
         }
@@ -133,7 +133,7 @@ namespace DeCryptoWPF
             if ((PasswordBox_ChangePassword_CurrentPassword.Password == "") || (PasswordBox_ChangePassword_NewPassword.Password == "") ||
                 (PasswordBox_ChangePassword_NewPasswordConfirmation.Password == ""))
             {
-                MessageBox.Show("Por favor, llene todos los campos", "Campos vacíos", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_EmptyFields, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 isEmpty = true;
             }
             return isEmpty;

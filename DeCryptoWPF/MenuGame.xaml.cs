@@ -25,14 +25,14 @@ namespace DeCryptoWPF
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private JoinToGameClient joinToGameClient;
-        private Account account;
+        private DeCryptoServices.Account account;
 
         public MenuGame()
         {
             InitializeComponent();
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
         }
-        public void ConfigurateWindow(Account account)
+        public void ConfigurateWindow(DeCryptoServices.Account account)
         {
             try
             {
@@ -42,17 +42,17 @@ namespace DeCryptoWPF
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
         }
 
@@ -69,17 +69,17 @@ namespace DeCryptoWPF
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
         }
 
@@ -96,17 +96,17 @@ namespace DeCryptoWPF
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
         }
 
@@ -183,6 +183,11 @@ namespace DeCryptoWPF
         }
 
         public void GoToGameWindow()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReciveFriendRequest(string senderNickname, string[] friendRequestList)
         {
             throw new NotImplementedException();
         }

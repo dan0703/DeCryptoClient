@@ -412,11 +412,83 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Por favor, ingresa este código para verificar tu cuenta.
+        /// </summary>
+        public static string Label_Email_EmailBody {
+            get {
+                return ResourceManager.GetString("Label_Email_EmailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Código de verificación.
+        /// </summary>
+        public static string Label_Email_TittleEmail {
+            get {
+                return ResourceManager.GetString("Label_Email_TittleEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No se ha encontrado el juego.
         /// </summary>
         public static string Label_Error_GameNotFound {
             get {
                 return ResourceManager.GetString("Label_Error_GameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La contraseña ingresada es incorrecta.
+        /// </summary>
+        public static string Label_ErrorPassword_IncorrectPassword {
+            get {
+                return ResourceManager.GetString("Label_ErrorPassword_IncorrectPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debe contener al menos una letra minúscula.
+        /// </summary>
+        public static string Label_ErrorPassword_NeedOneLowecase {
+            get {
+                return ResourceManager.GetString("Label_ErrorPassword_NeedOneLowecase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debe contener al menos un número.
+        /// </summary>
+        public static string Label_ErrorPassword_NeedOneNumber {
+            get {
+                return ResourceManager.GetString("Label_ErrorPassword_NeedOneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debe contener al menos un carácter especial.
+        /// </summary>
+        public static string Label_ErrorPassword_NeedOneSpecialCharacter {
+            get {
+                return ResourceManager.GetString("Label_ErrorPassword_NeedOneSpecialCharacter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debe contener al menos una letra mayúscula.
+        /// </summary>
+        public static string Label_ErrorPassword_NeedOneUppercase {
+            get {
+                return ResourceManager.GetString("Label_ErrorPassword_NeedOneUppercase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La contraseña debe contener al menos 8 caracteres.
+        /// </summary>
+        public static string Label_ErrorPassword_PasswordLong {
+            get {
+                return ResourceManager.GetString("Label_ErrorPassword_PasswordLong", resourceCulture);
             }
         }
         
@@ -759,6 +831,96 @@ namespace DeCryptoWPF.Properties {
         public static string Label_VerifyEmail_SendToken {
             get {
                 return ResourceManager.GetString("Label_VerifyEmail_SendToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ha ocurrido un error al guardar la imagen, inténtelo de nuevo.
+        /// </summary>
+        public static string MessageBox_AccountInformation_ChangeProfilePictureFail {
+            get {
+                return ResourceManager.GetString("MessageBox_AccountInformation_ChangeProfilePictureFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La imagen de perfil ha sido guardada con exito. La aplicación será reiniciada&quot;.
+        /// </summary>
+        public static string MessageBox_AccountInformation_ChangeProfilePictureSucess {
+            get {
+                return ResourceManager.GetString("MessageBox_AccountInformation_ChangeProfilePictureSucess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El correo no corresponde a alguna cuenta registrada.
+        /// </summary>
+        public static string MessageBox_Error_EmailNotFound {
+            get {
+                return ResourceManager.GetString("MessageBox_Error_EmailNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Por favor, llene todos los campos.
+        /// </summary>
+        public static string MessageBox_Error_EmptyFields {
+            get {
+                return ResourceManager.GetString("MessageBox_Error_EmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error, inténtelo de nuevo.
+        /// </summary>
+        public static string MessageBox_Error_ErrorService {
+            get {
+                return ResourceManager.GetString("MessageBox_Error_ErrorService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El servicio no se encuentra disponible.
+        /// </summary>
+        public static string MessageBox_Error_ServiceException {
+            get {
+                return ResourceManager.GetString("MessageBox_Error_ServiceException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La sala se encientra llena. Intenta con otra.
+        /// </summary>
+        public static string MessageBox_MenuGame_RoomIsFull {
+            get {
+                return ResourceManager.GetString("MessageBox_MenuGame_RoomIsFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No existe ninguna partida que coincida con el código ingresado. Por favor, intenta con otro.
+        /// </summary>
+        public static string MessageBox_MenuGame_RoomNotFound {
+            get {
+                return ResourceManager.GetString("MessageBox_MenuGame_RoomNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Se ha enviado un código a tu correo electrónico.
+        /// </summary>
+        public static string MessageBox_Success_CodeSent {
+            get {
+                return ResourceManager.GetString("MessageBox_Success_CodeSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La información se ha actualizado correctamente.
+        /// </summary>
+        public static string MessageBox_Success_InformationSaved {
+            get {
+                return ResourceManager.GetString("MessageBox_Success_InformationSaved", resourceCulture);
             }
         }
     }

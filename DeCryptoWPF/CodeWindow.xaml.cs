@@ -33,7 +33,7 @@ namespace DeCryptoWPF
                 {
                     if (joinToGameClient.IsFullRoom(code))
                     {
-                        MessageBox.Show("La sala se encientra llena. Intenta con otra");
+                        MessageBox.Show(Properties.Resources.MessageBox_MenuGame_RoomIsFull, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
                     else
                     {
@@ -45,23 +45,23 @@ namespace DeCryptoWPF
                 }
                 else
                 {
-                    MessageBox.Show("No existe ninguna partida que coincida con el codigo ingresado \n Por favor, intenta con otro", "Room", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Resources.MessageBox_MenuGame_RoomNotFound, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
         }
 
@@ -77,17 +77,17 @@ namespace DeCryptoWPF
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
         }
 
