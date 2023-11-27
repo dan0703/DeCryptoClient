@@ -87,7 +87,7 @@ namespace DeCryptoWPF
         private string ValidateData()
         {
             StringBuilder validationErrors = new StringBuilder();
-            
+
             try
             {
                 if (!accountServicesClient.CurrentPassword(this.account, Complements.EncryptPassword(PasswordBox_ChangePassword_CurrentPassword.Password)))
@@ -113,11 +113,10 @@ namespace DeCryptoWPF
 
             if (PasswordBox_ChangePassword_NewPassword.Password != PasswordBox_ChangePassword_NewPasswordConfirmation.Password)
             {
-                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_IncorrectPassword);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_ErrorMatchingPasswords);
             }
             if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_ChangePassword_NewPassword.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
             {
-
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_PasswordLong);
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneLowecase);
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneUppercase);

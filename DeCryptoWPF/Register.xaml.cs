@@ -68,33 +68,33 @@ namespace DeCryptoWPF
                     {
                         if (accountServicesClient.RegisterAccount(account) && playerServicesClient.RegisterPlayer(user))
                         {
-                            MessageBox.Show("Registro exitoso");
+                            MessageBox.Show(Properties.Resources.MessageBox_Success_RegisterSucessfull, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Information);
                             OpenSignInWindow();
                         }
                         else
                         {
-                            MessageBox.Show("Error, intentalo mas tarde");
+                            MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     catch (CommunicationException ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     catch (TimeoutException ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     catch (Exception ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(validationErrors, "Error en datos", MessageBoxButton.OK);
+                    MessageBox.Show(validationErrors, "DeCrypto", MessageBoxButton.OK);
                 }
             } 
         }
@@ -105,36 +105,36 @@ namespace DeCryptoWPF
 
             if (!System.Text.RegularExpressions.Regex.IsMatch(TextBox_Register_Name.Text, "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]*$"))
             {
-                validationErrors.AppendLine("El nombre contiene caracteres no permitidos.");
+                validationErrors.AppendLine(Properties.Resources.Label_Register_ErrorNameCharacters);
             }
 
             if (!IsValidEmail(TextBox_Register_Email.Text))
             {
-                validationErrors.AppendLine("La dirección de correo electrónico es inválida.");
+                validationErrors.AppendLine(Properties.Resources.Label_Register_EmailInvalid);
             }
 
             if (DatePicker_Register_Birthday.SelectedDate == null || DatePicker_Register_Birthday.SelectedDate.Value >= DateTime.Now)
             {
-                validationErrors.AppendLine("La fecha de nacimiento es incorrecta.");
+                validationErrors.AppendLine(Properties.Resources.Label_Register_ErrorDateBirthday);
             }
 
             if (PasswordBox_Register_Password.Password != PasswordBox_Register_ConfirmPassword.Password)
             {
-                validationErrors.AppendLine("Las contraseñas no coinciden.");
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_ErrorMatchingPasswords);
             }
 
             if (!System.Text.RegularExpressions.Regex.IsMatch(TextBox_Register_User.Text, "^[A-Za-zÀ-ÖØ-öø-ÿ]{1,20}$"))
             {
-                validationErrors.AppendLine("El nombre de usuario contiene caracteres no permitidos.");
+                validationErrors.AppendLine(Properties.Resources.Label_Register_ErrorUserCharacters);
             }
 
             if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_Register_Password.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
             {
-                validationErrors.AppendLine("La contraseña debe contener al menos 8 caracteres.");
-                validationErrors.AppendLine("Debe contener al menos una letra minúscula.");
-                validationErrors.AppendLine("Debe contener al menos una letra mayúscula.");
-                validationErrors.AppendLine("Debe contener al menos un número.");
-                validationErrors.AppendLine("Debe contener al menos un carácter especial.");
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_PasswordLong);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneLowecase);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneUppercase);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneNumber);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneSpecialCharacter);
             }
             return validationErrors.ToString();
         }
@@ -146,7 +146,7 @@ namespace DeCryptoWPF
             if ((TextBox_Register_Name.Text == "") || (TextBox_Register_Email.Text == "") || (PasswordBox_Register_Password.Password == "") ||
                 (TextBox_Register_User.Text == "") || (TextBox_Register_Email.Text == "") || (DatePicker_Register_Birthday == null))
             {
-                MessageBox.Show("Por favor, llene todos los campos", "Campos vacíos", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_EmptyFields, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 isEmpty = true;
             }
             return isEmpty;

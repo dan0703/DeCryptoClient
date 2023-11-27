@@ -44,7 +44,7 @@ namespace DeCryptoWPF
         private void Button_RecoverPassword_SendAgain_Click(object sender, RoutedEventArgs e)
         {
             SendCode();
-            MessageBox.Show("Se ha enviado un código a tu correo electrónico");
+            MessageBox.Show(Properties.Resources.MessageBox_Success_CodeSent);
         }
 
         private void Button_Confirmations_Save_Click(object sender, RoutedEventArgs e)
@@ -59,33 +59,33 @@ namespace DeCryptoWPF
                     {
                         if (accountServicesClient.ChangePassword(this.account, newPasswordEncrypted))
                         {
-                            MessageBox.Show("Se ha actualizado correctamente la contraseña");
+                            MessageBox.Show(Properties.Resources.MessageBox_Success_InformationSaved, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Information);
                             Close();
                         }
                         else
                         {
-                            MessageBox.Show("Error, inténtelo de nuevo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     catch (CommunicationException ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     catch (TimeoutException ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
-                    } 
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                     catch (Exception ex)
                     {
                         log.Error(ex);
-                        MessageBox.Show("El servicio no se encuentra disponible");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(validationErrors, "Error en datos", MessageBoxButton.OK);
+                    MessageBox.Show(validationErrors, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -101,7 +101,7 @@ namespace DeCryptoWPF
             if ((PasswordBox_ChangePassword_NewPassword.Password == "") || (TextBox_RecoverPassword_EnterCode.Text == "") ||
                 (PasswordBox_ChangePassword_NewPasswordConfirmation.Password == ""))
             {
-                MessageBox.Show("Por favor, llene todos los campos", "Campos vacíos", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_EmptyFields, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 isEmpty = true;
             }
             return isEmpty;
@@ -113,8 +113,7 @@ namespace DeCryptoWPF
             var lowerBound = 1000;
             var upperBound = 9999;
             code = random.Next(lowerBound, upperBound);
-            accountServicesClient.SendToken(account.email, "Código de verificación", "Por favor, ingresa este código para" +
-                "verificar tu cuenta", code);
+            accountServicesClient.SendToken(account.email, Properties.Resources.Label_Email_TittleEmailRecoverPassword, Properties.Resources.Label_Email_BodyEmailRecoverPassword, code);
         }
 
         private string ValidateData()
@@ -123,19 +122,19 @@ namespace DeCryptoWPF
 
             if (TextBox_RecoverPassword_EnterCode.Text != code.ToString())
             {
-                validationErrors.AppendLine("El código ingresado es incorrecto");
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorCode_IncorrectCode);
             }
             if (PasswordBox_ChangePassword_NewPassword.Password != PasswordBox_ChangePassword_NewPasswordConfirmation.Password)
             {
-                validationErrors.AppendLine("Las contraseñas no coinciden");
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_ErrorMatchingPasswords);
             }
             if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_ChangePassword_NewPassword.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
             {
-                validationErrors.AppendLine("La contraseña debe contener al menos 8 caracteres.");
-                validationErrors.AppendLine("Debe contener al menos una letra minúscula.");
-                validationErrors.AppendLine("Debe contener al menos una letra mayúscula.");
-                validationErrors.AppendLine("Debe contener al menos un número.");
-                validationErrors.AppendLine("Debe contener al menos un carácter especial.");
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_PasswordLong);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneLowecase);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneUppercase);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneNumber);
+                validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneSpecialCharacter);
             }
             return validationErrors.ToString();
         }

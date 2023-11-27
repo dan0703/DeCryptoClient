@@ -396,13 +396,49 @@
   <data name="MessageBox_Success_CodeSent" xml:space="preserve">
     <value>Se ha enviado un código a tu correo electrónico</value>
   </data>
-  <data name="Label_Email_TittleEmail" xml:space="preserve">
+  <data name="Label_Email_TittleEmailVerification" xml:space="preserve">
     <value>Código de verificación</value>
   </data>
-  <data name="Label_Email_EmailBody" xml:space="preserve">
+  <data name="Label_Email_BodyEmailVerification" xml:space="preserve">
     <value>Por favor, ingresa este código para verificar tu cuenta</value>
   </data>
   <data name="MessageBox_Error_EmailNotFound" xml:space="preserve">
     <value>El correo no corresponde a alguna cuenta registrada</value>
+  </data>
+  <data name="Label_GameRoom_BlankMessage" xml:space="preserve">
+    <value>Escribe un mensaje, por favor</value>
+  </data>
+  <data name="Label_Email_BodyEmailRecoverPassword" xml:space="preserve">
+    <value>Por favor, ingresa este código para recuperar tu conteseña</value>
+  </data>
+  <data name="Label_Email_TittleEmailRecoverPassword" xml:space="preserve">
+    <value>Código de recuperación de contraseña</value>
+  </data>
+  <data name="Label_ErrorPassword_ErrorMatchingPasswords" xml:space="preserve">
+    <value>La contraseñas ingresadas no coinciden</value>
+  </data>
+  <data name="Label_ErrorCode_IncorrectCode" xml:space="preserve">
+    <value>El código ingresado es incorrecto</value>
+  </data>
+  <data name="MessageBox_Success_RegisterSucessfull" xml:space="preserve">
+    <value>Registro completo</value>
+  </data>
+  <data name="Label_Register_ErrorNameCharacters" xml:space="preserve">
+    <value>El nombre contiene caracteres no permitidos.</value>
+  </data>
+  <data name="Label_Register_EmailInvalid" xml:space="preserve">
+    <value>La dirección de correo electrónico es inválida</value>
+  </data>
+  <data name="Label_Register_ErrorDateBirthday" xml:space="preserve">
+    <value>La fecha de nacimiento es incorrecta</value>
+  </data>
+  <data name="Label_Register_ErrorUserCharacters" xml:space="preserve">
+    <value>El nombre de usuario contiene caracteres no permitidos</value>
+  </data>
+  <data name="MessageBox_SignIn_IncorrectCredentials" xml:space="preserve">
+    <value>Credeciales incorrectas</value>
+  </data>
+  <data name="MessageBox_VerifyEmail_VerifySucessfull" xml:space="preserve">
+    <value>Email verificado correctamente</value>
   </data>
 </root>

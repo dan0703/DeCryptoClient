@@ -37,7 +37,7 @@ namespace DeCryptoWPF
         {
             if (TextBox_CodeWindow_Code.Text != code.ToString())
             {
-                MessageBox.Show("Código incorrecto, inténtelo de nuevo");
+                MessageBox.Show(Properties.Resources.Label_ErrorCode_IncorrectCode, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -46,7 +46,7 @@ namespace DeCryptoWPF
                 {
                     if (accountServicesClient.VerifyEmail(account))
                     {
-                        MessageBox.Show("Email verificado correctamente");
+                        MessageBox.Show(Properties.Resources.MessageBox_VerifyEmail_VerifySucessfull);
                         MenuGame menuGame = new MenuGame();
                         menuGame.ConfigurateWindow(account);
                         Close();
@@ -54,23 +54,23 @@ namespace DeCryptoWPF
                     }
                     else
                     {
-                        MessageBox.Show("Ha ocurrido un error verificando su Email. Inténtelo más tarde");
+                        MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 catch (CommunicationException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (TimeoutException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (Exception ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -97,8 +97,7 @@ namespace DeCryptoWPF
             var lowerBound = 1000;
             var upperBound = 9999;
             code = random.Next(lowerBound, upperBound);
-            accountServicesClient.SendToken(account.email, "Código de verificación", "Por favor, ingresa este código para" +
-                "verificar tu cuenta", code);
+            accountServicesClient.SendToken(account.email, Properties.Resources.Label_Email_TittleEmailVerification, Properties.Resources.Label_Email_BodyEmailVerification, code);
         }
     }
 }

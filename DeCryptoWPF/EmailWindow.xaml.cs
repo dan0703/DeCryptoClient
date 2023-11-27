@@ -80,7 +80,6 @@ namespace DeCryptoWPF
                 MessageBox.Show(Properties.Resources.MessageBox_Error_EmptyFields, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void Button_Confirmations_Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -92,7 +91,7 @@ namespace DeCryptoWPF
             var lowerBound = 1000;
             var upperBound = 9999;
             code = random.Next(lowerBound, upperBound);
-            accountServicesClient.SendToken(account.email, Properties.Resources.Label_Email_TittleEmail, Properties.Resources.Label_Email_EmailBody, code);
+            accountServicesClient.SendToken(account.email, Properties.Resources.Label_Email_TittleEmailRecoverPassword, Properties.Resources.Label_Email_BodyEmailRecoverPassword, code);
         }
     }
 }

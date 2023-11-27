@@ -85,17 +85,17 @@ namespace DeCryptoWPF
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show("El servicio no se encuentra disponible");
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
             }
         }
 
@@ -131,18 +131,22 @@ namespace DeCryptoWPF
             catch (FileNotFoundException ex)
             {
                 log.Error(ex);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (UnauthorizedAccessException ex)
             {
                 log.Error(ex);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (IOException ex)
             {
                 log.Error(ex);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ErrorService, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return image;
         }
@@ -151,7 +155,7 @@ namespace DeCryptoWPF
         {
             if ((TextBlock_GameRoom_Player1.Text != "Player1") && (TextBlock_GameRoom_Player2.Text != "Player2"))
             {
-                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");
+                MessageBox.Show(Properties.Resources.MessageBox_MenuGame_RoomIsFull, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
@@ -184,17 +188,17 @@ namespace DeCryptoWPF
                 catch (CommunicationException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
                 catch (TimeoutException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
                 catch (Exception ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
             }
         }
@@ -203,9 +207,9 @@ namespace DeCryptoWPF
         {
              if((TextBlock_GameRoom_Player3.Text != "Player3") && (TextBlock_GameRoom_Player4.Text != "Player4"))
              {
-                MessageBox.Show("El equipo ya se encuentra lleno, intenta con otro");                
+                MessageBox.Show(Properties.Resources.MessageBox_MenuGame_RoomIsFull, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Exclamation);
              }
-             else
+            else
              {
                 try
                 {
@@ -236,17 +240,17 @@ namespace DeCryptoWPF
                 catch (CommunicationException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
                 catch (TimeoutException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
                 catch (Exception ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
             }
         }
@@ -275,6 +279,11 @@ namespace DeCryptoWPF
         {            
             if (TextBox_GameRoom_WriteMessage.Text != "")
             {
+                if (Label_GameRoom_BlankMessage.Visibility == Visibility.Visible)
+                {
+                    Label_GameRoom_BlankMessage.Visibility = Visibility.Collapsed;
+                }
+
                 try
                 {
                     ChatMessage chatMessage = new ChatMessage();
@@ -287,22 +296,22 @@ namespace DeCryptoWPF
                 catch (CommunicationException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
                 catch (TimeoutException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
                 catch (Exception ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show("El servicio no se encuentra disponible");
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
                 }
             }
             else
             {
-                MessageBox.Show("Por favor, escribe un mensaje");
+                Label_GameRoom_BlankMessage.Visibility = Visibility.Visible;
             }
         }
 
@@ -366,7 +375,6 @@ namespace DeCryptoWPF
                 StackPanel_GameRoom_PlayerList.Children.Add(playerGrid);
             }
         }
-
 
         private Image BytesToImage(byte[] byteArray)
         {

@@ -412,20 +412,38 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Por favor, ingresa este código para recuperar tu conteseña.
+        /// </summary>
+        public static string Label_Email_BodyEmailRecoverPassword {
+            get {
+                return ResourceManager.GetString("Label_Email_BodyEmailRecoverPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Por favor, ingresa este código para verificar tu cuenta.
         /// </summary>
-        public static string Label_Email_EmailBody {
+        public static string Label_Email_BodyEmailVerification {
             get {
-                return ResourceManager.GetString("Label_Email_EmailBody", resourceCulture);
+                return ResourceManager.GetString("Label_Email_BodyEmailVerification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Código de recuperación de contraseña.
+        /// </summary>
+        public static string Label_Email_TittleEmailRecoverPassword {
+            get {
+                return ResourceManager.GetString("Label_Email_TittleEmailRecoverPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Código de verificación.
         /// </summary>
-        public static string Label_Email_TittleEmail {
+        public static string Label_Email_TittleEmailVerification {
             get {
-                return ResourceManager.GetString("Label_Email_TittleEmail", resourceCulture);
+                return ResourceManager.GetString("Label_Email_TittleEmailVerification", resourceCulture);
             }
         }
         
@@ -435,6 +453,24 @@ namespace DeCryptoWPF.Properties {
         public static string Label_Error_GameNotFound {
             get {
                 return ResourceManager.GetString("Label_Error_GameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El código ingresado es incorrecto.
+        /// </summary>
+        public static string Label_ErrorCode_IncorrectCode {
+            get {
+                return ResourceManager.GetString("Label_ErrorCode_IncorrectCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La contraseñas ingresadas no coinciden.
+        /// </summary>
+        public static string Label_ErrorPassword_ErrorMatchingPasswords {
+            get {
+                return ResourceManager.GetString("Label_ErrorPassword_ErrorMatchingPasswords", resourceCulture);
             }
         }
         
@@ -534,6 +570,15 @@ namespace DeCryptoWPF.Properties {
         public static string Label_Friends_Request {
             get {
                 return ResourceManager.GetString("Label_Friends_Request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Escribe un mensaje, por favor.
+        /// </summary>
+        public static string Label_GameRoom_BlankMessage {
+            get {
+                return ResourceManager.GetString("Label_GameRoom_BlankMessage", resourceCulture);
             }
         }
         
@@ -736,6 +781,42 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a La dirección de correo electrónico es inválida.
+        /// </summary>
+        public static string Label_Register_EmailInvalid {
+            get {
+                return ResourceManager.GetString("Label_Register_EmailInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La fecha de nacimiento es incorrecta.
+        /// </summary>
+        public static string Label_Register_ErrorDateBirthday {
+            get {
+                return ResourceManager.GetString("Label_Register_ErrorDateBirthday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El nombre contiene caracteres no permitidos..
+        /// </summary>
+        public static string Label_Register_ErrorNameCharacters {
+            get {
+                return ResourceManager.GetString("Label_Register_ErrorNameCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El nombre de usuario contiene caracteres no permitidos.
+        /// </summary>
+        public static string Label_Register_ErrorUserCharacters {
+            get {
+                return ResourceManager.GetString("Label_Register_ErrorUserCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nombre.
         /// </summary>
         public static string Label_Register_Name {
@@ -907,6 +988,15 @@ namespace DeCryptoWPF.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Credeciales incorrectas.
+        /// </summary>
+        public static string MessageBox_SignIn_IncorrectCredentials {
+            get {
+                return ResourceManager.GetString("MessageBox_SignIn_IncorrectCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Se ha enviado un código a tu correo electrónico.
         /// </summary>
         public static string MessageBox_Success_CodeSent {
@@ -921,6 +1011,24 @@ namespace DeCryptoWPF.Properties {
         public static string MessageBox_Success_InformationSaved {
             get {
                 return ResourceManager.GetString("MessageBox_Success_InformationSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Registro completo.
+        /// </summary>
+        public static string MessageBox_Success_RegisterSucessfull {
+            get {
+                return ResourceManager.GetString("MessageBox_Success_RegisterSucessfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Email verificado correctamente.
+        /// </summary>
+        public static string MessageBox_VerifyEmail_VerifySucessfull {
+            get {
+                return ResourceManager.GetString("MessageBox_VerifyEmail_VerifySucessfull", resourceCulture);
             }
         }
     }

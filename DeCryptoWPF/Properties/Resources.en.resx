@@ -396,13 +396,49 @@
   <data name="MessageBox_Success_CodeSent" xml:space="preserve">
     <value>A code has been sent to your email</value>
   </data>
-  <data name="Label_Email_TittleEmail" xml:space="preserve">
+  <data name="Label_Email_TittleEmailVerification" xml:space="preserve">
     <value>Verification code</value>
   </data>
-  <data name="Label_Email_EmailBody" xml:space="preserve">
+  <data name="Label_Email_BodyEmailVerification" xml:space="preserve">
     <value>Please enter this code to verify your account</value>
   </data>
   <data name="MessageBox_Error_EmailNotFound" xml:space="preserve">
     <value>The email does not correspond to any registered account</value>
+  </data>
+  <data name="Label_GameRoom_BlankMessage" xml:space="preserve">
+    <value>Write a message, please</value>
+  </data>
+  <data name="Label_Email_BodyEmailRecoverPassword" xml:space="preserve">
+    <value>Please enter this code to recover your password</value>
+  </data>
+  <data name="Label_Email_TittleEmailRecoverPassword" xml:space="preserve">
+    <value>Recover password code</value>
+  </data>
+  <data name="Label_ErrorPassword_ErrorMatchingPasswords" xml:space="preserve">
+    <value>the entered passwords don't  match</value>
+  </data>
+  <data name="Label_ErrorCode_IncorrectCode" xml:space="preserve">
+    <value>The code entered is incorrect</value>
+  </data>
+  <data name="MessageBox_Success_RegisterSucessfull" xml:space="preserve">
+    <value>complete record</value>
+  </data>
+  <data name="Label_Register_ErrorNameCharacters" xml:space="preserve">
+    <value>The name contains unauthorized characters.</value>
+  </data>
+  <data name="Label_Register_EmailInvalid" xml:space="preserve">
+    <value>The email address is invalid</value>
+  </data>
+  <data name="Label_Register_ErrorDateBirthday" xml:space="preserve">
+    <value>The date of birth is incorrect</value>
+  </data>
+  <data name="Label_Register_ErrorUserCharacters" xml:space="preserve">
+    <value>The username contains unauthorized characters</value>
+  </data>
+  <data name="MessageBox_SignIn_IncorrectCredentials" xml:space="preserve">
+    <value>Incorrect credentials</value>
+  </data>
+  <data name="MessageBox_VerifyEmail_VerifySucessfull" xml:space="preserve">
+    <value>Email verified correctly</value>
   </data>
 </root>

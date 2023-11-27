@@ -76,8 +76,8 @@
 
                 <StackPanel Margin="0,0,0,-1"  x:Name ="StackPanel_GameRoom_Chat" Background="#24262B" Height="740" VerticalAlignment="Bottom">
 
-                        <Image x:Name="Image_GameRoom_CloseChat" Margin= "525,5,0,0 " Height="30" Width="30" Source="/Resources/buttonClose.png" ToolTip="Cerrar Chat" MouseLeftButtonDown="Image_GameRoom_CloseChat_MouseLeftButtonDown" Style="{StaticResource MouseOverHand}">
-                        </Image>
+                    <Image x:Name="Image_GameRoom_CloseChat" Margin= "525,5,0,0 " Height="30" Width="30" Source="/Resources/buttonClose.png" ToolTip="Cerrar Chat" MouseLeftButtonDown="Image_GameRoom_CloseChat_MouseLeftButtonDown" Style="{StaticResource MouseOverHand}">
+                    </Image>
 
                     <ListBox x:Name="ListBox_GameRoom_ChatMessages" 
                      Margin="0,0,0,-1"
@@ -88,24 +88,26 @@
                     </ListBox>
 
                     <TextBox x:Name="TextBox_GameRoom_WriteMessage" TextWrapping="Wrap" Width="450" Margin="-20,17,10,10" Foreground="White">
-                            <TextBox.Style>
-                                <Style TargetType="{x:Type TextBox}">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type TextBox}">
-                                                <Border BorderBrush="#2966fb" BorderThickness="2" Background="Transparent" CornerRadius="10">
-                                                    <ScrollViewer x:Name="PART_ContentHost" />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </TextBox.Style>
-                        </TextBox>
-                        <Image x:Name="Image_GameRoom_SendMessage" Margin= "480,-50, -10,0 " Height="35" Width="35" Source="/Resources/Images/buttonSendMessage.png" ToolTip="Enviar" MouseLeftButtonDown="Image_GameRoom_SendMessage_MouseLeftButtonDown" Style="{StaticResource MouseOverHand}">
-                        </Image>
+                        <TextBox.Style>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type TextBox}">
+                                            <Border BorderBrush="#2966fb" BorderThickness="2" Background="Transparent" CornerRadius="10">
+                                                <ScrollViewer x:Name="PART_ContentHost" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <Label x:Name="Label_GameRoom_BlankMessage" HorizontalAlignment="Left" Margin="120,-170,0,0" Content="{x:Static p:Resources.Label_GameRoom_BlankMessage}" FontSize="22" Foreground="#b30000" FontWeight="Medium" Height="36" Width="307" Visibility="Collapsed"/>
 
-                    </StackPanel>
+                    <Image x:Name="Image_GameRoom_SendMessage" Margin= "480,-50, -10,0" Height="35" Width="35" Source="/Resources/Images/buttonSendMessage.png" ToolTip="Enviar" MouseLeftButtonDown="Image_GameRoom_SendMessage_MouseLeftButtonDown" Style="{StaticResource MouseOverHand}">
+                    </Image>
+
+                </StackPanel>
             </Expander>
 
             <StackPanel x:Name="StackPanel_GameRoom_PlayerList" Margin="25,340,1570,393" />
