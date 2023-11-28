@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using log4net;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +15,7 @@ namespace DeCryptoWPF.Logic
 {
     public class Complements
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static string EncryptPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -40,12 +42,15 @@ namespace DeCryptoWPF.Logic
         }
         public static bool SaveImage(string nickname, string sourceProfilePicturePath)
         {
+            bool success = false;
+
             var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", nickname + ".png");
 
             if (!Directory.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/")))
             {
                 Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/"));
             }
+
             try
             {
                 using (var fileStream = new FileStream(profilePicturePath, FileMode.Create))
@@ -55,19 +60,20 @@ namespace DeCryptoWPF.Logic
                     pngBitmapEncoder.Frames.Add(bitmapDecoder.Frames[0]);
                     pngBitmapEncoder.Save(fileStream);  
                 }
-                return true;
+                success = true;
             }
-            catch (UnauthorizedAccessException)
+            catch (UnauthorizedAccessException ex)
             {
                 FileAttributes attr = (new FileInfo(profilePicturePath)).Attributes;
-                Console.Write("UnAuthorizedAccessException: Unable to access file. ");
+                log.Error("UnAuthorizedAccessException: Unable to access file.", ex);
+
                 if ((attr & FileAttributes.ReadOnly) > 0)
                 {
-                    Console.Write("The file is read-only.");
+                    log.Error("The file is read-only");
                 }
-                return false;
+                success = false;
             }
-
+            return success;
         }
     }
 }
