@@ -76,7 +76,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CurrentPassword">
+  <xs:element name="IsCurrentPassword">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q6:Account" />
@@ -84,10 +84,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CurrentPasswordResponse">
+  <xs:element name="IsCurrentPasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CurrentPasswordResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="IsCurrentPasswordResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -251,36 +251,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendFriendRequest">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="recipientNickname" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFriendList">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFriendListResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetFriendListResult" nillable="true" type="q13:ArrayOfKeyValueOfstringbase64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AcceptFriendRequest">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="recipientNickname" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="StartGame">
     <xs:complexType>
       <xs:sequence>
@@ -291,7 +261,7 @@
   <xs:element name="RecivePlayers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="profiles" nillable="true" type="q14:ArrayOfKeyValueOfstringbase64Binary" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="profiles" nillable="true" type="q13:ArrayOfKeyValueOfstringbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -303,7 +273,7 @@
   <xs:element name="ReciveBlueTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q15:BlueTeam" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q14:BlueTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -315,36 +285,11 @@
   <xs:element name="ReciveRedTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q16:RedTeam" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q15:RedTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReciveRedTeamResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReciveFriendRequest">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
-        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendRequestList" nillable="true" type="q17:ArrayOfstring" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReciveFriendRequestResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SetFriendList">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendList" nillable="true" type="q18:ArrayOfstring" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SetFriendListResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -362,7 +307,7 @@
   <xs:element name="SendMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="chatMessage" nillable="true" type="q19:ChatMessage" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="chatMessage" nillable="true" type="q16:ChatMessage" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -391,11 +336,78 @@
   <xs:element name="ReceiveChatMessages">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="messages" nillable="true" type="q20:ArrayOfChatMessage" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="messages" nillable="true" type="q17:ArrayOfChatMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReceiveChatMessagesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendFriendRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipientNickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFriendList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFriendListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetFriendListResult" nillable="true" type="q18:ArrayOfKeyValueOfstringbase64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptFriendRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recipientNickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="jointToFriendRequestService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="jointToFriendRequestServiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReciveFriendRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendRequestList" nillable="true" type="q19:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReciveFriendRequestResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetFriendList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendList" nillable="true" type="q20:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetFriendListResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

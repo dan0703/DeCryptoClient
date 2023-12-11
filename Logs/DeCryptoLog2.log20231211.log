@@ -1,0 +1,360 @@
+2023-12-11 00:04:24,254 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 00:05:48,095 [1] ERROR DeCryptoWPF.SignIn - System.TimeoutException: La operación de solicitud enviada a net.tcp://localhost:8081/AccountService no recibió una respuesta en el tiempo de espera configurado (00:01:00). El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor. La razón puede ser que el servicio sigue procesando la operación o que no pudo enviar un mensaje de respuesta. Considere la posibilidad de aumentar el tiempo de espera de la operación (convirtiendo el canal/proxy en IContextChannel y estableciendo la propiedad OperationTimeout) y asegúrese de que el servicio pueda conectarse al cliente.
+
+Server stack trace: 
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   en DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 532
+   en DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\SignIn.xaml.cs:línea 50
+2023-12-11 00:11:16,674 [1] ERROR DeCryptoWPF.MenuGame - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 813
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 40
+2023-12-11 00:40:41,467 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 00:41:00,022 [1] ERROR DeCryptoWPF.MenuGame - System.Runtime.Serialization.InvalidDataContractException: El tipo 'DeCryptoWPF.DeCryptoServices.FriendsServicesClient' no se puede serializar. Intente marcarlo con el atributo DataContractAttribute y marque todos los miembros que desee serializar con el atributo DataMemberAttribute. Si el tipo es una colección, pruebe a marcarlo con CollectionDataContractAttribute. Vea la documentación de Microsoft .NET Framework para conocer otros tipos admitidos.
+
+Server stack trace: 
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerContext.GetDataContract(RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithXsiType(XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle objectTypeHandle, Type objectType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle, Type declaredType)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+   en WritePlayerToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , ClassDataContract )
+   en System.Runtime.Serialization.ClassDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObjectContent(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameterPart(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameter(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameters(XmlDictionaryWriter writer, PartInfo[] parts, Object[] parameters)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeBody(XmlDictionaryWriter writer, MessageVersion version, String action, MessageDescription messageDescription, Object returnValue, Object[] parameters, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.SerializeBodyContents(XmlDictionaryWriter writer, MessageVersion version, Object[] parameters, Object returnValue, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.OperationFormatterMessage.OperationFormatterBodyWriter.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BodyWriterMessage.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.Message.OnWriteMessage(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BufferedMessageWriter.WriteMessage(Message message, BufferManager bufferManager, Int32 initialOffset, Int32 maxSizeQuota)
+   en System.ServiceModel.Channels.BinaryMessageEncoderFactory.BinaryMessageEncoder.WriteMessage(Message message, Int32 maxMessageSize, BufferManager bufferManager, Int32 messageOffset)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.EncodeMessage(Message message)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.OnSendCore(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.OnSend(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.OutputChannel.Send(Message message, TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture, Player player)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture, Player player) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 882
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 48
+2023-12-11 00:41:33,400 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 00:42:07,361 [1] ERROR DeCryptoWPF.MenuGame - System.Runtime.Serialization.InvalidDataContractException: El tipo 'DeCryptoWPF.DeCryptoServices.FriendsServicesClient' no se puede serializar. Intente marcarlo con el atributo DataContractAttribute y marque todos los miembros que desee serializar con el atributo DataMemberAttribute. Si el tipo es una colección, pruebe a marcarlo con CollectionDataContractAttribute. Vea la documentación de Microsoft .NET Framework para conocer otros tipos admitidos.
+
+Server stack trace: 
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerContext.GetDataContract(RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithXsiType(XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle objectTypeHandle, Type objectType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle, Type declaredType)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+   en WritePlayerToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , ClassDataContract )
+   en System.Runtime.Serialization.ClassDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObjectContent(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameterPart(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameter(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameters(XmlDictionaryWriter writer, PartInfo[] parts, Object[] parameters)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeBody(XmlDictionaryWriter writer, MessageVersion version, String action, MessageDescription messageDescription, Object returnValue, Object[] parameters, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.SerializeBodyContents(XmlDictionaryWriter writer, MessageVersion version, Object[] parameters, Object returnValue, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.OperationFormatterMessage.OperationFormatterBodyWriter.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BodyWriterMessage.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.Message.OnWriteMessage(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BufferedMessageWriter.WriteMessage(Message message, BufferManager bufferManager, Int32 initialOffset, Int32 maxSizeQuota)
+   en System.ServiceModel.Channels.BinaryMessageEncoderFactory.BinaryMessageEncoder.WriteMessage(Message message, Int32 maxMessageSize, BufferManager bufferManager, Int32 messageOffset)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.EncodeMessage(Message message)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.OnSendCore(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.OnSend(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.OutputChannel.Send(Message message, TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture, Player player)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture, Player player) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 882
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 48
+2023-12-11 00:43:29,496 [1] ERROR DeCryptoWPF.MenuGame - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.LeaveGame(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.LeaveGame(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 890
+   en DeCryptoWPF.MenuGame.Button_MenuGame_NewGame_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 72
+2023-12-11 00:47:08,166 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 00:47:36,013 [1] ERROR DeCryptoWPF.MenuGame - System.Runtime.Serialization.InvalidDataContractException: El tipo 'DeCryptoWPF.DeCryptoServices.FriendsServicesClient' no se puede serializar. Intente marcarlo con el atributo DataContractAttribute y marque todos los miembros que desee serializar con el atributo DataMemberAttribute. Si el tipo es una colección, pruebe a marcarlo con CollectionDataContractAttribute. Vea la documentación de Microsoft .NET Framework para conocer otros tipos admitidos.
+
+Server stack trace: 
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerContext.GetDataContract(RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithXsiType(XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle objectTypeHandle, Type objectType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle, Type declaredType)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+   en WritePlayerToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , ClassDataContract )
+   en System.Runtime.Serialization.ClassDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObjectContent(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameterPart(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameter(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameters(XmlDictionaryWriter writer, PartInfo[] parts, Object[] parameters)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeBody(XmlDictionaryWriter writer, MessageVersion version, String action, MessageDescription messageDescription, Object returnValue, Object[] parameters, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.SerializeBodyContents(XmlDictionaryWriter writer, MessageVersion version, Object[] parameters, Object returnValue, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.OperationFormatterMessage.OperationFormatterBodyWriter.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BodyWriterMessage.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.Message.OnWriteMessage(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BufferedMessageWriter.WriteMessage(Message message, BufferManager bufferManager, Int32 initialOffset, Int32 maxSizeQuota)
+   en System.ServiceModel.Channels.BinaryMessageEncoderFactory.BinaryMessageEncoder.WriteMessage(Message message, Int32 maxMessageSize, BufferManager bufferManager, Int32 messageOffset)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.EncodeMessage(Message message)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.OnSendCore(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.OnSend(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.OutputChannel.Send(Message message, TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture, Player player)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture, Player player) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 882
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 48
+2023-12-11 00:48:46,493 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 00:49:01,645 [1] ERROR DeCryptoWPF.MenuGame - System.Runtime.Serialization.InvalidDataContractException: El tipo 'DeCryptoWPF.DeCryptoServices.FriendsServicesClient' no se puede serializar. Intente marcarlo con el atributo DataContractAttribute y marque todos los miembros que desee serializar con el atributo DataMemberAttribute. Si el tipo es una colección, pruebe a marcarlo con CollectionDataContractAttribute. Vea la documentación de Microsoft .NET Framework para conocer otros tipos admitidos.
+
+Server stack trace: 
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerContext.GetDataContract(RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithXsiType(XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle objectTypeHandle, Type objectType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle, Type declaredType)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+   en WritePlayerToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , ClassDataContract )
+   en System.Runtime.Serialization.ClassDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObjectContent(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameterPart(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameter(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameters(XmlDictionaryWriter writer, PartInfo[] parts, Object[] parameters)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeBody(XmlDictionaryWriter writer, MessageVersion version, String action, MessageDescription messageDescription, Object returnValue, Object[] parameters, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.SerializeBodyContents(XmlDictionaryWriter writer, MessageVersion version, Object[] parameters, Object returnValue, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.OperationFormatterMessage.OperationFormatterBodyWriter.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BodyWriterMessage.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.Message.OnWriteMessage(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BufferedMessageWriter.WriteMessage(Message message, BufferManager bufferManager, Int32 initialOffset, Int32 maxSizeQuota)
+   en System.ServiceModel.Channels.BinaryMessageEncoderFactory.BinaryMessageEncoder.WriteMessage(Message message, Int32 maxMessageSize, BufferManager bufferManager, Int32 messageOffset)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.EncodeMessage(Message message)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.OnSendCore(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.OnSend(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.OutputChannel.Send(Message message, TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture, Player player)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture, Player player) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 882
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 48
+2023-12-11 00:51:00,915 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 00:51:17,298 [1] ERROR DeCryptoWPF.MenuGame - System.Runtime.Serialization.InvalidDataContractException: El tipo 'DeCryptoWPF.DeCryptoServices.FriendsServicesClient' no se puede serializar. Intente marcarlo con el atributo DataContractAttribute y marque todos los miembros que desee serializar con el atributo DataMemberAttribute. Si el tipo es una colección, pruebe a marcarlo con CollectionDataContractAttribute. Vea la documentación de Microsoft .NET Framework para conocer otros tipos admitidos.
+
+Server stack trace: 
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerContext.GetDataContract(RuntimeTypeHandle typeHandle, Type type)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithXsiType(XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle objectTypeHandle, Type objectType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle, Type declaredType)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.InternalSerialize(XmlWriterDelegator xmlWriter, Object obj, Boolean isDeclaredType, Boolean writeXsiType, Int32 declaredTypeID, RuntimeTypeHandle declaredTypeHandle)
+   en WritePlayerToXml(XmlWriterDelegator , Object , XmlObjectSerializerWriteContext , ClassDataContract )
+   en System.Runtime.Serialization.ClassDataContract.WriteXmlValue(XmlWriterDelegator xmlWriter, Object obj, XmlObjectSerializerWriteContext context)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.WriteDataContractValue(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.XmlObjectSerializerWriteContext.SerializeWithoutXsiType(DataContract dataContract, XmlWriterDelegator xmlWriter, Object obj, RuntimeTypeHandle declaredTypeHandle)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObjectContent(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   en System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameterPart(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameter(XmlDictionaryWriter writer, PartInfo part, Object graph)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeParameters(XmlDictionaryWriter writer, PartInfo[] parts, Object[] parameters)
+   en System.ServiceModel.Dispatcher.DataContractSerializerOperationFormatter.SerializeBody(XmlDictionaryWriter writer, MessageVersion version, String action, MessageDescription messageDescription, Object returnValue, Object[] parameters, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.SerializeBodyContents(XmlDictionaryWriter writer, MessageVersion version, Object[] parameters, Object returnValue, Boolean isRequest)
+   en System.ServiceModel.Dispatcher.OperationFormatter.OperationFormatterMessage.OperationFormatterBodyWriter.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BodyWriterMessage.OnWriteBodyContents(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.Message.OnWriteMessage(XmlDictionaryWriter writer)
+   en System.ServiceModel.Channels.BufferedMessageWriter.WriteMessage(Message message, BufferManager bufferManager, Int32 initialOffset, Int32 maxSizeQuota)
+   en System.ServiceModel.Channels.BinaryMessageEncoderFactory.BinaryMessageEncoder.WriteMessage(Message message, Int32 maxMessageSize, BufferManager bufferManager, Int32 messageOffset)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.EncodeMessage(Message message)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.OnSendCore(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.OnSend(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.OutputChannel.Send(Message message, TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture, Player player)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture, Player player) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 882
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 48
+2023-12-11 00:59:52,628 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:07:48,611 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:21:48,821 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:23:07,412 [1] ERROR DeCryptoWPF.MenuGame - System.TimeoutException: La operación de solicitud enviada a net.tcp://localhost:8081/JoinToGameService no recibió una respuesta en el tiempo de espera configurado (00:00:59.9994927). El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor. La razón puede ser que el servicio sigue procesando la operación o que no pudo enviar un mensaje de respuesta. Considere la posibilidad de aumentar el tiempo de espera de la operación (convirtiendo el canal/proxy en IContextChannel y estableciendo la propiedad OperationTimeout) y asegúrese de que el servicio pueda conectarse al cliente.
+
+Server stack trace: 
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.SyncDuplexRequest.WaitForReply(TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 813
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 42
+2023-12-11 01:25:59,153 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:26:22,267 [1] ERROR DeCryptoWPF.MenuGame - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 813
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 42
+2023-12-11 01:29:04,238 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:29:20,779 [1] ERROR DeCryptoWPF.SignIn - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://localhost:8081/AccountService. La duración del intento de conexión fue de 00:00:04.0908634. Código de error TCP 10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081.  ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   en DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 532
+   en DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\SignIn.xaml.cs:línea 50
+2023-12-11 01:29:37,146 [1] ERROR DeCryptoWPF.SignIn - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   en DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 532
+   en DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\SignIn.xaml.cs:línea 50
+2023-12-11 01:30:04,465 [1] ERROR DeCryptoWPF.MenuGame - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 813
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 42
+2023-12-11 01:31:34,698 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:33:31,036 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:35:33,165 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-11 01:35:50,511 [1] ERROR DeCryptoWPF.MenuGame - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.JoinToGame(String nickname, Byte[] profilePicture)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.JoinToGame(String nickname, Byte[] profilePicture) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 813
+   en DeCryptoWPF.MenuGame.ConfigurateWindow(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\MenuGame.xaml.cs:línea 42
+2023-12-11 01:38:04,003 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        

@@ -14,45 +14,49 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ServiceModel;
 using log4net;
-using DeCrypto.Domain;
 
 namespace DeCryptoWPF
 {
     /// <summary>
     /// Lógica de interacción para MenuGame.xaml
     /// </summary>
-    public partial class MenuGame : Window, IJoinToGameCallback
+    public partial class MenuGame : Window, IJoinToGameCallback, IFriendsServicesCallback
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private JoinToGameClient joinToGameClient;
         private DeCryptoServices.Account account;
+        private FriendsServicesClient friendsServicesClient;
 
         public MenuGame()
         {
             InitializeComponent();
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
+            friendsServicesClient = new FriendsServicesClient(new InstanceContext(this));
+
         }
-        public void ConfigurateWindow(DeCryptoServices.Account account)
-        {
+        public void ConfigurateWindow(Account account)
+        {            
             try
             {
                 this.account = account;
                 joinToGameClient.JoinToGame(account.nickname, null);
+                friendsServicesClient.jointToFriendRequestService(account.nickname);
+
             }
             catch (CommunicationException ex)
             {
                 log.Error(ex);
-                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException + ex.Message);
             }
             catch (TimeoutException ex)
             {
                 log.Error(ex);
-                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException + ex.Message);
             }
             catch (Exception ex)
             {
                 log.Error(ex);
-                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException);
+                MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException + ex.Message);
             }
         }
 
@@ -130,21 +134,6 @@ namespace DeCryptoWPF
             StackPanel_MenuGame_FriendList.Visibility = Visibility.Visible;
         }
 
-        public void ReciveBlueTeam(BlueTeam blueTeam)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ReciveRedTeam(RedTeam redTeam)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RecivePlayers(Dictionary<string, byte[]> profiles)
-        {
-            throw new NotImplementedException();
-        }
-
         private void Image_MenuGame_CloseFriendList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Expander_MenuGame_Configurations.IsExpanded = false;
@@ -172,7 +161,7 @@ namespace DeCryptoWPF
             }*/
         }
 
-        public void ReciveFriendRequest(DeCryptoServices.Account senderAccount, string[] friendRequestList)
+        public void ReciveFriendRequest(string senderNickname, string[] friendRequestList)
         {
             throw new NotImplementedException();
         }
@@ -182,12 +171,22 @@ namespace DeCryptoWPF
             throw new NotImplementedException();
         }
 
-        public void GoToGameWindow()
+        public void RecivePlayers(Dictionary<string, byte[]> profiles)
         {
             throw new NotImplementedException();
         }
 
-        public void ReciveFriendRequest(string senderNickname, string[] friendRequestList)
+        public void ReciveBlueTeam(BlueTeam blueTeam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReciveRedTeam(RedTeam redTeam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GoToGameWindow()
         {
             throw new NotImplementedException();
         }

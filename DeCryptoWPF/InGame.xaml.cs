@@ -20,10 +20,11 @@ namespace DeCryptoWPF
     /// <summary>
     /// Lógica de interacción para InGame.xaml
     /// </summary>
-    public partial class InGame : Window, IJoinToGameCallback
+    public partial class InGame : Window, IJoinToGameCallback, IFriendsServicesCallback
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public readonly JoinToGameClient joinToGameClient;
+        public readonly FriendsServicesClient friendsServicesClient;
         public readonly ChatMessageClient chatMessageClient;
         public GameRoom gameRoomWindow;
         private Account account;
@@ -33,12 +34,14 @@ namespace DeCryptoWPF
             InitializeComponent();
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
             chatMessageClient = new ChatMessageClient(new InstanceContext(this));
+            friendsServicesClient = new FriendsServicesClient(new InstanceContext(this));
         }
         public void ConfigurateWindow(GameRoom gameRoomWindow, Account account, int code)
         {
             this.gameRoomWindow = gameRoomWindow;
             this.account = account;
             this.joinToGameClient.JoinToGame(account.nickname, null);
+            this.friendsServicesClient.jointToFriendRequestService(account.nickname);
         }
 
         private void Button_InGame_GiveClues_Click(object sender, RoutedEventArgs e)

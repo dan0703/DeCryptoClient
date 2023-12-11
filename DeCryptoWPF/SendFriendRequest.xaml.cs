@@ -25,14 +25,16 @@ namespace DeCryptoWPF
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private Account account;
-        private JoinToGameClient joinToGameClient;
-        private PlayerServicesClient playerServicesClient;
+        private readonly JoinToGameClient joinToGameClient;
+        private readonly PlayerServicesClient playerServicesClient;
+        private readonly FriendsServicesClient friendsServicesClient;
 
         public SendFriendRequest()
         {
             InitializeComponent();
             joinToGameClient = new JoinToGameClient(new InstanceContext(this));
             playerServicesClient = new PlayerServicesClient();
+            friendsServicesClient = new FriendsServicesClient(new InstanceContext(this));
         }
         public void ConfigurateWindow(Account account)
         {
@@ -47,7 +49,7 @@ namespace DeCryptoWPF
                 {
                     if(TextBox_SendFriendRequest_NickName.Text != account.nickname)
                     {
-                        joinToGameClient.SendFriendRequest(account.nickname, TextBox_SendFriendRequest_NickName.Text);
+                        friendsServicesClient.SendFriendRequest(account.nickname, TextBox_SendFriendRequest_NickName.Text);
                     }
                     else
                     {

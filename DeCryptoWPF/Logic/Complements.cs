@@ -40,17 +40,19 @@ namespace DeCryptoWPF.Logic
             openFileDialog.ShowDialog();
             return openFileDialog.FileName;
         }
+        public static void ShowFriendRequest(string senderNickname)
+        {
+            ReceiveFriendRequest receiveFriendRequestWindow = new ReceiveFriendRequest(senderNickname);
+            receiveFriendRequestWindow.Show();
+        }
         public static bool SaveImage(string nickname, string sourceProfilePicturePath)
         {
-            bool success = false;
-
             var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", nickname + ".png");
-
             if (!Directory.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/")))
             {
                 Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/"));
             }
-
+            bool saveImageSuccess;
             try
             {
                 using (var fileStream = new FileStream(profilePicturePath, FileMode.Create))
@@ -58,9 +60,9 @@ namespace DeCryptoWPF.Logic
                     var bitmapDecoder = BitmapDecoder.Create(new Uri(sourceProfilePicturePath), BitmapCreateOptions.None, BitmapCacheOption.Default);
                     var pngBitmapEncoder = new PngBitmapEncoder();
                     pngBitmapEncoder.Frames.Add(bitmapDecoder.Frames[0]);
-                    pngBitmapEncoder.Save(fileStream);  
+                    pngBitmapEncoder.Save(fileStream);
                 }
-                success = true;
+                saveImageSuccess = true;
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -71,9 +73,9 @@ namespace DeCryptoWPF.Logic
                 {
                     log.Error("The file is read-only");
                 }
-                success = false;
+                saveImageSuccess = false;
             }
-            return success;
+            return saveImageSuccess;
         }
     }
 }

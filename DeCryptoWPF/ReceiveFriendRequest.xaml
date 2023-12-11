@@ -1,0 +1,36 @@
+﻿<Window x:Class="DeCryptoWPF.ReceiveFriendRequest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeCryptoWPF"
+        mc:Ignorable="d"
+        Title="ReceiveFriendRequest" Height="150" Width="350">
+    <Viewbox Stretch="Fill" StretchDirection="Both">
+        <Grid Width="800" Height="450" Background="Black">
+            <Label x:Name="Label_ReceiveFriendRequest_SenderNickname" Content="Te acaban de enviar una solicitud de amistad" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="24" Width="800" HorizontalContentAlignment="Center" FontFamily="Arial Rounded MT Bold"/>
+            <Label x:Name="Label_ReceiveFriendRequest_AcceptRequest" Content="¿Deseas aceptar la solicitud de amistad?" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontSize="32" FontFamily="Arial Rounded MT Bold" Width="800" HorizontalContentAlignment="Center"/>
+            <Button x:Name="Button_ReceiveFriendRequest_Accept" HorizontalAlignment="Left" Margin="82,334,0,0" VerticalAlignment="Top" Foreground="White" Height="67" Width="155" FontSize="28" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Click="Button_ReceiveFriendRequest_Accept_Click">
+                <Button.Template >
+                    <ControlTemplate TargetType="{x:Type Button}" >
+                        <Border Background="#FF33CC00"  CornerRadius="30">
+                            <ContentPresenter Content="Aceptar" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Button_ReceiveFriendRequest_Cancel" HorizontalAlignment="Left" Margin="571,334,0,0" VerticalAlignment="Top" Foreground="White" Height="67" Width="155" FontSize="28" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Click="Button_ReceiveFriendRequest_Cancel_Click">
+                <Button.Template >
+                    <ControlTemplate TargetType="{x:Type Button}" >
+                        <Border Background="#FFF90808"  CornerRadius="30">
+                            <ContentPresenter Content="Cancelar" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <ProgressBar x:Name="ProgressBar_ReceiverFriendRequest" HorizontalAlignment="Center" Height="31" Margin="0,419,0,0" VerticalAlignment="Top" Width="800"/>
+
+        </Grid>
+
+    </Viewbox>
+</Window>

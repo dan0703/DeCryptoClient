@@ -50,6 +50,7 @@ namespace DeCryptoWPF
                     var newAccount = accountServicesClient.Login(account);
                     if (newAccount != null)
                     {
+                        MessageBox.Show(newAccount.nickname);
                         MenuGame menuGameWidow = new MenuGame();
                         menuGameWidow.ConfigurateWindow(newAccount);
                         Close();
@@ -63,17 +64,17 @@ namespace DeCryptoWPF
                 catch (CommunicationException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto1", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (TimeoutException ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto2", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (Exception ex)
                 {
                     log.Error(ex);
-                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Resources.MessageBox_Error_ServiceException, "DeCrypto3", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

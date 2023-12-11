@@ -262,7 +262,8 @@ namespace DeCryptoWPF
 
         private void Button_GameRoom_SendCode_Click(object sender, RoutedEventArgs e)
         {
-
+            ReceiveFriendRequest receiveFriendRequestWindow = new ReceiveFriendRequest("mario");
+            receiveFriendRequestWindow.ShowDialog();
         }
 
         private void Button_GameRoom_Chat_Click(object sender, RoutedEventArgs e)

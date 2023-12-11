@@ -90,7 +90,7 @@ namespace DeCryptoWPF
 
             try
             {
-                if (!accountServicesClient.CurrentPassword(this.account, Complements.EncryptPassword(PasswordBox_ChangePassword_CurrentPassword.Password)))
+                if (!accountServicesClient.IsCurrentPassword(this.account, Complements.EncryptPassword(PasswordBox_ChangePassword_CurrentPassword.Password)))
                 {
                     validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_IncorrectPassword);
                 }

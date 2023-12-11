@@ -116,6 +116,35 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IFriendsServices_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -154,11 +183,11 @@
   <wsdl:message name="IAccountServices_ChangePassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
   </wsdl:message>
-  <wsdl:message name="IAccountServices_CurrentPassword_InputMessage">
-    <wsdl:part name="parameters" element="tns:CurrentPassword" />
+  <wsdl:message name="IAccountServices_IsCurrentPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsCurrentPassword" />
   </wsdl:message>
-  <wsdl:message name="IAccountServices_CurrentPassword_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CurrentPasswordResponse" />
+  <wsdl:message name="IAccountServices_IsCurrentPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsCurrentPasswordResponse" />
   </wsdl:message>
   <wsdl:message name="IAccountServices_ExistAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:ExistAccount" />
@@ -229,18 +258,6 @@
   <wsdl:message name="IJoinToGame_IsFullRoom_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsFullRoomResponse" />
   </wsdl:message>
-  <wsdl:message name="IJoinToGame_SendFriendRequest_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_GetFriendList_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetFriendList" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_GetFriendList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetFriendListResponse" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_AcceptFriendRequest_InputMessage">
-    <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
-  </wsdl:message>
   <wsdl:message name="IJoinToGame_StartGame_InputMessage">
     <wsdl:part name="parameters" element="tns:StartGame" />
   </wsdl:message>
@@ -261,18 +278,6 @@
   </wsdl:message>
   <wsdl:message name="IJoinToGame_ReciveRedTeam_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveRedTeamResponse" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_ReciveFriendRequest_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReciveFriendRequest" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_ReciveFriendRequest_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReciveFriendRequestResponse" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_SetFriendList_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:SetFriendList" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_SetFriendList_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:SetFriendListResponse" />
   </wsdl:message>
   <wsdl:message name="IJoinToGame_GoToGameWindow_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GoToGameWindow" />
@@ -298,6 +303,36 @@
   <wsdl:message name="IChatMessage_ReceiveChatMessages_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveChatMessagesResponse" />
   </wsdl:message>
+  <wsdl:message name="IFriendsServices_SendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_GetFriendList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendList" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_GetFriendList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_AcceptFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_jointToFriendRequestService_InputMessage">
+    <wsdl:part name="parameters" element="tns:jointToFriendRequestService" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_jointToFriendRequestService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:jointToFriendRequestServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_ReciveFriendRequest_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_ReciveFriendRequest_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_SetFriendList_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetFriendList" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsServices_SetFriendList_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetFriendListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAccountServices">
     <wsdl:operation name="RegisterAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/RegisterAccount" message="tns:IAccountServices_RegisterAccount_InputMessage" />
@@ -319,9 +354,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/ChangePassword" message="tns:IAccountServices_ChangePassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccountServices/ChangePasswordResponse" message="tns:IAccountServices_ChangePassword_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CurrentPassword">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/CurrentPassword" message="tns:IAccountServices_CurrentPassword_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAccountServices/CurrentPasswordResponse" message="tns:IAccountServices_CurrentPassword_OutputMessage" />
+    <wsdl:operation name="IsCurrentPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/IsCurrentPassword" message="tns:IAccountServices_IsCurrentPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccountServices/IsCurrentPasswordResponse" message="tns:IAccountServices_IsCurrentPassword_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ExistAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/ExistAccount" message="tns:IAccountServices_ExistAccount_InputMessage" />
@@ -376,16 +411,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoom" message="tns:IJoinToGame_IsFullRoom_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoomResponse" message="tns:IJoinToGame_IsFullRoom_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SendFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/SendFriendRequest" message="tns:IJoinToGame_SendFriendRequest_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetFriendList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/GetFriendList" message="tns:IJoinToGame_GetFriendList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/GetFriendListResponse" message="tns:IJoinToGame_GetFriendList_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AcceptFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/AcceptFriendRequest" message="tns:IJoinToGame_AcceptFriendRequest_InputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="StartGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/StartGame" message="tns:IJoinToGame_StartGame_InputMessage" />
     </wsdl:operation>
@@ -400,14 +425,6 @@
     <wsdl:operation name="ReciveRedTeam">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeam" message="tns:IJoinToGame_ReciveRedTeam_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveRedTeamResponse" message="tns:IJoinToGame_ReciveRedTeam_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReciveFriendRequest">
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/ReciveFriendRequest" message="tns:IJoinToGame_ReciveFriendRequest_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/ReciveFriendRequestResponse" message="tns:IJoinToGame_ReciveFriendRequest_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SetFriendList">
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/SetFriendList" message="tns:IJoinToGame_SetFriendList_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/SetFriendListResponse" message="tns:IJoinToGame_SetFriendList_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GoToGameWindow">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/GoToGameWindow" message="tns:IJoinToGame_GoToGameWindow_OutputCallbackMessage" />
@@ -428,6 +445,30 @@
     <wsdl:operation name="ReceiveChatMessages">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatMessage/ReceiveChatMessages" message="tns:IChatMessage_ReceiveChatMessages_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IChatMessage/ReceiveChatMessagesResponse" message="tns:IChatMessage_ReceiveChatMessages_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IFriendsServices">
+    <wsdl:operation name="SendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsServices/SendFriendRequest" message="tns:IFriendsServices_SendFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsServices/GetFriendList" message="tns:IFriendsServices_GetFriendList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsServices/GetFriendListResponse" message="tns:IFriendsServices_GetFriendList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsServices/AcceptFriendRequest" message="tns:IFriendsServices_AcceptFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="jointToFriendRequestService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsServices/jointToFriendRequestService" message="tns:IFriendsServices_jointToFriendRequestService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsServices/jointToFriendRequestServiceResponse" message="tns:IFriendsServices_jointToFriendRequestService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveFriendRequest">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsServices/ReciveFriendRequest" message="tns:IFriendsServices_ReciveFriendRequest_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsServices/ReciveFriendRequestResponse" message="tns:IFriendsServices_ReciveFriendRequest_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetFriendList">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsServices/SetFriendList" message="tns:IFriendsServices_SetFriendList_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsServices/SetFriendListResponse" message="tns:IFriendsServices_SetFriendList_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAccountServices" type="tns:IAccountServices">
@@ -478,8 +519,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CurrentPassword">
-      <soap12:operation soapAction="http://tempuri.org/IAccountServices/CurrentPassword" style="document" />
+    <wsdl:operation name="IsCurrentPassword">
+      <soap12:operation soapAction="http://tempuri.org/IAccountServices/IsCurrentPassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -603,27 +644,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SendFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/SendFriendRequest" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="GetFriendList">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/GetFriendList" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AcceptFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/AcceptFriendRequest" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="StartGame">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/StartGame" style="document" />
       <wsdl:input>
@@ -650,24 +670,6 @@
     </wsdl:operation>
     <wsdl:operation name="ReciveRedTeam">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/ReciveRedTeam" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReciveFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/ReciveFriendRequest" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetFriendList">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/SetFriendList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -719,6 +721,58 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IFriendsServices" type="tns:IFriendsServices">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFriendsServices_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsServices/SendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendList">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsServices/GetFriendList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsServices/AcceptFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="jointToFriendRequestService">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsServices/jointToFriendRequestService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsServices/ReciveFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFriendList">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsServices/SetFriendList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="Implementations">
     <wsdl:port name="NetTcpBinding_IAccountServices" binding="tns:NetTcpBinding_IAccountServices">
       <soap12:address location="net.tcp://localhost:8081/AccountService" />
@@ -751,6 +805,15 @@
       <soap12:address location="net.tcp://localhost:8081/ChatMessageService" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatMessageService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LAPTOP_DAN\danse</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IFriendsServices" binding="tns:NetTcpBinding_IFriendsServices">
+      <soap12:address location="net.tcp://localhost:8081/FriendsServices" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/FriendsServices</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>

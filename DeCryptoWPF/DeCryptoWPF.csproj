@@ -133,6 +133,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.es-MX.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReceiveFriendRequest.xaml.cs">
+      <DependentUpon>ReceiveFriendRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RecoverPassword.xaml.cs">
       <DependentUpon>RecoverPassword.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReceiveFriendRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
