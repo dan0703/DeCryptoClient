@@ -145,6 +145,64 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameServices_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IRoomServices_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -228,12 +286,6 @@
   <wsdl:message name="IJoinToGame_LeaveRoom_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeaveRoomResponse" />
   </wsdl:message>
-  <wsdl:message name="IJoinToGame_AllreadyExistRoom_InputMessage">
-    <wsdl:part name="parameters" element="tns:AllreadyExistRoom" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_AllreadyExistRoom_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AllreadyExistRoomResponse" />
-  </wsdl:message>
   <wsdl:message name="IJoinToGame_JoinToBlueTeam_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinToBlueTeam" />
   </wsdl:message>
@@ -251,12 +303,6 @@
   </wsdl:message>
   <wsdl:message name="IJoinToGame_LeaveGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_IsFullRoom_InputMessage">
-    <wsdl:part name="parameters" element="tns:IsFullRoom" />
-  </wsdl:message>
-  <wsdl:message name="IJoinToGame_IsFullRoom_OutputMessage">
-    <wsdl:part name="parameters" element="tns:IsFullRoomResponse" />
   </wsdl:message>
   <wsdl:message name="IJoinToGame_StartGame_InputMessage">
     <wsdl:part name="parameters" element="tns:StartGame" />
@@ -333,6 +379,84 @@
   <wsdl:message name="IFriendsServices_SetFriendList_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SetFriendListResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameServices_JoinToGameBoard_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToGameBoard" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_MakeWaitForClues_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeWaitForClues" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GetBlueTeamWords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBlueTeamWords" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GetBlueTeamWords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBlueTeamWordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GetRedTeamWords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRedTeamWords" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GetRedTeamWords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRedTeamWordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GiveBlueTeamClues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GiveBlueTeamClues" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GiveRedTeamClues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GiveRedTeamClues" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SubmitBlueTeamInterceptionResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitBlueTeamInterceptionResult" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SubmitRedTeamIntercepcionResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitRedTeamIntercepcionResult" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetBlueTeamClues_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetBlueTeamClues" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetBlueTeamClues_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetBlueTeamCluesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetRedTeamClues_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetRedTeamClues" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetRedTeamClues_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetRedTeamCluesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetBlueTeamScore_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetBlueTeamScore" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetBlueTeamScore_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetBlueTeamScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetRedTeamScore_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetRedTeamScore" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetRedTeamScore_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetRedTeamScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_WaitForGuesses_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:WaitForGuesses" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_WaitForGuesses_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:WaitForGuessesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetBoard_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetBoard" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SetBoard_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SetBoardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomServices_IsFullRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFullRoom" />
+  </wsdl:message>
+  <wsdl:message name="IRoomServices_IsFullRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFullRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomServices_AllreadyExistRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllreadyExistRoom" />
+  </wsdl:message>
+  <wsdl:message name="IRoomServices_AllreadyExistRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllreadyExistRoomResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAccountServices">
     <wsdl:operation name="RegisterAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/RegisterAccount" message="tns:IAccountServices_RegisterAccount_InputMessage" />
@@ -389,10 +513,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/LeaveRoom" message="tns:IJoinToGame_LeaveRoom_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/LeaveRoomResponse" message="tns:IJoinToGame_LeaveRoom_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AllreadyExistRoom">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom" message="tns:IJoinToGame_AllreadyExistRoom_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse" message="tns:IJoinToGame_AllreadyExistRoom_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="JoinToBlueTeam">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/JoinToBlueTeam" message="tns:IJoinToGame_JoinToBlueTeam_InputMessage" />
     </wsdl:operation>
@@ -406,10 +526,6 @@
     <wsdl:operation name="LeaveGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/LeaveGame" message="tns:IJoinToGame_LeaveGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/LeaveGameResponse" message="tns:IJoinToGame_LeaveGame_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="IsFullRoom">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoom" message="tns:IJoinToGame_IsFullRoom_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinToGame/IsFullRoomResponse" message="tns:IJoinToGame_IsFullRoom_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="StartGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinToGame/StartGame" message="tns:IJoinToGame_StartGame_InputMessage" />
@@ -469,6 +585,68 @@
     <wsdl:operation name="SetFriendList">
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsServices/SetFriendList" message="tns:IFriendsServices_SetFriendList_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsServices/SetFriendListResponse" message="tns:IFriendsServices_SetFriendList_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGameServices">
+    <wsdl:operation name="JoinToGameBoard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/JoinToGameBoard" message="tns:IGameServices_JoinToGameBoard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeWaitForClues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/MakeWaitForClues" message="tns:IGameServices_MakeWaitForClues_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlueTeamWords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GetBlueTeamWords" message="tns:IGameServices_GetBlueTeamWords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/GetBlueTeamWordsResponse" message="tns:IGameServices_GetBlueTeamWords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRedTeamWords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GetRedTeamWords" message="tns:IGameServices_GetRedTeamWords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/GetRedTeamWordsResponse" message="tns:IGameServices_GetRedTeamWords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GiveBlueTeamClues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GiveBlueTeamClues" message="tns:IGameServices_GiveBlueTeamClues_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GiveRedTeamClues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GiveRedTeamClues" message="tns:IGameServices_GiveRedTeamClues_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitBlueTeamInterceptionResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SubmitBlueTeamInterceptionResult" message="tns:IGameServices_SubmitBlueTeamInterceptionResult_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRedTeamIntercepcionResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SubmitRedTeamIntercepcionResult" message="tns:IGameServices_SubmitRedTeamIntercepcionResult_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBlueTeamClues">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/SetBlueTeamClues" message="tns:IGameServices_SetBlueTeamClues_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SetBlueTeamCluesResponse" message="tns:IGameServices_SetBlueTeamClues_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRedTeamClues">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/SetRedTeamClues" message="tns:IGameServices_SetRedTeamClues_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SetRedTeamCluesResponse" message="tns:IGameServices_SetRedTeamClues_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBlueTeamScore">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/SetBlueTeamScore" message="tns:IGameServices_SetBlueTeamScore_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SetBlueTeamScoreResponse" message="tns:IGameServices_SetBlueTeamScore_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRedTeamScore">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/SetRedTeamScore" message="tns:IGameServices_SetRedTeamScore_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SetRedTeamScoreResponse" message="tns:IGameServices_SetRedTeamScore_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WaitForGuesses">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/WaitForGuesses" message="tns:IGameServices_WaitForGuesses_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/WaitForGuessesResponse" message="tns:IGameServices_WaitForGuesses_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBoard">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/SetBoard" message="tns:IGameServices_SetBoard_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SetBoardResponse" message="tns:IGameServices_SetBoard_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRoomServices">
+    <wsdl:operation name="IsFullRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomServices/IsFullRoom" message="tns:IRoomServices_IsFullRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomServices/IsFullRoomResponse" message="tns:IRoomServices_IsFullRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllreadyExistRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomServices/AllreadyExistRoom" message="tns:IRoomServices_AllreadyExistRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomServices/AllreadyExistRoomResponse" message="tns:IRoomServices_AllreadyExistRoom_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAccountServices" type="tns:IAccountServices">
@@ -596,15 +774,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AllreadyExistRoom">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/AllreadyExistRoom" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="JoinToBlueTeam">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/JoinToBlueTeam" style="document" />
       <wsdl:input>
@@ -628,15 +797,6 @@
     </wsdl:operation>
     <wsdl:operation name="LeaveGame">
       <soap12:operation soapAction="http://tempuri.org/IJoinToGame/LeaveGame" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsFullRoom">
-      <soap12:operation soapAction="http://tempuri.org/IJoinToGame/IsFullRoom" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -773,6 +933,140 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameServices" type="tns:IGameServices">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameServices_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="JoinToGameBoard">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/JoinToGameBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="MakeWaitForClues">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/MakeWaitForClues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlueTeamWords">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/GetBlueTeamWords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRedTeamWords">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/GetRedTeamWords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GiveBlueTeamClues">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/GiveBlueTeamClues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GiveRedTeamClues">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/GiveRedTeamClues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitBlueTeamInterceptionResult">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SubmitBlueTeamInterceptionResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRedTeamIntercepcionResult">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SubmitRedTeamIntercepcionResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SetBlueTeamClues">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SetBlueTeamClues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRedTeamClues">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SetRedTeamClues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBlueTeamScore">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SetBlueTeamScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRedTeamScore">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SetRedTeamScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WaitForGuesses">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/WaitForGuesses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBoard">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SetBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IRoomServices" type="tns:IRoomServices">
+    <wsp:PolicyReference URI="#NetTcpBinding_IRoomServices_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="IsFullRoom">
+      <soap12:operation soapAction="http://tempuri.org/IRoomServices/IsFullRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllreadyExistRoom">
+      <soap12:operation soapAction="http://tempuri.org/IRoomServices/AllreadyExistRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="Implementations">
     <wsdl:port name="NetTcpBinding_IAccountServices" binding="tns:NetTcpBinding_IAccountServices">
       <soap12:address location="net.tcp://localhost:8081/AccountService" />
@@ -814,6 +1108,24 @@
       <soap12:address location="net.tcp://localhost:8081/FriendsServices" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/FriendsServices</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LAPTOP_DAN\danse</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IGameServices" binding="tns:NetTcpBinding_IGameServices">
+      <soap12:address location="net.tcp://localhost:8081/GameServices" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/GameServices</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LAPTOP_DAN\danse</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IRoomServices" binding="tns:NetTcpBinding_IRoomServices">
+      <soap12:address location="net.tcp://localhost:8081/RoomServices" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/RoomServices</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>LAPTOP_DAN\danse</Upn>
         </Identity>

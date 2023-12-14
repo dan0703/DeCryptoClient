@@ -19,9 +19,12 @@ namespace DeCryptoWPF
     /// </summary>
     public partial class ReportPlayer : Window
     {
-        public ReportPlayer()
+        private Dictionary<string, byte[]> profiles;
+
+        public ReportPlayer(Dictionary<string, byte[]> profiles)
         {
             InitializeComponent();
+            this.profiles = profiles;
         }
 
         private void Button_Confirmations_Save_Click(object sender, RoutedEventArgs e)

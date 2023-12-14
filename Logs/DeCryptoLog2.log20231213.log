@@ -1,0 +1,247 @@
+2023-12-13 08:42:18,644 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 08:43:48,337 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 08:44:19,454 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 08:50:59,846 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 09:03:58,853 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 09:07:46,384 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:34:34,333 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:36:02,730 [1] ERROR DeCryptoWPF.GameRoom - System.TimeoutException: La operación de solicitud enviada a net.tcp://localhost:8081/JoinToGameService no recibió una respuesta en el tiempo de espera configurado (00:01:00). El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor. La razón puede ser que el servicio sigue procesando la operación o que no pudo enviar un mensaje de respuesta. Considere la posibilidad de aumentar el tiempo de espera de la operación (convirtiendo el canal/proxy en IContextChannel y estableciendo la propiedad OperationTimeout) y asegúrese de que el servicio pueda conectarse al cliente.
+
+Server stack trace: 
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.SyncDuplexRequest.WaitForReply(TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:37:29,706 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:38:28,903 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:39:54,717 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:40:53,267 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfFaulted()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:42:56,327 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:45:08,523 [1] ERROR DeCryptoWPF.GameRoom - System.TimeoutException: La operación de solicitud enviada a net.tcp://localhost:8081/JoinToGameService no recibió una respuesta en el tiempo de espera configurado (00:00:59.9990386). El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor. La razón puede ser que el servicio sigue procesando la operación o que no pudo enviar un mensaje de respuesta. Considere la posibilidad de aumentar el tiempo de espera de la operación (convirtiendo el canal/proxy en IContextChannel y estableciendo la propiedad OperationTimeout) y asegúrese de que el servicio pueda conectarse al cliente.
+
+Server stack trace: 
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.SyncDuplexRequest.WaitForReply(TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:46:03,947 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:47:20,136 [1] ERROR DeCryptoWPF.GameRoom - System.TimeoutException: La operación de solicitud enviada a net.tcp://localhost:8081/JoinToGameService no recibió una respuesta en el tiempo de espera configurado (00:00:59.9996171). El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor. La razón puede ser que el servicio sigue procesando la operación o que no pudo enviar un mensaje de respuesta. Considere la posibilidad de aumentar el tiempo de espera de la operación (convirtiendo el canal/proxy en IContextChannel y estableciendo la propiedad OperationTimeout) y asegúrese de que el servicio pueda conectarse al cliente.
+
+Server stack trace: 
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.SyncDuplexRequest.WaitForReply(TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:47:34,625 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:48:59,337 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:49:11,075 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:49:37,278 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfFaulted()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:52:16,014 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:53:03,499 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfFaulted()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:53:33,596 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 13:54:13,272 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfFaulted()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 13:54:43,780 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:13:59,934 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:17:32,465 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:18:03,657 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 14:23:19,432 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:24:29,849 [1] ERROR DeCryptoWPF.GameRoom - System.ServiceModel.CommunicationException: El servidor no proporcionó una respuesta significativa; la causa puede ser un contrato que no coincide, el apagado prematuro de una sesión o un error interno del servidor.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IJoinToGame.CreateRoom(String nickname)
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.CreateRoom(String nickname) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 925
+   en DeCryptoWPF.GameRoom.ConfigurateWindow(Account account, Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\GameRoom.xaml.cs:línea 75
+2023-12-13 14:26:31,757 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:28:24,022 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:29:27,674 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:34:37,020 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:36:41,342 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 14:38:08,311 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 15:57:40,084 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:04:51,976 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:06:02,916 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:06:57,139 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:07:40,007 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:11:51,013 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:13:27,145 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:15:33,147 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:23:26,782 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:24:24,262 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:28:55,857 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:29:58,488 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:35:19,263 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:41:11,243 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:42:46,240 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:45:30,035 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:46:09,616 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 16:49:18,772 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:40:37,496 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:42:26,316 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:42:52,257 [1] ERROR DeCryptoWPF.SignIn - System.ServiceModel.CommunicationException: Se anuló la conexión de socket. La causa puede ser un error en el procesamiento del mensaje, que se superó el tiempo de espera de recepción en el host remoto, o bien un problema de recursos de red subyacente. El tiempo de espera de socket local era '00:00:59.9734972'. ---> System.Net.Sockets.SocketException: Se ha forzado la interrupción de una conexión existente por el host remoto
+   en System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   en System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+   en System.ServiceModel.Channels.SocketConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   en System.ServiceModel.Channels.DelegatingConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionUpgradeHelper.InitiateUpgrade(StreamUpgradeInitiator upgradeInitiator, IConnection& connection, ClientFramingDecoder decoder, IDefaultCommunicationTimeouts defaultTimeouts, TimeoutHelper& timeoutHelper)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.SendPreamble(IConnection connection, ArraySegment`1 preamble, TimeoutHelper& timeoutHelper)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.DuplexConnectionPoolHelper.AcceptPooledConnection(IConnection connection, TimeoutHelper& timeoutHelper)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   en DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 801
+   en DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\SignIn.xaml.cs:línea 50
+2023-12-13 17:47:30,070 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:48:30,395 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:50:51,709 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:52:55,456 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:55:42,405 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 17:56:49,804 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 21:24:26,654 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 21:32:08,036 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 21:45:20,990 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 22:47:55,890 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 22:59:45,785 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:02:32,065 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:05:24,389 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:12:32,792 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:14:08,038 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:20:28,666 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:33:40,724 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:38:02,983 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:43:50,835 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 23:48:41,838 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        

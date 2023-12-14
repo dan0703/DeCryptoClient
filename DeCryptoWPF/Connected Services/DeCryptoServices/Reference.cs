@@ -257,10 +257,25 @@ namespace DeCryptoWPF.DeCryptoServices {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool allreadySetGuessesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] cluesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int interceptionsPointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int missComunicationsPointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nicknamePlayer1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nicknamePlayer2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] wordListField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -269,6 +284,58 @@ namespace DeCryptoWPF.DeCryptoServices {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool allreadySetGuesses {
+            get {
+                return this.allreadySetGuessesField;
+            }
+            set {
+                if ((this.allreadySetGuessesField.Equals(value) != true)) {
+                    this.allreadySetGuessesField = value;
+                    this.RaisePropertyChanged("allreadySetGuesses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] clues {
+            get {
+                return this.cluesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.cluesField, value) != true)) {
+                    this.cluesField = value;
+                    this.RaisePropertyChanged("clues");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int interceptionsPoints {
+            get {
+                return this.interceptionsPointsField;
+            }
+            set {
+                if ((this.interceptionsPointsField.Equals(value) != true)) {
+                    this.interceptionsPointsField = value;
+                    this.RaisePropertyChanged("interceptionsPoints");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int missComunicationsPoints {
+            get {
+                return this.missComunicationsPointsField;
+            }
+            set {
+                if ((this.missComunicationsPointsField.Equals(value) != true)) {
+                    this.missComunicationsPointsField = value;
+                    this.RaisePropertyChanged("missComunicationsPoints");
+                }
             }
         }
         
@@ -294,6 +361,19 @@ namespace DeCryptoWPF.DeCryptoServices {
                 if ((object.ReferenceEquals(this.nicknamePlayer2Field, value) != true)) {
                     this.nicknamePlayer2Field = value;
                     this.RaisePropertyChanged("nicknamePlayer2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] wordList {
+            get {
+                return this.wordListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.wordListField, value) != true)) {
+                    this.wordListField = value;
+                    this.RaisePropertyChanged("wordList");
                 }
             }
         }
@@ -318,10 +398,25 @@ namespace DeCryptoWPF.DeCryptoServices {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool allreadySetGuessesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] cluesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int interceptionsPointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int missComunicationsPointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nicknamePlayer1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nicknamePlayer2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] wordListField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -330,6 +425,58 @@ namespace DeCryptoWPF.DeCryptoServices {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool allreadySetGuesses {
+            get {
+                return this.allreadySetGuessesField;
+            }
+            set {
+                if ((this.allreadySetGuessesField.Equals(value) != true)) {
+                    this.allreadySetGuessesField = value;
+                    this.RaisePropertyChanged("allreadySetGuesses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] clues {
+            get {
+                return this.cluesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.cluesField, value) != true)) {
+                    this.cluesField = value;
+                    this.RaisePropertyChanged("clues");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int interceptionsPoints {
+            get {
+                return this.interceptionsPointsField;
+            }
+            set {
+                if ((this.interceptionsPointsField.Equals(value) != true)) {
+                    this.interceptionsPointsField = value;
+                    this.RaisePropertyChanged("interceptionsPoints");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int missComunicationsPoints {
+            get {
+                return this.missComunicationsPointsField;
+            }
+            set {
+                if ((this.missComunicationsPointsField.Equals(value) != true)) {
+                    this.missComunicationsPointsField = value;
+                    this.RaisePropertyChanged("missComunicationsPoints");
+                }
             }
         }
         
@@ -355,6 +502,19 @@ namespace DeCryptoWPF.DeCryptoServices {
                 if ((object.ReferenceEquals(this.nicknamePlayer2Field, value) != true)) {
                     this.nicknamePlayer2Field = value;
                     this.RaisePropertyChanged("nicknamePlayer2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] wordList {
+            get {
+                return this.wordListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.wordListField, value) != true)) {
+                    this.wordListField = value;
+                    this.RaisePropertyChanged("wordList");
                 }
             }
         }
@@ -432,6 +592,115 @@ namespace DeCryptoWPF.DeCryptoServices {
                 if ((object.ReferenceEquals(this.timeField, value) != true)) {
                     this.timeField = value;
                     this.RaisePropertyChanged("time");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameConfiguration", Namespace="http://schemas.datacontract.org/2004/07/Domain.data")]
+    [System.SerializableAttribute()]
+    public partial class GameConfiguration : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HostNicknameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DeCryptoWPF.DeCryptoServices.BlueTeam blueTeamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int numberOfRoundsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DeCryptoWPF.DeCryptoServices.RedTeam redTeamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int roundNumberField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HostNickname {
+            get {
+                return this.HostNicknameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HostNicknameField, value) != true)) {
+                    this.HostNicknameField = value;
+                    this.RaisePropertyChanged("HostNickname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam {
+            get {
+                return this.blueTeamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.blueTeamField, value) != true)) {
+                    this.blueTeamField = value;
+                    this.RaisePropertyChanged("blueTeam");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int numberOfRounds {
+            get {
+                return this.numberOfRoundsField;
+            }
+            set {
+                if ((this.numberOfRoundsField.Equals(value) != true)) {
+                    this.numberOfRoundsField = value;
+                    this.RaisePropertyChanged("numberOfRounds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DeCryptoWPF.DeCryptoServices.RedTeam redTeam {
+            get {
+                return this.redTeamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.redTeamField, value) != true)) {
+                    this.redTeamField = value;
+                    this.RaisePropertyChanged("redTeam");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int roundNumber {
+            get {
+                return this.roundNumberField;
+            }
+            set {
+                if ((this.roundNumberField.Equals(value) != true)) {
+                    this.roundNumberField = value;
+                    this.RaisePropertyChanged("roundNumber");
                 }
             }
         }
@@ -657,10 +926,10 @@ namespace DeCryptoWPF.DeCryptoServices {
     public interface IJoinToGame {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/CreateRoom", ReplyAction="http://tempuri.org/IJoinToGame/CreateRoomResponse")]
-        int CreateRoom();
+        int CreateRoom(string nickname);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/CreateRoom", ReplyAction="http://tempuri.org/IJoinToGame/CreateRoomResponse")]
-        System.Threading.Tasks.Task<int> CreateRoomAsync();
+        System.Threading.Tasks.Task<int> CreateRoomAsync(string nickname);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToRoom")]
         void JoinToRoom(int code, string nickname);
@@ -673,12 +942,6 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveRoom", ReplyAction="http://tempuri.org/IJoinToGame/LeaveRoomResponse")]
         System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom", ReplyAction="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse")]
-        bool AllreadyExistRoom(int code);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/AllreadyExistRoom", ReplyAction="http://tempuri.org/IJoinToGame/AllreadyExistRoomResponse")]
-        System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/JoinToBlueTeam")]
         void JoinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code);
@@ -703,12 +966,6 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/LeaveGame", ReplyAction="http://tempuri.org/IJoinToGame/LeaveGameResponse")]
         System.Threading.Tasks.Task LeaveGameAsync(string nickname);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/IsFullRoom", ReplyAction="http://tempuri.org/IJoinToGame/IsFullRoomResponse")]
-        bool IsFullRoom(int code);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinToGame/IsFullRoom", ReplyAction="http://tempuri.org/IJoinToGame/IsFullRoomResponse")]
-        System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinToGame/StartGame")]
         void StartGame(int code);
@@ -761,12 +1018,12 @@ namespace DeCryptoWPF.DeCryptoServices {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public int CreateRoom() {
-            return base.Channel.CreateRoom();
+        public int CreateRoom(string nickname) {
+            return base.Channel.CreateRoom(nickname);
         }
         
-        public System.Threading.Tasks.Task<int> CreateRoomAsync() {
-            return base.Channel.CreateRoomAsync();
+        public System.Threading.Tasks.Task<int> CreateRoomAsync(string nickname) {
+            return base.Channel.CreateRoomAsync(nickname);
         }
         
         public void JoinToRoom(int code, string nickname) {
@@ -783,14 +1040,6 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task LeaveRoomAsync(string nickname, int code, DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, DeCryptoWPF.DeCryptoServices.RedTeam redTeam) {
             return base.Channel.LeaveRoomAsync(nickname, code, blueTeam, redTeam);
-        }
-        
-        public bool AllreadyExistRoom(int code) {
-            return base.Channel.AllreadyExistRoom(code);
-        }
-        
-        public System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code) {
-            return base.Channel.AllreadyExistRoomAsync(code);
         }
         
         public void JoinToBlueTeam(DeCryptoWPF.DeCryptoServices.BlueTeam blueTeam, int code) {
@@ -823,14 +1072,6 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task LeaveGameAsync(string nickname) {
             return base.Channel.LeaveGameAsync(nickname);
-        }
-        
-        public bool IsFullRoom(int code) {
-            return base.Channel.IsFullRoom(code);
-        }
-        
-        public System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code) {
-            return base.Channel.IsFullRoomAsync(code);
         }
         
         public void StartGame(int code) {
@@ -1022,6 +1263,235 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task jointToFriendRequestServiceAsync(string nickname) {
             return base.Channel.jointToFriendRequestServiceAsync(nickname);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DeCryptoServices.IGameServices", CallbackContract=typeof(DeCryptoWPF.DeCryptoServices.IGameServicesCallback))]
+    public interface IGameServices {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/JoinToGameBoard")]
+        void JoinToGameBoard(byte[] profilePicture, string nickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/JoinToGameBoard")]
+        System.Threading.Tasks.Task JoinToGameBoardAsync(byte[] profilePicture, string nickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/MakeWaitForClues")]
+        void MakeWaitForClues(string targetNickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/MakeWaitForClues")]
+        System.Threading.Tasks.Task MakeWaitForCluesAsync(string targetNickname, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/GetBlueTeamWords", ReplyAction="http://tempuri.org/IGameServices/GetBlueTeamWordsResponse")]
+        string[] GetBlueTeamWords(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/GetBlueTeamWords", ReplyAction="http://tempuri.org/IGameServices/GetBlueTeamWordsResponse")]
+        System.Threading.Tasks.Task<string[]> GetBlueTeamWordsAsync(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/GetRedTeamWords", ReplyAction="http://tempuri.org/IGameServices/GetRedTeamWordsResponse")]
+        string[] GetRedTeamWords(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/GetRedTeamWords", ReplyAction="http://tempuri.org/IGameServices/GetRedTeamWordsResponse")]
+        System.Threading.Tasks.Task<string[]> GetRedTeamWordsAsync(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveBlueTeamClues")]
+        void GiveBlueTeamClues(string[] blueTeamClues, int code, string ownNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveBlueTeamClues")]
+        System.Threading.Tasks.Task GiveBlueTeamCluesAsync(string[] blueTeamClues, int code, string ownNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveRedTeamClues")]
+        void GiveRedTeamClues(string[] redTeamClues, int code, string ownNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveRedTeamClues")]
+        System.Threading.Tasks.Task GiveRedTeamCluesAsync(string[] redTeamClues, int code, string ownNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitBlueTeamInterceptionResult")]
+        void SubmitBlueTeamInterceptionResult(bool isCorrectInterception, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitBlueTeamInterceptionResult")]
+        System.Threading.Tasks.Task SubmitBlueTeamInterceptionResultAsync(bool isCorrectInterception, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitRedTeamIntercepcionResult")]
+        void SubmitRedTeamIntercepcionResult(bool isCorrectInterception, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitRedTeamIntercepcionResult")]
+        System.Threading.Tasks.Task SubmitRedTeamIntercepcionResultAsync(bool isCorrectInterception, int code);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServicesCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetBlueTeamClues", ReplyAction="http://tempuri.org/IGameServices/SetBlueTeamCluesResponse")]
+        void SetBlueTeamClues(string[] blueTeamClues);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetRedTeamClues", ReplyAction="http://tempuri.org/IGameServices/SetRedTeamCluesResponse")]
+        void SetRedTeamClues(string[] redTeamClues);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetBlueTeamScore", ReplyAction="http://tempuri.org/IGameServices/SetBlueTeamScoreResponse")]
+        void SetBlueTeamScore(int blueTeamInterception, int blueTeamMisComunications);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetRedTeamScore", ReplyAction="http://tempuri.org/IGameServices/SetRedTeamScoreResponse")]
+        void SetRedTeamScore(int redTeamInterception, int redTeamMisComunications);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/WaitForGuesses", ReplyAction="http://tempuri.org/IGameServices/WaitForGuessesResponse")]
+        void WaitForGuesses();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetBoard", ReplyAction="http://tempuri.org/IGameServices/SetBoardResponse")]
+        void SetBoard(DeCryptoWPF.DeCryptoServices.GameConfiguration gameConfiguration);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServicesChannel : DeCryptoWPF.DeCryptoServices.IGameServices, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameServicesClient : System.ServiceModel.DuplexClientBase<DeCryptoWPF.DeCryptoServices.IGameServices>, DeCryptoWPF.DeCryptoServices.IGameServices {
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void JoinToGameBoard(byte[] profilePicture, string nickname, int code) {
+            base.Channel.JoinToGameBoard(profilePicture, nickname, code);
+        }
+        
+        public System.Threading.Tasks.Task JoinToGameBoardAsync(byte[] profilePicture, string nickname, int code) {
+            return base.Channel.JoinToGameBoardAsync(profilePicture, nickname, code);
+        }
+        
+        public void MakeWaitForClues(string targetNickname, int code) {
+            base.Channel.MakeWaitForClues(targetNickname, code);
+        }
+        
+        public System.Threading.Tasks.Task MakeWaitForCluesAsync(string targetNickname, int code) {
+            return base.Channel.MakeWaitForCluesAsync(targetNickname, code);
+        }
+        
+        public string[] GetBlueTeamWords(int code) {
+            return base.Channel.GetBlueTeamWords(code);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetBlueTeamWordsAsync(int code) {
+            return base.Channel.GetBlueTeamWordsAsync(code);
+        }
+        
+        public string[] GetRedTeamWords(int code) {
+            return base.Channel.GetRedTeamWords(code);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetRedTeamWordsAsync(int code) {
+            return base.Channel.GetRedTeamWordsAsync(code);
+        }
+        
+        public void GiveBlueTeamClues(string[] blueTeamClues, int code, string ownNickname) {
+            base.Channel.GiveBlueTeamClues(blueTeamClues, code, ownNickname);
+        }
+        
+        public System.Threading.Tasks.Task GiveBlueTeamCluesAsync(string[] blueTeamClues, int code, string ownNickname) {
+            return base.Channel.GiveBlueTeamCluesAsync(blueTeamClues, code, ownNickname);
+        }
+        
+        public void GiveRedTeamClues(string[] redTeamClues, int code, string ownNickname) {
+            base.Channel.GiveRedTeamClues(redTeamClues, code, ownNickname);
+        }
+        
+        public System.Threading.Tasks.Task GiveRedTeamCluesAsync(string[] redTeamClues, int code, string ownNickname) {
+            return base.Channel.GiveRedTeamCluesAsync(redTeamClues, code, ownNickname);
+        }
+        
+        public void SubmitBlueTeamInterceptionResult(bool isCorrectInterception, int code) {
+            base.Channel.SubmitBlueTeamInterceptionResult(isCorrectInterception, code);
+        }
+        
+        public System.Threading.Tasks.Task SubmitBlueTeamInterceptionResultAsync(bool isCorrectInterception, int code) {
+            return base.Channel.SubmitBlueTeamInterceptionResultAsync(isCorrectInterception, code);
+        }
+        
+        public void SubmitRedTeamIntercepcionResult(bool isCorrectInterception, int code) {
+            base.Channel.SubmitRedTeamIntercepcionResult(isCorrectInterception, code);
+        }
+        
+        public System.Threading.Tasks.Task SubmitRedTeamIntercepcionResultAsync(bool isCorrectInterception, int code) {
+            return base.Channel.SubmitRedTeamIntercepcionResultAsync(isCorrectInterception, code);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DeCryptoServices.IRoomServices")]
+    public interface IRoomServices {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomServices/IsFullRoom", ReplyAction="http://tempuri.org/IRoomServices/IsFullRoomResponse")]
+        bool IsFullRoom(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomServices/IsFullRoom", ReplyAction="http://tempuri.org/IRoomServices/IsFullRoomResponse")]
+        System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomServices/AllreadyExistRoom", ReplyAction="http://tempuri.org/IRoomServices/AllreadyExistRoomResponse")]
+        bool AllreadyExistRoom(int code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoomServices/AllreadyExistRoom", ReplyAction="http://tempuri.org/IRoomServices/AllreadyExistRoomResponse")]
+        System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRoomServicesChannel : DeCryptoWPF.DeCryptoServices.IRoomServices, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RoomServicesClient : System.ServiceModel.ClientBase<DeCryptoWPF.DeCryptoServices.IRoomServices>, DeCryptoWPF.DeCryptoServices.IRoomServices {
+        
+        public RoomServicesClient() {
+        }
+        
+        public RoomServicesClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public RoomServicesClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RoomServicesClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RoomServicesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool IsFullRoom(int code) {
+            return base.Channel.IsFullRoom(code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsFullRoomAsync(int code) {
+            return base.Channel.IsFullRoomAsync(code);
+        }
+        
+        public bool AllreadyExistRoom(int code) {
+            return base.Channel.AllreadyExistRoom(code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AllreadyExistRoomAsync(int code) {
+            return base.Channel.AllreadyExistRoomAsync(code);
         }
     }
 }

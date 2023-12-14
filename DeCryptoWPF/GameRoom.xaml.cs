@@ -57,7 +57,7 @@ namespace DeCryptoWPF
         {
             isNavegatingToGameBoardWindow = true;
             InGame inGameWindow = new InGame();
-            inGameWindow.ConfigurateWindow(this, account, code);
+            inGameWindow.ConfigurateInGameWindow(this, account, code);
             Close();
             inGameWindow.Show();                       
         }
@@ -72,7 +72,7 @@ namespace DeCryptoWPF
                 }
                 else
                 {
-                    this.code = joinToGameClient.CreateRoom();
+                    this.code = joinToGameClient.CreateRoom(account.nickname);
                 }
                 Label_GameRoom_Code.Content = this.code;
                 this.account = account;

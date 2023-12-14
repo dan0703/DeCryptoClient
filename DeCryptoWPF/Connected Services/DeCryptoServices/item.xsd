@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Domain.data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Domain.data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="Account">
     <xs:sequence>
       <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
@@ -23,15 +24,25 @@
   <xs:element name="User" nillable="true" type="tns:User" />
   <xs:complexType name="BlueTeam">
     <xs:sequence>
+      <xs:element minOccurs="0" name="allreadySetGuesses" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="clues" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="interceptionsPoints" type="xs:int" />
+      <xs:element minOccurs="0" name="missComunicationsPoints" type="xs:int" />
       <xs:element minOccurs="0" name="nicknamePlayer1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="nicknamePlayer2" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="wordList" nillable="true" type="q2:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BlueTeam" nillable="true" type="tns:BlueTeam" />
   <xs:complexType name="RedTeam">
     <xs:sequence>
+      <xs:element minOccurs="0" name="allreadySetGuesses" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="clues" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="interceptionsPoints" type="xs:int" />
+      <xs:element minOccurs="0" name="missComunicationsPoints" type="xs:int" />
       <xs:element minOccurs="0" name="nicknamePlayer1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="nicknamePlayer2" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="wordList" nillable="true" type="q4:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RedTeam" nillable="true" type="tns:RedTeam" />
@@ -49,4 +60,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfChatMessage" nillable="true" type="tns:ArrayOfChatMessage" />
+  <xs:complexType name="GameConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HostNickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="blueTeam" nillable="true" type="tns:BlueTeam" />
+      <xs:element minOccurs="0" name="numberOfRounds" type="xs:int" />
+      <xs:element minOccurs="0" name="redTeam" nillable="true" type="tns:RedTeam" />
+      <xs:element minOccurs="0" name="roundNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameConfiguration" nillable="true" type="tns:GameConfiguration" />
 </xs:schema>

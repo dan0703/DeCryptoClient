@@ -11,15 +11,15 @@ namespace DeCryptoWPF
     /// <summary>
     /// Lógica de interacción para CodeWindow.xaml
     /// </summary>
-    public partial class CodeWindow : Window, IJoinToGameCallback
+    public partial class CodeWindow : Window, IFriendsServicesCallback
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private JoinToGameClient joinToGameClient;
+        private RoomServicesClient roomServicesClient;
         private Account account;
 
         public CodeWindow()
         {
-            joinToGameClient = new JoinToGameClient(new InstanceContext(this));
+            roomServicesClient = new RoomServicesClient();
             account = new Account();
             InitializeComponent();
         }
@@ -29,9 +29,9 @@ namespace DeCryptoWPF
             int code = int.Parse(TextBox_CodeWindow_Code.Text);
             try
             {
-                if (joinToGameClient.AllreadyExistRoom(code))
+                if (roomServicesClient.AllreadyExistRoom(code))
                 {
-                    if (joinToGameClient.IsFullRoom(code))
+                    if (roomServicesClient.IsFullRoom(code))
                     {
                         MessageBox.Show(Properties.Resources.MessageBox_MenuGame_RoomIsFull, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
@@ -45,6 +45,7 @@ namespace DeCryptoWPF
                 }
                 else
                 {
+                    MessageBox.Show("la room no existe");
                     MessageBox.Show(Properties.Resources.MessageBox_MenuGame_RoomNotFound, "DeCrypto", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
@@ -70,7 +71,6 @@ namespace DeCryptoWPF
             try { 
                 MenuGame menuGameWindow = new MenuGame();
                 menuGameWindow.ConfigurateWindow(account);
-                joinToGameClient.LeaveGame(account.nickname);
                 Close();
                 menuGameWindow.ShowDialog();
             }
@@ -91,25 +91,11 @@ namespace DeCryptoWPF
             }
         }
 
-        internal void ConfigurateWindow(Account account)
+        internal void ConfigurateCodeWindow(Account account)
         {
             this.account = account;
         }
-
-        public void ReciveBlueTeam(BlueTeam blueTeam)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ReciveRedTeam(RedTeam redTeam)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RecivePlayers(Dictionary<string, byte[]> profiles)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void ReciveFriendRequest(string senderNickname)
         {
@@ -122,11 +108,6 @@ namespace DeCryptoWPF
         }
 
         public void SetFriendList(string[] friendList)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GoToGameWindow()
         {
             throw new NotImplementedException();
         }

@@ -1,0 +1,30 @@
+2023-12-13 21:25:24,197 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 21:31:32,644 [1] ERROR DeCryptoWPF.CodeWindow - System.InvalidOperationException: InstanceContext proporcionado a ChannelFactory contiene UserObject que no implementa CallbackContractType 'DeCryptoWPF.DeCryptoServices.IJoinToGameCallback'.
+   en System.ServiceModel.DuplexChannelFactory`1.CreateChannel(InstanceContext callbackInstance, EndpointAddress address, Uri via)
+   en System.ServiceModel.DuplexChannelFactory`1.CreateChannel(EndpointAddress address, Uri via)
+   en System.ServiceModel.ChannelFactory`1.CreateChannel()
+   en System.ServiceModel.ClientBase`1.CreateChannel()
+   en System.ServiceModel.ClientBase`1.CreateChannelInternal()
+   en System.ServiceModel.ClientBase`1.get_Channel()
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.AllreadyExistRoom(Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 1058
+   en DeCryptoWPF.CodeWindow.Button_CodeWindow_Join_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\CodeWindow.xaml.cs:línea 32
+2023-12-13 21:31:42,530 [1] ERROR DeCryptoWPF.CodeWindow - System.InvalidOperationException: InstanceContext proporcionado a ChannelFactory contiene UserObject que no implementa CallbackContractType 'DeCryptoWPF.DeCryptoServices.IJoinToGameCallback'.
+   en System.ServiceModel.DuplexChannelFactory`1.CreateChannel(InstanceContext callbackInstance, EndpointAddress address, Uri via)
+   en System.ServiceModel.DuplexChannelFactory`1.CreateChannel(EndpointAddress address, Uri via)
+   en System.ServiceModel.ChannelFactory`1.CreateChannel()
+   en System.ServiceModel.ClientBase`1.CreateChannel()
+   en System.ServiceModel.ClientBase`1.CreateChannelInternal()
+   en System.ServiceModel.ClientBase`1.get_Channel()
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.AllreadyExistRoom(Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 1058
+   en DeCryptoWPF.CodeWindow.Button_CodeWindow_Join_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\CodeWindow.xaml.cs:línea 32
+2023-12-13 21:32:17,161 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-13 21:32:57,999 [1] ERROR DeCryptoWPF.CodeWindow - System.InvalidOperationException: InstanceContext proporcionado a ChannelFactory contiene UserObject que no implementa CallbackContractType 'DeCryptoWPF.DeCryptoServices.IJoinToGameCallback'.
+   en System.ServiceModel.DuplexChannelFactory`1.CreateChannel(InstanceContext callbackInstance, EndpointAddress address, Uri via)
+   en System.ServiceModel.DuplexChannelFactory`1.CreateChannel(EndpointAddress address, Uri via)
+   en System.ServiceModel.ChannelFactory`1.CreateChannel()
+   en System.ServiceModel.ClientBase`1.CreateChannel()
+   en System.ServiceModel.ClientBase`1.CreateChannelInternal()
+   en System.ServiceModel.ClientBase`1.get_Channel()
+   en DeCryptoWPF.DeCryptoServices.JoinToGameClient.AllreadyExistRoom(Int32 code) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 1058
+   en DeCryptoWPF.CodeWindow.Button_CodeWindow_Join_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\CodeWindow.xaml.cs:línea 32
+2023-12-13 21:45:49,827 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        

@@ -55,7 +55,6 @@ namespace DeCryptoWPF
         }
         private void CopyProfilePicture()
         {
-
             var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", account.nickname + ".png");
             if (File.Exists(profilePicturePath))
             {

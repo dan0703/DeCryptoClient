@@ -92,7 +92,7 @@ namespace DeCryptoWPF
             try
             {
                 CodeWindow codeWindow = new CodeWindow();
-                codeWindow.ConfigurateWindow(this.account);
+                codeWindow.ConfigurateCodeWindow(this.account);
                 joinToGameClient.LeaveGame(account.nickname);
                 Close();
                 codeWindow.ShowDialog();
