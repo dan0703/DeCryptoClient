@@ -27,12 +27,23 @@ namespace DeCryptoWPF
     {
         private AccountServicesClient accountServicesClient;
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+        private bool isRestarting = false;
+
         public SignIn()
         {
+
             log4net.Config.XmlConfigurator.Configure();
             InitializeComponent();
             accountServicesClient = new AccountServicesClient();
+            LoadLanguage();
+            isRestarting = false;
+        }
+
+        private void LoadLanguage()
+        {
+            isRestarting = true;
+            int selectedLanguage = Properties.Settings.Default.SelectedLanguage;
+            ComboBox_SigIn_Language.SelectedIndex = selectedLanguage;
         }
 
         private void Button_SignIn_SignIn_Click(object sender, RoutedEventArgs e)
@@ -129,6 +140,37 @@ namespace DeCryptoWPF
         private void TextBox_SignIn_Password_TextChanged(object sender, TextChangedEventArgs e)
         {
             PasswordBox_SignIn_Password.Password = TextBox_SignIn_Password.Text;
+        }
+
+
+        private void ComboBox_SigIn_Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!isRestarting)
+            {
+                isRestarting = true;
+
+                if (ComboBox_SigIn_Language.SelectedIndex == 0)
+                {
+                    Properties.Settings.Default.LanguageCode = "es-MX";
+                }
+                else
+                {
+                    Properties.Settings.Default.LanguageCode = "en";
+                }
+
+                int selectedLanguage = ComboBox_SigIn_Language.SelectedIndex;
+
+                Properties.Settings.Default.SelectedLanguage = selectedLanguage;
+                Properties.Settings.Default.Save();
+                RestartApplication();
+            }
+            
+        }
+
+        private void RestartApplication()
+        {
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
     }
 }

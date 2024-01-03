@@ -36,7 +36,7 @@
             <Button x:Name="Button_SignIn_SignIn" Content="{x:Static p:Resources.Button_SignIn_Enter}" HorizontalAlignment="Left" Margin="189,627,0,0" VerticalAlignment="Top" Height="38" Width="451" Foreground="White" Background="#FF2966FB" FontSize="18" FontWeight="Bold" Click="Button_SignIn_SignIn_Click"/>
             <Button x:Name="Button_SignIn_SignInAsGuest" Content="{x:Static p:Resources.Button_SignIn_EnterAsGuess}" HorizontalAlignment="Left" Margin="189,688,0,0" VerticalAlignment="Top" Height="38" Width="451" Foreground="White" Background="#FF2966FB" FontSize="22" FontWeight="Bold" Click="Button_SignIn_SignInAsGuest_Click"/>
 
-            <ComboBox x:Name="ComboBox_SigIn_Language" HorizontalAlignment="Left" Margin="1640,73,0,0" VerticalAlignment="Top" Width="215" Height="48" Grid.ColumnSpan="2" FontSize="20">
+            <ComboBox x:Name="ComboBox_SigIn_Language" HorizontalAlignment="Left" Margin="1640,73,0,0" VerticalAlignment="Top" Width="215" Height="48" Grid.ColumnSpan="2" FontSize="20" SelectionChanged="ComboBox_SigIn_Language_SelectionChanged" SelectedValue="{x:Static p:Resources.Button_SignIn_EnterAsGuess}">
                 <ComboBoxItem Content="{x:Static p:Resources.ComboBoxItem_MainWindow_Spanish}"/>
                 <ComboBoxItem Content="{x:Static p:Resources.ComboBoxItem_MainWindow_English}"/>
             </ComboBox>
