@@ -18,7 +18,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    
+
     <Viewbox Stretch="Fill" StretchDirection="Both">
         <Grid Width="1920" Height="1080" Background="Black">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -54,10 +54,10 @@
                     <Label x:Name="Label_InGame_NumberWord2Red" Content="2" HorizontalAlignment="Left" Margin="367,-708,0,0" VerticalAlignment="Top" FontSize="45" FontWeight="Bold" Foreground="Crimson"/>
                     <Label x:Name="Label_InGame_NumberWord3Red" Content="3" HorizontalAlignment="Left" Margin="588,-708,0,0" VerticalAlignment="Top" FontSize="45" FontWeight="Bold" Foreground="Crimson"/>
                     <Label x:Name="Label_InGame_NumberWord4Red" Content="4" HorizontalAlignment="Left" Margin="793,-708,0,0" VerticalAlignment="Top" FontSize="45" FontWeight="Bold" Foreground="Crimson"/>
-                    <TextBlock x:Name="TextBlock_InGame_Word1Red" HorizontalAlignment="Left" Margin="115,-630,0,0" TextWrapping="Wrap" Text="Word1" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
-                    <TextBlock x:Name="TextBlock_InGame_Word2Red" HorizontalAlignment="Left" Margin="329,-630,0,0" TextWrapping="Wrap" Text="Word2" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
-                    <TextBlock x:Name="TextBlock_InGame_Word3Red" HorizontalAlignment="Left" Margin="540,-630,0,0" TextWrapping="Wrap" Text="Word3" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
-                    <TextBlock x:Name="TextBlock_InGame_Word4Red" HorizontalAlignment="Left" Margin="745,-630,0,0" TextWrapping="Wrap" Text="Word4" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
+                    <TextBlock x:Name="TextBlock_InGame_Word1Red" HorizontalAlignment="Left" Margin="90,-630,0,0" TextWrapping="Wrap" Text="Word1" FontSize="25" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="180" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
+                    <TextBlock x:Name="TextBlock_InGame_Word2Red" HorizontalAlignment="Left" Margin="300,-630,0,0" TextWrapping="Wrap" Text="Word2" FontSize="25" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="180" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
+                    <TextBlock x:Name="TextBlock_InGame_Word3Red" HorizontalAlignment="Left" Margin="515,-630,0,0" TextWrapping="Wrap" Text="Word3" FontSize="25" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="180" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
+                    <TextBlock x:Name="TextBlock_InGame_Word4Red" HorizontalAlignment="Left" Margin="725,-630,0,0" TextWrapping="Wrap" Text="Word4" FontSize="25" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="180" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
 
                     <Rectangle Fill="#2d2d2d" Stroke="Black" Margin="990,-918,52,352" Height="186"/>
 
@@ -70,7 +70,9 @@
                     <TextBlock x:Name="TextBlock_InGame_Word2Blue" HorizontalAlignment="Left" Margin="1235,-630,0,0" TextWrapping="Wrap" Text="Word2" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
                     <TextBlock x:Name="TextBlock_InGame_Word3Blue" HorizontalAlignment="Left" Margin="1455,-630,0,0" TextWrapping="Wrap" Text="Word3" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
                     <TextBlock x:Name="TextBlock_InGame_Word4Blue" HorizontalAlignment="Left" Margin="1660,-630,0,0" TextWrapping="Wrap" Text="Word4" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
+                    <Label x:Name="Label_InGame_Note" Content="" Foreground="White" FontSize="18"  VerticalAlignment="Center" Margin="160,-1010,0,0" HorizontalAlignment="Left" Height="35" Width="1600" FontWeight="Bold" HorizontalContentAlignment="Center" Visibility="Collapsed" />
                     <Button x:Name="Button_InGame_GiveClues" Content="{x:Static p:Resources.Button_InGame_GiveClue}" HorizontalAlignment="Left" Margin="75,-466,0,0" VerticalAlignment="Top" Height="76" Width="1775" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_GiveClues_Click" Visibility="Visible"/>
+
 
                     <StackPanel x:Name="StackPanel_InGame_GiveClues" Margin="0,-649,0,0" Height="388" Visibility="Collapsed">
                         <Grid>
@@ -82,8 +84,8 @@
                             <Label x:Name="Label_InGame_GiveClueForWord3" Content="{x:Static p:Resources.Label_InGame_GiveClueFor}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalContentAlignment="Left" Margin="63,201,1486,160" />
 
                             <TextBox x:Name="TextBox_InGame_ClueForWord1" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,21,0,335" Width="856" FontSize="35"/>
-                            <TextBox x:Name="TextBox_InGame_ClueForWord2" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,204,0,155" Width="856" FontSize="35"/>
-                            <TextBox x:Name="TextBox_InGame_ClueForWord3" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,113,0,242" Width="856" FontSize="35"/>
+                            <TextBox x:Name="TextBox_InGame_ClueForWord2" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,113,0,242" Width="856" FontSize="35"/>
+                            <TextBox x:Name="TextBox_InGame_ClueForWord3" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="990,204,0,155" Width="856" FontSize="35"/>
 
                             <TextBlock x:Name="TextBlock_InGame_Word1" Margin="382,29,0,0" TextWrapping="Wrap" Text="Word1" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>
                             <TextBlock x:Name="TextBlock_InGame_Word2" Margin="382,118,0,0" TextWrapping="Wrap" Text="Word2" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.783,0.493"/>

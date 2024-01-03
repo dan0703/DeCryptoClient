@@ -25,7 +25,7 @@
   <xs:complexType name="BlueTeam">
     <xs:sequence>
       <xs:element minOccurs="0" name="allreadySetGuesses" type="xs:boolean" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="clues" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="clues" nillable="true" type="q1:ArrayOfArrayOfstring" />
       <xs:element minOccurs="0" name="interceptionsPoints" type="xs:int" />
       <xs:element minOccurs="0" name="missComunicationsPoints" type="xs:int" />
       <xs:element minOccurs="0" name="nicknamePlayer1" nillable="true" type="xs:string" />
@@ -37,7 +37,7 @@
   <xs:complexType name="RedTeam">
     <xs:sequence>
       <xs:element minOccurs="0" name="allreadySetGuesses" type="xs:boolean" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="clues" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="clues" nillable="true" type="q3:ArrayOfArrayOfstring" />
       <xs:element minOccurs="0" name="interceptionsPoints" type="xs:int" />
       <xs:element minOccurs="0" name="missComunicationsPoints" type="xs:int" />
       <xs:element minOccurs="0" name="nicknamePlayer1" nillable="true" type="xs:string" />

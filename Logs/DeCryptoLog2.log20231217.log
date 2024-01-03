@@ -1,0 +1,60 @@
+2023-12-17 09:20:27,542 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:22:40,687 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:25:27,654 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:33:45,633 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:39:01,358 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:41:17,770 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:41:44,554 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:42:04,349 [1] ERROR DeCryptoWPF.SignIn - System.ServiceModel.CommunicationException: Se anuló la conexión de socket. La causa puede ser un error en el procesamiento del mensaje, que se superó el tiempo de espera de recepción en el host remoto, o bien un problema de recursos de red subyacente. El tiempo de espera de socket local era '00:00:59.9335897'. ---> System.Net.Sockets.SocketException: Se ha forzado la interrupción de una conexión existente por el host remoto
+   en System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   en System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+   en System.ServiceModel.Channels.SocketConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   en System.ServiceModel.Channels.DelegatingConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionUpgradeHelper.InitiateUpgrade(StreamUpgradeInitiator upgradeInitiator, IConnection& connection, ClientFramingDecoder decoder, IDefaultCommunicationTimeouts defaultTimeouts, TimeoutHelper& timeoutHelper)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.SendPreamble(IConnection connection, ArraySegment`1 preamble, TimeoutHelper& timeoutHelper)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.DuplexConnectionPoolHelper.AcceptPooledConnection(IConnection connection, TimeoutHelper& timeoutHelper)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   en DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 801
+   en DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\SignIn.xaml.cs:línea 50
+2023-12-17 09:42:10,722 [1] ERROR DeCryptoWPF.SignIn - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   en DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 801
+   en DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\SignIn.xaml.cs:línea 50
+2023-12-17 09:46:55,785 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:49:43,670 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:51:48,172 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:52:56,923 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:54:19,527 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 09:56:24,565 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 10:04:15,593 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 10:05:51,232 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 10:09:40,088 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2023-12-17 10:11:28,497 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        

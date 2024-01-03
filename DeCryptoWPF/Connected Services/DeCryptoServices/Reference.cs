@@ -260,7 +260,7 @@ namespace DeCryptoWPF.DeCryptoServices {
         private bool allreadySetGuessesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] cluesField;
+        private string[][] cluesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int interceptionsPointsField;
@@ -301,7 +301,7 @@ namespace DeCryptoWPF.DeCryptoServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] clues {
+        public string[][] clues {
             get {
                 return this.cluesField;
             }
@@ -401,7 +401,7 @@ namespace DeCryptoWPF.DeCryptoServices {
         private bool allreadySetGuessesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] cluesField;
+        private string[][] cluesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int interceptionsPointsField;
@@ -442,7 +442,7 @@ namespace DeCryptoWPF.DeCryptoServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] clues {
+        public string[][] clues {
             get {
                 return this.cluesField;
             }
@@ -1323,10 +1323,10 @@ namespace DeCryptoWPF.DeCryptoServices {
     public interface IGameServicesCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetBlueTeamClues", ReplyAction="http://tempuri.org/IGameServices/SetBlueTeamCluesResponse")]
-        void SetBlueTeamClues(string[] blueTeamClues);
+        void SetBlueTeamClues(string[][] blueTeamClues);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetRedTeamClues", ReplyAction="http://tempuri.org/IGameServices/SetRedTeamCluesResponse")]
-        void SetRedTeamClues(string[] redTeamClues);
+        void SetRedTeamClues(string[][] redTeamClues);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/SetBlueTeamScore", ReplyAction="http://tempuri.org/IGameServices/SetBlueTeamScoreResponse")]
         void SetBlueTeamScore(int blueTeamInterception, int blueTeamMisComunications);

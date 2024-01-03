@@ -345,36 +345,47 @@ namespace DeCryptoWPF
         public void RecivePlayers(Dictionary<string, byte[]> profiles)
         {
             StackPanel_GameRoom_PlayerList.Children.Clear();
-            foreach (var profile in profiles)
+            try
             {
-                Grid playerGrid = new Grid();
+                foreach (var profile in profiles)
+                {
+                    Grid playerGrid = new Grid();
 
-                Label Label_Player = new Label();
-                Label_Player.Content = profile.Key;
-                Label_Player.Foreground = Brushes.White;
-                Label_Player.FontSize = 30;
+                    Label Label_Player = new Label();
+                    Label_Player.Content = profile.Key;
+                    Label_Player.Foreground = Brushes.White;
+                    Label_Player.FontSize = 30;
 
-                Image playerImage = BytesToImage(profile.Value);
+                    Image playerImage = BytesToImage(profile.Value);
 
-                ColumnDefinition column1 = new ColumnDefinition();
-                ColumnDefinition column2 = new ColumnDefinition();
-                column1.Width = new GridLength(200, GridUnitType.Pixel);
-                column2.Width = new GridLength(1, GridUnitType.Star);
+                    ColumnDefinition column1 = new ColumnDefinition();
+                    ColumnDefinition column2 = new ColumnDefinition();
+                    column1.Width = new GridLength(200, GridUnitType.Pixel);
+                    column2.Width = new GridLength(1, GridUnitType.Star);
 
-                playerGrid.ColumnDefinitions.Add(column1);
-                playerGrid.ColumnDefinitions.Add(column2);
+                    playerGrid.ColumnDefinitions.Add(column1);
+                    playerGrid.ColumnDefinitions.Add(column2);
+                    if(playerImage != null)
+                    {
+                        playerImage.Width = 60;
+                        playerImage.Height = 60;
+                    }
+                  
 
-                playerImage.Width = 60;
-                playerImage.Height = 60;
+                    Grid.SetColumn(Label_Player, 0);
+                    Grid.SetColumn(playerImage, 1);
 
-                Grid.SetColumn(Label_Player, 0);
-                Grid.SetColumn(playerImage, 1);
+                    playerGrid.Children.Add(Label_Player);
+                    playerGrid.Children.Add(playerImage);
 
-                playerGrid.Children.Add(Label_Player);
-                playerGrid.Children.Add(playerImage);
-
-                StackPanel_GameRoom_PlayerList.Children.Add(playerGrid);
+                    StackPanel_GameRoom_PlayerList.Children.Add(playerGrid);
+                }
             }
+            catch(Exception ex)
+            {
+                log.Error(ex);
+            }
+            
         }
 
         private Image BytesToImage(byte[] byteArray)
