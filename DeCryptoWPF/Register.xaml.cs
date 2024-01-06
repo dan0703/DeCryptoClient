@@ -97,32 +97,59 @@ namespace DeCryptoWPF
         {
             StringBuilder validationErrors = new StringBuilder();
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(TextBox_Register_Name.Text, "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]*$"))
+            ValidateName(TextBox_Register_Name.Text, validationErrors);
+            ValidateEmail(TextBox_Register_Email.Text, validationErrors);
+            ValidateBirthday(DatePicker_Register_Birthday.SelectedDate, validationErrors);
+            ValidatePasswords(PasswordBox_Register_Password.Password, PasswordBox_Register_ConfirmPassword.Password, validationErrors);
+            ValidateUser(TextBox_Register_User.Text, validationErrors);
+            ValidatePasswordComplexity(PasswordBox_Register_Password.Password, validationErrors);
+
+            return validationErrors.ToString();
+        }
+
+        public void ValidateName(string name, StringBuilder validationErrors)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(name, "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+(?:\\s[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+)*$"))
             {
                 validationErrors.AppendLine(Properties.Resources.Label_Register_ErrorNameCharacters);
             }
+        }
 
-            if (!IsValidEmail(TextBox_Register_Email.Text))
+        public void ValidateEmail(string email, StringBuilder validationErrors)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(email, "^(?=.{8,45}$)[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
             {
                 validationErrors.AppendLine(Properties.Resources.Label_Register_EmailInvalid);
             }
+        }
 
-            if (DatePicker_Register_Birthday.SelectedDate == null || DatePicker_Register_Birthday.SelectedDate.Value >= DateTime.Now)
+        public void ValidateBirthday(DateTime? selectedDate, StringBuilder validationErrors)
+        {
+            if (selectedDate == null || selectedDate.Value >= DateTime.Now)
             {
                 validationErrors.AppendLine(Properties.Resources.Label_Register_ErrorDateBirthday);
             }
+        }
 
-            if (PasswordBox_Register_Password.Password != PasswordBox_Register_ConfirmPassword.Password)
+        public void ValidatePasswords(string password, string confirmPassword, StringBuilder validationErrors)
+        {
+            if (password != confirmPassword)
             {
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_ErrorMatchingPasswords);
             }
+        }
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(TextBox_Register_User.Text, "^[A-Za-zÀ-ÖØ-öø-ÿ]{1,20}$"))
+        public void ValidateUser(string user, StringBuilder validationErrors)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(user, "^[A-Za-z0-9]{1,20}$"))
             {
                 validationErrors.AppendLine(Properties.Resources.Label_Register_ErrorUserCharacters);
             }
+        }
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_Register_Password.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
+        public void ValidatePasswordComplexity(string password, StringBuilder validationErrors)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(password, "^(?!.*\\s)(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$"))
             {
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_PasswordLong);
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneLowecase);
@@ -130,7 +157,6 @@ namespace DeCryptoWPF
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneNumber);
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneSpecialCharacter);
             }
-            return validationErrors.ToString();
         }
 
         private bool IsEmpty()
@@ -144,21 +170,6 @@ namespace DeCryptoWPF
                 isEmpty = true;
             }
             return isEmpty;
-        }
-
-        static bool IsValidEmail(string email)
-        {
-            bool isValidEmail = false;
-            try
-            {
-                var mailAdress = new MailAddress(email);
-                isValidEmail = true;
-            }
-            catch (FormatException)
-            {
-                isValidEmail = false;
-            }
-            return isValidEmail;
         }
 
         private void Label_Register_AlreadyAccount_MouseDown(object sender, MouseButtonEventArgs e)

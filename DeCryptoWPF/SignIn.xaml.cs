@@ -31,7 +31,6 @@ namespace DeCryptoWPF
 
         public SignIn()
         {
-
             log4net.Config.XmlConfigurator.Configure();
             InitializeComponent();
             accountServicesClient = new AccountServicesClient();

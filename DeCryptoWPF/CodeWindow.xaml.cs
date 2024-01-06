@@ -96,7 +96,6 @@ namespace DeCryptoWPF
             this.account = account;
         }
         
-
         public void ReciveFriendRequest(string senderNickname)
         {
             throw new NotImplementedException();

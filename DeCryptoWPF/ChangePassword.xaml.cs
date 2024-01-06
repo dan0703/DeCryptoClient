@@ -115,7 +115,7 @@ namespace DeCryptoWPF
             {
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_ErrorMatchingPasswords);
             }
-            if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_ChangePassword_NewPassword.Password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_ChangePassword_NewPassword.Password, "^(?!.*\\s)(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$"))
             {
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_PasswordLong);
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneLowecase);
