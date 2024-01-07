@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 using DeCryptoWPF;
 using System.Security.Policy;
 using System.Diagnostics;
+using DeCryptoWPF.DeCryptoServices;
+using DeCryptoWPF.Logic;
 
 namespace Tests
 {
     [TestClass]
-    public class AccountTests
+    public class RegisterTests
     {
         private StringBuilder validationErrors;
         private Register register;
@@ -21,6 +23,14 @@ namespace Tests
         {
             validationErrors = new StringBuilder();
             register = new Register();
+        }
+
+        [TestMethod]
+        public void ValidateName_ValidNameNoSpaces_NoErrorMessage()
+        {
+            string validName = "John";
+            register.ValidateName(validName, validationErrors);
+            Assert.IsTrue(string.IsNullOrEmpty(validationErrors.ToString()));
         }
 
         [TestMethod]
@@ -80,6 +90,23 @@ namespace Tests
         }
 
         [TestMethod]
+        public void ValidateEmail_EmailWithMultipleDots_ReturnsErrorMessage()
+        {
+            string invalidEmail = "john.doe@example..com";
+            register.ValidateEmail(invalidEmail, validationErrors);
+            Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_Register_EmailInvalid));
+        }
+
+        [TestMethod]
+        public void ValidatePasswords_PasswordWithAdditionalSpecialChars_ReturnsErrorMessage()
+        {
+            string passwordWithSpecialChars = "Pwd@With!Special*Chars";
+            string confirmPassword = "Pwd@With!Special*Chars";
+            register.ValidatePasswords(passwordWithSpecialChars, confirmPassword, validationErrors);
+            Assert.IsFalse(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_ErrorPassword_ErrorMatchingPasswords));
+        }
+
+        [TestMethod]
         public void ValidateEmail_EmailWithoutDot_ReturnsErrorMessage()
         {
             String invalidEmail = "Marcos54@gmailcom";
@@ -96,7 +123,6 @@ namespace Tests
         }
 
         [TestMethod]
-
         public void ValidateEmail_ValidFormat_DoesNotAddErrorMessage()
         {
             String validEmail = "Sujey542003@gmail.com";
@@ -147,7 +173,7 @@ namespace Tests
         [TestMethod]
         public void ValidateBirthday_CurrentDate_ReturnsErrorMessage()
         {
-            DateTime currentDate = DateTime.Now;
+            DateTime currentDate = DateTime.Now.Date;
             register.ValidateBirthday(currentDate, validationErrors);
             Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_Register_ErrorDateBirthday));
         }
@@ -179,7 +205,7 @@ namespace Tests
         [TestMethod]
         public void ValidateBirthday_UpperLimitDate_ReturnsErrorMessage()
         {
-            DateTime upperLimitDate = DateTime.Now;
+            DateTime upperLimitDate = DateTime.Now.Date;
             register.ValidateBirthday(upperLimitDate, validationErrors);
             Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_Register_ErrorDateBirthday));
         }
@@ -239,6 +265,22 @@ namespace Tests
         {
             string invalidUser = "";  
             register.ValidateUser(invalidUser, validationErrors);
+            Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_Register_ErrorUserCharacters));
+        }
+
+        [TestMethod]
+        public void ValidatePasswordComplexity_PasswordWithOnlySpecialChars_ReturnsErrorMessage()
+        {
+            string specialCharsOnlyPassword = "#$%^&*!";
+            register.ValidatePasswordComplexity(specialCharsOnlyPassword, validationErrors);
+            Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_ErrorPassword_NeedOneLowecase));
+        }
+
+        [TestMethod]
+        public void ValidateUser_UsernameWithAdditionalSpaces_ReturnsErrorMessage()
+        {
+            string userWithSpaces = "Mr   Raymond";
+            register.ValidateUser(userWithSpaces, validationErrors);
             Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_Register_ErrorUserCharacters));
         }
 
@@ -345,6 +387,5 @@ namespace Tests
             register.ValidatePasswordComplexity(password, validationErrors);
             Assert.IsTrue(string.IsNullOrEmpty(validationErrors.ToString()));
         }
-
     }
 }

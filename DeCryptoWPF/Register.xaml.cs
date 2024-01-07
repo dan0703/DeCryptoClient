@@ -117,7 +117,7 @@ namespace DeCryptoWPF
 
         public void ValidateEmail(string email, StringBuilder validationErrors)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(email, "^(?=.{8,45}$)[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(email, "^(?=.{8,45}$)[\\w%+-]+@[a-zA-Z\\d.-]+(?<!\\.)\\.[a-zA-Z]{2,}$"))
             {
                 validationErrors.AppendLine(Properties.Resources.Label_Register_EmailInvalid);
             }
@@ -125,7 +125,7 @@ namespace DeCryptoWPF
 
         public void ValidateBirthday(DateTime? selectedDate, StringBuilder validationErrors)
         {
-            if (selectedDate == null || selectedDate.Value >= DateTime.Now)
+            if (selectedDate == null || selectedDate.Value >= DateTime.Now.Date)
             {
                 validationErrors.AppendLine(Properties.Resources.Label_Register_ErrorDateBirthday);
             }

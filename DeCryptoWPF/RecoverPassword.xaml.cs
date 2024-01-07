@@ -116,19 +116,25 @@ namespace DeCryptoWPF
             accountServicesClient.SendToken(account.email, Properties.Resources.Label_Email_TittleEmailRecoverPassword, Properties.Resources.Label_Email_BodyEmailRecoverPassword, code);
         }
 
-        private string ValidateData()
+        public void ValidateCode(string codeText, StringBuilder validationErrors)
         {
-            StringBuilder validationErrors = new StringBuilder();
-
-            if (TextBox_RecoverPassword_EnterCode.Text != code.ToString())
+            if (codeText != code.ToString())
             {
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorCode_IncorrectCode);
             }
-            if (PasswordBox_ChangePassword_NewPassword.Password != PasswordBox_ChangePassword_NewPasswordConfirmation.Password)
+        }
+
+        public void ValidateMatchingPasswords(string newPassword, string confirmPassword, StringBuilder validationErrors)
+        {
+            if (newPassword != confirmPassword)
             {
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_ErrorMatchingPasswords);
             }
-            if (!System.Text.RegularExpressions.Regex.IsMatch(PasswordBox_ChangePassword_NewPassword.Password, "^(?!.*\\s)(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$"))
+        }
+
+        public void ValidatePasswordComplexity(string newPassword, StringBuilder validationErrors)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(newPassword, "^(?!.*\\s)(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$"))
             {
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_PasswordLong);
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneLowecase);
@@ -136,8 +142,17 @@ namespace DeCryptoWPF
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneNumber);
                 validationErrors.AppendLine(Properties.Resources.Label_ErrorPassword_NeedOneSpecialCharacter);
             }
-            return validationErrors.ToString();
         }
 
+        private string ValidateData()
+        {
+            StringBuilder validationErrors = new StringBuilder();
+
+            ValidateCode(TextBox_RecoverPassword_EnterCode.Text, validationErrors);
+            ValidateMatchingPasswords(PasswordBox_ChangePassword_NewPassword.Password, PasswordBox_ChangePassword_NewPasswordConfirmation.Password, validationErrors);
+            ValidatePasswordComplexity(PasswordBox_ChangePassword_NewPassword.Password, validationErrors);
+            
+            return validationErrors.ToString();
+        }
     }
 }
