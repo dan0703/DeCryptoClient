@@ -16,6 +16,7 @@ namespace DeCryptoWPF.Logic
     public class Complements
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static string EncryptPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -45,6 +46,7 @@ namespace DeCryptoWPF.Logic
             ReceiveFriendRequest receiveFriendRequestWindow = new ReceiveFriendRequest(senderNickname);
             receiveFriendRequestWindow.Show();
         }
+
         public static bool SaveImage(string nickname, string sourceProfilePicturePath)
         {
             var profilePicturePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../Images/", nickname + ".png");

@@ -210,3 +210,5 @@ C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\bin\Debug\log4net.xml
 C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\DeCryptoWPF_Content.g.cs
 C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\ReceiveFriendRequest.g.cs
 C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\obj\Debug\ReceiveFriendRequest.baml
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\ReceiveFriendRequest.g.cs
+C:\Users\Sujey\source\repos\DeCryptoClient\DeCryptoWPF\obj\Debug\ReceiveFriendRequest.baml
