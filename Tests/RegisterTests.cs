@@ -131,10 +131,10 @@ namespace Tests
         }
 
         [TestMethod]
-        public void ValidateEmail_ValidEmail_MinLength_NoErrors()
+        public void ValidateEmail_InvalidEmail_MinLength_ReturnsError()
         {
-            string validEmail = "a@b.com";
-            register.ValidateEmail(validEmail, validationErrors);
+            string invalidEmail = "a@b.com";
+            register.ValidateEmail(invalidEmail, validationErrors);
             Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_Register_EmailInvalid));
         }
 
@@ -155,9 +155,9 @@ namespace Tests
         }
 
         [TestMethod]
-        public void ValidateEmail_InvalidEmail_MinLength_ReturnsErrorMessage()
+        public void ValidateEmail_InvalidEmail_MultipleAt_ReturnsErrorMessage()
         {
-            string invalidEmail = "a@b.c";
+            string invalidEmail = "sujey@hernandez@gmail.com";
             register.ValidateEmail(invalidEmail, validationErrors);
             Assert.IsTrue(validationErrors.ToString().Contains(DeCryptoWPF.Properties.Resources.Label_Register_EmailInvalid));
         }
