@@ -34,8 +34,8 @@
 
                     <Label x:Name="Label_InGame_ComunicationsBlue" Content="{x:Static p:Resources.Label_InGame_Comunications}" HorizontalAlignment="Left" Margin="1414,-1848,0,0" FontSize="35" FontWeight="Bold" Foreground="DeepSkyBlue" Height="59"/>
                     <Label x:Name="Label_InGame_InterceptionsBlue" Content="{x:Static p:Resources.Label_InGame_Interceptions}" HorizontalAlignment="Left" Margin="1414,-866,0,0" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Foreground="DeepSkyBlue"/>
-                    <TextBlock x:Name="TextBlock_InGame_NumberInterceptionsBlue" HorizontalAlignment="Left" Margin="1740,-945,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="DeepSkyBlue" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
-                    <TextBlock x:Name="TextBlock_InGame_NumberComunicationsBlue" HorizontalAlignment="Left" Margin="1740,-865,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="DeepSkyBlue" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
+                    <TextBlock x:Name="TextBlock_InGame_NumberComunicationsBlue" HorizontalAlignment="Left" Margin="1740,-945,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="DeepSkyBlue" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
+                    <TextBlock x:Name="TextBlock_InGame_NumberInterceptionsBlue" HorizontalAlignment="Left" Margin="1740,-865,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="DeepSkyBlue" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
                     <TextBlock x:Name="TextBlock_InGame_Player3" HorizontalAlignment="Left" Margin="1135,-944,0,0" TextWrapping="Wrap" Text="Player3" FontSize="35" Foreground="Gray" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="130"/>
                     <TextBlock x:Name="TextBlock_InGame_Player4" HorizontalAlignment="Left" Margin="1135,-869,0,0" TextWrapping="Wrap" Text="Player4" FontSize="35" Foreground="Gray" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="130"/>
 
@@ -43,8 +43,8 @@
 
                     <Label x:Name="Label_InGame_ComunicationsRed" Content="{x:Static p:Resources.Label_InGame_Comunications}" HorizontalAlignment="Left" Margin="499,-953,0,0" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Foreground="Crimson"/>
                     <Label x:Name="Label_InGame_InterceptionsRed" Content="{x:Static p:Resources.Label_InGame_Interceptions}" HorizontalAlignment="Left" Margin="499,-869,0,0" VerticalAlignment="Top" FontSize="35" FontWeight="Bold" Foreground="Crimson"/>
-                    <TextBlock x:Name="TextBlock_InGame_NumberInterceptionsRed" HorizontalAlignment="Left" Margin="815,-947,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="Crimson" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
-                    <TextBlock x:Name="TextBlock_InGame_NumberComunicationsRed" HorizontalAlignment="Left" Margin="815,-863,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="Crimson" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
+                    <TextBlock x:Name="TextBlock_InGame_NumberComunicationsRed" HorizontalAlignment="Left" Margin="815,-947,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="Crimson" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
+                    <TextBlock x:Name="TextBlock_InGame_NumberInterceptionsRed" HorizontalAlignment="Left" Margin="815,-863,0,0" TextWrapping="Wrap" Text="0" FontSize="35" Foreground="Crimson" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="30"/>
                     <TextBlock x:Name="TextBlock_InGame_Player1" HorizontalAlignment="Left" Margin="210,-949,0,0" TextWrapping="Wrap" Text="Player1" FontSize="35" Foreground="Gray" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="130"/>
                     <TextBlock x:Name="TextBlock_InGame_Player2" HorizontalAlignment="Left" Margin="210,-865,0,0" TextWrapping="Wrap" Text="Player2" FontSize="35" Foreground="Gray" FontWeight="Bold" VerticalAlignment="Top" Height="40" Width="130"/>
 
@@ -72,7 +72,6 @@
                     <TextBlock x:Name="TextBlock_InGame_Word4Blue" HorizontalAlignment="Left" Margin="1660,-630,0,0" TextWrapping="Wrap" Text="Word4" FontSize="27" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" Height="140" Width="140" RenderTransformOrigin="0.783,0.493" TextAlignment="Center"/>
                     <Label x:Name="Label_InGame_Note" Content="" Foreground="White" FontSize="18"  VerticalAlignment="Center" Margin="160,-1010,0,0" HorizontalAlignment="Left" Height="35" Width="1600" FontWeight="Bold" HorizontalContentAlignment="Center" Visibility="Collapsed" />
                     <Button x:Name="Button_InGame_GiveClues" Content="{x:Static p:Resources.Button_InGame_GiveClue}" HorizontalAlignment="Left" Margin="75,-466,0,0" VerticalAlignment="Top" Height="76" Width="1775" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_GiveClues_Click" Visibility="Visible"/>
-
 
                     <StackPanel x:Name="StackPanel_InGame_GiveClues" Margin="0,-649,0,0" Height="388" Visibility="Collapsed">
                         <Grid>
@@ -129,6 +128,43 @@
                             <TextBlock x:Name="TextBlock_InGame_SelectWord2" Margin="920,118,0,0" TextWrapping="Wrap" Text="Clue2" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40" />
                             <TextBlock x:Name="TextBlock_InGame_SelectWord3" Margin="920,206,0,0" TextWrapping="Wrap" Text="Clue3" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40"/>
                             <Button x:Name="Button_InGame_Save" Content="{x:Static p:Resources.Button_ConfirmationButtons_Save}" Margin="1651,291,0,0" VerticalAlignment="Top" Height="76" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_Save_Click"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel x:Name="StackPanel_InGame_InterceptClues" Margin="0,-649,0,0" Height="388" Visibility="Collapsed">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Label_InGame_SelectWordForClue1_Intercept" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" Margin="62,26,0,330" />
+                            <Label x:Name="Label_InGame_SelectWordForClue2_Intercept" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" Margin="62,114,0,241" />
+                            <Label x:Name="Label_InGame_SelectWordForClue3_Intercept" Content="{x:Static p:Resources.Label_InGame_selectWordNumber}" FontSize="35" Foreground="White" FontWeight="Medium" HorizontalAlignment="Left" Margin="62,201,0,156" />
+
+                            <ComboBox x:Name="ComboBox_InGame_Clue1_Intercept" HorizontalAlignment="Left" Margin="1365,35,0,0" VerticalAlignment="Top" Width="480" Height="48" FontSize="20">
+                                <ComboBoxItem Content="1"/>
+                                <ComboBoxItem Content="2"/>
+                                <ComboBoxItem Content="3"/>
+                                <ComboBoxItem Content="4"/>
+                            </ComboBox>
+
+                            <ComboBox x:Name="ComboBox_InGame_Clue2_Intercept" HorizontalAlignment="Left" Margin="1365,119,0,0" VerticalAlignment="Top" Width="480" Height="48" FontSize="20">
+                                <ComboBoxItem Content="1"/>
+                                <ComboBoxItem Content="2"/>
+                                <ComboBoxItem Content="3"/>
+                                <ComboBoxItem Content="4"/>
+                            </ComboBox>
+
+                            <ComboBox x:Name="ComboBox_InGame_Clue3_Intercept" HorizontalAlignment="Left" Margin="1365,205,0,0" VerticalAlignment="Top" Width="480" Height="48" FontSize="20">
+                                <ComboBoxItem Content="1"/>
+                                <ComboBoxItem Content="2"/>
+                                <ComboBoxItem Content="3"/>
+                                <ComboBoxItem Content="4"/>
+                            </ComboBox>
+                            <TextBlock x:Name="TextBlock_InGame_SelectWord1_Intercept" Margin="920,31,0,0" TextWrapping="Wrap" Text="Clue1" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40"/>
+                            <TextBlock x:Name="TextBlock_InGame_SelectWord2_Intercept" Margin="920,118,0,0" TextWrapping="Wrap" Text="Clue2" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40" />
+                            <TextBlock x:Name="TextBlock_InGame_SelectWord3_Intercept" Margin="920,206,0,0" TextWrapping="Wrap" Text="Clue3" FontSize="35" Foreground="White" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40"/>
+                            <Button x:Name="Button_InGame_Save_Intercept" Content="{x:Static p:Resources.Button_ConfirmationButtons_Save}" Margin="1651,291,0,0" VerticalAlignment="Top" Height="76" Foreground="White" Background="Crimson" FontSize="24" FontWeight="Bold" Click="Button_InGame_Save_Intercept_Click"/>
                         </Grid>
                     </StackPanel>
                 </StackPanel>

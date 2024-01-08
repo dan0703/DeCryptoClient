@@ -256,8 +256,29 @@ namespace DeCryptoWPF
         }
 
         private void Button_GameRoom_StartGame_Click(object sender, RoutedEventArgs e)
-        {            
-            joinToGameClient.StartGame(code);
+        {
+            bool teamsAreFull = false;
+            if(TextBlock_GameRoom_Player1.Text != "Player1")
+            {
+                if (TextBlock_GameRoom_Player2.Text != "Player2")
+                {
+                    if(TextBlock_GameRoom_Player3.Text != "Player3")
+                    {
+                        if (TextBlock_GameRoom_Player4.Text != "Player4")
+                        {
+                            teamsAreFull = true;
+                        }
+                    }
+                }                
+            }
+            if (teamsAreFull)
+            {
+                joinToGameClient.StartGame(code);
+            }
+            else
+            {
+                MessageBox.Show("Los equipos aun no estan llenos");
+            }
         }
 
         private void Button_GameRoom_SendCode_Click(object sender, RoutedEventArgs e)

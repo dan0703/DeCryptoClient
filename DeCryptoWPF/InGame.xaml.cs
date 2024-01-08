@@ -39,8 +39,10 @@ namespace DeCryptoWPF
         private string[][] blueTeamClues;
         private string[][] redTeamClues;
         private int roundNumber = 0;
-
-
+        private string myTeam = null;
+        private readonly int INTERCEPTION_ROUNDS_NUMBER = 3;
+        private bool isInterceptionRound=false;
+        private List<string> clueList;
 
         public InGame()
         {
@@ -65,6 +67,7 @@ namespace DeCryptoWPF
                 if (redTeam.nicknamePlayer1 == account.nickname)
                 {
                     playerNumber = 1;
+                    myTeam = "red";
                     var words = gameServiceClient.GetRedTeamWords(code);
                     teamMateNickname = redTeam.nicknamePlayer2;
                     if (words != null)
@@ -77,6 +80,7 @@ namespace DeCryptoWPF
                 else if (redTeam.nicknamePlayer2 == account.nickname)
                 {
                     playerNumber = 2;
+                    myTeam = "red";
                     var words = gameServiceClient.GetRedTeamWords(code);
                     teamMateNickname = redTeam.nicknamePlayer1;
                     if (words != null)
@@ -92,6 +96,7 @@ namespace DeCryptoWPF
                 if (blueTeam.nicknamePlayer1 == account.nickname)
                 {
                     playerNumber = 3;
+                    myTeam = "blue";
                     var words = gameServiceClient.GetBlueTeamWords(code);
                     teamMateNickname = blueTeam.nicknamePlayer2;
                     if (words != null)
@@ -105,6 +110,7 @@ namespace DeCryptoWPF
                 else if (blueTeam.nicknamePlayer2 == account.nickname)
                 {
                     playerNumber = 4;
+                    myTeam = "blue";
                     var words = gameServiceClient.GetBlueTeamWords(code);
                     teamMateNickname = blueTeam.nicknamePlayer1;
                     if (words != null)
@@ -150,6 +156,25 @@ namespace DeCryptoWPF
             }
         }
 
+        private void StartNewRound()
+        {
+            MessageBox.Show("startNewRound");
+            Button_InGame_GiveClues.Visibility = Visibility.Visible;
+            StackPanel_InGame_GiveClues.Visibility = Visibility.Collapsed;
+            StackPanel_InGame_DecryptClues.Visibility = Visibility.Collapsed;
+            Label_InGame_Note.Visibility = Visibility.Collapsed;
+            ComboBox_InGame_Clue1.SelectedIndex = 0;
+            ComboBox_InGame_Clue2.SelectedIndex = 0;
+            ComboBox_InGame_Clue3.SelectedIndex = 0;
+            TextBox_InGame_ClueForWord1.Text = "";
+            TextBox_InGame_ClueForWord2.Text = "";
+            TextBox_InGame_ClueForWord3.Text = "";
+            if (isInterceptionRound)
+            {
+                Button_InGame_GiveClues.Content = "Interceptar Pistas";
+            }
+        }
+
         private List<string> wordsToGiveClues = new List<string>();
         private int[] index = new int[4];
 
@@ -165,13 +190,11 @@ namespace DeCryptoWPF
                 {
                     wordsToGiveClues.Add(aux[randomIndex]);
                     index[i] = randomIndex;
-
                 }
                 else
                 {
                     i--;
                 }
-
             }
             TextBlock_InGame_Word1.Text = wordsToGiveClues[0];
             TextBlock_InGame_Word2.Text = wordsToGiveClues[1];
@@ -189,32 +212,26 @@ namespace DeCryptoWPF
         private void Button_InGame_GiveClues_Click(object sender, RoutedEventArgs e)
         {
             gameServiceClient.MakeWaitForClues(teamMateNickname, code);
-            if (StackPanel_InGame_GiveClues.Visibility == Visibility.Collapsed)
+            if (isInterceptionRound)
             {
-                StackPanel_InGame_GiveClues.Visibility = Visibility.Visible;
-                Button_InGame_GiveClues.Visibility = Visibility.Collapsed;
+                if (StackPanel_InGame_InterceptClues.Visibility == Visibility.Collapsed)
+                {
+                    StackPanel_InGame_InterceptClues.Visibility = Visibility.Visible;
+                    Button_InGame_GiveClues.Visibility = Visibility.Collapsed;
+                }
             }
+            else
+            {
+                if (StackPanel_InGame_GiveClues.Visibility == Visibility.Collapsed)
+                {
+                    StackPanel_InGame_GiveClues.Visibility = Visibility.Visible;
+                    Button_InGame_GiveClues.Visibility = Visibility.Collapsed;
+                }
+            }
+           
         }
 
-        private void Button_InGame_Save_Click(object sender, RoutedEventArgs e)
-        {
-            if (isWaitingForGuess)
-            {
-                if (StackPanel_InGame_GiveClues.Visibility == Visibility.Visible)
-                {
-                    StackPanel_InGame_GiveClues.Visibility = Visibility.Collapsed;
-                }
-
-                if (StackPanel_InGame_DecryptClues.Visibility == Visibility.Collapsed)
-                {
-                    StackPanel_InGame_DecryptClues.Visibility = Visibility.Visible;
-                }
-            } else
-            {
-                Button_InGame_GiveClues.Content = "Espera a que tu compañero decifre las pistas";
-                Button_InGame_GiveClues.IsEnabled = false;
-            }
-        }
+        
 
         private void Button_InGame_SaveClues_Click(object sender, RoutedEventArgs e)
         {
@@ -222,7 +239,14 @@ namespace DeCryptoWPF
             clues[wordList.IndexOf(TextBlock_InGame_Word1.Text)] = TextBox_InGame_ClueForWord1.Text;
             clues[wordList.IndexOf(TextBlock_InGame_Word2.Text)] = TextBox_InGame_ClueForWord2.Text;
             clues[wordList.IndexOf(TextBlock_InGame_Word3.Text)] = TextBox_InGame_ClueForWord3.Text;
-            gameServiceClient.GiveRedTeamClues(clues, code, account.nickname);
+            if (myTeam.Equals("red"))
+            {
+                gameServiceClient.GiveRedTeamClues(clues, code, account.nickname);
+            }
+            else
+            {
+                gameServiceClient.GiveBlueTeamClues(clues, code, account.nickname);
+            }
 
         }
 
@@ -274,25 +298,62 @@ namespace DeCryptoWPF
 
         public void SetBlueTeamScore(int blueTeamInterception, int blueTeamMisComunications)
         {
+            if(blueTeam.missComunicationsPoints == blueTeamMisComunications)
+            {
+                MessageBox.Show("Decifrado exitoso");
+            }
+            else
+            {
+                MessageBox.Show("Decifrado fallido");
+            }
             blueTeam.interceptionsPoints = blueTeamInterception;
             blueTeam.missComunicationsPoints = blueTeamMisComunications;
+            TextBlock_InGame_NumberComunicationsBlue.Text = blueTeamMisComunications.ToString();
+            TextBlock_InGame_NumberInterceptionsBlue.Text = blueTeamInterception.ToString();
+            WaitingOtherTeam();
         }
 
         public void SetRedTeamScore(int redTeamInterception, int redTeamMisComunications)
         {
+            if (redTeam.missComunicationsPoints == redTeamMisComunications)
+            {
+                MessageBox.Show("Decifrado exitoso");
+            }
+            else
+            {
+                MessageBox.Show("Decifrado fallido");
+            }
             redTeam.interceptionsPoints = redTeamInterception;
             redTeam.missComunicationsPoints = redTeamMisComunications;
+            TextBlock_InGame_NumberComunicationsRed.Text = redTeam.missComunicationsPoints.ToString();
+            TextBlock_InGame_NumberInterceptionsRed.Text = redTeam.interceptionsPoints.ToString();
+            WaitingOtherTeam();
+        }
+
+        private void WaitingOtherTeam()
+        {
+            StackPanel_InGame_DecryptClues.Visibility = Visibility.Collapsed;
+            StackPanel_InGame_GiveClues.Visibility = Visibility.Collapsed;
+            Label_InGame_Note.Visibility = Visibility.Visible;
+            Label_InGame_Note.Content = "Esperando al otro equipo...";
         }
         public void WaitForGuesses()
         {
-            isWaitingForGuess = true;
-            Label_InGame_Note.Content = "Esperando a que tu compañero de equipo de las pistas...";
+            if (isInterceptionRound)
+            {
+                Label_InGame_Note.Content = "Espera a que tu compañero de equipo intercepte las pistas...";
+            }
+            else
+            {
+                isWaitingForGuess = true;
+                Label_InGame_Note.Content = "Esperando a que tu compañero de equipo de las pistas...";
+            }
             Label_InGame_Note.Visibility = Visibility.Visible;
-            Button_InGame_GiveClues.Visibility= Visibility.Collapsed;
+            Button_InGame_GiveClues.Visibility = Visibility.Collapsed;
+
         }
         public void WaitForTeamToGuess()
         {
-            isWaitingForGuess = true;
             Label_InGame_Note.Content = "Esperando a que tu compañero de equipo descifre las pistas...";
             Label_InGame_Note.Visibility = Visibility.Visible;
             Button_InGame_GiveClues.Visibility = Visibility.Collapsed;
@@ -301,18 +362,105 @@ namespace DeCryptoWPF
 
         public void GuessRedTeamWords()
         {
+            string[] auxiliarClues = new string[3];
+            if (redTeamClues != null)
+            {
+                foreach (var clues in redTeamClues)
+                {
+                    int count = 0;
+                    if (clues != null)
+                    {
+                        clueList = clues.ToList();
+                        foreach (var clue in clues)
+                        {
+                            if (clue != null)
+                            {
+                                auxiliarClues[count] = clue;
+                                count++;
+                            }
+                        }
+                        TextBlock_InGame_SelectWord1.Text = auxiliarClues[0];
+                        TextBlock_InGame_SelectWord2.Text = auxiliarClues[1];
+                        TextBlock_InGame_SelectWord3.Text = auxiliarClues[2];
+                    }
+                }
+            }
+        }
+
+        public void DecryptRedTeamWords()
+        {
+            string[] auxiliarClues = new string[3];
+            if (blueTeamClues != null)
+            {
+                foreach (var clues in blueTeamClues)
+                {
+                    int count = 0;
+                    if (clues != null)
+                    {
+                        clueList = clues.ToList();
+                        foreach (var clue in clues)
+                        {
+                            if (clue != null)
+                            {
+                                auxiliarClues[count] = clue;
+                                count++;
+                            }
+                        }
+                        TextBlock_InGame_SelectWord1_Intercept.Text = auxiliarClues[0];
+                        TextBlock_InGame_SelectWord2_Intercept.Text = auxiliarClues[1];
+                        TextBlock_InGame_SelectWord3_Intercept.Text = auxiliarClues[2];
+                    }
+                }
+            }
+
+
+
+        }
+
+        public void DecryptBlueTeamWords()
+        {
             if (redTeamClues != null)
             {
                 string[] auxiliarClues = new string[3];
-                int count = 0;
-
                 if (redTeamClues != null)
                 {
                     foreach (var clues in redTeamClues)
                     {
-
+                        int count = 0;
                         if (clues != null)
                         {
+                            clueList = clues.ToList();
+                            foreach (var clue in clues)
+                            {
+                                if (clue != null)
+                                {
+                                    auxiliarClues[count] = clue;
+                                    count++;
+                                }
+                            }
+                            TextBlock_InGame_SelectWord1_Intercept.Text = auxiliarClues[0];
+                            TextBlock_InGame_SelectWord2_Intercept.Text = auxiliarClues[1];
+                            TextBlock_InGame_SelectWord3_Intercept.Text = auxiliarClues[2];
+                        }
+                    }
+                }
+            }
+        }
+
+
+        public void GuessBlueTeamWords()
+        {
+            if (blueTeamClues != null)
+            {
+                string[] auxiliarClues = new string[3];
+                if (blueTeamClues != null)
+                {
+                    foreach (var clues in blueTeamClues)
+                    {
+                        int count = 0;
+                        if (clues != null)
+                        {
+                            clueList = clues.ToList();
                             foreach (var clue in clues)
                             {
                                 if (clue != null)
@@ -330,40 +478,44 @@ namespace DeCryptoWPF
             }
         }
 
-        public void GuessBlueTeamWords()
-        {
-            if (blueTeamClues != null)
-            {
-                string[] auxiliarClues = new string[3];
-                int count = 0;
-
-                if (blueTeamClues != null)
-                {
-                    foreach (var clues in blueTeamClues)
-                    {
-
-                        if (clues != null)
-                        {
-                            foreach(var clue in clues)
-                            {
-                                if (clue != null)
-                                {
-                                    auxiliarClues[count] = clue;
-                                    count++;
-                                }
-                            }
-                            TextBlock_InGame_SelectWord1.Text = auxiliarClues[0];
-                            TextBlock_InGame_SelectWord2.Text = auxiliarClues[1];
-                            TextBlock_InGame_SelectWord3.Text = auxiliarClues[2];
-                        }
-                    }
-                }
-            }
-        }
 
         public void SetBoard(GameConfiguration gameConfiguration)
         {
-            TextBlock_InGame_NumberRound.Text = gameConfiguration.roundNumber.ToString();
+            roundNumber = gameConfiguration.roundNumber;            
+            TextBlock_InGame_NumberRound.Text = roundNumber.ToString();
+            SetCluesInBoard();
+            if (gameConfiguration.roundNumber > 1)
+            {
+                int result = roundNumber / INTERCEPTION_ROUNDS_NUMBER;
+                if (gameConfiguration.roundNumber > 8)
+                {
+                    MessageBox.Show("El juego ha finalizado");
+                    //mandar a llamar a un metodo para finalizar el juego
+                }
+                else
+                {
+                    if (result == 1 || result == 2)
+                    {
+                        isInterceptionRound = true;
+                        blueTeamClues = gameConfiguration.blueTeam.clues;
+                        redTeamClues = gameConfiguration.redTeam.clues;
+                        MessageBox.Show("is interception round");
+                        DecryptRedTeamWords();
+                        DecryptBlueTeamWords();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Next Round");
+                        isInterceptionRound = false;
+                    }
+                    StartNewRound();
+                }
+            }                        
+        }
+
+        private void StartInterceptionRound()
+        {
+            StackPanel_InGame_InterceptClues.Visibility = Visibility.Visible;
         }
 
         public void SetCluesInBoard()
@@ -394,7 +546,6 @@ namespace DeCryptoWPF
                     }
                 }
             }
-            roundNumber++;
         }
 
         public void SetBlueTeamClues(string[][] blueTeamClues)
@@ -429,6 +580,37 @@ namespace DeCryptoWPF
             {
                 WaitForTeamToGuess();
             }
+        }
+
+        private void Button_InGame_Save_Click(object sender, RoutedEventArgs e)
+        {
+            int clueIndex1 = clueList.IndexOf(TextBlock_InGame_SelectWord1.Text);
+            int clueIndex2 = clueList.ToList().IndexOf(TextBlock_InGame_SelectWord2.Text);
+            int clueIndex3 = clueList.ToList().IndexOf(TextBlock_InGame_SelectWord3.Text);
+            bool isCorrectDecrypt = false;
+            if (clueIndex1 == ComboBox_InGame_Clue1.SelectedIndex)
+            {
+                if (clueIndex2 == ComboBox_InGame_Clue2.SelectedIndex)
+                {
+                    if (clueIndex3 == ComboBox_InGame_Clue3.SelectedIndex)
+                    {
+                        isCorrectDecrypt = true;
+                    }
+                }
+            }
+            if (myTeam.Equals("red"))
+            {               
+                gameServiceClient.SubmitRedTeamDecryptResult(isCorrectDecrypt, code);
+            }
+            else
+            {
+                gameServiceClient.SubmitBlueTeamDecryptResult(isCorrectDecrypt, code);
+            }
+        }
+
+        private void Button_InGame_Save_Intercept_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

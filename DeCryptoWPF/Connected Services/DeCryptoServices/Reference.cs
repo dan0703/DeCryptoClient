@@ -257,6 +257,9 @@ namespace DeCryptoWPF.DeCryptoServices {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool allreadySetCluesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool allreadySetGuessesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -284,6 +287,19 @@ namespace DeCryptoWPF.DeCryptoServices {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool allreadySetClues {
+            get {
+                return this.allreadySetCluesField;
+            }
+            set {
+                if ((this.allreadySetCluesField.Equals(value) != true)) {
+                    this.allreadySetCluesField = value;
+                    this.RaisePropertyChanged("allreadySetClues");
+                }
             }
         }
         
@@ -398,6 +414,9 @@ namespace DeCryptoWPF.DeCryptoServices {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool allreadySetCluesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool allreadySetGuessesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -425,6 +444,19 @@ namespace DeCryptoWPF.DeCryptoServices {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool allreadySetClues {
+            get {
+                return this.allreadySetCluesField;
+            }
+            set {
+                if ((this.allreadySetCluesField.Equals(value) != true)) {
+                    this.allreadySetCluesField = value;
+                    this.RaisePropertyChanged("allreadySetClues");
+                }
             }
         }
         
@@ -731,6 +763,12 @@ namespace DeCryptoWPF.DeCryptoServices {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/Login", ReplyAction="http://tempuri.org/IAccountServices/LoginResponse")]
         System.Threading.Tasks.Task<DeCryptoWPF.DeCryptoServices.Account> LoginAsync(DeCryptoWPF.DeCryptoServices.Account account);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/LoginAsGuest", ReplyAction="http://tempuri.org/IAccountServices/LoginAsGuestResponse")]
+        DeCryptoWPF.DeCryptoServices.Account LoginAsGuest();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/LoginAsGuest", ReplyAction="http://tempuri.org/IAccountServices/LoginAsGuestResponse")]
+        System.Threading.Tasks.Task<DeCryptoWPF.DeCryptoServices.Account> LoginAsGuestAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountServices/SendToken", ReplyAction="http://tempuri.org/IAccountServices/SendTokenResponse")]
         bool SendToken(string email, string title, string message, int code);
         
@@ -803,6 +841,14 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task<DeCryptoWPF.DeCryptoServices.Account> LoginAsync(DeCryptoWPF.DeCryptoServices.Account account) {
             return base.Channel.LoginAsync(account);
+        }
+        
+        public DeCryptoWPF.DeCryptoServices.Account LoginAsGuest() {
+            return base.Channel.LoginAsGuest();
+        }
+        
+        public System.Threading.Tasks.Task<DeCryptoWPF.DeCryptoServices.Account> LoginAsGuestAsync() {
+            return base.Channel.LoginAsGuestAsync();
         }
         
         public bool SendToken(string email, string title, string message, int code) {
@@ -1306,6 +1352,18 @@ namespace DeCryptoWPF.DeCryptoServices {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveRedTeamClues")]
         System.Threading.Tasks.Task GiveRedTeamCluesAsync(string[] redTeamClues, int code, string ownNickname);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveBlueTeamGuesses")]
+        void GiveBlueTeamGuesses(string[] blueTeamGuesses, int code, string ownNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveBlueTeamGuesses")]
+        System.Threading.Tasks.Task GiveBlueTeamGuessesAsync(string[] blueTeamGuesses, int code, string ownNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveRedTeamGesses")]
+        void GiveRedTeamGesses(string[] redTeamGuesses, int code, string ownNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/GiveRedTeamGesses")]
+        System.Threading.Tasks.Task GiveRedTeamGessesAsync(string[] redTeamGuesses, int code, string ownNickname);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitBlueTeamInterceptionResult")]
         void SubmitBlueTeamInterceptionResult(bool isCorrectInterception, int code);
         
@@ -1317,6 +1375,18 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitRedTeamIntercepcionResult")]
         System.Threading.Tasks.Task SubmitRedTeamIntercepcionResultAsync(bool isCorrectInterception, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitRedTeamDecryptResult")]
+        void SubmitRedTeamDecryptResult(bool isCorrectDecrypt, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitRedTeamDecryptResult")]
+        System.Threading.Tasks.Task SubmitRedTeamDecryptResultAsync(bool isCorrectDecrypt, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitBlueTeamDecryptResult")]
+        void SubmitBlueTeamDecryptResult(bool isCorrectDecrypt, int code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SubmitBlueTeamDecryptResult")]
+        System.Threading.Tasks.Task SubmitBlueTeamDecryptResultAsync(bool isCorrectDecrypt, int code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1417,6 +1487,22 @@ namespace DeCryptoWPF.DeCryptoServices {
             return base.Channel.GiveRedTeamCluesAsync(redTeamClues, code, ownNickname);
         }
         
+        public void GiveBlueTeamGuesses(string[] blueTeamGuesses, int code, string ownNickname) {
+            base.Channel.GiveBlueTeamGuesses(blueTeamGuesses, code, ownNickname);
+        }
+        
+        public System.Threading.Tasks.Task GiveBlueTeamGuessesAsync(string[] blueTeamGuesses, int code, string ownNickname) {
+            return base.Channel.GiveBlueTeamGuessesAsync(blueTeamGuesses, code, ownNickname);
+        }
+        
+        public void GiveRedTeamGesses(string[] redTeamGuesses, int code, string ownNickname) {
+            base.Channel.GiveRedTeamGesses(redTeamGuesses, code, ownNickname);
+        }
+        
+        public System.Threading.Tasks.Task GiveRedTeamGessesAsync(string[] redTeamGuesses, int code, string ownNickname) {
+            return base.Channel.GiveRedTeamGessesAsync(redTeamGuesses, code, ownNickname);
+        }
+        
         public void SubmitBlueTeamInterceptionResult(bool isCorrectInterception, int code) {
             base.Channel.SubmitBlueTeamInterceptionResult(isCorrectInterception, code);
         }
@@ -1431,6 +1517,22 @@ namespace DeCryptoWPF.DeCryptoServices {
         
         public System.Threading.Tasks.Task SubmitRedTeamIntercepcionResultAsync(bool isCorrectInterception, int code) {
             return base.Channel.SubmitRedTeamIntercepcionResultAsync(isCorrectInterception, code);
+        }
+        
+        public void SubmitRedTeamDecryptResult(bool isCorrectDecrypt, int code) {
+            base.Channel.SubmitRedTeamDecryptResult(isCorrectDecrypt, code);
+        }
+        
+        public System.Threading.Tasks.Task SubmitRedTeamDecryptResultAsync(bool isCorrectDecrypt, int code) {
+            return base.Channel.SubmitRedTeamDecryptResultAsync(isCorrectDecrypt, code);
+        }
+        
+        public void SubmitBlueTeamDecryptResult(bool isCorrectDecrypt, int code) {
+            base.Channel.SubmitBlueTeamDecryptResult(isCorrectDecrypt, code);
+        }
+        
+        public System.Threading.Tasks.Task SubmitBlueTeamDecryptResultAsync(bool isCorrectDecrypt, int code) {
+            return base.Channel.SubmitBlueTeamDecryptResultAsync(isCorrectDecrypt, code);
         }
     }
     

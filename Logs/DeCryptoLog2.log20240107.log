@@ -1,0 +1,64 @@
+2024-01-07 12:06:28,275 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 12:10:43,650 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 12:11:46,805 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 13:26:09,183 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 13:32:35,355 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 13:36:47,518 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 13:51:25,243 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 13:51:42,353 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:04:50,014 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:08:10,029 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:33:21,474 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:36:27,086 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:41:58,078 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:45:12,628 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:45:52,196 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 14:51:06,448 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 15:04:12,559 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 15:22:35,719 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 15:24:34,430 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 19:49:33,093 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 20:07:29,483 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 20:20:31,026 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 20:45:22,080 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 21:00:50,411 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 21:09:14,332 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 21:14:07,926 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 21:56:02,108 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 21:59:00,899 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 22:05:10,448 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 22:26:25,214 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 22:29:16,656 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 22:44:29,751 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 23:02:59,186 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 23:17:49,682 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 23:20:41,528 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 23:25:25,623 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 23:32:17,535 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 23:47:30,561 [1] INFO  DeCryptoWPF.App -         =============  Started Logging  =============        
+2024-01-07 23:49:44,377 [1] ERROR DeCryptoWPF.SignIn - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://localhost:8081/AccountService. La duración del intento de conexión fue de 00:00:04.0719880. Código de error TCP 10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081.  ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en DeCryptoWPF.DeCryptoServices.IAccountServices.Login(Account account)
+   en DeCryptoWPF.DeCryptoServices.AccountServicesClient.Login(Account account) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\Connected Services\DeCryptoServices\Reference.cs:línea 833
+   en DeCryptoWPF.SignIn.Button_SignIn_SignIn_Click(Object sender, RoutedEventArgs e) en C:\Users\danse\Desktop\DeCrypto\DeCrypto\DeCryptoWPF\SignIn.xaml.cs:línea 61

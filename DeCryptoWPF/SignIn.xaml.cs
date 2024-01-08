@@ -17,6 +17,7 @@ using DeCryptoWPF.DeCryptoServices;
 using DeCryptoWPF.Logic;
 using System.ServiceModel.Channels;
 using log4net;
+using System.Security.Principal;
 
 namespace DeCryptoWPF
 {
@@ -61,7 +62,6 @@ namespace DeCryptoWPF
                     var newAccount = accountServicesClient.Login(account);
                     if (newAccount != null)
                     {
-                        MessageBox.Show(newAccount.nickname);
                         MenuGame menuGameWidow = new MenuGame();
                         menuGameWidow.ConfigurateWindow(newAccount);
                         Close();
@@ -103,7 +103,14 @@ namespace DeCryptoWPF
 
         private void Button_SignIn_SignInAsGuest_Click(object sender, RoutedEventArgs e)
         {
+            var accountAsGuest = accountServicesClient.LoginAsGuest();
+            MessageBox.Show(accountAsGuest.name);
+            MessageBox.Show(accountAsGuest.email);
 
+            MenuGame menuGameWidow = new MenuGame();
+            menuGameWidow.ConfigurateWindow(accountAsGuest);
+            Close();
+            menuGameWidow.ShowDialog();
         }
 
         private void Label_SignIn_SignUp_MouseDown(object sender, MouseButtonEventArgs e)

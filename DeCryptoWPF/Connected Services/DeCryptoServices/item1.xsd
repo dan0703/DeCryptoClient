@@ -30,6 +30,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="LoginAsGuest">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginAsGuestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="LoginAsGuestResult" nillable="true" type="q4:Account" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SendToken">
     <xs:complexType>
       <xs:sequence>
@@ -50,7 +62,7 @@
   <xs:element name="VerifyEmail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q4:Account" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q5:Account" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -64,7 +76,7 @@
   <xs:element name="ChangePassword">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q5:Account" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q6:Account" />
         <xs:element minOccurs="0" name="newPassword" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -79,7 +91,7 @@
   <xs:element name="IsCurrentPassword">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q6:Account" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="account" nillable="true" type="q7:Account" />
         <xs:element minOccurs="0" name="currentPasswor" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -108,7 +120,7 @@
   <xs:element name="RegisterPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="user" nillable="true" type="q7:User" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="user" nillable="true" type="q8:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -129,7 +141,7 @@
   <xs:element name="GetSimilarsNickNamesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetSimilarsNickNamesResult" nillable="true" type="q8:ArrayOfstring" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetSimilarsNickNamesResult" nillable="true" type="q9:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,8 +186,8 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q9:BlueTeam" />
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q10:RedTeam" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q10:BlueTeam" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q11:RedTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -187,7 +199,7 @@
   <xs:element name="JoinToBlueTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q11:BlueTeam" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q12:BlueTeam" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -195,7 +207,7 @@
   <xs:element name="JoinToRedTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q12:RedTeam" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q13:RedTeam" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -235,7 +247,7 @@
   <xs:element name="RecivePlayers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="profiles" nillable="true" type="q13:ArrayOfKeyValueOfstringbase64Binary" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="profiles" nillable="true" type="q14:ArrayOfKeyValueOfstringbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -247,7 +259,7 @@
   <xs:element name="ReciveBlueTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q14:BlueTeam" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="blueTeam" nillable="true" type="q15:BlueTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -259,7 +271,7 @@
   <xs:element name="ReciveRedTeam">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q15:RedTeam" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="redTeam" nillable="true" type="q16:RedTeam" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -281,7 +293,7 @@
   <xs:element name="SendMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="chatMessage" nillable="true" type="q16:ChatMessage" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="chatMessage" nillable="true" type="q17:ChatMessage" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -310,7 +322,7 @@
   <xs:element name="ReceiveChatMessages">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="messages" nillable="true" type="q17:ArrayOfChatMessage" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="messages" nillable="true" type="q18:ArrayOfChatMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -337,7 +349,7 @@
   <xs:element name="GetFriendListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetFriendListResult" nillable="true" type="q18:ArrayOfKeyValueOfstringbase64Binary" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetFriendListResult" nillable="true" type="q19:ArrayOfKeyValueOfstringbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -365,7 +377,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="senderNickname" nillable="true" type="xs:string" />
-        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendRequestList" nillable="true" type="q19:ArrayOfstring" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendRequestList" nillable="true" type="q20:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -377,7 +389,7 @@
   <xs:element name="SetFriendList">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendList" nillable="true" type="q20:ArrayOfstring" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friendList" nillable="true" type="q21:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -413,7 +425,7 @@
   <xs:element name="GetBlueTeamWordsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBlueTeamWordsResult" nillable="true" type="q21:ArrayOfstring" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBlueTeamWordsResult" nillable="true" type="q22:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -427,14 +439,14 @@
   <xs:element name="GetRedTeamWordsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetRedTeamWordsResult" nillable="true" type="q22:ArrayOfstring" />
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetRedTeamWordsResult" nillable="true" type="q23:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GiveBlueTeamClues">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="blueTeamClues" nillable="true" type="q23:ArrayOfstring" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="blueTeamClues" nillable="true" type="q24:ArrayOfstring" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
         <xs:element minOccurs="0" name="ownNickname" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -443,7 +455,25 @@
   <xs:element name="GiveRedTeamClues">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="redTeamClues" nillable="true" type="q24:ArrayOfstring" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="redTeamClues" nillable="true" type="q25:ArrayOfstring" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+        <xs:element minOccurs="0" name="ownNickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GiveBlueTeamGuesses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="blueTeamGuesses" nillable="true" type="q26:ArrayOfstring" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+        <xs:element minOccurs="0" name="ownNickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GiveRedTeamGesses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="redTeamGuesses" nillable="true" type="q27:ArrayOfstring" />
         <xs:element minOccurs="0" name="code" type="xs:int" />
         <xs:element minOccurs="0" name="ownNickname" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -465,10 +495,26 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SubmitRedTeamDecryptResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isCorrectDecrypt" type="xs:boolean" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitBlueTeamDecryptResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isCorrectDecrypt" type="xs:boolean" />
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SetBlueTeamClues">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="blueTeamClues" nillable="true" type="q25:ArrayOfArrayOfstring" />
+        <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="blueTeamClues" nillable="true" type="q28:ArrayOfArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -480,7 +526,7 @@
   <xs:element name="SetRedTeamClues">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="redTeamClues" nillable="true" type="q26:ArrayOfArrayOfstring" />
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="redTeamClues" nillable="true" type="q29:ArrayOfArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -528,7 +574,7 @@
   <xs:element name="SetBoard">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="gameConfiguration" nillable="true" type="q27:GameConfiguration" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Domain.data" minOccurs="0" name="gameConfiguration" nillable="true" type="q30:GameConfiguration" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

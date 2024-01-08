@@ -217,11 +217,18 @@
   <wsdl:message name="IAccountServices_RegisterAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterAccountResponse" />
   </wsdl:message>
-  <wsdl:message name="IAccountServices_Login_InputMessage">
+  <wsdl:message name="IAccountServices_
+				_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
   <wsdl:message name="IAccountServices_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAccountServices_LoginAsGuest_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginAsGuest" />
+  </wsdl:message>
+  <wsdl:message name="IAccountServices_LoginAsGuest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginAsGuestResponse" />
   </wsdl:message>
   <wsdl:message name="IAccountServices_SendToken_InputMessage">
     <wsdl:part name="parameters" element="tns:SendToken" />
@@ -403,11 +410,23 @@
   <wsdl:message name="IGameServices_GiveRedTeamClues_InputMessage">
     <wsdl:part name="parameters" element="tns:GiveRedTeamClues" />
   </wsdl:message>
+  <wsdl:message name="IGameServices_GiveBlueTeamGuesses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GiveBlueTeamGuesses" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GiveRedTeamGesses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GiveRedTeamGesses" />
+  </wsdl:message>
   <wsdl:message name="IGameServices_SubmitBlueTeamInterceptionResult_InputMessage">
     <wsdl:part name="parameters" element="tns:SubmitBlueTeamInterceptionResult" />
   </wsdl:message>
   <wsdl:message name="IGameServices_SubmitRedTeamIntercepcionResult_InputMessage">
     <wsdl:part name="parameters" element="tns:SubmitRedTeamIntercepcionResult" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SubmitRedTeamDecryptResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitRedTeamDecryptResult" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SubmitBlueTeamDecryptResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitBlueTeamDecryptResult" />
   </wsdl:message>
   <wsdl:message name="IGameServices_SetBlueTeamClues_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SetBlueTeamClues" />
@@ -465,6 +484,10 @@
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/Login" message="tns:IAccountServices_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccountServices/LoginResponse" message="tns:IAccountServices_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginAsGuest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/LoginAsGuest" message="tns:IAccountServices_LoginAsGuest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccountServices/LoginAsGuestResponse" message="tns:IAccountServices_LoginAsGuest_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendToken">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountServices/SendToken" message="tns:IAccountServices_SendToken_InputMessage" />
@@ -608,11 +631,23 @@
     <wsdl:operation name="GiveRedTeamClues">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GiveRedTeamClues" message="tns:IGameServices_GiveRedTeamClues_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GiveBlueTeamGuesses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GiveBlueTeamGuesses" message="tns:IGameServices_GiveBlueTeamGuesses_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GiveRedTeamGesses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GiveRedTeamGesses" message="tns:IGameServices_GiveRedTeamGesses_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SubmitBlueTeamInterceptionResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SubmitBlueTeamInterceptionResult" message="tns:IGameServices_SubmitBlueTeamInterceptionResult_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SubmitRedTeamIntercepcionResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SubmitRedTeamIntercepcionResult" message="tns:IGameServices_SubmitRedTeamIntercepcionResult_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRedTeamDecryptResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SubmitRedTeamDecryptResult" message="tns:IGameServices_SubmitRedTeamDecryptResult_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitBlueTeamDecryptResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SubmitBlueTeamDecryptResult" message="tns:IGameServices_SubmitBlueTeamDecryptResult_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SetBlueTeamClues">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/SetBlueTeamClues" message="tns:IGameServices_SetBlueTeamClues_OutputCallbackMessage" />
@@ -663,6 +698,15 @@
     </wsdl:operation>
     <wsdl:operation name="Login">
       <soap12:operation soapAction="http://tempuri.org/IAccountServices/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginAsGuest">
+      <soap12:operation soapAction="http://tempuri.org/IAccountServices/LoginAsGuest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -978,6 +1022,18 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GiveBlueTeamGuesses">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/GiveBlueTeamGuesses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GiveRedTeamGesses">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/GiveRedTeamGesses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="SubmitBlueTeamInterceptionResult">
       <soap12:operation soapAction="http://tempuri.org/IGameServices/SubmitBlueTeamInterceptionResult" style="document" />
       <wsdl:input>
@@ -986,6 +1042,18 @@
     </wsdl:operation>
     <wsdl:operation name="SubmitRedTeamIntercepcionResult">
       <soap12:operation soapAction="http://tempuri.org/IGameServices/SubmitRedTeamIntercepcionResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRedTeamDecryptResult">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SubmitRedTeamDecryptResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitBlueTeamDecryptResult">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SubmitBlueTeamDecryptResult" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
